@@ -1,5 +1,4 @@
-#if ! defined( LISTA_CIRCULAR_ )
-#define LISTA_CIRCULAR_ 
+
 
 /***************************************************************************
 *
@@ -62,16 +61,13 @@
 *     Condições de retorno das funções da lista circular
 *
 ***********************************************************************/
-typedef enum {
+	typedef enum {
 
 	LISC_CondRetOK,
 	/* Concluiu corretamente */
 
 	LISC_CondRetListaVazia,
 	/* A lista não contém elementos */
-
-	LISC_CondRetFimLista,
-	/* Foi atingido o fim de lista */
 
 	LISC_CondRetNaoAchou,
 	/* Não encontrou o valor procurado */
@@ -252,9 +248,7 @@ LISC_tppListaC LISC_CriarLista(
 *
 *  $FV Valor retornado
 *     LISC_CondRetOK  - se encontrou.
-*                      O elemento corrente é o primeiro elemento do
-*                      elemento corrente inclusive para o fim da lista
-*                      e que contém o ponteiro procurado
+*                      O elemento corrente
 *
 *     LISC_CondRetNaoEncontrou - se o ponteiro não foi encontrado
 *                      O elemento corrente continua o mesmo
@@ -266,5 +260,4 @@ LISC_tppListaC LISC_CriarLista(
                                     void * pValor        ) ;
 
    /********** Fim do módulo de definição: LISC  Lista circular duplamente encadeada **********/
-  #else
-#endif
+

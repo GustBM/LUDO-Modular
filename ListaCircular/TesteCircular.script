@@ -16,9 +16,8 @@
 
 =declararparm   OK             int  0
 =declararparm   ListaVazia     int  1
-=declararparm   FimLista       int  2
-=declararparm   NaoAchou       int  3
-=declararparm   FaltouMemoria  int  4
+=declararparm   NaoAchou       int  2
+=declararparm   FaltouMemoria  int  3
 
 =declararparm   pNULL          int  0
 =declararparm   pNaoNULL       int  1
@@ -86,7 +85,6 @@
 =obtervalorelem  lista2   str1   pNaoNULL
 =avancarelem     lista2   -1     OK
 =obtervalorelem  lista2   str0   pNaoNULL
-=avancarelem     lista2   -1     FimLista
 
 == Verificar a lista de frente para trás
 =obtervalorelem  lista2   str0   pNaoNULL
