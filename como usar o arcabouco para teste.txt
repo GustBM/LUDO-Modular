@@ -1,0 +1,20 @@
+criar arquivo .comp com referencia aos .c que serao usados no teste e nome do teste (copiar e adpatar de pre existentes)
+
+editar
+compila tudo
+limpatudo
+.comp
+ criar o script
+
+
+cd <local>
+LimpaTudo.bat
+vsvars32.bat
+GeraMake TesteCircular
+
+
+
+
+
+CompilaTudo.bat
+TesteCircular.exe /sTesteCircular.script

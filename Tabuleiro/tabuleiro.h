@@ -30,6 +30,26 @@ typedef struct peca* PECA;
 
 /***********************************************************************
 *
+*  $TC Tipo de dados: GT Códigos de retorno de funções
+*
+*
+***********************************************************************/
+
+   typedef enum {
+
+         CondRetOK ,
+               /* Função executou correto */
+
+         CondRetErro ,
+               /* Erro de leitura de arquivo */
+
+         CondRetMem
+               /* Erro de espaço na memória */
+
+   } tpCondRet ;
+
+/***********************************************************************
+*
 *  $FC Função: TAB  &Criar Tabuleiro
 *
 *  $ED Descrição da função

@@ -56,65 +56,6 @@
 	};
 	typedef peca PECA;
 
-
-/***********************************************************************
-*
-*  $TC Tipo de dados: GT Códigos de término de processamento
-*
-*
-***********************************************************************/
-
-	typedef enum {
-
-			CodigoOK ,
-				/* Executou corretamente o programa */
-
-			CodigoAuxilio ,
-				/* Foi solicitado auxílio */
-
-			CodigoArquivoNaoAbre ,
-				/* Arquivo não abre */
-
-			CodigoNaoArquivoLista ,
-				/* Arquivo lista de arquivos não foi definido */
-
-			CodigoParametroDuplo ,
-				/* Parâmetro duplicado */
-
-			CodigoErroProcessamento ,
-				/* Erro de processamento */
-
-			CodigoErroParametro
-				/* Parâmetro errado */
-
-	} tpCodigoErro ;
-
-/***********************************************************************
-*
-*  $TC Tipo de dados: GT Códigos de retorno de funções
-*
-*
-***********************************************************************/
-
-   typedef enum {
-
-         CondRetOK ,
-               /* Função executou correto */
-
-         CondRetFimArq ,
-               /* Fim de arquivo de leitura */
-
-         CondRetOverflow ,
-               /* Linha lida é longa demais para o buffer */
-
-         CondRetErro ,
-               /* Erro de leitura de arquivo */
-
-         CondRetMem
-               /* Erro de espaço na memória */
-
-   } tpCondRet ;
-
 /***********************************************************************
 *
 *  $TC Tipo de dados: TAB Descritor das casas
@@ -144,35 +85,35 @@ TAB_tppTabuleiro TAB_CriaTabuleiro () {
 	memset(tab, 0, sizeof(TAB_tpTabuleiro));
 	if ( tab == NULL ) return NULL;
 
-	tab->casasNormais = LISC_CriarLista(TAB_LimpaCasa);
+	tab->casasNormais = LISC_CriarLista(TAB_Limpa);
 	for ( i = 0; i < 55; i++) {
 		if(!LISC_InserirElementoApos(tab->casasNormais,casaInfo)) {
 			// ERRO AO INSERIR ELEMENTO
 			return NULL;
 		}
 	}
-	tab->casasFim1 = LIS_CriarLista(TAB_LimpaCasa);
+	tab->casasFim1 = LIS_CriarLista(TAB_Limpa);
 	for(i = 0; i < 4; i++) {
 		if(!LIS_InserirElementoApos(tab->casasFim1,casaInfo)) {
 			// ERRO AO INSERIR ELEMENTO
 			return NULL;
 		}
 	}
-	tab->casasFim2 = LIS_CriarLista(TAB_LimpaCasa);
+	tab->casasFim2 = LIS_CriarLista(TAB_Limpa);
 	for(i = 0; i < 4; i++) {
 		if(!LIS_InserirElementoApos(tab->casasFim2,casaInfo)) {
 			// ERRO AO INSERIR ELEMENTO
 			return NULL;
 		}
 	}
-	tab->casasFim3 = LIS_CriarLista(TAB_LimpaCasa);
+	tab->casasFim3 = LIS_CriarLista(TAB_Limpa);
 	for(i = 0; i < 4; i++) {
 		if(!LIS_InserirElementoApos(tab->casasFim3,casaInfo)) {
 			// ERRO AO INSERIR ELEMENTO
 			return NULL;
 		}
 	}
-	tab->casasFim4 = LIS_CriarLista(TAB_LimpaCasa);
+	tab->casasFim4 = LIS_CriarLista(TAB_Limpa);
 	for(i = 0; i < 4; i++) {
 		if(!LIS_InserirElementoApos(tab->casasFim4,casaInfo)) {
 			// ERRO AO INSERIR ELEMENTO
@@ -198,9 +139,13 @@ tpCondRet TAB_DestruirTabuleiro( TAB_tppTabuleiro pTab )
 		
 	LISC_EsvaziarLista( pTab->casasNormais );
 	LIS_EsvaziarLista( pTab->casasFim1 ) ;
+	LIS_DestruirLista( pTab->casasFim1 ) ;
 	LIS_EsvaziarLista( pTab->casasFim2 ) ;
+	LIS_DestruirLista( pTab->casasFim2 ) ;
 	LIS_EsvaziarLista( pTab->casasFim3 ) ;
+	LIS_DestruirLista(  pTab->casasFim3 ) ;
 	LIS_EsvaziarLista( pTab->casasFim4 ) ;
+	LIS_DestruirLista( pTab->casasFim4 ) ;
 
     free( pTab ) ;
 	if ( pTab == NULL ) return CondRetOK;
@@ -224,11 +169,13 @@ void TAB_Limpa( void * casa )
 *
 ***********************************************************************/
 
-tpCondRet TAB_LimpaCasaTab (TAB_tpCasaInfo casa) {
+tpCondRet TAB_LimpaCasaTab (TAB_tpCasaInfo* casa) {
 	TAB_Limpa( casa );
 
-	if ( casa == NULL ) return CondRetOK;
-	else return CondRetErro;
+	if ( casa == NULL ) 
+		return CondRetOK;
+	else 
+		return CondRetErro;
 }
 
 /***********************************************************************
@@ -246,7 +193,7 @@ tpCondRet TAB_CriaPeca (int jogador, PECA* ret)
 		return CondRetMem;
 	}
 	p->time = jogador;
-	*ret = p;
+	ret = p;
 	return CondRetOK;
 }
 

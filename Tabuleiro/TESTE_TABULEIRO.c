@@ -8,7 +8,6 @@
 #include    "LerParm.h"
 
 #include    "Lista.h"
-#include	"peca.h"
 #include	"lista_circular.h"
 
 #include	"tabuleiro.h"

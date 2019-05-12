@@ -1,0 +1,140 @@
+GERADOR DE SCRIPT DE DIRETIVAS PARA MAKE
+   LES / Informática / PUC-Rio    Versão 6.00 (c) 2005
+
+Composição do construto: TesteTabuleiro.comp
+
+   Nome do Construto:           TesteTabuleiro
+   Diretório base:              C:\Users\Eduardo\Documents\GitHub\LUDO-Modular\Tabuleiro
+
+   Arquivo composição:          TesteTabuleiro.comp
+   Arquivo plataforma:          gmake.parm
+
+   Arquivo diretivas MAKE:      TesteTabuleiro.make
+   Arquivo diretivas LINK:      TesteTabuleiro.build
+   Arquivo listagem:            TesteTabuleiro.list
+
+Módulos do construto: TesteTabuleiro.comp
+
+   TESTE_TABULEIRO.c
+   tabuleiro.c
+
+Estatísticas do construto
+
+   Estatísticas do arquivo: Generico.h
+      Total linhas:             713
+      Linhas de código:          59
+      Linhas de comentário:     572
+      Linhas em branco:          82
+   Arquivos de inclusão de que necessita
+      TST_Espc.h
+   Arquivos em que é incluído
+      TESTE_TABULEIRO.c
+
+   Estatísticas do arquivo: LerParm.h
+      Total linhas:             291
+      Linhas de código:          36
+      Linhas de comentário:     188
+      Linhas em branco:          67
+   Arquivos em que é incluído
+      TESTE_TABULEIRO.c
+
+   Estatísticas do arquivo: Lista.h
+      Total linhas:             346
+      Linhas de código:          35
+      Linhas de comentário:     262
+      Linhas em branco:          49
+   Arquivos em que é incluído
+      TESTE_TABULEIRO.c
+
+   Estatísticas do arquivo: TESTE_TABULEIRO.c
+      Total linhas:             190
+      Linhas de código:          95
+      Linhas de comentário:      40
+      Linhas em branco:          61
+   Arquivos de inclusão de que necessita
+      Generico.h
+      LerParm.h
+      Lista.h
+      TST_Espc.h
+
+   Estatísticas do arquivo: TST_Espc.h
+      Total linhas:             228
+      Linhas de código:          23
+      Linhas de comentário:     185
+      Linhas em branco:          20
+   Arquivos em que é incluído
+      Generico.h
+      TESTE_TABULEIRO.c
+
+   Estatísticas do arquivo: lista.h
+      Total linhas:             346
+      Linhas de código:          35
+      Linhas de comentário:     262
+      Linhas em branco:          49
+   Arquivos em que é incluído
+      tabuleiro.c
+
+   Estatísticas do arquivo: lista_circular.h
+      Total linhas:             270
+      Linhas de código:          25
+      Linhas de comentário:     210
+      Linhas em branco:          35
+   Arquivos em que é incluído
+      tabuleiro.c
+
+   Estatísticas do arquivo: tabuleiro.c
+      Total linhas:             265
+      Linhas de código:         123
+      Linhas de comentário:      88
+      Linhas em branco:          54
+   Arquivos de inclusão de que necessita
+      lista.h
+      lista_circular.h
+      tabuleiro.h
+
+   Estatísticas do arquivo: tabuleiro.h
+      Total linhas:             123
+      Linhas de código:           8
+      Linhas de comentário:     100
+      Linhas em branco:          15
+   Arquivos em que é incluído
+      tabuleiro.c
+
+Totais por tipo de arquivo
+
+  Tipo: obj      Path: .
+         Total linhas do tipo:         0
+         Linhas de código:             0
+         Linhas de comentário:         0
+         Linhas em branco:             0
+         Arquivos deste tipo:          0
+
+  Tipo: err      Path: .
+         Total linhas do tipo:         0
+         Linhas de código:             0
+         Linhas de comentário:         0
+         Linhas em branco:             0
+         Arquivos deste tipo:          0
+
+  Tipo: DEFAULT  Path: .
+         Total linhas do tipo:      2317
+         Linhas de código:           221
+         Linhas de comentário:      1779
+         Linhas em branco:           317
+         Arquivos deste tipo:          7
+
+  Tipo: c        Path: .
+         Total linhas do tipo:       455
+         Linhas de código:           218
+         Linhas de comentário:       128
+         Linhas em branco:           115
+         Arquivos deste tipo:          2
+
+Totais para todo o construto TesteTabuleiro
+
+   Total linhas:              2772
+   Linhas de código:           439
+   Linhas de comentário:      1907
+   Linhas em branco:           432
+   Arquivos processados:         9
+
