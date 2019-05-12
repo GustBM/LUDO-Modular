@@ -102,7 +102,7 @@ void TAB_DestruirTabuleiro( TAB_tppTabuleiro pTab);
 *
 ***********************************************************************/
 
-tpCondRet TAB_LimpaCasaTab (TAB_tpCasaInfo casa);
+tpCondRet TAB_LimpaCasaTab (TAB_tppCasaInfo casa);
 
 /***********************************************************************
 *

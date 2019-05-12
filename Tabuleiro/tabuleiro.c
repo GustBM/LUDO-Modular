@@ -13,6 +13,7 @@
 #include   <assert.h>
 
 #include "tabuleiro.h"
+#include "peca.h"
 #include "lista_circular.h"
 #include "lista.h"
 
@@ -42,19 +43,6 @@
 
    } TAB_tpTabuleiro ;
 
-
-/***********************************************************************
-*
-*  $TC Tipo de dados: TAB Descritor PECA
-*
-*
-***********************************************************************/
-
-   struct peca
-	{
-		int time;
-	};
-	typedef peca PECA;
 
 /***********************************************************************
 *
@@ -176,37 +164,4 @@ tpCondRet TAB_LimpaCasaTab (TAB_tpCasaInfo* casa) {
 		return CondRetOK;
 	else 
 		return CondRetErro;
-}
-
-/***********************************************************************
-*
-*  $FC Função: TAB  -Cria Peca
-*
-***********************************************************************/
-
-tpCondRet TAB_CriaPeca (int jogador, PECA* ret)
-{
-	PECA* p = (PECA*) malloc(sizeof(PECA));
-	if(p == NULL)
-	{
-		printf("Erro ao criar peca \n");
-		return CondRetMem;
-	}
-	p->time = jogador;
-	ret = p;
-	return CondRetOK;
-}
-
-/***********************************************************************
-*
-*  $FC Função: TAB  -Destroi Peca
-*
-***********************************************************************/
-
-tpCondRet TAB_DestroiPeca (PECA* p)
-{
-	TAB_Limpa( p );
-
-	if ( p == NULL ) return CondRetOK;
-	else return CondRetErro;
 }

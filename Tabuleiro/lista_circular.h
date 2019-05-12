@@ -70,9 +70,6 @@ typedef enum {
 	LISC_CondRetListaVazia,
 	/* A lista não contém elementos */
 
-	LISC_CondRetFimLista,
-	/* Foi atingido o fim de lista */
-
 	LISC_CondRetNaoAchou,
 	/* Não encontrou o valor procurado */
 
