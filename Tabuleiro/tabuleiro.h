@@ -1,3 +1,6 @@
+#if ! defined( TABULEIRO_ )
+#define TABULEIRO_
+
 /***************************************************************************
 *
 *  $MCD Módulo de definição: TAB  Módulo do tabuleiro para LUDO
@@ -8,25 +11,34 @@
 *
 *  Projeto: INF 1301 / TESTE 2 2019.1
 *  Gestor:  LES/DI/PUC-Rio
-*  Autores: Gustavo Barros Marchesan
+*  Autores: GBM - Gustavo Barros Marchesan
 *
 *  $HA Histórico de evolução:
 *     Versão  Autor    Data     Observações
 *     1       GBM   07/mai/2019 início desenvolvimento
 *	  2		  GBM	12/mai/2019 Junção dos módulos tabuleiro e peca
+*	  3		  GBM	12/mai/2019 Remoção da peca como parte do tabuleiro
 *
 *  $ED Descrição do módulo
 *     Módulo para criação e manipulação do tabuleiro e pecas para o jogo LUDO
 *
 ***************************************************************************/
 
+#if defined( TABULEIRO_OWN )
+#define TABULEIRO_EXT
+#else
+#define TABULEIRO_EXT extern
+#endif
+
+#include "peca.h"
+#include "lista_circular.h"
+#include "lista.h"
+
 /***** Declarações exportadas pelo módulo *****/
 
 typedef struct TAB_tagTabuleiro * TAB_tppTabuleiro;
 
 typedef struct TAB_tagCasaInfo * TAB_tppCasaInfo;
-
-typedef struct peca* PECA;
 
 /***********************************************************************
 *
@@ -86,58 +98,11 @@ TAB_tppTabuleiro TAB_CriaTabuleiro ();
 
 void TAB_DestruirTabuleiro( TAB_tppTabuleiro pTab);
 
-/***********************************************************************
-*
-*  $FC Função: TAB  &Limpa Casa Tab
-*
-*  $ED Descrição da função
-*     Elemina o elemento do tabuleiro dado como parâmetro
-*
-*  $EP Parâmetros
-*     casa - ponteiro para a casa a ser esvaziada
-*
-*  $FV Valor retornado
-*	  CondRetOK  - Se a função ocorreu sem problemas
-*	  CondRetErro - caso tenha algum problema. Sem informações adicionais
-*
-***********************************************************************/
-
-tpCondRet TAB_LimpaCasaTab (TAB_tppCasaInfo casa);
-
-/***********************************************************************
-*
-*  $FC Função: TAB  &Cria Peca
-*
-*  $ED Descrição da função
-*     Cria uma peça para o jogo de ludo.
-*
-*  $EP Parâmetros
-*     jogador - inteiro representando o jogador a qual a peça pertence
-*	  ret - ponteiro de referência para a peca criada
-*
-*  $FV Valor retornado
-*	  CondRetOK  - Se a função ocorreu sem problemas
-*	  CondRetErro - caso tenha algum problema. Sem informações adicionais
-*
-***********************************************************************/
-
-tpCondRet TAB_CriaPeca (int jogador, PECA* ret);
+#undef TABULEIRO_EXT
 
 
-/***********************************************************************
-*
-*  $FC Função: TAB  &Destroi Peca
-*
-*  $ED Descrição da função
-*     Elemina a peca do tabuleiro dado como parâmetro
-*
-*  $EP Parâmetros
-*     p - ponteiro para a peca a ser eliminada
-*
-*  $FV Valor retornado
-*	  CondRetOK  - Se a função ocorreu sem problemas
-*	  CondRetErro - caso tenha algum problema. Sem informações adicionais
-*
-***********************************************************************/
+/*********** Fim do módulo de definição: TAB Modulo Tabuleiro **********/
 
-tpCondRet TAB_DestroiPeca (PECA* p);
+
+#else
+#endif

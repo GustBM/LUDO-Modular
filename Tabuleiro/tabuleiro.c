@@ -12,10 +12,14 @@
 #include   <malloc.h>
 #include   <assert.h>
 
-#include "tabuleiro.h"
 #include "peca.h"
 #include "lista_circular.h"
 #include "lista.h"
+
+#define TABULEIRO_OWN
+#include "tabuleiro.h"
+#undef TABULEIRO_OWN
+
 
 /***********************************************************************
 *
@@ -51,11 +55,20 @@
 *
 ***********************************************************************/
 
-typedef struct TAB_tagCasaInfo {
-	PECA * peca[4];
-		/*Peça ocupando, podendo ser null*/
 
-}TAB_tpCasaInfo;
+typedef struct TAB_tagCasaInfo {
+ 
+    PEC_tpPeca conteudo ;
+        /* Ponteiro para o conteudo da casa */
+
+} TAB_tpCasaInfo;
+typedef void ( *pFunc ) ( void * ) ; typedef void **ppVoid ;
+
+/***** Protótipo das funções encapsuladas no módulo *****/
+ 
+static TAB_tppCasaInfo CriaCasa ( PEC_tpPeca conteudo ) ;
+ 
+static void TAB_LiberarCasa ( TAB_tpCasaInfo *pCasa ) ;
 
 
 /***********************************************************************
@@ -65,51 +78,63 @@ typedef struct TAB_tagCasaInfo {
 ***********************************************************************/
 
 TAB_tppTabuleiro TAB_CriaTabuleiro () {
-	TAB_tpTabuleiro * tab = NULL;
-	TAB_tpCasaInfo * casaInfo = NULL;
-	int i =0;
+	int i, k;
+	TAB_tppTabuleiro pTab;
+	LISC_tppListaC pListaC;
+	LIS_tppLista pLista1, pLista2, pLista3, pLista4;
+	TAB_tpCasaInfo *casa ;
+	LISC_tpCondRet listcFlag;
+	LIS_tpCondRet listFlag;
 
-	tab = ( TAB_tpTabuleiro * ) malloc( sizeof( TAB_tpTabuleiro));
-	memset(tab, 0, sizeof(TAB_tpTabuleiro));
-	if ( tab == NULL ) return NULL;
+	pTab = ( TAB_tpTabuleiro * ) malloc( sizeof( TAB_tpTabuleiro));
+	if ( pTab == NULL ) return NULL;
 
-	tab->casasNormais = LISC_CriarLista(TAB_Limpa);
-	for ( i = 0; i < 55; i++) {
-		if(!LISC_InserirElementoApos(tab->casasNormais,casaInfo)) {
-			// ERRO AO INSERIR ELEMENTO
-			return NULL;
-		}
-	}
-	tab->casasFim1 = LIS_CriarLista(TAB_Limpa);
-	for(i = 0; i < 4; i++) {
-		if(!LIS_InserirElementoApos(tab->casasFim1,casaInfo)) {
-			// ERRO AO INSERIR ELEMENTO
-			return NULL;
-		}
-	}
-	tab->casasFim2 = LIS_CriarLista(TAB_Limpa);
-	for(i = 0; i < 4; i++) {
-		if(!LIS_InserirElementoApos(tab->casasFim2,casaInfo)) {
-			// ERRO AO INSERIR ELEMENTO
-			return NULL;
-		}
-	}
-	tab->casasFim3 = LIS_CriarLista(TAB_Limpa);
-	for(i = 0; i < 4; i++) {
-		if(!LIS_InserirElementoApos(tab->casasFim3,casaInfo)) {
-			// ERRO AO INSERIR ELEMENTO
-			return NULL;
-		}
-	}
-	tab->casasFim4 = LIS_CriarLista(TAB_Limpa);
-	for(i = 0; i < 4; i++) {
-		if(!LIS_InserirElementoApos(tab->casasFim4,casaInfo)) {
-			// ERRO AO INSERIR ELEMENTO
-			return NULL;
-		}
-	}
+	pListaC = LISC_CriarLista ( ( pFunc ) TAB_LimpaCasa );
+	if ( pListaC = NULL ) return NULL;
 
-	return tab;
+	pLista1 = LIS_CriarLista( ( pFunc ) TAB_LimpaCasa );
+	if ( pLista1 = NULL ) return NULL;
+	pLista2 = LIS_CriarLista( ( pFunc ) TAB_LimpaCasa );
+	if ( pLista2 = NULL ) return NULL;
+	pLista3 = LIS_CriarLista( ( pFunc ) TAB_LimpaCasa );
+	if ( pLista3 = NULL ) return NULL;
+	pLista4 = LIS_CriarLista( ( pFunc ) TAB_LimpaCasa );
+	if ( pLista4 = NULL ) return NULL;
+
+	for( k = 0; k < 55 ; k++ ){
+		
+		casa = CriaCasa ( NULL ) ;
+        if ( casa == NULL ) return NULL ;
+
+        listcFlag = LISC_InserirElementoAntes( pListaC , casa ) ;
+		if ( listcFlag == LIS_CondRetOK ) return NULL;
+    }
+
+	for( i = 0 ; i < 4 ; i++ ){
+		listFlag = LIS_InserirElementoApos( pLista1 , ( pFunc ) TAB_LimpaCasa ) ;
+		if ( listFlag == LIS_CondRetOK ) return NULL;
+    }
+	for( i = 0 ; i < 4 ; i++ ){
+		listFlag = LIS_InserirElementoApos( pLista2 , ( pFunc ) TAB_LimpaCasa ) ;
+		if ( listFlag == LIS_CondRetOK ) return NULL;
+    }
+	for( i = 0 ; i < 4 ; i++ ){
+		 listFlag = LIS_InserirElementoApos( pLista3 , ( pFunc ) TAB_LimpaCasa ) ;
+		 if ( listFlag == LIS_CondRetOK ) return NULL;
+    }
+	for( i = 0 ; i < 4 ; i++ ){
+		 listFlag = LIS_InserirElementoApos( pLista4 , ( pFunc ) TAB_LimpaCasa ) ;
+		 if ( listFlag == LIS_CondRetOK ) return NULL;
+    }
+ 
+    pTab->casasNormais = pListaC ;
+	pTab->casasFim1 = pLista1;
+	pTab->casasFim2 = pLista2;
+	pTab->casasFim3 = pLista3;
+	pTab->casasFim4 = pLista4;
+ 
+    return pTab ;
+
 }
 
 /***********************************************************************
@@ -140,16 +165,25 @@ tpCondRet TAB_DestruirTabuleiro( TAB_tppTabuleiro pTab )
 	else return CondRetErro;
 }
 
+
 /***********************************************************************
 *
-*  $FC Função: TAB  -Limpa Casa
+*  $FC Função: TAB  -Cria Casa
 *
 ***********************************************************************/
 
-void TAB_Limpa( void * casa )
+static TAB_tppCasaInfo CriaCasa ( PEC_tpPeca conteudo )
 {
-    free( casa );
-}
+    TAB_tpCasaInfo *casa ;
+     
+    casa  = (TAB_tpCasaInfo *) malloc ( sizeof ( TAB_tpCasaInfo ) ) ;
+     
+    if( casa == NULL ) return NULL ;
+
+	casa->conteudo = conteudo;
+ 
+    return casa ;
+} 
 
 /***********************************************************************
 *
@@ -157,11 +191,25 @@ void TAB_Limpa( void * casa )
 *
 ***********************************************************************/
 
-tpCondRet TAB_LimpaCasaTab (TAB_tpCasaInfo* casa) {
-	TAB_Limpa( casa );
+tpCondRet TAB_LimpaCasa (TAB_tpCasaInfo* casa) {
+
+	if ( casa->conteudo != NULL )
+    {
+        PEC_DestroiPeca ( casa->conteudo ) ;
+    }
+     
+    casa = NULL ;
 
 	if ( casa == NULL ) 
 		return CondRetOK;
 	else 
 		return CondRetErro;
+}
+
+void PEC_DestroiPeca ( PEC_tpPeca pPeca )
+{
+	if ( pPeca == NULL )
+		return ;
+	
+	free( pPeca );
 }
