@@ -270,7 +270,7 @@ LISC_tppListaC   vtListas[ DIM_VT_LISTA ] ;
             if ( ValEsp == 0 )
             {
                return TST_CompararPonteiroNulo( 0 , pDado ,
-                         "Valor não deveria existir." ) ;
+                         "Valor naum deveria existir." ) ;
             } /* if */
 
             if ( pDado == NULL )

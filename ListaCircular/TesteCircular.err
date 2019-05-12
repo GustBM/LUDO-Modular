@@ -2,7 +2,7 @@ testelistacircular.c
 .\testelistacircular.c(83) : warning C4189: 'numElem' : local variable is initialized but not referenced
 .\testelistacircular.c(72) : warning C4101: 'CondRet' : unreferenced local variable
 lista_circular.c
-Microsoft (R) Incremental Linker Version 10.00.30319.01
+Microsoft (R) Incremental Linker Version 10.00.40219.01
 Copyright (C) Microsoft Corporation.  All rights reserved.
 
 /OUT:TesteCircular.exe 
@@ -10,5 +10,3 @@ Copyright (C) Microsoft Corporation.  All rights reserved.
 /MACHINE:IX86 
 testelistacircular.obj lista_circular.obj 
 ArcaboucoTeste.lib 
-testelistacircular.obj : error LNK2019: unresolved external symbol _LISC_InserirElementoApos referenced in function _TST_EfetuarComando
-TesteCircular.exe : fatal error LNK1120: 1 unresolved externals

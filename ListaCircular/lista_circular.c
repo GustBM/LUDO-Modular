@@ -271,14 +271,14 @@ tpElemListaCircular* CriarElemento( LISC_tppListaC pLista , void *	pValor ){
 
          if ( pLista->pElemCorr == NULL )
          {
+			pElem -> pAnt = pElem;
+			pElem -> pProx = pElem;
             pLista->pElemCorr = pElem ;
-         } else
+         } 
+		 else
          {
-            if ( pLista->pElemCorr->pAnt != NULL )
-            {
                pElem->pAnt  = pLista->pElemCorr->pAnt ;
                pLista->pElemCorr->pAnt->pProx = pElem ;
-            }
 
             pElem->pProx = pLista->pElemCorr ;
             pLista->pElemCorr->pAnt = pElem ;
@@ -295,7 +295,7 @@ tpElemListaCircular* CriarElemento( LISC_tppListaC pLista , void *	pValor ){
 *  Função: LISC  &Inserir elemento após
 *  ****/
 
-   LISC_tpCondRet LIS_InserirElementoApos( LISC_tppListaC pLista ,
+   LISC_tpCondRet LISC_InserirElementoApos( LISC_tppListaC pLista ,
                                           void * pValor        )
       
    {
@@ -318,15 +318,16 @@ tpElemListaCircular* CriarElemento( LISC_tppListaC pLista , void *	pValor ){
 
          if ( pLista->pElemCorr == NULL )
          {
+			pElem -> pAnt = pElem;
+			pElem -> pProx = pElem;
             pLista->pElemCorr = pElem ;
             
          } else
          {
-            if ( pLista->pElemCorr->pProx != NULL )
-            {
-               pElem->pProx  = pLista->pElemCorr->pProx ;
-               pLista->pElemCorr->pProx->pAnt = pElem ;
-            }
+           
+            pElem->pProx  = pLista->pElemCorr->pProx ;
+            pLista->pElemCorr->pProx->pAnt = pElem ;
+            
 
             pElem->pAnt = pLista->pElemCorr ;
             pLista->pElemCorr->pProx = pElem ;

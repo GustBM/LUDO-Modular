@@ -4,7 +4,7 @@ GERADOR DE SCRIPT DE DIRETIVAS PARA MAKE
 Composição do construto: TesteCircular.comp
 
    Nome do Construto:           TesteCircular
-   Diretório base:              C:\Users\Pipe-PC\Desktop\TrabalhoModular\TrabalhoModular\ListaCircular
+   Diretório base:              C:\Users\Eduardo\Google Drive\PUC 2019.1\MODULAR\Teste\Versao 2 requisitos\duvidas_ListaCircular\ListaCircular
 
    Arquivo composição:          TesteCircular.comp
    Arquivo plataforma:          gmake.parm
@@ -56,18 +56,18 @@ Estatísticas do construto
       testelistacircular.c
 
    Estatísticas do arquivo: lista_circular.c
-      Total linhas:             382
-      Linhas de código:         174
+      Total linhas:             383
+      Linhas de código:         173
       Linhas de comentário:     103
-      Linhas em branco:         111
+      Linhas em branco:         113
    Arquivos de inclusão de que necessita
       lista_circular.h
 
    Estatísticas do arquivo: lista_circular.h
-      Total linhas:             270
-      Linhas de código:          25
-      Linhas de comentário:     210
-      Linhas em branco:          35
+      Total linhas:             263
+      Linhas de código:          20
+      Linhas de comentário:     207
+      Linhas em branco:          36
    Arquivos em que é incluído
       lista_circular.c
       testelistacircular.c
@@ -101,24 +101,24 @@ Totais por tipo de arquivo
          Arquivos deste tipo:          0
 
   Tipo: DEFAULT  Path: .
-         Total linhas do tipo:      1730
-         Linhas de código:           166
-         Linhas de comentário:      1340
-         Linhas em branco:           224
+         Total linhas do tipo:      1723
+         Linhas de código:           161
+         Linhas de comentário:      1337
+         Linhas em branco:           225
          Arquivos deste tipo:          5
 
   Tipo: c        Path: .
-         Total linhas do tipo:       725
-         Linhas de código:           368
+         Total linhas do tipo:       726
+         Linhas de código:           367
          Linhas de comentário:       159
-         Linhas em branco:           215
+         Linhas em branco:           217
          Arquivos deste tipo:          2
 
 Totais para todo o construto TesteCircular
 
-   Total linhas:              2455
-   Linhas de código:           534
-   Linhas de comentário:      1499
-   Linhas em branco:           439
+   Total linhas:              2449
+   Linhas de código:           528
+   Linhas de comentário:      1496
+   Linhas em branco:           442
    Arquivos processados:         7
 
