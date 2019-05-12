@@ -1,0 +1,20 @@
+
+[Diretorios]
+
+Nome        =  TesteCircular
+PathDefault =  .
+err         =  .
+
+[Modulos]
+testelistacircular
+lista_circular
+
+[BuildInicio]
+/OUT:TesteCircular.exe
+/INCREMENTAL:NO
+/MACHINE:IX86
+
+[BuildFim]
+ArcaboucoTeste.lib
+
+[Fim]

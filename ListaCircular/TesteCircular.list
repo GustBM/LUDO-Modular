@@ -1,0 +1,124 @@
+GERADOR DE SCRIPT DE DIRETIVAS PARA MAKE
+   LES / Informática / PUC-Rio    Versão 6.00 (c) 2005
+
+Composição do construto: TesteCircular.comp
+
+   Nome do Construto:           TesteCircular
+   Diretório base:              C:\Users\Pipe-PC\Desktop\TrabalhoModular\TrabalhoModular\ListaCircular
+
+   Arquivo composição:          TesteCircular.comp
+   Arquivo plataforma:          gmake.parm
+
+   Arquivo diretivas MAKE:      TesteCircular.make
+   Arquivo diretivas LINK:      TesteCircular.build
+   Arquivo listagem:            TesteCircular.list
+
+Módulos do construto: TesteCircular.comp
+
+   testelistacircular.c
+   lista_circular.c
+
+Estatísticas do construto
+
+   Estatísticas do arquivo: GENERICO.h
+      Total linhas:             713
+      Linhas de código:          59
+      Linhas de comentário:     572
+      Linhas em branco:          82
+   Arquivos de inclusão de que necessita
+      TST_Espc.h
+   Arquivos em que é incluído
+      testelistacircular.c
+
+   Estatísticas do arquivo: LERPARM.h
+      Total linhas:             291
+      Linhas de código:          36
+      Linhas de comentário:     188
+      Linhas em branco:          67
+   Arquivos em que é incluído
+      testelistacircular.c
+
+   Estatísticas do arquivo: TST_ESPC.h
+      Total linhas:             228
+      Linhas de código:          23
+      Linhas de comentário:     185
+      Linhas em branco:          20
+   Arquivos em que é incluído
+      testelistacircular.c
+
+   Estatísticas do arquivo: TST_Espc.h
+      Total linhas:             228
+      Linhas de código:          23
+      Linhas de comentário:     185
+      Linhas em branco:          20
+   Arquivos em que é incluído
+      GENERICO.h
+      testelistacircular.c
+
+   Estatísticas do arquivo: lista_circular.c
+      Total linhas:             382
+      Linhas de código:         174
+      Linhas de comentário:     103
+      Linhas em branco:         111
+   Arquivos de inclusão de que necessita
+      lista_circular.h
+
+   Estatísticas do arquivo: lista_circular.h
+      Total linhas:             270
+      Linhas de código:          25
+      Linhas de comentário:     210
+      Linhas em branco:          35
+   Arquivos em que é incluído
+      lista_circular.c
+      testelistacircular.c
+
+   Estatísticas do arquivo: testelistacircular.c
+      Total linhas:             343
+      Linhas de código:         194
+      Linhas de comentário:      56
+      Linhas em branco:         104
+   Arquivos de inclusão de que necessita
+      GENERICO.h
+      LERPARM.h
+      TST_ESPC.h
+      TST_Espc.h
+      lista_circular.h
+
+Totais por tipo de arquivo
+
+  Tipo: obj      Path: .
+         Total linhas do tipo:         0
+         Linhas de código:             0
+         Linhas de comentário:         0
+         Linhas em branco:             0
+         Arquivos deste tipo:          0
+
+  Tipo: err      Path: .
+         Total linhas do tipo:         0
+         Linhas de código:             0
+         Linhas de comentário:         0
+         Linhas em branco:             0
+         Arquivos deste tipo:          0
+
+  Tipo: DEFAULT  Path: .
+         Total linhas do tipo:      1730
+         Linhas de código:           166
+         Linhas de comentário:      1340
+         Linhas em branco:           224
+         Arquivos deste tipo:          5
+
+  Tipo: c        Path: .
+         Total linhas do tipo:       725
+         Linhas de código:           368
+         Linhas de comentário:       159
+         Linhas em branco:           215
+         Arquivos deste tipo:          2
+
+Totais para todo o construto TesteCircular
+
+   Total linhas:              2455
+   Linhas de código:           534
+   Linhas de comentário:      1499
+   Linhas em branco:           439
+   Arquivos processados:         7
+
