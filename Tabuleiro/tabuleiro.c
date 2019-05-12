@@ -13,7 +13,6 @@
 #include   <assert.h>
 
 #include "tabuleiro.h"
-#include "peca.h"
 #include "lista_circular.h"
 #include "lista.h"
 
@@ -94,8 +93,11 @@
          CondRetOverflow ,
                /* Linha lida é longa demais para o buffer */
 
-         CondRetErro
+         CondRetErro ,
                /* Erro de leitura de arquivo */
+
+         CondRetMem
+               /* Erro de espaço na memória */
 
    } tpCondRet ;
 
@@ -197,7 +199,7 @@ tpCondRet TAB_DestruirTabuleiro( TAB_tppTabuleiro pTab )
 *
 ***********************************************************************/
 
-void TAB_LimpaCasa( void * casa )
+void TAB_Limpa( void * casa )
 {
     free( casa );
 }
@@ -209,8 +211,41 @@ void TAB_LimpaCasa( void * casa )
 ***********************************************************************/
 
 tpCondRet TAB_LimpaCasaTab (TAB_tpCasaInfo casa) {
-	TAB_LimpaCasa( casa );
+	TAB_Limpa( casa );
 
 	if ( casa == NULL ) return CondRetOK;
+	else return CondRetErro;
+}
+
+/***********************************************************************
+*
+*  $FC Função: TAB  -Cria Peca
+*
+***********************************************************************/
+
+tpCondRet TAB_CriaPeca (int jogador, PECA* ret)
+{
+	PECA* p = (PECA*) malloc(sizeof(PECA));
+	if(p == NULL)
+	{
+		printf("Erro ao criar peca \n");
+		return CondRetMem;
+	}
+	p->time = jogador;
+	*ret = p;
+	return CondRetOK;
+}
+
+/***********************************************************************
+*
+*  $FC Função: TAB  -Destroi Peca
+*
+***********************************************************************/
+
+tpCondRet TAB_DestroiPeca (PECA* p)
+{
+	TAB_Limpa( p );
+
+	if ( p == NULL ) return CondRetOK;
 	else return CondRetErro;
 }
