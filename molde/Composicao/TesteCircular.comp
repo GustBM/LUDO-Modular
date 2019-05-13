@@ -1,0 +1,25 @@
+
+[Diretorios]
+
+Nome        =  TesteCircular
+PathDefault =  ..\Fontes
+err         =  ..\Produto
+obj         =  ..\Objetos
+c           =  ..\Fontes
+h           =  ..\Fontes
+def         =  ..\Tabelas
+
+[Modulos]
+testelistacircular
+lista_circular
+
+[BuildInicio]
+/OUT:..\produto\TesteCircular.exe
+/INCREMENTAL:NO
+/MACHINE:IX86
+
+[BuildFim]
+ArcaboucoTeste.lib
+lista_circular.obj
+
+[Fim]

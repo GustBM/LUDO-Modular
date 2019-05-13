@@ -7,7 +7,7 @@ del *.err
 del TesteTabuleiro.exe
 
 del *.obj
-nmake /FtesteTabuleiro.make 
+nmake /F..\produto\testeTabuleiro.make 
 
 copy  *.err  tudo.err
 

@@ -16,6 +16,7 @@ static const char ESVAZIAR_LISTAC_CMD      [ ] = "=esvaziarlista"  ;
 static const char INS_ELEM_ANTESC_CMD      [ ] = "=inselemantes"   ;
 static const char INS_ELEM_APOSC_CMD       [ ] = "=inselemapos"    ;
 static const char OBTER_VALORC_CMD         [ ] = "=obtervalorelem" ;
+static const char PROCURA_VALORC_CMD	   [ ] = "=procuravalorelem";	
 static const char EXC_ELEMC_CMD            [ ] = "=excluirelem"    ;
 
 #define TRUE  1
@@ -254,6 +255,37 @@ LISC_tppListaC   vtListas[ DIM_VT_LISTA ] ;
       /* Testar obter valor do elemento corrente */
 
          else if ( strcmp( ComandoTeste , OBTER_VALORC_CMD ) == 0 )
+         {
+
+            numLidos = LER_LerParametros( "ii" ,
+                       &inxLista , &ValEsp ) ;
+
+            if ( ( numLidos != 2 )
+              || ( ! ValidarInxLista( inxLista , NAO_VAZIO )) )
+            {
+               return TST_CondRetParm ;
+            } /* if */
+
+            pDado = ( char * ) LISC_ObterValor( vtListas[ inxLista ] ) ;
+
+            if ( ValEsp == 0 )
+            {
+               return TST_CompararPonteiroNulo( 0 , pDado ,
+                         "Valor naum deveria existir." ) ;
+            } /* if */
+
+            if ( pDado == NULL )
+            {
+               return TST_CompararPonteiroNulo( 1 , pDado ,
+                         "Dado tipo um deveria existir." ) ;
+            } /* if */
+
+            return TST_CompararString( StringDado , pDado ,
+                         "Valor do elemento errado." ) ;
+
+         } /* fim ativa: Testar obter valor do elemento corrente */
+
+		  else if ( strcmp( ComandoTeste , PROCURA_VALORC_CMD ) == 0 )
          {
 
             numLidos = LER_LerParametros( "isi" ,
