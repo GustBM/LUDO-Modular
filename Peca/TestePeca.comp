@@ -1,0 +1,20 @@
+
+[Diretorios]
+
+Nome        =  TestePeca
+PathDefault =  .
+err         =  .
+
+[Modulos]
+TestePeca
+Peca
+
+[BuildInicio]
+/OUT:TestePeca.exe
+/INCREMENTAL:NO
+/MACHINE:IX86
+
+[BuildFim]
+ArcaboucoTeste.lib
+
+[Fim]
