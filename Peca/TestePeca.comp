@@ -4,6 +4,7 @@
 Nome        =  TestePeca
 PathDefault =  .
 err         =  .
+obj	    =  ../Objetos
 
 [Modulos]
 TestePeca

@@ -4,7 +4,7 @@ GERADOR DE SCRIPT DE DIRETIVAS PARA MAKE
 Composição do construto: TesteTabuleiro.comp
 
    Nome do Construto:           TesteTabuleiro
-   Diretório base:              C:\Users\Eduardo\Documents\GitHub\LUDO-Modular\Tabuleiro
+   Diretório base:              C:\Users\gusta\Desktop\LUDO_Modular\LUDO-Modular\Tabuleiro
 
    Arquivo composição:          TesteTabuleiro.comp
    Arquivo plataforma:          gmake.parm
@@ -17,6 +17,8 @@ Módulos do construto: TesteTabuleiro.comp
 
    TESTE_TABULEIRO.c
    tabuleiro.c
+
+      Nao abriu: peca.h
 
 Estatísticas do construto
 
@@ -73,36 +75,52 @@ Estatísticas do construto
       Linhas em branco:          49
    Arquivos em que é incluído
       tabuleiro.c
+      tabuleiro.h
 
    Estatísticas do arquivo: lista_circular.h
-      Total linhas:             270
-      Linhas de código:          25
-      Linhas de comentário:     210
-      Linhas em branco:          35
+      Total linhas:             267
+      Linhas de código:          24
+      Linhas de comentário:     209
+      Linhas em branco:          34
    Arquivos em que é incluído
       tabuleiro.c
+      tabuleiro.h
+
+   Estatísticas do arquivo: peca.h
+      Total linhas:               0
+      Linhas de código:           0
+      Linhas de comentário:       0
+      Linhas em branco:           0
+   Arquivos em que é incluído
+      tabuleiro.c
+      tabuleiro.h
 
    Estatísticas do arquivo: tabuleiro.c
-      Total linhas:             265
-      Linhas de código:         123
-      Linhas de comentário:      88
-      Linhas em branco:          54
+      Total linhas:             216
+      Linhas de código:         117
+      Linhas de comentário:      46
+      Linhas em branco:          53
    Arquivos de inclusão de que necessita
       lista.h
       lista_circular.h
+      peca.h
       tabuleiro.h
 
    Estatísticas do arquivo: tabuleiro.h
-      Total linhas:             123
-      Linhas de código:           8
-      Linhas de comentário:     100
-      Linhas em branco:          15
+      Total linhas:             108
+      Linhas de código:          22
+      Linhas de comentário:      65
+      Linhas em branco:          21
+   Arquivos de inclusão de que necessita
+      lista.h
+      lista_circular.h
+      peca.h
    Arquivos em que é incluído
       tabuleiro.c
 
 Totais por tipo de arquivo
 
-  Tipo: obj      Path: .
+  Tipo: obj      Path: ../Objetos
          Total linhas do tipo:         0
          Linhas de código:             0
          Linhas de comentário:         0
@@ -117,24 +135,26 @@ Totais por tipo de arquivo
          Arquivos deste tipo:          0
 
   Tipo: DEFAULT  Path: .
-         Total linhas do tipo:      2317
-         Linhas de código:           221
-         Linhas de comentário:      1779
-         Linhas em branco:           317
+         Total linhas do tipo:      2299
+         Linhas de código:           234
+         Linhas de comentário:      1743
+         Linhas em branco:           322
          Arquivos deste tipo:          7
 
   Tipo: c        Path: .
-         Total linhas do tipo:       455
-         Linhas de código:           218
-         Linhas de comentário:       128
-         Linhas em branco:           115
+         Total linhas do tipo:       406
+         Linhas de código:           212
+         Linhas de comentário:        86
+         Linhas em branco:           114
          Arquivos deste tipo:          2
 
 Totais para todo o construto TesteTabuleiro
 
-   Total linhas:              2772
-   Linhas de código:           439
-   Linhas de comentário:      1907
-   Linhas em branco:           432
+   Total linhas:              2705
+   Linhas de código:           446
+   Linhas de comentário:      1829
+   Linhas em branco:           436
    Arquivos processados:         9
+
+>>> Ocorreram erros ao gerar.
 

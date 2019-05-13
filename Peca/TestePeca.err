@@ -1,0 +1,4 @@
+TestePeca.c
+c:\users\gusta\desktop\ludo_modular\ludo-modular\peca\testepeca.c(75) : warning C4715: 'TST_EfetuarComando' : not all control paths return a value
+c:\users\gusta\desktop\ludo_modular\ludo-modular\peca\testepeca.c(53) : warning C4700: uninitialized local variable 'p' used
+Peca.c

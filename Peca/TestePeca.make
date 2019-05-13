@@ -1,7 +1,7 @@
 ##################################################
 ###
-### Diretivas de MAKE para o construto: TesteTabuleiro
-### Gerado a partir de: TesteTabuleiro.comp
+### Diretivas de MAKE para o construto: TestePeca
+### Gerado a partir de: TestePeca.comp
 ###
 ### ----- Arquivo gerado, NÃO EDITE!!! -----
 ###
@@ -9,7 +9,7 @@
 
 ### Nomes globais
 
-NOME            = TesteTabuleiro
+NOME            = TestePeca
 
 
 ### Nomes de paths
@@ -45,7 +45,7 @@ INCLUDE = $(INCLUDE);$(PDEFAULT)
 ### Regras de geração
 
 all : limpa \
-   $(Fobj)\TESTE_TABULEIRO.obj   $(Fobj)\tabuleiro.obj \
+   $(Fobj)\TestePeca.obj   $(Fobj)\Peca.obj \
    Construto
 
 ### Limpar arquivos
@@ -56,27 +56,26 @@ limpa :
 
 ### Dependências de módulos objeto a compilar
 
-$(Fobj)\TESTE_TABULEIRO.obj :  {$(Pc)}\TESTE_TABULEIRO.c \
-    {$(PDEFAULT)}Generico.h           {$(PDEFAULT)}LerParm.h            {$(PDEFAULT)}Lista.h              \
-    {$(PDEFAULT)}TST_Espc.h          
+$(Fobj)\TestePeca.obj :  {$(Pc)}\TestePeca.c \
+    {$(PDEFAULT)}GENERICO.h           {$(PDEFAULT)}LerParm.h            {$(PDEFAULT)}TST_Espc.h           \
+    {$(PDEFAULT)}peca.h              
    cl $(O) $(OPT) /Fo$(Fobj)\ $(Fc)\$(@B).c >> $(Ferr)\$(NOME).err
 
-$(Fobj)\tabuleiro.obj :  {$(Pc)}\tabuleiro.c \
-    {$(PDEFAULT)}lista.h              {$(PDEFAULT)}lista_circular.h     {$(PDEFAULT)}peca.h               \
-    {$(PDEFAULT)}tabuleiro.h         
+$(Fobj)\Peca.obj :  {$(Pc)}\Peca.c \
+    {$(PDEFAULT)}peca.h              
    cl $(O) $(OPT) /Fo$(Fobj)\ $(Fc)\$(@B).c >> $(Ferr)\$(NOME).err
 
 
 ### Terminação
 
 Construto : \
-   $(Fobj)\TESTE_TABULEIRO.obj   $(Fobj)\tabuleiro.obj
+   $(Fobj)\TestePeca.obj   $(Fobj)\Peca.obj
     cd $(Fobj)
     LINK $(L) @$(NOME).build >> $(Ferr)\$(NOME).err
 
 ##################################################
 ###
-### Fim de diretivas MAKE para o construto: TesteTabuleiro
+### Fim de diretivas MAKE para o construto: TestePeca
 ###
 ##################################################
 

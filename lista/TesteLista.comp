@@ -6,6 +6,7 @@
 Nome        =  TesteLista
 PathDefault =  .
 err         =  .
+obj	    =  ../Objetos
 
 [Modulos]
 TestLis

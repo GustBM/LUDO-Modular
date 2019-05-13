@@ -14,14 +14,14 @@ NOME            = TesteLista
 
 ### Nomes de paths
 
-Pobj                 = .
+Pobj                 = ../Objetos
 Perr                 = .
 PDEFAULT             = .
 Pc                   = .
 
 ### Nomes de diretórios para geração
 
-Fobj                 = .
+Fobj                 = ../Objetos
 Ferr                 = .
 FDEFAULT             = .
 Fc                   = .

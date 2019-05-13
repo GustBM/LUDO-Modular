@@ -6,6 +6,7 @@
 Nome        =  TesteTabuleiro
 PathDefault =  .
 err         =  .
+obj	    =  ../Objetos
 
 [Modulos]
 TESTE_TABULEIRO
@@ -18,5 +19,8 @@ tabuleiro
 
 [BuildFim]
 ArcaboucoTeste.lib
+Lista.obj
+lista_circular.obj
+peca.obj
 
 [Fim]
