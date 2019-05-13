@@ -14,14 +14,14 @@ NOME            = TesteTabuleiro
 
 ### Nomes de paths
 
-Pobj                 = .
+Pobj                 = ../Objetos
 Perr                 = .
 PDEFAULT             = .
 Pc                   = .
 
 ### Nomes de diretórios para geração
 
-Fobj                 = .
+Fobj                 = ../Objetos
 Ferr                 = .
 FDEFAULT             = .
 Fc                   = .
@@ -62,7 +62,8 @@ $(Fobj)\TESTE_TABULEIRO.obj :  {$(Pc)}\TESTE_TABULEIRO.c \
    cl $(O) $(OPT) /Fo$(Fobj)\ $(Fc)\$(@B).c >> $(Ferr)\$(NOME).err
 
 $(Fobj)\tabuleiro.obj :  {$(Pc)}\tabuleiro.c \
-    {$(PDEFAULT)}lista.h              {$(PDEFAULT)}lista_circular.h     {$(PDEFAULT)}tabuleiro.h         
+    {$(PDEFAULT)}lista.h              {$(PDEFAULT)}lista_circular.h     {$(PDEFAULT)}peca.h               \
+    {$(PDEFAULT)}tabuleiro.h         
    cl $(O) $(OPT) /Fo$(Fobj)\ $(Fc)\$(@B).c >> $(Ferr)\$(NOME).err
 
 

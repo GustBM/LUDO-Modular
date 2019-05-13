@@ -1,0 +1,24 @@
+// Script:    TesteLista.script
+// Autor:     Luiz Fellipe Augusto, Eduardo Motta, Gustavo Barros
+// Data:      09/Mai/2019
+// Propósito: Testar o módulo peca.
+//
+
+== Inicializar valores
+
+=declaraparm OK int 0
+=declaraparm pNULL int 1
+=declaraparm pNaoNULL int 2
+
+== Criar a peca
+
+=criarpeca  1   1   0
+
+
+== Destruir a peca
+
+=destruirpeca  1   1   pNULL
+
+
+
+// fim
