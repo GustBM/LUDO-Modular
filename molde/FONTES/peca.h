@@ -3,10 +3,10 @@
 
 /***************************************************************************
 *
-*  $MCD Módulo de definição: PEC Módulo de Peça
+*  $MCD Módulo de definição: Modulo peca
 *
-*  Arquivo gerado:              PECAS.H  
-*  Letras identificadoras:      PEC
+*  Arquivo gerado:              peca.h
+*  Letras identificadoras:      PECA
 *
 *  Projeto: Jogo de Ludo
 *  Gestor:  Professor Alessandro Garcia
@@ -107,18 +107,18 @@ typedef enum {
 
 /* Assertivas de Entrada PEC_CriaPeca
 *  Existir mémoria para criacao da peça
-*  A peça nao pode existir para que seja criada (pPeca[ind] = NULL)
+*  A peça nao pode existir para que seja criada (peca[ind] = NULL)
 *  A cor dada (int) tem que ser entre 0 e 3
-*  Para todo pPeca[indice], pPeca = NULL.
+*  Para todo peca[indice], peca = NULL.
 *
 *  Fim Assertiva de Entrada PEC_CriaPeca */
 
-PEC_CondRet PEC_CriaPeca ( PEC_tpPeca * pPeca, int ind, int cor ) ;
+PEC_CondRet PEC_CriaPeca ( PEC_tpeca * peca, int ind, int cor ) ;
 
 /* Assertivas de Saida PEC_CriaPeca
 *  A memoria referente a estrutura da peca tem que ser alocada
-*  Para todo pPeca[ind] criado, pPeca[ind] != NULL
-*  Para todo pPeca criado, pPeca->cor entre 0 e 3
+*  Para todo peca[ind] criado, peca[ind] != NULL
+*  Para todo peca criado, peca->cor entre 0 e 3
 *  A funcao retornara um PEC_CondRet
 *
 *  Fim Assertiva de Saida PEC_CriaPeca */
@@ -131,7 +131,7 @@ PEC_CondRet PEC_CriaPeca ( PEC_tpPeca * pPeca, int ind, int cor ) ;
 *     Destroi uma peça dado um indice, dentro do vetor.
 *
 *  $EP Parametros
-*   *pPeca  -  peca a ser destruida.
+*   *peca  -  peca a ser destruida.
 *     ind   -  indice no vetor
 *
 *  $FV Valor retornado
@@ -141,14 +141,14 @@ PEC_CondRet PEC_CriaPeca ( PEC_tpPeca * pPeca, int ind, int cor ) ;
 ***********************************************************************/
 
 /* Assertivas de Entrada PEC_DestroiPeca
-*  Existir peça ja criada (para todo pPeca , pPeca != NULL)
+*  Existir peça ja criada (para todo peca , peca != NULL)
 *
 *  Fim Assertiva de Entrada PEC_DestroiPeca */
 
-PEC_CondRet PEC_DestroiPeca ( PEC_tpPeca pPeca ) ;
+PEC_CondRet PEC_DestroiPeca ( PEC_tpPeca peca ) ;
  
 /* Assertiva de Saida PEC_DestroiPeca
-*  A peca deve ser destruida (para todo pPeca , pPeca = NULL)
+*  A peca deve ser destruida (para todo peca , peca = NULL)
 *  A memoria alocada para peca deve ser liberada 
 *  A funcao retorna um PEC_CondRet
 *
@@ -162,7 +162,7 @@ PEC_CondRet PEC_DestroiPeca ( PEC_tpPeca pPeca ) ;
 *     Dada uma peça no vetor, informa sua cor.
 *
 *  $EP Parametros
-*   pPeca - peça que procura saber a cor
+*   peca - peça que procura saber a cor
 *  * cor - ponteiro passado para receber a cor
 *
 *  $FV Valor retornado
@@ -172,11 +172,11 @@ PEC_CondRet PEC_DestroiPeca ( PEC_tpPeca pPeca ) ;
 ***********************************************************************/
 
 /* Assertivas de Entrada PEC_ObtemCor
-*  Deve existir uma cor valida na peca (para todo pPeca, pPeca->cor entre 0 e 3)
+*  Deve existir uma cor valida na peca (para todo peca, peca->cor entre 0 e 3)
 *
 *  Fim Assertiva de Entrada PEC_ObtemCor */
 
-PEC_CondRet PEC_ObtemCor ( PEC_tpPeca pPeca , int * cor ) ;
+PEC_CondRet PEC_ObtemCor ( PEC_tpPeca peca , int * cor ) ;
 
 /*  Assertiva de Saida PEC_ObtemCor
 *   Deverá ser retornado uma cor válida (inteiro entre 0 e 3)
@@ -192,7 +192,7 @@ PEC_CondRet PEC_ObtemCor ( PEC_tpPeca pPeca , int * cor ) ;
 *     Dada uma peça no vetor, informa se está na casa final.
 *
 *  $EP Parametros
-*   pPeca - peça que procura saber o final
+*   peca - peça que procura saber o final
 *  * final - ponteiro passado para receber o final
 *
 *  $FV Valor retornado
@@ -206,7 +206,7 @@ PEC_CondRet PEC_ObtemCor ( PEC_tpPeca pPeca , int * cor ) ;
 *
 *  Fim Assertiva de Entrada PEC_ObtemFinal */
 
-PEC_CondRet PEC_ObtemFinal ( PEC_tpPeca pPeca , int * final ) ;
+PEC_CondRet PEC_ObtemFinal ( PEC_tpPeca peca , int * final ) ;
 
 /*  Assertiva de Saida PEC_ObtemFinal
 *   Deverá ser retornado um final válido (inteiro 1 ou 0)
@@ -222,7 +222,7 @@ PEC_CondRet PEC_ObtemFinal ( PEC_tpPeca pPeca , int * final ) ;
 *     Dada uma peça no vetor, informa seu status.
 *
 *  $EP Parametros
-*   pPeca - peça que procura saber o status
+*   peca - peça que procura saber o status
 *  * status - ponteiro passado para receber o status
 *
 *  $FV Valor retornado
@@ -236,7 +236,7 @@ PEC_CondRet PEC_ObtemFinal ( PEC_tpPeca pPeca , int * final ) ;
 *
 *  Fim Assertiva de Entrada PEC_ObtemStatus */
 
-PEC_CondRet PEC_ObtemStatus ( PEC_tpPeca pPeca , char * status ) ;
+PEC_CondRet PEC_ObtemStatus ( PEC_tpPeca peca , char * status ) ;
 
 /*  Assertiva de Saida PEC_ObtemStatus
 *   Deverá ser retornado um status válido (caracter 'D' ou 'F')
@@ -252,7 +252,7 @@ PEC_CondRet PEC_ObtemStatus ( PEC_tpPeca pPeca , char * status ) ;
 *     Dado uma peça, atualiza o status e a condição final da peça.
 *
 *  $EP Parametros
-*   pPeca - peça que procura saber a cor
+*   peca - peça que procura saber a cor
 *   final - atualizar se peça está no estágio final
 *   status - atualizar se se peça está em jogo
 *
@@ -271,7 +271,7 @@ PEC_CondRet PEC_ObtemStatus ( PEC_tpPeca pPeca , char * status ) ;
 *
 *  Fim Assertiva de Entrada PEC_AtualizaPeca */
 
-PEC_CondRet PEC_AtualizaPeca ( PEC_tpPeca pPeca , int final, char status ) ;
+PEC_CondRet PEC_AtualizaPeca ( PEC_tpPeca peca , int final, char status ) ;
 
 /*  Assertiva de Saida PEC_AtualizaPeca
 *   Deverá ser atualizado um status válido (caracter 'D' ou 'F')

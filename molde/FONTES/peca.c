@@ -1,8 +1,8 @@
 /***************************************************************************
-*  $MCI Módulo de implementação: PEC Módulo Peças
+*  $MCI Módulo de implementação: Modulo peca
 *
 *  Arquivo gerado:              peca.c
-*  Letras identificadoras:      PEC
+*  Letras identificadoras:      PECA
 *
 *  Projeto: Jogo de Ludo
 *  Gestor:  Professor Alessandro Garcia
@@ -12,11 +12,7 @@
 
 #include <stdio.h>
 #include <stdlib.h>
-
 #include "peca.h"
-#define PECAS_OWN
-#undef PECAS_OWN
-
 
 typedef struct Peca {
 
@@ -24,132 +20,124 @@ typedef struct Peca {
 	    /* Cor definida entre 0 e 3 */
 
 	int final;
-	    /* Se a peça está na reta final do jogo (1) ou não (0) */
+	    /* Se a peça está na reta final do jogo: Final = 1, caso contrário: Final = 0 */
 
 	char status ;
-        /* Se a peça está dentro do jogo 'D' ou fora de jogo 'F' */
+        /* Se a peça está dentro do jogo, status = 'D', caso esteja fora de jogo, status = 'F' */
 
 } PECA;
 
 /*****  Código das funções exportadas pelo módulo  *****/
 
-/***************************************************************************
-*
-*  Função: PEC  &Criar Peca
-*  ****/
 
-PECA_CondRet PECA_CriaPeca ( PECA ** pPeca, int ind, int cor ) 
+PECA_CondRet PECA_CriaPeca ( PECA** peca, int i, int cor ) 
 {
-	if ( cor < 0 || cor > 3 )
+	if ( (cor < 0) || (cor > 3) )
 	{
 		return PECA_CondRetCorInvalida ;
 	}
 
-	if(pPeca[ind]!=NULL)
+	if(peca[i]!=NULL)
 	{
 		return PECA_CondRetExiste;
 	}
 
-	pPeca[ind] = ( PECA * ) malloc ( sizeof ( PECA ) ) ;
+	peca[i] = ( PECA * ) malloc ( sizeof ( PECA ) ) ;
 
-	if ( pPeca[ind] == NULL ) 
+	if ( peca[i] == NULL ) 
 	{
 		return PECA_CondRetFaltaMemoria ;
 	}
 
-	
-
-	pPeca[ind]->cor    = cor ;
-	pPeca[ind]->final  = 0   ;
-	pPeca[ind]->status = 'F' ;
+	peca[i]->cor    = cor ;
+	peca[i]->final  = 0   ;
+	peca[i]->status = 'F' ;
 
 	return PECA_CondRetOK ;
 
-} /* Fim função: PEC  &Criar Peca */
+} /* Fim da função: PECA  &Criar Peca */
 
 /***************************************************************************
 *
-*  Função: PEC  &Destroi Peca
+*  Função: PECA  &Destroi Peca
 *  ****/
 
-PECA_CondRet PECA_DestroiPeca ( PECA *pPeca )
+PECA_CondRet PECA_DestroiPeca ( PECA *peca )
 {
-	if ( pPeca == NULL )
+	if ( peca == NULL )
 		return PECA_CondRetNaoExiste ;
 	
-	free( pPeca );
+	free( peca );
 
 	return PECA_CondRetOK ;
 
-} /* Fim função: PEC  &Destroi Peca */
-
+} /* Fim da função: PECA  &Destroi Peca */
 
 /***************************************************************************
 *
 *  Função: PEC  &Obtem cor
 *  ****/
 
-PECA_CondRet PECA_ObtemCor ( PECA * pPeca , int * cor )
+PECA_CondRet PECA_ObtemCor ( PECA * peca , int* cor )
 {
-	if(pPeca==NULL)
+	if(peca==NULL)
 	{
 		return PECA_CondRetNaoExiste;
 	}
 
-	* cor    = pPeca->cor    ;
+	*cor = peca->cor    ;
 
 	return PECA_CondRetOK ;
 
-} /* Fim função: PEC  &Obtem cor */
+} /* Fim da função: PECA  &Obtem cor */
 
 
 /***************************************************************************
 *
-*  Função: PEC  &Obtem final
+*  Função: PECA  &Obtem fim
 *  ****/
 
-PECA_CondRet PECA_ObtemFim ( PECA * pPeca , int * final )
+PECA_CondRet PECA_ObtemFim ( PECA* peca , int* final )
 {
-	if(pPeca==NULL)
+	if(peca==NULL)
 	{
 		return PECA_CondRetNaoExiste;
 	}
 
-	* final  = pPeca->final  ;
+	*final = peca->final  ;
 
 	return PECA_CondRetOK ;
 
-} /* Fim função: PEC  &Obtem final */
-
+} /* Fim da função: PECA  &Obtem fim */
 
 /***************************************************************************
 *
-*  Função: PEC  &Obtem status
+*  Função: PECA  &Obtem status
 *  ****/
 
-PECA_CondRet PECA_ObtemStatus ( PECA * pPeca , char * status)
+PECA_CondRet PECA_ObtemStatus ( PECA* peca , char* status)
 {
-	if(pPeca==NULL)
+	if(peca==NULL)
 	{
 		return PECA_CondRetNaoExiste;
 	}
 
-	* status = pPeca->status ;
+	*status = peca->status ;
 
 	return PECA_CondRetOK ;
 
-} /* Fim função: PEC  &Obtem status */
+} /* Fim da função: PECA  &Obtem status */
 
 
 /***************************************************************************
 *
-*  Função: PEC  &Atualiza Peca
+*  Função: PECA  &Atualiza Peca
 *  ****/
 
-PECA_CondRet PECA_AtualizaPeca ( PECA * pPeca , int final, char status ) 
+PECA_CondRet PECA_AtualizaPeca ( PECA* peca , int final, char status ) 
 {
 
-	if(pPeca==NULL)
+	if(peca==NULL)
 	{
 		return PECA_CondRetNaoExiste;
 	}
@@ -161,8 +149,8 @@ PECA_CondRet PECA_AtualizaPeca ( PECA * pPeca , int final, char status )
 
 	if ( status == 'D' || status == 'F' )
 	{
-		pPeca->final = final ;
-		pPeca->status = status ;
+		peca->final = final ;
+		peca->status = status ;
 	}
 	else
 	{
@@ -171,6 +159,6 @@ PECA_CondRet PECA_AtualizaPeca ( PECA * pPeca , int final, char status )
 
 	return PECA_CondRetOK ;
 
-} /* Fim função: PEC  &Atualiza Peca */
+} /* Fim da função: PECA  &Atualiza Peca */
 
-/********** Fim do módulo de implementação: PEC Módulo PECAS **********/
+/********** Fim do módulo de implementação: PECA Módulo peca **********/
