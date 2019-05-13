@@ -4,20 +4,23 @@
 [Diretorios]
 
 Nome        =  TesteLista
-PathDefault =  .
-err         =  .
-obj	    =  ../Objetos
+PathDefault =  ..\Fontes
+err         =  ..\Produto
+obj         =  ..\Objetos
+c           =  ..\Fontes
+h           =  ..\Fontes
+def         =  ..\Tabelas
 
 [Modulos]
 TestLis
 Lista
 
 [BuildInicio]
-/OUT:TesteLista.exe
+/OUT:..\produto\TesteLista.exe
 /INCREMENTAL:NO
 /MACHINE:IX86
 
 [BuildFim]
 ArcaboucoTeste.lib
-
+Lista.obj
 [Fim]

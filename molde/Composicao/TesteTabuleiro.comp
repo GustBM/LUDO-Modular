@@ -4,16 +4,20 @@
 [Diretorios]
 
 Nome        =  TesteTabuleiro
-PathDefault =  .
-err         =  .
-obj	    =  ../Objetos
+PathDefault =  ..\Fontes
+err         =  ..\Produto
+obj         =  ..\Objetos
+c           =  ..\Fontes
+h           =  ..\Fontes
+def         =  ..\Tabelas
+
 
 [Modulos]
 TESTE_TABULEIRO
 tabuleiro
 
 [BuildInicio]
-/OUT:TesteTabuleiro.exe
+/OUT:..\produto\TesteTabuleiro.exe
 /INCREMENTAL:NO
 /MACHINE:IX86
 
