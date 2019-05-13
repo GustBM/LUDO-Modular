@@ -1,7 +1,7 @@
-// Script:    TesteLista.script
-// Autor:     Arndt von Staa
-// Data:      02/abr/2008
-// Propósito: Testar superficialmente o módulo lista genérica duplamente encadeada
+// Script:    TesteTabuleiro.script
+// Autor:     Luiz Fellipe Augusto, Eduardo Motta, Gustavo Barros
+// Data:      09/Mai/2019
+// Propósito: Testar superficialmente o módulo tabuleiro
 //
 
 == Inicializar valores

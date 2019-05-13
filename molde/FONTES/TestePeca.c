@@ -1,75 +1,145 @@
 /***************************************************************************
-*  $MCI Módulo de implementação: TPeca Teste Peca
+*  $MCI Módulo de implementação: TestePeca
 *
-*  Arquivo gerado:              TestPeca.c
-*  Letras identificadoras:      TPECA
+*  Arquivo gerado:              TestePeca.c
+*  Letras identificadoras:      TPEC
 *
-*  Nome da base de software:    Arcabouço para a automação de testes de programas redigidos em C
+*  Projeto: Jogo de Ludo
+*  Gestor:  Professor Alessandro Garcia
+*  Autores: Luiz Fellipe Augusto, Eduardo Motta e Gustavo Barros
+
+***************************************************************************/
+
+#include    <string.h>
+#include    <stdio.h>
+#include    <malloc.h>
+#include    <stdlib.h>
+#include    "peca.h"
+#include	"TST_ESPC.H"
+#include    "GENERICO.H"
+#include    "LERPARM.H"
+
+#define MAX_PECAS 15 //USADO PARA VETOR DE PECAS
+
+/***********************************************************************
 *
-*  Projeto: INF 1301 / 1628 Automatização dos testes de módulos C
-*  Gestor:  LES/DI/PUC-Rio
-*  Autores: Luiz Fellipe Augusto, Eduardo Motta, Gustavo Barros
-*****************************************************************************/
+*  $FC Função: TDADO &Testar dado
+*
+*  $ED Descrição da função
+*     Cria um dado ponto
+*
+*     Comandos disponíveis:
+*
+*     =criarpeca                         IndPeca Cor CondRetEsp
+*     =destruirpeca                      IndPeca CondRetEsp
+*     =obterstatus                       IndPeca CondRetEsp
+*	  =atualizapeca   					 IndPeca Final Status CondRetEsp
+*
+***********************************************************************/
 
-#include <stdio.h>
-#include <malloc.h>
-#include  <string.h>
-#include "peca.h"
-#include "GENERICO.h"
-#include "LerParm.h"
-#include "TST_Espc.h"
+static const char CRIAR_PECA_CMD          [ ] = "=criarpeca"     ;
+static const char DESTRUIR_PECA_CMD       [ ] = "=destruirpeca"  ;
+static const char OBTER_STATUS_CMD        [ ] = "=obterstatus"   ;
+static const char ATUALIZAR_PECA_CMD      [ ] = "=atualizapeca"  ;
+
+/**********************************************************************
+* 
+*         Vetor de PECAS
+*
+***********************************************************************/
+
+PEC_tpPeca vtPecas[MAX_PECAS];
+
+/***********************************************************************/
+
+TST_tpCondRet TST_EfetuarComando( char * ComandoTeste )
+{
+	int numLidos      = -1 ;
+	int indPeca		  = -1 ;
+	int cor           = -1 ;
+	int CondRetEsp    = -1 ;
+	int CondRetObtido = -1 ;
+	int final         = -1 ;
+	char status            ;
+	PEC_tpPeca *p          ;
+
+	/* Testar Criar */
+
+	if( strcmp( ComandoTeste , CRIAR_PECA_CMD ) == 0 )
+	{
+		numLidos = LER_LerParametros( "iii", &indPeca, &cor ,&CondRetEsp);
+		if( numLidos != 3 )
+		{
+			return TST_CondRetParm;
+		}
+
+		CondRetObtido = PEC_CriaPeca ( vtPecas, indPeca, cor ) ;
+
+		return TST_CompararInt ( CondRetEsp, CondRetObtido, "Retorno errado") ;
 
 
-static const char CRIAR_PECA_CMD         [ ] = "=criarpeca"     ;
-static const char DESTRUIR_PECA_CMD      [ ] = "=destruirpeca"  ;
+	} /* fim ativa: Testar Criar */
+	
+	/* Testar Destruir */
+	
+	else if ( strcmp( ComandoTeste , DESTRUIR_PECA_CMD ) == 0 )
+	{
+		numLidos = LER_LerParametros( "ii", &indPeca, &CondRetEsp ) ;
 
+		if ( numLidos != 2 )
+		{
+			return TST_CondRetParm ;
+		}
 
-   TST_tpCondRet TST_EfetuarComando( char * ComandoTeste )
-   {
+		CondRetObtido = PEC_DestroiPeca ( vtPecas, indPeca ) ;
+		p = NULL ;
 
-      int numLidos   = -1 ;
+		return TST_CompararInt (CondRetEsp, CondRetObtido, "Retorno errado") ;
 
-      int ValEsp = -1 ;
+	}  /* fim ativa: Testar */
 
-	  int jogador;
+		/* Testar Obter Status */
 
-	  PECA* p;
-
-	  int time;
-
-
-      /* Testar CriarPeca */
-
-          if ( strcmp( ComandoTeste , CRIAR_PECA_CMD ) == 0 )
+         else if ( strcmp( ComandoTeste , OBTER_STATUS_CMD ) == 0 )
          {
 
-            numLidos = LER_LerParametros( "iii" ,&jogador,&time,&ValEsp ) ;
+            numLidos = LER_LerParametros( "ii", &indPeca, &CondRetEsp ) ;
 
-            if ( ( numLidos != 3 ) )
+            if (  numLidos != 2 )
             {
                return TST_CondRetParm ;
-            } /* if */
-
-            TST_CompararInt( ValEsp , cria_peca(jogador,p),"Valor Diferente");
-			return TST_CondRetOK;
-
-         } /* fim ativa: Testar CriarPeca */
+            }
 
 
-      /* Testar Destruir Peca */
+            CondRetObtido = PEC_ObtemInfo( vtPecas[indPeca], &cor, &final, &status ) ;
+			
+            return TST_CompararInt( CondRetEsp , CondRetObtido ,
+                     "Condicao de retorno errada ao obter status." ) ;
 
-         else if ( strcmp( ComandoTeste , DESTRUIR_PECA_CMD ) == 0 )
+         } /* fim ativa: Testar Obter Status */
+
+		/* Testar Atualiza Peca */
+
+         else if ( strcmp( ComandoTeste , ATUALIZAR_PECA_CMD ) == 0 )
          {
 
-            numLidos = LER_LerParametros( "ii" ,
-                               &time,TST_CondRetOK ) ;
+            numLidos = LER_LerParametros( "iici", &indPeca, &final, &status, &CondRetEsp ) ;
 
-            if ( ( numLidos != 2 ) )
+            if (  numLidos != 4 )
             {
                return TST_CondRetParm ;
-            } /* if */
-			TST_CompararInt(TST_CondRetOK,destroi_peca(p),"Não Destruiu");
-            return TST_CondRetOK ;
+            }
 
-         } /* fim ativa: Testar Destruir Peca */
-   }
+
+            CondRetObtido = PEC_AtualizaPeca( vtPecas[indPeca], final, status ) ;
+			
+            return TST_CompararInt( CondRetEsp , CondRetObtido ,
+                     "Condicao de retorno errada ao Atualiza Peca." ) ;
+
+         } /* fim ativa: Testar Atualiza Peca */
+
+    return TST_CondRetNaoConhec ;
+			
+}  /* Fim função: TPEC &Testar peça */
+
+/********** Fim do módulo de implementação: TPEC Teste lista de símbolos **********/
