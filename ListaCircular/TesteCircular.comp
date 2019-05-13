@@ -4,6 +4,7 @@
 Nome        =  TesteCircular
 PathDefault =  .
 err         =  .
+obj	    = ../objetos
 
 [Modulos]
 testelistacircular

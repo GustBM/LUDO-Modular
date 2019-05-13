@@ -4,7 +4,7 @@ GERADOR DE SCRIPT DE DIRETIVAS PARA MAKE
 Composição do construto: TesteCircular.comp
 
    Nome do Construto:           TesteCircular
-   Diretório base:              C:\Users\Eduardo\Documents\GitHub\LUDO-Modular\ListaCircular
+   Diretório base:              C:\Users\gusta\Desktop\LUDO_Modular\LUDO-Modular\ListaCircular
 
    Arquivo composição:          TesteCircular.comp
    Arquivo plataforma:          gmake.parm
