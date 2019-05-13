@@ -1,5 +1,5 @@
-#if ! defined ( PEC_ )
-#define PEC_
+#if ! defined ( PECA_ )
+#define PECA_
 
 /***************************************************************************
 *
@@ -14,10 +14,10 @@
 *
 *
 *  $ED Descrição do módulo
-*     Cria, dado um indice no vetor, uma Peça.
-*     Destroi, dado um indice no vetor, uma Peça.
-*     Obtem, dado um indice no vetor, informações sobre a Peça.
-*     Atualiza status e final, dado um indice no vetor, de uma Peça.
+*     Cria uma Peça a partir de um índice dado no vetor.
+*     Destroi uma Peça a partir de um índice dado no vetor.
+*     Obtem informações sobre a Peça dado um indice no vetor.
+*     Atualiza status e final de uma Peça dado um indice no vetor.
 *
 *     OBS IMPORTANTE: As 4 primeiras posições do vetor de peças destinam-se
 *                     a cor vermelha, as próximas 4 destinam-se a cor azul,
@@ -33,24 +33,16 @@
 *       1 - AZUL
 *       2 - VERDE
 *       3 - AMARELO
-*
-*************************************************/
-
-#if defined( PEC_OWN )
-#define PEC_EXT
-#else
-   #define PEC_EXT extern
-#endif
 
 /***** Declarações exportadas pelo módulo *****/
 
 /* Tipo referência para uma peça */
 
-typedef struct Peca * PEC_tpPeca; 
+typedef struct Peca * PECA_tpPeca; 
 
 /***********************************************************************
 *
-*  $TC Tipo de dados: PEC condições de retorno
+*  $TC Tipo de dados: PECA condições de retorno
 *
 *
 *  $ED Descrição do tipo
@@ -87,45 +79,45 @@ typedef enum {
 
 /***********************************************************************
 *
-*  $FC Função: PEC &Criar PEC
+*  $FC Função: PECA &Criar PECA
 *
 *  $ED Descrição da função
 *     Cria uma peça, dado um indice, no vetor.
 *
 *  $EP Parametros
-*  * pPeça - ponteiro para peça a ser criada
-*    ind   - indice da peça no vetor
-* 	 cor   - cor da peça
+*  * peca - ponteiro para peça a ser criada
+*    i    - indice da peça no vetor
+* 	 cor  - cor da peça
 *
 *  $FV Valor retornado
-*     PEC_CondRetOK - se ocorreu tudo certo
-*     PEC_CondRetFaltaMemoria - se faltou memoria
-*     PEC_CondRetJaExiste - Se peca ja existe
-*     PEC_CondRetCorInvalida - se a cor passada não for entre 0 e 3
+*     PECA_CondRetOK - se ocorreu tudo certo
+*     PECA_CondRetExiste - Se peca ja existe
+*     PECA_CondRetCorInvalida - se a cor passada não for entre 0 e 3
+*     PECA_CondRetFaltaMemoria - se faltou memoria
 *
 ***********************************************************************/
 
-/* Assertivas de Entrada PEC_CriaPeca
+/* Assertivas de Entrada PECA_CriaPeca
 *  Existir mémoria para criacao da peça
 *  A peça nao pode existir para que seja criada (peca[ind] = NULL)
 *  A cor dada (int) tem que ser entre 0 e 3
 *  Para todo peca[indice], peca = NULL.
 *
-*  Fim Assertiva de Entrada PEC_CriaPeca */
+*  Fim Assertiva de Entrada PECA_CriaPeca */
 
-PEC_CondRet PEC_CriaPeca ( PEC_tpeca * peca, int ind, int cor ) ;
+PECA_CondRet PECA_CriaPeca ( PECA_tpeca * peca, int ind, int cor ) ;
 
-/* Assertivas de Saida PEC_CriaPeca
+/* Assertivas de Saida PECA_CriaPeca
 *  A memoria referente a estrutura da peca tem que ser alocada
 *  Para todo peca[ind] criado, peca[ind] != NULL
 *  Para todo peca criado, peca->cor entre 0 e 3
-*  A funcao retornara um PEC_CondRet
+*  A funcao retornara um PECA_CondRet
 *
-*  Fim Assertiva de Saida PEC_CriaPeca */
+*  Fim Assertiva de Saida PECA_CriaPeca */
 
 /***********************************************************************
 *
-*  $FC função: PEC &Destruir peça
+*  $FC função: PECA &Destruir peça
 *
 *  $ED Descrição da função
 *     Destroi uma peça dado um indice, dentro do vetor.
@@ -135,28 +127,28 @@ PEC_CondRet PEC_CriaPeca ( PEC_tpeca * peca, int ind, int cor ) ;
 *     ind   -  indice no vetor
 *
 *  $FV Valor retornado
-*     PEC_CondRetOK - se ocorreu tudo certo
-*     PEC_CondRetNaoExiste - se peca nao existe
+*     PECA_CondRetOK - se ocorreu tudo certo
+*     PECA_CondRetNaoExiste - se peca nao existe
 *
 ***********************************************************************/
 
-/* Assertivas de Entrada PEC_DestroiPeca
+/* Assertivas de Entrada PECA_DestroiPeca
 *  Existir peça ja criada (para todo peca , peca != NULL)
 *
-*  Fim Assertiva de Entrada PEC_DestroiPeca */
+*  Fim Assertiva de Entrada PECA_DestroiPeca */
 
-PEC_CondRet PEC_DestroiPeca ( PEC_tpPeca peca ) ;
+PECA_CondRet PECA_DestroiPeca ( PECA_tpPeca peca ) ;
  
-/* Assertiva de Saida PEC_DestroiPeca
+/* Assertiva de Saida PECA_DestroiPeca
 *  A peca deve ser destruida (para todo peca , peca = NULL)
 *  A memoria alocada para peca deve ser liberada 
-*  A funcao retorna um PEC_CondRet
+*  A funcao retorna um PECA_CondRet
 *
-*  Fim Assertiva de Saida PEC_DestroiPeca */
+*  Fim Assertiva de Saida PECA_DestroiPeca */
 
 /***********************************************************************
 *
-*  $FC Função: PEC  &Obtem cor
+*  $FC Função: PECA  &Obtem cor
 *
 *  $ED Descrição da função
 *     Dada uma peça no vetor, informa sua cor.
@@ -166,27 +158,27 @@ PEC_CondRet PEC_DestroiPeca ( PEC_tpPeca peca ) ;
 *  * cor - ponteiro passado para receber a cor
 *
 *  $FV Valor retornado
-*     PEC_CondRetOK - se ocorreu tudo certo
-*     PEC_CondRetNaoExiste - se peca nao existe
+*     PECA_CondRetOK - se ocorreu tudo certo
+*     PECA_CondRetNaoExiste - se peca nao existe
 *
 ***********************************************************************/
 
-/* Assertivas de Entrada PEC_ObtemCor
+/* Assertivas de Entrada PECA_ObtemCor
 *  Deve existir uma cor valida na peca (para todo peca, peca->cor entre 0 e 3)
 *
-*  Fim Assertiva de Entrada PEC_ObtemCor */
+*  Fim Assertiva de Entrada PECA_ObtemCor */
 
-PEC_CondRet PEC_ObtemCor ( PEC_tpPeca peca , int * cor ) ;
+PECA_CondRet PECA_ObtemCor ( PECA_tpPeca peca , int * cor ) ;
 
-/*  Assertiva de Saida PEC_ObtemCor
+/*  Assertiva de Saida PECA_ObtemCor
 *   Deverá ser retornado uma cor válida (inteiro entre 0 e 3)
-*   A funcao retorna um PEC_CondRet
+*   A funcao retorna um PECA_CondRet
 *
-*   Fim Assertiva de Saida PEC_ObtemCor */
+*   Fim Assertiva de Saida PECA_ObtemCor */
 
 /***********************************************************************
 *
-*  $FC Função: PEC  &Obtem final
+*  $FC Função: PECA  &Obtem final
 *
 *  $ED Descrição da função
 *     Dada uma peça no vetor, informa se está na casa final.
@@ -196,27 +188,27 @@ PEC_CondRet PEC_ObtemCor ( PEC_tpPeca peca , int * cor ) ;
 *  * final - ponteiro passado para receber o final
 *
 *  $FV Valor retornado
-*     PEC_CondRetOK - se ocorreu tudo certo
-*     PEC_CondRetNaoExiste - se peca nao existe
+*     PECA_CondRetOK - se ocorreu tudo certo
+*     PECA_CondRetNaoExiste - se peca nao existe
 *
 ***********************************************************************/
 
-/* Assertivas de Entrada PEC_ObtemFinal
+/* Assertivas de Entrada PECA_ObtemFinal
 *  Deve existir um valor final valido na peca
 *
-*  Fim Assertiva de Entrada PEC_ObtemFinal */
+*  Fim Assertiva de Entrada PECA_ObtemFinal */
 
-PEC_CondRet PEC_ObtemFinal ( PEC_tpPeca peca , int * final ) ;
+PECA_CondRet PECA_ObtemFinal ( PECA_tpPeca peca , int * final ) ;
 
-/*  Assertiva de Saida PEC_ObtemFinal
+/*  Assertiva de Saida PECA_ObtemFinal
 *   Deverá ser retornado um final válido (inteiro 1 ou 0)
-*   A funcao retorna um PEC_CondRet
+*   A funcao retorna um PECA_CondRet
 *
-*   Fim Assertiva de Saida PEC_ObtemFinal */
+*   Fim Assertiva de Saida PECA_ObtemFinal */
 
 /***********************************************************************
 *
-*  $FC Função: PEC  &Obtem status
+*  $FC Função: PECA  &Obtem status
 *
 *  $ED Descrição da função
 *     Dada uma peça no vetor, informa seu status.
@@ -226,27 +218,27 @@ PEC_CondRet PEC_ObtemFinal ( PEC_tpPeca peca , int * final ) ;
 *  * status - ponteiro passado para receber o status
 *
 *  $FV Valor retornado
-*     PEC_CondRetOK - se ocorreu tudo certo
-*     PEC_CondRetNaoExiste - se peca nao existe
+*     PECA_CondRetOK - se ocorreu tudo certo
+*     PECA_CondRetNaoExiste - se peca nao existe
 *
 ***********************************************************************/
 
-/* Assertivas de Entrada PEC_ObtemStatus
+/* Assertivas de Entrada PECA_ObtemStatus
 *  Deve existir um status valido na peca
 *
-*  Fim Assertiva de Entrada PEC_ObtemStatus */
+*  Fim Assertiva de Entrada PECA_ObtemStatus */
 
-PEC_CondRet PEC_ObtemStatus ( PEC_tpPeca peca , char * status ) ;
+PECA_CondRet PECA_ObtemStatus ( PECA_tpPeca peca , char * status ) ;
 
-/*  Assertiva de Saida PEC_ObtemStatus
+/*  Assertiva de Saida PECA_ObtemStatus
 *   Deverá ser retornado um status válido (caracter 'D' ou 'F')
-*   A funcao retorna um PEC_CondRet
+*   A funcao retorna um PECA_CondRet
 *
-*   Fim Assertiva de Saida PEC_ObtemStatus */
+*   Fim Assertiva de Saida PECA_ObtemStatus */
 
 /***********************************************************************
 *
-*  $FC Função: PEC  &Atualiza peça
+*  $FC Função: PECA  &Atualiza peça
 *
 *  $ED Descrição da função
 *     Dado uma peça, atualiza o status e a condição final da peça.
@@ -257,32 +249,28 @@ PEC_CondRet PEC_ObtemStatus ( PEC_tpPeca peca , char * status ) ;
 *   status - atualizar se se peça está em jogo
 *
 *  $FV Valor retornado
-*     PEC_CondRetOK - se ocorreu tudo certo
-*     PEC_CondRetStatusErrado - se status dado está errado
-*     PEC_CondRetFinalErrado - se final dado está errado
-*     PEC_CondRetNaoExiste - se peca nao existe
+*     PECA_CondRetOK - se ocorreu tudo certo
+*     PECA_CondRetStatusErrado - se status dado está errado
+*     PECA_CondRetFinalErrado - se final dado está errado
+*     PECA_CondRetNaoExiste - se peca nao existe
 *
 ***********************************************************************/
 
-/* Assertivas de Entrada PEC_AtualizaPeca
+/* Assertivas de Entrada PECA_AtualizaPeca
 *  Deve existir um status valido na peca
 *  Deve existir um valor final valido na peca
 *  A peça deve existi antes de chamar a função.
 *
-*  Fim Assertiva de Entrada PEC_AtualizaPeca */
+*  Fim Assertiva de Entrada PECA_AtualizaPeca */
 
-PEC_CondRet PEC_AtualizaPeca ( PEC_tpPeca peca , int final, char status ) ;
+PECA_CondRet PECA_AtualizaPeca ( PECA_tpPeca peca , int final, char status ) ;
 
-/*  Assertiva de Saida PEC_AtualizaPeca
+/*  Assertiva de Saida PECA_AtualizaPeca
 *   Deverá ser atualizado um status válido (caracter 'D' ou 'F')
 *   Deverá ser atualizado um final válido (inteiro 1 ou 0)
-*   A funcao retorna um PEC_CondRet
+*   A funcao retorna um PECA_CondRet
 *
-*   Fim Assertiva de Saida PEC_AtualizaPeca */
+*   Fim Assertiva de Saida PECA_AtualizaPeca */
 
-#undef PEC_EXT
-
-/********** Fim do módulo de definição: PEC Módulo Peças **********/
+/********** Fim do módulo de definição: PECA Módulo Peças **********/
  
-#else
-#endif
