@@ -363,19 +363,17 @@ tpElemListaCircular* CriarElemento( LISC_tppListaC pLista , void *	pValor ){
 
       /* Desencadeia à esquerda */
 
-         if ( pElem->pAnt != NULL )
-         {
+        
             pElem->pAnt->pProx   = pElem->pProx ;
             pLista->pElemCorr    = pElem->pAnt ;
-         } 
+         
 
       /* Desencadeia à direita */
 
-         if ( pElem->pProx != NULL )
-         {
-            pElem->pProx->pAnt = pElem->pAnt ;
-         }
-
+        
+        pElem->pProx->pAnt = pElem->pAnt ;
+         
+	pLista-> numElem --;	
       LiberarElemento( pLista , pElem ) ;
 
       return LISC_CondRetOK ;
