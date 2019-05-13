@@ -96,7 +96,7 @@ TAB_tppTabuleiro TAB_CriaTabuleiro ();
 *
 ***********************************************************************/
 
-void TAB_DestruirTabuleiro( TAB_tppTabuleiro pTab);
+tpCondRet TAB_DestruirTabuleiro( TAB_tppTabuleiro pTab);
 
 #undef TABULEIRO_EXT
 
