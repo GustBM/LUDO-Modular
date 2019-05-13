@@ -39,7 +39,6 @@
 /* Tipo referência para uma peça */
 
 typedef struct Peca * PECA_tpPeca; 
-
 /***********************************************************************
 *
 *  $TC Tipo de dados: PECA condições de retorno
@@ -49,7 +48,6 @@ typedef struct Peca * PECA_tpPeca;
 *     Condições de retorno das funções da peça
 *
 ***********************************************************************/
-
 typedef enum {
 
 	PECA_CondRetOK ,
@@ -96,25 +94,23 @@ typedef enum {
 *     PECA_CondRetFaltaMemoria - se faltou memoria
 *
 ***********************************************************************/
-
 /* Assertivas de Entrada PECA_CriaPeca
 *  Existir mémoria para criacao da peça
-*  A peça nao pode existir para que seja criada (peca[ind] = NULL)
+*  A peça nao pode existir para que seja criada (peca[i] = NULL)
 *  A cor dada (int) tem que ser entre 0 e 3
 *  Para todo peca[indice], peca = NULL.
 *
 *  Fim Assertiva de Entrada PECA_CriaPeca */
 
-PECA_CondRet PECA_CriaPeca ( PECA_tpeca * peca, int ind, int cor ) ;
+PECA_CondRet PECA_CriaPeca ( PECA_tpeca * peca, int i, int cor ) ;
 
 /* Assertivas de Saida PECA_CriaPeca
 *  A memoria referente a estrutura da peca tem que ser alocada
-*  Para todo peca[ind] criado, peca[ind] != NULL
+*  Para todo peca[i] criado, peca[i] != NULL
 *  Para todo peca criado, peca->cor entre 0 e 3
 *  A funcao retornara um PECA_CondRet
 *
 *  Fim Assertiva de Saida PECA_CriaPeca */
-
 /***********************************************************************
 *
 *  $FC função: PECA &Destruir peça
@@ -124,16 +120,15 @@ PECA_CondRet PECA_CriaPeca ( PECA_tpeca * peca, int ind, int cor ) ;
 *
 *  $EP Parametros
 *   *peca  -  peca a ser destruida.
-*     ind   -  indice no vetor
+*     i   -  indice no vetor
 *
 *  $FV Valor retornado
 *     PECA_CondRetOK - se ocorreu tudo certo
 *     PECA_CondRetNaoExiste - se peca nao existe
-*
-***********************************************************************/
 
+***********************************************************************/
 /* Assertivas de Entrada PECA_DestroiPeca
-*  Existir peça ja criada (para todo peca , peca != NULL)
+*  Existir peça ja criada (para toda peca , peca != NULL)
 *
 *  Fim Assertiva de Entrada PECA_DestroiPeca */
 
@@ -145,13 +140,12 @@ PECA_CondRet PECA_DestroiPeca ( PECA_tpPeca peca ) ;
 *  A funcao retorna um PECA_CondRet
 *
 *  Fim Assertiva de Saida PECA_DestroiPeca */
-
 /***********************************************************************
 *
 *  $FC Função: PECA  &Obtem cor
 *
 *  $ED Descrição da função
-*     Dada uma peça no vetor, informa sua cor.
+*    informa a cor de uma peça dada no vetor.
 *
 *  $EP Parametros
 *   peca - peça que procura saber a cor
@@ -178,7 +172,7 @@ PECA_CondRet PECA_ObtemCor ( PECA_tpPeca peca , int * cor ) ;
 
 /***********************************************************************
 *
-*  $FC Função: PECA  &Obtem final
+*  $FC Função: PECA  &Obtem fim
 *
 *  $ED Descrição da função
 *     Dada uma peça no vetor, informa se está na casa final.
