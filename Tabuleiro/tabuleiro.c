@@ -150,7 +150,8 @@ tpCondRet TAB_DestruirTabuleiro( TAB_tppTabuleiro pTab )
         assert( pTab != NULL ) ;
     #endif
 		
-	LISC_EsvaziarLista( pTab->casasNormais );
+	LISC_EsvaziarLista( pTab->casasNormais ) ;
+	LISC_DestruirLista( pTab->casasNormais ) ;
 	LIS_EsvaziarLista( pTab->casasFim1 ) ;
 	LIS_DestruirLista( pTab->casasFim1 ) ;
 	LIS_EsvaziarLista( pTab->casasFim2 ) ;
