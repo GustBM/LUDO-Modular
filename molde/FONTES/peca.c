@@ -27,6 +27,7 @@ typedef struct Peca {
 
 } PECA;
 
+
 /*****  Código das funções exportadas pelo módulo  *****/
 
 
@@ -55,12 +56,7 @@ PECA_CondRet PECA_CriaPeca ( PECA** peca, int i, int cor )
 
 	return PECA_CondRetOK ;
 
-} /* Fim da função: PECA  &Criar Peca */
-
-/***************************************************************************
-*
-*  Função: PECA  &Destroi Peca
-*  ****/
+}
 
 PECA_CondRet PECA_DestroiPeca ( PECA *peca )
 {
@@ -71,12 +67,7 @@ PECA_CondRet PECA_DestroiPeca ( PECA *peca )
 
 	return PECA_CondRetOK ;
 
-} /* Fim da função: PECA  &Destroi Peca */
-
-/***************************************************************************
-*
-*  Função: PEC  &Obtem cor
-*  ****/
+} 
 
 PECA_CondRet PECA_ObtemCor ( PECA * peca , int* cor )
 {
@@ -89,13 +80,7 @@ PECA_CondRet PECA_ObtemCor ( PECA * peca , int* cor )
 
 	return PECA_CondRetOK ;
 
-} /* Fim da função: PECA  &Obtem cor */
-
-
-/***************************************************************************
-*
-*  Função: PECA  &Obtem fim
-*  ****/
+}
 
 PECA_CondRet PECA_ObtemFim ( PECA* peca , int* final )
 {
@@ -108,12 +93,7 @@ PECA_CondRet PECA_ObtemFim ( PECA* peca , int* final )
 
 	return PECA_CondRetOK ;
 
-} /* Fim da função: PECA  &Obtem fim */
-
-/***************************************************************************
-*
-*  Função: PECA  &Obtem status
-*  ****/
+} 
 
 PECA_CondRet PECA_ObtemStatus ( PECA* peca , char* status)
 {
@@ -126,13 +106,7 @@ PECA_CondRet PECA_ObtemStatus ( PECA* peca , char* status)
 
 	return PECA_CondRetOK ;
 
-} /* Fim da função: PECA  &Obtem status */
-
-
-/***************************************************************************
-*
-*  Função: PECA  &Atualiza Peca
-*  ****/
+} 
 
 PECA_CondRet PECA_AtualizaPeca ( PECA* peca , int final, char status ) 
 {
@@ -159,6 +133,4 @@ PECA_CondRet PECA_AtualizaPeca ( PECA* peca , int final, char status )
 
 	return PECA_CondRetOK ;
 
-} /* Fim da função: PECA  &Atualiza Peca */
-
-/********** Fim do módulo de implementação: PECA Módulo peca **********/
+}
