@@ -46,3 +46,6 @@ Este relatório expecificara as tarefas e produtos desenvolvidos por Gustavo Barr
 * Versão final do tabuleiro
 * Consulta final com o monitor
 (4 horas)
+
+
+Os dias com data não especificada foram continuações dos trabalhos dos dias anteriores (Entre 1 e 3 horas de trabalho diário).
