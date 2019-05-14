@@ -2,8 +2,6 @@ rem testa todos os scripts
 
 cls
 
-if exist ..\scripts\estatisticas.estat  del ..\scripts\estatisticas.estat
-
 ..\produto\testearvore        /s..\scripts\testearvore             /l..\produto\testearvore              /a..\scripts\estatisticas
 if errorlevel 4 goto sai
 

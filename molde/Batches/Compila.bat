@@ -17,14 +17,14 @@ del *.err
 if "o"=="%2" goto otimz
 if "O"=="%2" goto otimz
 
-nmake /F..\composicao\%1.make
+nmake /F..\produtos\%1.make
 goto contin
 
 :otimz
-nmake /F..\composicao\%1.make "PRD="
+nmake /F..\produtos\%1.make "PRD="
 
 :contin
-notepad ..\produto\%1.err
+notepad ..\produtos\%1.err
 
 goto sai
 
