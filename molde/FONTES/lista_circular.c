@@ -380,3 +380,45 @@ tpElemListaCircular* CriarElemento( LISC_tppListaC pLista , void *	pValor ){
       return LISC_CondRetOK ;
 
    } /* Fim função: LISC  &Excluir elemento */
+   
+   /***************************************************************************
+ *
+ *  Funcao: LISC  &Avancar Elemento Corrente
+ *  ****/
+
+LISC_tpCondRet LISC_AvancarElementoCorrente ( LISC_tppCircularC *pLista , int num )
+{
+    tpElemListaCircular *pElem ;
+    
+    if( pLista->pElemCorr == NULL )
+    {
+        return LISC_CondRetVazia ;
+    }
+    
+    pElem = pLista->pElemCorr ;
+    if ( num > 0 )
+    {
+        while( num )
+        {
+            pElem = pElem->prox ;
+            num-- ;
+        }
+    }
+    else if ( num < 0 )
+    {
+        while( num )
+        {
+            pElem = pElem->ant ;
+            num++ ;
+        }
+    }
+    
+    pLista->pElemCorr = pElem ;
+    return LISC_CondRetOK ;
+    
+}
+
+/* Fim Funcao: LISC  &Avancar Elemento Corrente */
+   
+   
+   
