@@ -286,6 +286,7 @@ LISC_tppListaC   vtListas[ DIM_VT_LISTA ] ;
 
          } /* fim ativa: Testar obter valor do elemento corrente */
 
+			/* Testar procura valor */
 		  else if ( strcmp( ComandoTeste , PROCURA_VALORC_CMD ) == 0 )
          {
 
@@ -315,7 +316,39 @@ LISC_tppListaC   vtListas[ DIM_VT_LISTA ] ;
             return TST_CompararString( StringDado , pDado ,
                          "Valor do elemento errado." ) ;
 
-         } /* fim ativa: Testar obter valor do elemento corrente */
+         } /* fim ativa: Testar procura valor */
+         
+         	/* Testar avanca lista */
+		  else if ( strcmp( ComandoTeste , AVANCAR_ELEMC_CMD ) == 0 )
+         {
+
+            numLidos = LER_LerParametros( "iii" ,
+                       &inxLista , &numElem  , &ValEsp ) ;
+
+            if ( ( numLidos != 3 )
+              || ( ! ValidarInxLista( inxLista , NAO_VAZIO )) )
+            {
+               return TST_CondRetParm ;
+            } /* if */
+
+            pDado = ( char * ) LISC_AvancarElementoCorrente( vtListas[ inxLista ] , numElem ) ;
+
+            if ( ValEsp == 0 )
+            {
+               return TST_CompararPonteiroNulo( 0 , pDado ,
+                         "Valor naum deveria existir." ) ;
+            } /* if */
+
+            if ( pDado == NULL )
+            {
+               return TST_CompararPonteiroNulo( 1 , pDado ,
+                         "Dado tipo um deveria existir." ) ;
+            } /* if */
+
+            return TST_CompararString( StringDado , pDado ,
+                         "Valor do elemento errado." ) ;
+
+         } /* fim ativa: Testar avanca lista */
 
 
       return TST_CondRetNaoConhec ;

@@ -262,6 +262,32 @@ LISC_tppListaC LISC_CriarLista(
    LISC_tpCondRet LISC_ProcurarValor( LISC_tppListaC pLista ,
                                     void * pValor        ) ;
 
+/***********************************************************************
+ *
+ *  $FC Função: LISC  &Avancarr elemento
+ *
+ *  $ED Descricao da funcao
+ *    Avanca o elemento corrente 'num' elementos na lista.
+ *     Se 'num' for positivo avanca em "direcao horaria".
+ *     Se 'num' for negativo avanÃ§a em "direcao anti-horaria".
+ *     Se 'num' for zero nao avnaca em nenhuma direcao.
+ *
+ *  $EP Paramentros
+ *     pLista  - ponteiro para a lista a ser manipulada
+ *     num    - o numero de elementos a andar
+ *
+ *  $FV Valor retornado
+ *     LISC_CondRetOK      - se 'num' elementos tiverem sido andados
+ *     LISC_CondRetVazia   - se a lista esta vazia
+ *
+ ***********************************************************************/
+
+
+LISC_tpCondRet LISC_AvancarElementoCorrente ( LISC_tppCircularC *pLista , int num )
+
+
+
+
    /********** Fim do módulo de definição: LISC  Lista circular duplamente encadeada **********/
   #else
 #endif
