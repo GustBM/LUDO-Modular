@@ -37,13 +37,13 @@ Fc                   = ..\Fontes
 ### Macros da plataforma
 
 
-O       =
-OD      = /Zi /Od
+O       = /D_CRT_SECURE_NO_DEPRECATE
+OD      = /Zi /Od /D_CRT_SECURE_NO_DEPRECATE
 L       =
 LD      = /DEBUG /DEBUGTYPE:CV
 
 !IFDEF PRD
-O       = /Ox
+O       = /Ox /D_CRT_SECURE_NO_DEPRECATE
 !ENDIF
 
 OPT     = /c /J /W4 /nologo
@@ -59,8 +59,7 @@ all : limpa \
 ### Limpar arquivos
 
 limpa :
-   CompileBanner /c$(NOME)
-   CompileBanner /c$(NOME) >$(Ferr)\$(NOME).err
+   if exist $(Ferr)\$(NOME).err  del $(Ferr)\$(NOME).err
 
 
 ### Dependências de módulos objeto a compilar

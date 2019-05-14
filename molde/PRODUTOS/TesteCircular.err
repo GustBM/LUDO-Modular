@@ -1,0 +1,7 @@
+testelistacircular.c
+c:\users\eduardo\documents\github\ludo-modular\molde\fontes\lista_circular.h(286) : error C2143: syntax error : missing ')' before '*'
+c:\users\eduardo\documents\github\ludo-modular\molde\fontes\lista_circular.h(286) : error C2143: syntax error : missing '{' before '*'
+c:\users\eduardo\documents\github\ludo-modular\molde\fontes\lista_circular.h(286) : warning C4431: missing type specifier - int assumed. Note: C no longer supports default-int
+c:\users\eduardo\documents\github\ludo-modular\molde\fontes\lista_circular.h(286) : error C2059: syntax error : 'type'
+c:\users\eduardo\documents\github\ludo-modular\molde\fontes\lista_circular.h(286) : error C2059: syntax error : ')'
+..\Fontes\testelistacircular.c(334) : warning C4013: 'LISC_AvancarElementoCorrente' undefined; assuming extern returning int
