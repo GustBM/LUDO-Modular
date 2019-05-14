@@ -42,7 +42,7 @@ Para a execução de cada um dos testes, basta seguir a ordem:
 
 	-GeraMake <Nome Do Modulo Teste>
 
-	-CompilaTudo.bat
+	-Compila <Nome Do arquivo MAKE Teste>
 
 	-<Nome Do Executável Gerado>.exe /steste<lista/listacircular/peca/tabuleiro>
 
