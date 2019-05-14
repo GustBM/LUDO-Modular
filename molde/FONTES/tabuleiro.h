@@ -98,6 +98,41 @@ TAB_tppTabuleiro TAB_CriaTabuleiro ();
 
 tpCondRet TAB_DestruirTabuleiro( TAB_tppTabuleiro pTab);
 
+/***********************************************************************
+*
+*  $FC Função: TAB  &Limpa Casa
+*
+*  $ED Descrição da função
+*     Elemina o conteudo de uma das casas
+*
+*  $EP Parâmetros
+*     pTab - ponteiro para a casa do tabuleiro a ser limpa
+*
+*  $FV Valor retornado
+*	  Caso ocorre sem problemas; CondRetOK
+*	  Caso contrário; CondRetErro
+*
+***********************************************************************/
+
+tpCondRet TAB_LimpaCasa (TAB_tpCasaInfo* casa);
+
+/***********************************************************************
+*
+*  $FC Função: TAB  &Cria Casa
+*
+*  $ED Descrição da função
+*     Cria uma casa no tabuleiro com o conteudo dado como parâmetro
+*
+*  $EP Parâmetros
+*     conteudo - conteudo que irá para a casa, tipo PECA
+*
+*  $FV Valor retornado
+*	  Tetorna um ponteiro para a casa criada
+*
+***********************************************************************/
+
+TAB_tppCasaInfo CriaCasa ( PECA * conteudo );
+
 #undef TABULEIRO_EXT
 
 
