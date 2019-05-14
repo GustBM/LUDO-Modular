@@ -6,7 +6,7 @@ pushd  .
 
 if ""=="%1" goto erro
 
-gmake /c%1 /b..\composicao
+gmake /c%1 
 goto sai
 
 :erro
