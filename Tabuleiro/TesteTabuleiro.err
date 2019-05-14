@@ -1,2 +1,13 @@
-TESTE_TABULEIRO.c
-c:\users\gusta\desktop\ludo_modular\ludo-modular\tabuleiro\tabuleiro.h(33) : fatal error C1083: Cannot open include file: 'peca.h': No such file or directory
+tabuleiro.c
+c:\users\gusta\desktop\ludo_modular\ludo-modular\tabuleiro\peca.h(4) : error C2365: 'PECA_ok' : redefinition; previous definition was 'enumerator'
+        c:\users\gusta\desktop\ludo_modular\ludo-modular\tabuleiro\peca.h(4) : see declaration of 'PECA_ok'
+c:\users\gusta\desktop\ludo_modular\ludo-modular\tabuleiro\peca.h(4) : error C2086: 'PECA_ok' : redefinition
+        c:\users\gusta\desktop\ludo_modular\ludo-modular\tabuleiro\peca.h(4) : see declaration of 'PECA_ok'
+c:\users\gusta\desktop\ludo_modular\ludo-modular\tabuleiro\peca.h(6) : error C2365: 'PECA_FaltouMemoria' : redefinition; previous definition was 'enumerator'
+        c:\users\gusta\desktop\ludo_modular\ludo-modular\tabuleiro\peca.h(6) : see declaration of 'PECA_FaltouMemoria'
+c:\users\gusta\desktop\ludo_modular\ludo-modular\tabuleiro\peca.h(6) : error C2086: 'PECA_FaltouMemoria' : redefinition
+        c:\users\gusta\desktop\ludo_modular\ludo-modular\tabuleiro\peca.h(6) : see declaration of 'PECA_FaltouMemoria'
+.\tabuleiro.c(116) : warning C4152: nonstandard extension, function/data pointer conversion in expression
+.\tabuleiro.c(120) : warning C4152: nonstandard extension, function/data pointer conversion in expression
+.\tabuleiro.c(124) : warning C4152: nonstandard extension, function/data pointer conversion in expression
+.\tabuleiro.c(128) : warning C4152: nonstandard extension, function/data pointer conversion in expression

@@ -5,11 +5,11 @@ cls
 
 pushd  .
 
-cd ..\composicao\Gmake
+cd ..\composicao
 
-gmake  /b../TesteCircular
-gmake  /b.. /TesteLista
-gmake  /b../TestePeca
-gmake  /b../TesteTabuleiro
+gmake  /b.. /cTesteCircular
+gmake  /b..  /cTesteLista
+gmake  /b.. /cTestePeca
+gmake  /b.. /cTesteTabuleiro
 
 popd

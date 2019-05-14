@@ -8,6 +8,8 @@ obj         =  ..\Objetos
 c           =  ..\Fontes
 h           =  ..\Fontes
 def         =  ..\Tabelas
+tab 	    = ..\Tabelas
+inc 	    = ..\Tabelas 
 
 [Modulos]
 testelistacircular

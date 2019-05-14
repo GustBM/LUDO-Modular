@@ -1,0 +1,36 @@
+==============================================================
+TRABALHO 2 - JOGO DE LUDO - LEIA-ME.TXT -  Arcabouço de Teste
+==============================================================
+
+Alunos:
+
+- Eduardo Motta - 1720334
+- Luiz Fellipe Augusto - 1711256
+- Gustavo Barros Marchesan - 1521500
+
+
+Este .txt explica o conteudo a ser testado e implementado no arcabouco. 
+
+Passo a passo: 
+
+1)
+
+-Entre na pasta BATCHES.
+
+- abra o CMD e realize os seguntes comandos:
+	
+	- cd ..\BATCHES
+	
+	- LimpaTudo.bat
+	
+	- GeraTudo
+
+	- CompilaTudo
+	
+	- cd ..\
+
+
+	    
+===========================================================================
+-----------------------FIM DO ARQUIVO LEIAME.TXT---------------------------
+===========================================================================
