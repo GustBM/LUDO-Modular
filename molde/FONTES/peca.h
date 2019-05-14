@@ -25,9 +25,9 @@
 *
 **************************************************************************/
 
-/*****************IMPORTANTE*********************
+/*****************INFORMAÇÃO DA COR*********************
 *
-*  AS CORES DA PEÇA SÃO CLASSIFICADAS COMO:
+*  A COR DE CADA PEÇA É CLASSIFICADA COMO:
 *
 *       0 - VERMELHO
 *       1 - AZUL
@@ -51,27 +51,25 @@ typedef struct Peca * PECA_tpPeca;
 typedef enum {
 
 	PECA_CondRetOK ,
-		/* Ocorreu tudo certo */
+		/* Condição de retorno correto */
 
 	PECA_CondRetFaltaMemoria , 
-		/* Faltou memória na alocação */
+		/* Condição de retorno por Falta de memória na alocação */
 
 	PECA_CondRetCorInvalida ,
-		/* Cor inválida */
+		/*Condição de retorno devido a Cor inválida */
 
 	PECA_CondRetFimErrado ,
-		/* Fim Errado */						
+		/* Condição de retorno devido a Fim Errado */						
 
 	PECA_CondRetExiste ,
-		/* Peca existe */
+		/* Condição de retorno que indica que Peca existe */
 
 	PECA_CondRetNaoExiste
-		/* Peca nao existe */
+		/* Condição de retorno que indica que Peca nao existe */
 
 	PECA_CondRetStatusErrado ,
-		/* Status Errado */
-
-
+		/* Condição de retorno que indica Status Errado */
 
 } PECA_CondRet;
 
@@ -87,30 +85,22 @@ typedef enum {
 *    i    - indice da peça no vetor
 * 	 cor  - cor da peça
 *
-*  $FV Valor retornado
-*     PECA_CondRetOK - se ocorreu tudo certo
-*     PECA_CondRetExiste - Se peca ja existe
-*     PECA_CondRetCorInvalida - se a cor passada não for entre 0 e 3
-*     PECA_CondRetFaltaMemoria - se faltou memoria
-*
 ***********************************************************************/
 /* Assertivas de Entrada PECA_CriaPeca
-*  Existir mémoria para criacao da peça
-*  A peça nao pode existir para que seja criada (peca[i] = NULL)
+*  Existir mémoria suficiente para criacao da peça
+*  Só pode criar uma peça que não exista até o momento de criação (peca[i] = NULL)
 *  A cor dada (int) tem que ser entre 0 e 3
-*  Para todo peca[indice], peca = NULL.
-*
-*  Fim Assertiva de Entrada PECA_CriaPeca */
+*  Para todo peca[i], peca = NULL.
+*/
 
 PECA_CondRet PECA_CriaPeca ( PECA_tpeca * peca, int i, int cor ) ;
 
 /* Assertivas de Saida PECA_CriaPeca
 *  A memoria referente a estrutura da peca tem que ser alocada
 *  Para todo peca[i] criado, peca[i] != NULL
-*  Para todo peca criado, peca->cor entre 0 e 3
+*  Para todo peca criado, peca->cor deve estar entre 0 e 3
 *  A funcao retornara um PECA_CondRet
-*
-*  Fim Assertiva de Saida PECA_CriaPeca */
+*/
 /***********************************************************************
 *
 *  $FC função: PECA &Destruir peça
@@ -121,10 +111,6 @@ PECA_CondRet PECA_CriaPeca ( PECA_tpeca * peca, int i, int cor ) ;
 *  $EP Parametros
 *   *peca  -  peca a ser destruida.
 *     i   -  indice no vetor
-*
-*  $FV Valor retornado
-*     PECA_CondRetOK - se ocorreu tudo certo
-*     PECA_CondRetNaoExiste - se peca nao existe
 
 ***********************************************************************/
 /* Assertivas de Entrada PECA_DestroiPeca
@@ -150,10 +136,6 @@ PECA_CondRet PECA_DestroiPeca ( PECA_tpPeca peca ) ;
 *  $EP Parametros
 *   peca - peça que procura saber a cor
 *  * cor - ponteiro passado para receber a cor
-*
-*  $FV Valor retornado
-*     PECA_CondRetOK - se ocorreu tudo certo
-*     PECA_CondRetNaoExiste - se peca nao existe
 *
 ***********************************************************************/
 
@@ -181,10 +163,6 @@ PECA_CondRet PECA_ObtemCor ( PECA_tpPeca peca , int * cor ) ;
 *   peca - peça que procura saber o final
 *  * final - ponteiro passado para receber o final
 *
-*  $FV Valor retornado
-*     PECA_CondRetOK - se ocorreu tudo certo
-*     PECA_CondRetNaoExiste - se peca nao existe
-*
 ***********************************************************************/
 
 /* Assertivas de Entrada PECA_ObtemFinal
@@ -210,10 +188,6 @@ PECA_CondRet PECA_ObtemFinal ( PECA_tpPeca peca , int * final ) ;
 *  $EP Parametros
 *   peca - peça que procura saber o status
 *  * status - ponteiro passado para receber o status
-*
-*  $FV Valor retornado
-*     PECA_CondRetOK - se ocorreu tudo certo
-*     PECA_CondRetNaoExiste - se peca nao existe
 *
 ***********************************************************************/
 
@@ -241,12 +215,6 @@ PECA_CondRet PECA_ObtemStatus ( PECA_tpPeca peca , char * status ) ;
 *   peca - peça que procura saber a cor
 *   final - atualizar se peça está no estágio final
 *   status - atualizar se se peça está em jogo
-*
-*  $FV Valor retornado
-*     PECA_CondRetOK - se ocorreu tudo certo
-*     PECA_CondRetStatusErrado - se status dado está errado
-*     PECA_CondRetFinalErrado - se final dado está errado
-*     PECA_CondRetNaoExiste - se peca nao existe
 *
 ***********************************************************************/
 

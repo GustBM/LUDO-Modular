@@ -18,6 +18,7 @@ static const char INS_ELEM_APOSC_CMD       [ ] = "=inselemapos"    ;
 static const char OBTER_VALORC_CMD         [ ] = "=obtervalorelem" ;
 static const char PROCURA_VALORC_CMD	   [ ] = "=procuravalorelem";	
 static const char EXC_ELEMC_CMD            [ ] = "=excluirelem"    ;
+static const char AVANCAR_ELEMC_CMD		   [ ] = "=avancarelem"    ;
 
 #define TRUE  1
 #define FALSE 0
