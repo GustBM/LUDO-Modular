@@ -15,8 +15,8 @@ Passo a passo:
 
 1)
 
+Para a compilação do arcabouço:
 -Entre na pasta BATCHES.
-
 - abra o CMD e realize os seguntes comandos:
 	
 	- cd ..\BATCHES
@@ -29,6 +29,22 @@ Passo a passo:
 	
 	- cd ..\
 
+2)
+
+Para a execução de cada um dos testes, basta seguir a ordem:
+-Abrir o CMD e realizar os comandos:
+
+	-cd ..\<localDoMódulo>
+
+	-LimpaTudo.bat
+
+	-vsvars32.bat
+
+	-GeraMake <Nome Do Modulo Teste>
+
+	-CompilaTudo.bat
+
+	-<Nome Do Executável Gerado>.exe /steste<lista/listacircular/peca/tabuleiro>
 
 	    
 ===========================================================================
