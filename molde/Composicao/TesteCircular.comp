@@ -3,7 +3,7 @@
 
 Nome        =  TesteCircular
 PathDefault =  ..\Fontes
-err         =  ..\Produto
+err         =  ..\Produtos
 obj         =  ..\Objetos
 c           =  ..\Fontes
 h           =  ..\Fontes
@@ -16,12 +16,12 @@ testelistacircular
 lista_circular
 
 [BuildInicio]
-/OUT:..\produto\TesteCircular.exe
+/OUT:..\produtos\TesteCircular.exe
 /INCREMENTAL:NO
 /MACHINE:IX86
 
 [BuildFim]
 ArcaboucoTeste.lib
-lista_circular.obj
+
 
 [Fim]
