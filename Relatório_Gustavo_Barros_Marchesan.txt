@@ -1,0 +1,48 @@
+- RELATORIO DE TRABALHO 2 -
+
+Nome: Gustavo Barros Marchesan
+Mat.:1521500
+gustavo.777@hotmail.com
+
+- Expecificações - 
+Este relatório expecificara as tarefas e produtos desenvolvidos por Gustavo Barros Marchesan
+
+=> 24/04/2019
+* Organizações inicial e divisão de tarefas
+(1 hora)
+
+=> 26/04/2019
+* Estudo do arcabouço
+* Estudo do módulo lista
+(3 horas)
+
+=> 01/05/2019
+* Criação do Módulo peça 
+* Estudo das funções do arcabouço
+* Estudo do exemplo soma
+(3 horas)
+
+=> 08/05/2019
+* Criação do Módulo Tabuleiro (Mockado para a implementação final do lista circular e peça)
+* Começo dos testes
+(3 horas)
+
+=> 11/05/2019 
+* União do módulo tabuleiro com as versões mais atualizadas da lista circular e da peça
+* Revisão dos componentes essenciais para o módulo
+* Testes do código
+(4 horas)
+
+=> 12/05/2019 
+* União do módulo tabuleiro com as versões mais atualizadas da lista circular e da peça
+* Revisão do código
+* Testes do tabuleiro
+* Verificações gerais do trabalho
+* Correção de erros encontrados
+(6 horas)
+
+=> 13/05/2019
+* Ultima verificação antes da entrega
+* Versão final do tabuleiro
+* Consulta final com o monitor
+(4 horas)
