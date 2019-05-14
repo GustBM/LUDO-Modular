@@ -58,7 +58,7 @@
 
 typedef struct TAB_tagCasaInfo {
  
-    PEC_tpPeca conteudo ;
+    PECA * conteudo ;
         /* Ponteiro para o conteudo da casa */
 
 } TAB_tpCasaInfo;
@@ -66,7 +66,9 @@ typedef void ( *pFunc ) ( void * ) ; typedef void **ppVoid ;
 
 /***** Protótipo das funções encapsuladas no módulo *****/
  
-static TAB_tppCasaInfo CriaCasa ( PEC_tpPeca conteudo ) ;
+static TAB_tppCasaInfo CriaCasa ( PECA * conteudo ) ;
+
+static tpCondRet TAB_LimpaCasa (TAB_tpCasaInfo* casa);
  
 static void TAB_LiberarCasa ( TAB_tpCasaInfo *pCasa ) ;
 
@@ -157,7 +159,7 @@ tpCondRet TAB_DestruirTabuleiro( TAB_tppTabuleiro pTab )
 	LIS_EsvaziarLista( pTab->casasFim2 ) ;
 	LIS_DestruirLista( pTab->casasFim2 ) ;
 	LIS_EsvaziarLista( pTab->casasFim3 ) ;
-	LIS_DestruirLista(  pTab->casasFim3 ) ;
+	LIS_DestruirLista( pTab->casasFim3 ) ;
 	LIS_EsvaziarLista( pTab->casasFim4 ) ;
 	LIS_DestruirLista( pTab->casasFim4 ) ;
 
@@ -173,7 +175,7 @@ tpCondRet TAB_DestruirTabuleiro( TAB_tppTabuleiro pTab )
 *
 ***********************************************************************/
 
-static TAB_tppCasaInfo CriaCasa ( PEC_tpPeca conteudo )
+static TAB_tppCasaInfo CriaCasa ( PECA * conteudo )
 {
     TAB_tpCasaInfo *casa ;
      
@@ -196,7 +198,7 @@ tpCondRet TAB_LimpaCasa (TAB_tpCasaInfo* casa) {
 
 	if ( casa->conteudo != NULL )
     {
-        PEC_DestroiPeca ( casa->conteudo ) ;
+        destroi_peca ( casa->conteudo ) ;
     }
      
     casa = NULL ;
@@ -205,12 +207,4 @@ tpCondRet TAB_LimpaCasa (TAB_tpCasaInfo* casa) {
 		return CondRetOK;
 	else 
 		return CondRetErro;
-}
-
-void PEC_DestroiPeca ( PEC_tpPeca pPeca )
-{
-	if ( pPeca == NULL )
-		return ;
-	
-	free( pPeca );
 }
