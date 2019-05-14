@@ -2,7 +2,7 @@
 *  $MCI Módulo de implementação: TestePeca
 *
 *  Arquivo gerado:              TestePeca.c
-*  Letras identificadoras:      TPEC
+*  Letras identificadoras:      TPECA
 *
 *  Projeto: Jogo de Ludo
 *  Gestor:  Professor Alessandro Garcia
@@ -30,10 +30,10 @@
 *
 *     Comandos disponíveis:
 *
-*     =criarpeca                         IndPeca Cor CondRetEsp
-*     =destruirpeca                      IndPeca CondRetEsp
-*     =obterstatus                       IndPeca CondRetEsp
-*	  =atualizapeca   					 IndPeca Final Status CondRetEsp
+*     =criarpeca                         iPeca Cor CondRetEsp
+*     =destruirpeca                      iPeca CondRetEsp
+*     =obterstatus                       iPeca CondRetEsp
+*	  =atualizapeca   					 iPeca Final Status CondRetEsp
 *
 ***********************************************************************/
 
@@ -48,62 +48,62 @@ static const char ATUALIZAR_PECA_CMD      [ ] = "=atualizapeca"  ;
 *
 ***********************************************************************/
 
-PEC_tpPeca vtPecas[MAX_PECAS];
+PECA_tpPeca vtPecas[MAX_PECAS];
 
 /***********************************************************************/
 
 TST_tpCondRet TST_EfetuarComando( char * ComandoTeste )
 {
 	int numLidos      = -1 ;
-	int indPeca		  = -1 ;
+	int iPeca		  = -1 ;
 	int cor           = -1 ;
 	int CondRetEsp    = -1 ;
 	int CondRetObtido = -1 ;
 	int final         = -1 ;
 	char status            ;
-	PEC_tpPeca *p          ;
+	PECA_tpPeca *p          ;
 
 	/* Testar Criar */
 
 	if( strcmp( ComandoTeste , CRIAR_PECA_CMD ) == 0 )
 	{
-		numLidos = LER_LerParametros( "iii", &indPeca, &cor ,&CondRetEsp);
+		numLidos = LER_LerParametros( "iii", &iPeca, &cor ,&CondRetEsp);
 		if( numLidos != 3 )
 		{
 			return TST_CondRetParm;
 		}
 
-		CondRetObtido = PEC_CriaPeca ( vtPecas, indPeca, cor ) ;
+		CondRetObtido = PECA_CriaPeca ( vtPecas, iPeca, cor ) ;
 
 		return TST_CompararInt ( CondRetEsp, CondRetObtido, "Retorno errado") ;
 
 
-	} /* fim ativa: Testar Criar */
+	}
 	
 	/* Testar Destruir */
 	
 	else if ( strcmp( ComandoTeste , DESTRUIR_PECA_CMD ) == 0 )
 	{
-		numLidos = LER_LerParametros( "ii", &indPeca, &CondRetEsp ) ;
+		numLidos = LER_LerParametros( "ii", &iPeca, &CondRetEsp ) ;
 
 		if ( numLidos != 2 )
 		{
 			return TST_CondRetParm ;
 		}
 
-		CondRetObtido = PEC_DestroiPeca ( vtPecas, indPeca ) ;
+		CondRetObtido = PECA_DestroiPeca ( vtPecas, iPeca ) ;
 		p = NULL ;
 
 		return TST_CompararInt (CondRetEsp, CondRetObtido, "Retorno errado") ;
 
-	}  /* fim ativa: Testar */
+	}
 
 		/* Testar Obter Status */
 
          else if ( strcmp( ComandoTeste , OBTER_STATUS_CMD ) == 0 )
          {
 
-            numLidos = LER_LerParametros( "ii", &indPeca, &CondRetEsp ) ;
+            numLidos = LER_LerParametros( "ii", &iPeca, &CondRetEsp ) ;
 
             if (  numLidos != 2 )
             {
@@ -111,19 +111,19 @@ TST_tpCondRet TST_EfetuarComando( char * ComandoTeste )
             }
 
 
-            CondRetObtido = PEC_ObtemInfo( vtPecas[indPeca], &cor, &final, &status ) ;
+            CondRetObtido = PECA_ObtemInfo( vtPecas[iPeca], &cor, &final, &status ) ;
 			
             return TST_CompararInt( CondRetEsp , CondRetObtido ,
                      "Condicao de retorno errada ao obter status." ) ;
 
-         } /* fim ativa: Testar Obter Status */
+         }
 
 		/* Testar Atualiza Peca */
 
          else if ( strcmp( ComandoTeste , ATUALIZAR_PECA_CMD ) == 0 )
          {
 
-            numLidos = LER_LerParametros( "iici", &indPeca, &final, &status, &CondRetEsp ) ;
+            numLidos = LER_LerParametros( "iici", &iPeca, &final, &status, &CondRetEsp ) ;
 
             if (  numLidos != 4 )
             {
@@ -131,15 +131,15 @@ TST_tpCondRet TST_EfetuarComando( char * ComandoTeste )
             }
 
 
-            CondRetObtido = PEC_AtualizaPeca( vtPecas[indPeca], final, status ) ;
+            CondRetObtido = PECA_AtualizaPeca( vtPecas[iPeca], final, status ) ;
 			
             return TST_CompararInt( CondRetEsp , CondRetObtido ,
                      "Condicao de retorno errada ao Atualiza Peca." ) ;
 
-         } /* fim ativa: Testar Atualiza Peca */
+         }
 
     return TST_CondRetNaoConhec ;
 			
-}  /* Fim função: TPEC &Testar peça */
+}
 
-/********** Fim do módulo de implementação: TPEC Teste lista de símbolos **********/
+/********** Fim do módulo de implementação: TPECA **********/
