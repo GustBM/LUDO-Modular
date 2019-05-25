@@ -1,0 +1,25 @@
+
+[Diretorios]
+
+Nome        =  TestePeca
+PathDefault =  ..\Fontes
+err         =  ..\Produtos
+obj         =  ..\Objetos
+c           =  ..\Fontes
+h           =  ..\Fontes
+def         =  ..\Tabelas
+
+[Modulos]
+TestePeca
+Peca
+
+[BuildInicio]
+/OUT:..\produto\TestePeca.exe
+/INCREMENTAL:NO
+/MACHINE:IX86
+
+[BuildFim]
+ArcaboucoTeste.lib
+peca.obj
+
+[Fim]
