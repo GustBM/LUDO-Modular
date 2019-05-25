@@ -65,10 +65,10 @@ typedef enum {
 	PECA_CondRetExiste ,
 		/* Condição de retorno que indica que Peca existe */
 
-	PECA_CondRetNaoExiste
+	PECA_CondRetNaoExiste,
 		/* Condição de retorno que indica que Peca nao existe */
 
-	PECA_CondRetStatusErrado ,
+	PECA_CondRetStatusErrado
 		/* Condição de retorno que indica Status Errado */
 
 } PECA_CondRet;
@@ -93,7 +93,7 @@ typedef enum {
 *  Para todo peca[i], peca = NULL.
 */
 
-PECA_CondRet PECA_CriaPeca ( PECA_tpeca * peca, int i, int cor ) ;
+PECA_CondRet PECA_CriaPeca ( PECA_tpeca peca, int i, int cor ) ;
 
 /* Assertivas de Saida PECA_CriaPeca
 *  A memoria referente a estrutura da peca tem que ser alocada
@@ -215,4 +215,4 @@ PECA_CondRet PECA_AtualizaPeca ( PECA_tpPeca peca , int final, char status ) ;
 *   A funcao retorna um PECA_CondRet  */
 
 /********** Fim do módulo de definição: PECA **********/
- 
+ #endif

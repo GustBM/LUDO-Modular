@@ -59,9 +59,9 @@ Estatísticas do construto
 
    Estatísticas do arquivo: peca.h
       Total linhas:             218
-      Linhas de código:          18
+      Linhas de código:          19
       Linhas de comentário:     166
-      Linhas em branco:          34
+      Linhas em branco:          33
    Arquivos em que é incluído
       tabuleiro.c
       tabuleiro.h
@@ -120,9 +120,9 @@ Totais por tipo de arquivo
 
   Tipo: h        Path: ..\Fontes
          Total linhas do tipo:      2232
-         Linhas de código:           220
+         Linhas de código:           221
          Linhas de comentário:      1695
-         Linhas em branco:           317
+         Linhas em branco:           316
          Arquivos deste tipo:          7
 
   Tipo: obj      Path: ..\Objetos
@@ -156,8 +156,8 @@ Totais por tipo de arquivo
 Totais para todo o construto TesteTabuleiro
 
    Total linhas:              2632
-   Linhas de código:           427
+   Linhas de código:           428
    Linhas de comentário:      1781
-   Linhas em branco:           430
+   Linhas em branco:           429
    Arquivos processados:         9
 

@@ -27,7 +27,7 @@ del *.obj
 del *.lib
 del *.build
 
-cd ..\Produto
+cd ..\Produtos
 del *.bak
 del *.log
 del *.exe
