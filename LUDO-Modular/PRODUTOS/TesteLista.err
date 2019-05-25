@@ -1,0 +1,10 @@
+Microsoft (R) Incremental Linker Version 10.00.40219.01
+Copyright (C) Microsoft Corporation.  All rights reserved.
+
+/OUT:..\produto\TesteLista.exe 
+/INCREMENTAL:NO 
+/MACHINE:IX86 
+testlis.obj lista.obj 
+ArcaboucoTeste.lib 
+Lista.obj 
+LINK : fatal error LNK1104: cannot open file '..\produto\TesteLista.exe'

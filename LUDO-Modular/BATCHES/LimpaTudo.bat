@@ -14,8 +14,7 @@ del *.bak
 
 cd ..\Composicao
 del *.bak
-del *.list
-del *.make
+
 
 cd ..\Fontes
 del *.bak
@@ -32,6 +31,8 @@ del *.bak
 del *.log
 del *.exe
 del *.err
+del *.list
+del *.make
 
 cd ..\Scripts
 del *.bak

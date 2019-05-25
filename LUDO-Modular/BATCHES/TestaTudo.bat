@@ -2,23 +2,19 @@ rem testa todos os scripts
 
 cls
 
-..\produto\testearvore        /s..\scripts\testearvore             /l..\produto\testearvore              /a..\scripts\estatisticas
+..\produtos\testeCircular	/s..\scripts\testeCircular    	/l..\produtos\testeCircular   	 /a..\scripts\estatisticas
 if errorlevel 4 goto sai
 
-..\produto\testearvoreprod    /s..\scripts\testearvore             /l..\produto\testearvore              /a..\scripts\estatisticas
+..\produtos\testePeca  		/s..\scripts\testePeca          /l..\produtos\testePeca      	/a..\scripts\estatisticas
 if errorlevel 4 goto sai
 
-..\produto\testearvoredebug   /s..\scripts\testearvore             /l..\produto\testearvoredebug         /a..\scripts\estatisticas
+..\produtos\testeLista		/s..\scripts\testeLista         /l..\produtos\testeLista        /a..\scripts\estatisticas
 if errorlevel 4 goto sai
 
-..\produto\testearvoredebug   /s..\scripts\testecontador           /l..\produto\testecontador            /a..\scripts\estatisticas
+..\produtos\testeTabuleiro	/s..\scripts\testeTabuleiro	/l..\produtos\testeTabuleiro	/a..\scripts\estatisticas
 if errorlevel 4 goto sai
 
-..\produto\testearvoredebug   /s..\scripts\testecontroleespaco     /l..\produto\testecontroleespaco      /a..\scripts\estatisticas
-if errorlevel 4 goto sai
 
-..\produto\testearvoredebug   /s..\scripts\testedeturpaarvore      /l..\produto\testedeturpaarvore       /a..\scripts\estatisticas
-if errorlevel 4 goto sai
 
 ..\..\ferramnt\exbestat /e..\scripts\estatisticas
 

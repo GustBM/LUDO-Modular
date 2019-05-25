@@ -19,15 +19,16 @@ Para a compilação do arcabouço:
 -Entre na pasta BATCHES.
 - abra o CMD e realize os seguntes comandos:
 	
-	- cd ..\BATCHES
-	
 	- LimpaTudo.bat
 	
-	- GeraTudo
+	- GeraTudo.bat
 
-	- CompilaTudo
+	-vsvars32.bat
+
+	- CompilaTudo (em progresso...)
+
+	- TestaTudo (em progresso...)
 	
-	- cd ..\
 
 2)
 
