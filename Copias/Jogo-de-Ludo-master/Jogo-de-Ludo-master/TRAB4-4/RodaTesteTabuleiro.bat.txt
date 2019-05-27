@@ -1,2 +1,0 @@
-TRAB4-4 /sTesteTabuleiro /lsaida
-pause

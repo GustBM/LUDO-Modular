@@ -3,7 +3,7 @@ c:\users\eduardo\documents\github\ludo-modular\ludo-modular\fontes\lista_circula
 c:\users\eduardo\documents\github\ludo-modular\ludo-modular\fontes\lista_circular.h(286) : error C2061: syntax error : identifier 'pLista'
 c:\users\eduardo\documents\github\ludo-modular\ludo-modular\fontes\lista_circular.h(286) : error C2059: syntax error : ';'
 c:\users\eduardo\documents\github\ludo-modular\ludo-modular\fontes\lista_circular.h(286) : error C2059: syntax error : ','
-c:\users\eduardo\documents\github\ludo-modular\ludo-modular\fontes\lista_circular.h(286) : error C2059: syntax error : ')'
+c:\users\eduardo\documents\github\ludo-modular\ludo-modular\fontes\lista_circular.h(287) : error C2059: syntax error : ')'
 c:\users\eduardo\documents\github\ludo-modular\ludo-modular\fontes\peca.h(96) : error C2146: syntax error : missing ')' before identifier 'peca'
 c:\users\eduardo\documents\github\ludo-modular\ludo-modular\fontes\peca.h(96) : error C2061: syntax error : identifier 'peca'
 c:\users\eduardo\documents\github\ludo-modular\ludo-modular\fontes\peca.h(96) : error C2059: syntax error : ';'

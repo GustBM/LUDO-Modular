@@ -1,2 +1,0 @@
-TRAB4-2 /sTesteListaC.script /lsaida
-pause
