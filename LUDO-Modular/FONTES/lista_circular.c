@@ -386,7 +386,7 @@ tpElemListaCircular* CriarElemento( LISC_tppListaC pLista , void *	pValor ){
  *  Funcao: LISC  &Avancar Elemento Corrente
  *  ****/
 
-LISC_tpCondRet LISC_AvancarElementoCorrente ( LISC_tppCircularC pLista , int num ){
+LISC_tpCondRet LISC_AvancarElementoCorrente ( LISC_tppListaC pLista , int num ){
     tpElemListaCircular *pElem;
     
     if( pLista->pElemCorr == NULL )

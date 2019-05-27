@@ -7,9 +7,8 @@ err         =  ..\Produtos
 obj         =  ..\Objetos
 c           =  ..\Fontes
 h           =  ..\Fontes
-def         =  ..\Tabelas
-tab 	    = ..\Tabelas
-inc 	    = ..\Tabelas 
+def         =  ..\Fontes
+
 
 [Modulos]
 testelistacircular

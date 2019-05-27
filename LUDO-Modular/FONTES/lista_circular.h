@@ -283,7 +283,7 @@ LISC_tppListaC LISC_CriarLista(
  ***********************************************************************/
 
 
-LISC_tpCondRet LISC_AvancarElementoCorrente(LISC_tppCircularC pLista , 
+LISC_tpCondRet LISC_AvancarElementoCorrente(LISC_tppListaC pLista , 
 									int num );
 
 

@@ -9,7 +9,7 @@ err         =  ..\Produtos
 obj         =  ..\Objetos
 c           =  ..\Fontes
 h           =  ..\Fontes
-def         =  ..\Tabelas
+def         =  ..\Fontes
 
 
 [Modulos]
