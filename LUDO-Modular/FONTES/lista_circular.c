@@ -391,7 +391,7 @@ LISC_tpCondRet LISC_AvancarElementoCorrente ( LISC_tppListaC pLista , int num ){
     
     if( pLista->pElemCorr == NULL )
     {
-        return LISC_CondRetVazia ;
+        return LISC_CondRetListaVazia ;
     }
     
     pElem = pLista->pElemCorr ;
@@ -399,7 +399,7 @@ LISC_tpCondRet LISC_AvancarElementoCorrente ( LISC_tppListaC pLista , int num ){
     {
         while( num )
         {
-            pElem = pElem->prox ;
+            pElem = pElem-> pProx;
             num-- ;
         }
     }
@@ -407,7 +407,7 @@ LISC_tpCondRet LISC_AvancarElementoCorrente ( LISC_tppListaC pLista , int num ){
     {
         while( num )
         {
-            pElem = pElem->ant ;
+            pElem = pElem-> pAnt;
             num++ ;
         }
     }

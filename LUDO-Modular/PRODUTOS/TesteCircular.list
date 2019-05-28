@@ -4,7 +4,7 @@ GERADOR DE SCRIPT DE DIRETIVAS PARA MAKE
 Composição do construto: ..\COMPOSICAO\TesteCircular.comp
 
    Nome do Construto:           TesteCircular
-   Diretório base:              C:\Users\Eduardo\Documents\GitHub\LUDO-Modular\LUDO-Modular\PRODUTOS
+   Diretório base:              C:\Users\c1720334\Documents\GitHub\LUDO-Modular\LUDO-Modular\PRODUTOS
 
    Arquivo composição:          ..\COMPOSICAO\TesteCircular.comp
    Arquivo plataforma:          ..\COMPOSICAO\Gmake.parm
@@ -47,8 +47,8 @@ Estatísticas do construto
       lista_circular.h
 
    Estatísticas do arquivo: lista_circular.h
-      Total linhas:             293
-      Linhas de código:          25
+      Total linhas:             294
+      Linhas de código:          26
       Linhas de comentário:     228
       Linhas em branco:          40
    Arquivos em que é incluído
@@ -57,8 +57,8 @@ Estatísticas do construto
 
    Estatísticas do arquivo: testelistacircular.c
       Total linhas:             409
-      Linhas de código:         242
-      Linhas de comentário:      60
+      Linhas de código:         241
+      Linhas de comentário:      61
       Linhas em branco:         120
    Arquivos de inclusão de que necessita
       generico.h
@@ -77,21 +77,7 @@ Estatísticas do construto
 
 Totais por tipo de arquivo
 
-  Tipo: inc      Path: ..\Tabelas
-         Total linhas do tipo:         0
-         Linhas de código:             0
-         Linhas de comentário:         0
-         Linhas em branco:             0
-         Arquivos deste tipo:          0
-
-  Tipo: tab      Path: ..\Tabelas
-         Total linhas do tipo:         0
-         Linhas de código:             0
-         Linhas de comentário:         0
-         Linhas em branco:             0
-         Arquivos deste tipo:          0
-
-  Tipo: def      Path: ..\Tabelas
+  Tipo: def      Path: ..\Fontes
          Total linhas do tipo:         0
          Linhas de código:             0
          Linhas de comentário:         0
@@ -99,8 +85,8 @@ Totais por tipo de arquivo
          Arquivos deste tipo:          0
 
   Tipo: h        Path: ..\Fontes
-         Total linhas do tipo:      1525
-         Linhas de código:           143
+         Total linhas do tipo:      1526
+         Linhas de código:           144
          Linhas de comentário:      1173
          Linhas em branco:           209
          Arquivos deste tipo:          4
@@ -128,16 +114,16 @@ Totais por tipo de arquivo
 
   Tipo: c        Path: ..\Fontes
          Total linhas do tipo:       832
-         Linhas de código:           442
-         Linhas de comentário:       168
+         Linhas de código:           441
+         Linhas de comentário:       169
          Linhas em branco:           241
          Arquivos deste tipo:          2
 
 Totais para todo o construto TesteCircular
 
-   Total linhas:              2357
+   Total linhas:              2358
    Linhas de código:           585
-   Linhas de comentário:      1341
+   Linhas de comentário:      1342
    Linhas em branco:           450
    Arquivos processados:         6
 

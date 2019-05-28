@@ -71,7 +71,7 @@ LISC_tppListaC   vtListas[ DIM_VT_LISTA ] ;
           numLidos   = -1 ,
           CondRetEsp = -1 ;
 
-      TST_tpCondRet CondRet ;
+      //TST_tpCondRet CondRet;
 
 	  LISC_tpCondRet CondRet_Lista;
 

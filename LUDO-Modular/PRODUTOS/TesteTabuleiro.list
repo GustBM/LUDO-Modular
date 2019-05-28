@@ -4,7 +4,7 @@ GERADOR DE SCRIPT DE DIRETIVAS PARA MAKE
 Composição do construto: ..\COMPOSICAO\TesteTabuleiro.comp
 
    Nome do Construto:           TesteTabuleiro
-   Diretório base:              C:\Users\Eduardo\Documents\GitHub\LUDO-Modular\LUDO-Modular\PRODUTOS
+   Diretório base:              C:\Users\c1720334\Documents\GitHub\LUDO-Modular\LUDO-Modular\PRODUTOS
 
    Arquivo composição:          ..\COMPOSICAO\TesteTabuleiro.comp
    Arquivo plataforma:          ..\COMPOSICAO\Gmake.parm
@@ -49,8 +49,8 @@ Estatísticas do construto
       teste_tabuleiro.c
 
    Estatísticas do arquivo: lista_circular.h
-      Total linhas:             293
-      Linhas de código:          25
+      Total linhas:             294
+      Linhas de código:          26
       Linhas de comentário:     228
       Linhas em branco:          40
    Arquivos em que é incluído
@@ -111,7 +111,7 @@ Estatísticas do construto
 
 Totais por tipo de arquivo
 
-  Tipo: def      Path: ..\Tabelas
+  Tipo: def      Path: ..\Fontes
          Total linhas do tipo:         0
          Linhas de código:             0
          Linhas de comentário:         0
@@ -119,8 +119,8 @@ Totais por tipo de arquivo
          Arquivos deste tipo:          0
 
   Tipo: h        Path: ..\Fontes
-         Total linhas do tipo:      2232
-         Linhas de código:           221
+         Total linhas do tipo:      2233
+         Linhas de código:           222
          Linhas de comentário:      1695
          Linhas em branco:           316
          Arquivos deste tipo:          7
@@ -155,8 +155,8 @@ Totais por tipo de arquivo
 
 Totais para todo o construto TesteTabuleiro
 
-   Total linhas:              2632
-   Linhas de código:           428
+   Total linhas:              2633
+   Linhas de código:           429
    Linhas de comentário:      1781
    Linhas em branco:           429
    Arquivos processados:         9

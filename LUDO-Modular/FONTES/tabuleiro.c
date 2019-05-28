@@ -21,6 +21,11 @@
 #undef TABULEIRO_OWN
 
 
+#define TOT_CASAS_TAB 55
+
+#define TOT_CASAS_RETA_FINAL 4
+
+
 /***********************************************************************
 *
 *  $TC Tipo de dados: TAB Descritor do tabuleiro (uma lista circular e 4 listas)
@@ -103,7 +108,7 @@ TAB_tppTabuleiro TAB_CriaTabuleiro () {
 	pLista4 = LIS_CriarLista( ( pFunc ) TAB_LimpaCasa );
 	if ( pLista4 = NULL ) return NULL;
 
-	for( k = 0; k < 55 ; k++ ){
+	for( k = 0; k < TOT_CASAS_TAB ; k++ ){
 		
 		casa = CriaCasa ( NULL ) ;
         if ( casa == NULL ) return NULL ;
@@ -112,19 +117,19 @@ TAB_tppTabuleiro TAB_CriaTabuleiro () {
 		if ( listcFlag == LIS_CondRetOK ) return NULL;
     }
 
-	for( i = 0 ; i < 4 ; i++ ){
+	for( i = 0 ; i < TOT_CASAS_RETA_FINAL ; i++ ){
 		listFlag = LIS_InserirElementoApos( pLista1 , ( pFunc ) TAB_LimpaCasa ) ;
 		if ( listFlag == LIS_CondRetOK ) return NULL;
     }
-	for( i = 0 ; i < 4 ; i++ ){
+	for( i = 0 ; i < TOT_CASAS_RETA_FINAL ; i++ ){
 		listFlag = LIS_InserirElementoApos( pLista2 , ( pFunc ) TAB_LimpaCasa ) ;
 		if ( listFlag == LIS_CondRetOK ) return NULL;
     }
-	for( i = 0 ; i < 4 ; i++ ){
+	for( i = 0 ; i < TOT_CASAS_RETA_FINAL ; i++ ){
 		 listFlag = LIS_InserirElementoApos( pLista3 , ( pFunc ) TAB_LimpaCasa ) ;
 		 if ( listFlag == LIS_CondRetOK ) return NULL;
     }
-	for( i = 0 ; i < 4 ; i++ ){
+	for( i = 0 ; i < TOT_CASAS_RETA_FINAL ; i++ ){
 		 listFlag = LIS_InserirElementoApos( pLista4 , ( pFunc ) TAB_LimpaCasa ) ;
 		 if ( listFlag == LIS_CondRetOK ) return NULL;
     }

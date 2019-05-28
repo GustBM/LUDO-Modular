@@ -14,9 +14,7 @@ NOME            = TesteCircular
 
 ### Nomes de paths
 
-Pinc                 = ..\Tabelas
-Ptab                 = ..\Tabelas
-Pdef                 = ..\Tabelas
+Pdef                 = ..\Fontes
 Ph                   = ..\Fontes
 Pobj                 = ..\Objetos
 Perr                 = ..\Produtos
@@ -25,9 +23,7 @@ Pc                   = ..\Fontes
 
 ### Nomes de diretórios para geração
 
-Finc                 = ..\Tabelas
-Ftab                 = ..\Tabelas
-Fdef                 = ..\Tabelas
+Fdef                 = ..\Fontes
 Fh                   = ..\Fontes
 Fobj                 = ..\Objetos
 Ferr                 = ..\Produtos

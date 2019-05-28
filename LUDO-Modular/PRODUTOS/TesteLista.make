@@ -14,7 +14,7 @@ NOME            = TesteLista
 
 ### Nomes de paths
 
-Pdef                 = ..\Tabelas
+Pdef                 = ..\Fontes
 Ph                   = ..\Fontes
 Pobj                 = ..\Objetos
 Perr                 = ..\Produtos
@@ -23,7 +23,7 @@ Pc                   = ..\Fontes
 
 ### Nomes de diretórios para geração
 
-Fdef                 = ..\Tabelas
+Fdef                 = ..\Fontes
 Fh                   = ..\Fontes
 Fobj                 = ..\Objetos
 Ferr                 = ..\Produtos
