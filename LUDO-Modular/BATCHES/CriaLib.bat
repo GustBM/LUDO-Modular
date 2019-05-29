@@ -3,7 +3,7 @@ ECHO assume o arcabouco todo construído e correto
 
 pushd  .
 
-nmake /F..\..\arcabouc\composicao\crialib.make  "PRD="
-copy  ArcaboucoTeste.lib \objetos
+nmake /F..\composicao\crialib.make  "PRD="
+copy  ..\ArcaboucoTeste.lib \objetos
 
 popd

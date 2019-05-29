@@ -1,9 +1,0 @@
-/OUT:..\produto\TesteTabuleiro.exe
-/INCREMENTAL:NO
-/MACHINE:IX86
-teste_tabuleiro.obj  tabuleiro.obj  
-ArcaboucoTeste.lib
-Lista.obj
-lista_circular.obj
-peca.obj
-

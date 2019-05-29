@@ -1,6 +1,0 @@
-/OUT:..\produtos\TesteCircular.exe
-/INCREMENTAL:NO
-/MACHINE:IX86
-testelistacircular.obj  lista_circular.obj  
-ArcaboucoTeste.lib
-
