@@ -23,7 +23,7 @@
 
 #define TOT_CASAS_TAB 55
 
-#define TOT_CASAS_RETA_FINAL 4
+#define TOT_CASAS_RETA_FINAL 8
 
 
 /***********************************************************************
@@ -114,24 +114,24 @@ TAB_tppTabuleiro TAB_CriaTabuleiro () {
         if ( casa == NULL ) return NULL ;
 
         listcFlag = LISC_InserirElementoAntes( pListaC , casa ) ;
-		if ( listcFlag == LIS_CondRetOK ) return NULL;
+		if ( listcFlag != LIS_CondRetOK ) return NULL;
     }
 
 	for( i = 0 ; i < TOT_CASAS_RETA_FINAL ; i++ ){
 		listFlag = LIS_InserirElementoApos( pLista1 , ( pFunc ) TAB_LimpaCasa ) ;
-		if ( listFlag == LIS_CondRetOK ) return NULL;
+		if ( listFlag != LIS_CondRetOK ) return NULL;
     }
 	for( i = 0 ; i < TOT_CASAS_RETA_FINAL ; i++ ){
 		listFlag = LIS_InserirElementoApos( pLista2 , ( pFunc ) TAB_LimpaCasa ) ;
-		if ( listFlag == LIS_CondRetOK ) return NULL;
+		if ( listFlag != LIS_CondRetOK ) return NULL;
     }
 	for( i = 0 ; i < TOT_CASAS_RETA_FINAL ; i++ ){
 		 listFlag = LIS_InserirElementoApos( pLista3 , ( pFunc ) TAB_LimpaCasa ) ;
-		 if ( listFlag == LIS_CondRetOK ) return NULL;
+		 if ( listFlag != LIS_CondRetOK ) return NULL;
     }
 	for( i = 0 ; i < TOT_CASAS_RETA_FINAL ; i++ ){
 		 listFlag = LIS_InserirElementoApos( pLista4 , ( pFunc ) TAB_LimpaCasa ) ;
-		 if ( listFlag == LIS_CondRetOK ) return NULL;
+		 if ( listFlag != LIS_CondRetOK ) return NULL;
     }
  
     pTab->casasNormais = pListaC ;
