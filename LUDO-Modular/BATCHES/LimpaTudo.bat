@@ -23,7 +23,6 @@ del *.err
 cd ..\Objetos
 del *.bak
 del *.obj
-del *.lib
 del *.build
 
 cd ..\Produtos
