@@ -17,14 +17,14 @@ TESTE_TABULEIRO
 tabuleiro
 
 [BuildInicio]
-/OUT:..\produto\TesteTabuleiro.exe
+/OUT:..\produtos\TesteTabuleiro.exe
 /INCREMENTAL:NO
 /MACHINE:IX86
 
 [BuildFim]
-ArcaboucoTeste.lib
-Lista.obj
-lista_circular.obj
-peca.obj
+../objetos/ArcaboucoTeste.lib
+../objetos/Lista.obj
+../objetos/lista_circular.obj
+../objetos/peca.obj
 
 [Fim]

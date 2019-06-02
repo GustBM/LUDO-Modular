@@ -56,7 +56,7 @@ LISC_tppListaC   vtListas[ DIM_VT_LISTA ] ;
 *     =esvaziarlista                inxLista
 *     =inselemantes                 inxLista  string  CondRetEsp
 *     =inselemapos                  inxLista  string  CondRetEsp
-*     =obtervalorelem               inxLista  string  CondretPonteiro
+*     =obtervalorelem               inxLista  CondretPonteiro
 *     =excluirelem                  inxLista  CondRetEsp
 *     =irinicio                     inxLista
 *     =irfinal                      inxLista

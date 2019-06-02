@@ -14,12 +14,12 @@ TestePeca
 Peca
 
 [BuildInicio]
-/OUT:..\produto\TestePeca.exe
+/OUT:..\produtos\TestePeca.exe
 /INCREMENTAL:NO
 /MACHINE:IX86
 
 [BuildFim]
-ArcaboucoTeste.lib
-peca.obj
+../objetos/ArcaboucoTeste.lib
+../objetos/peca.obj
 
 [Fim]

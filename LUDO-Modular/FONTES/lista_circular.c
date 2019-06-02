@@ -295,7 +295,7 @@ tpElemListaCircular* CriarElemento( LISC_tppListaC pLista , void *	pValor ){
 *  Função: LISC  &Inserir elemento após
 *  ****/
 
-   LISC_tpCondRet LIS_InserirElementoApos( LISC_tppListaC pLista ,
+   LISC_tpCondRet LISC_InserirElementoApos( LISC_tppListaC pLista ,
                                           void * pValor        )
       
    {

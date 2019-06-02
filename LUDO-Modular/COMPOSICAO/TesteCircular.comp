@@ -20,7 +20,7 @@ lista_circular
 /MACHINE:IX86
 
 [BuildFim]
-ArcaboucoTeste.lib
+../objetos/ArcaboucoTeste.lib
 
 
 [Fim]

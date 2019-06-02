@@ -25,7 +25,7 @@ Para a compilação do arcabouço:
 
 	-vsvars32.bat
 
-	- CompilaTudo (em progresso...)
+	- CompilaTudo
 
 	- TestaTudo (em progresso...)
 	

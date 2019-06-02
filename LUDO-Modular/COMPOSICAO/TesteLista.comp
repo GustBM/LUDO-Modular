@@ -16,11 +16,11 @@ TestLis
 Lista
 
 [BuildInicio]
-/OUT:..\produto\TesteLista.exe
+/OUT:..\produtos\TesteLista.exe
 /INCREMENTAL:NO
 /MACHINE:IX86
 
 [BuildFim]
-ArcaboucoTeste.lib
-Lista.obj
+../objetos/ArcaboucoTeste.lib
+../objetos/Lista.obj
 [Fim]
