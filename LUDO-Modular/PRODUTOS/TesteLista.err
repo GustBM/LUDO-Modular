@@ -1,0 +1,23 @@
+testlis.c
+lista.c
+Microsoft (R) Incremental Linker Version 10.00.40219.01
+Copyright (C) Microsoft Corporation.  All rights reserved.
+
+/OUT:..\produtos\TesteLista.exe 
+/INCREMENTAL:NO 
+/MACHINE:IX86 
+testlis.obj lista.obj 
+../objetos/ArcaboucoTeste.lib 
+../objetos/Lista.obj 
+Lista.obj : error LNK2005: _LIS_CriarLista already defined in lista.obj
+Lista.obj : error LNK2005: _LIS_DestruirLista already defined in lista.obj
+Lista.obj : error LNK2005: _LIS_EsvaziarLista already defined in lista.obj
+Lista.obj : error LNK2005: _LIS_InserirElementoAntes already defined in lista.obj
+Lista.obj : error LNK2005: _LIS_InserirElementoApos already defined in lista.obj
+Lista.obj : error LNK2005: _LIS_ExcluirElemento already defined in lista.obj
+Lista.obj : error LNK2005: _LIS_ObterValor already defined in lista.obj
+Lista.obj : error LNK2005: _IrInicioLista already defined in lista.obj
+Lista.obj : error LNK2005: _IrFinalLista already defined in lista.obj
+Lista.obj : error LNK2005: _LIS_AvancarElementoCorrente already defined in lista.obj
+Lista.obj : error LNK2005: _LIS_ProcurarValor already defined in lista.obj
+..\produtos\TesteLista.exe : fatal error LNK1169: one or more multiply defined symbols found

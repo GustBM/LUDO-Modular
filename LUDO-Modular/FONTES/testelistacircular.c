@@ -269,7 +269,7 @@ LISC_tppListaC   vtListas[ DIM_VT_LISTA ] ;
 
             pDado = ( char * ) LISC_ObterValor( vtListas[ inxLista ] ) ;
 
-            if ( ValEsp == 0 )
+            if ( ValEsp != 0 )
             {
                return TST_CompararPonteiroNulo( 0 , pDado ,
                          "Valor naum deveria existir." ) ;

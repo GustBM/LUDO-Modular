@@ -30,7 +30,7 @@
 
 == Inserir elemento em lista vazia
 =inselemantes    lista0   str0   OK
-=obtervalorelem  lista0   pNaoNULL
+=obtervalorelem  lista0   OK
 
 == Inserir elemento após primeiro
 =inselemapos     lista0   str1   OK

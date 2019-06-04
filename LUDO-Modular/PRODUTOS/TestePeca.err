@@ -1,0 +1,11 @@
+testepeca.c
+c:\users\eduardo\documents\github\ludo-modular\ludo-modular\fontes\peca.h(96) : error C2146: syntax error : missing ')' before identifier 'peca'
+c:\users\eduardo\documents\github\ludo-modular\ludo-modular\fontes\peca.h(96) : error C2061: syntax error : identifier 'peca'
+c:\users\eduardo\documents\github\ludo-modular\ludo-modular\fontes\peca.h(96) : error C2059: syntax error : ';'
+c:\users\eduardo\documents\github\ludo-modular\ludo-modular\fontes\peca.h(96) : error C2059: syntax error : ','
+c:\users\eduardo\documents\github\ludo-modular\ludo-modular\fontes\peca.h(96) : error C2059: syntax error : ')'
+..\Fontes\testepeca.c(76) : warning C4013: 'PECA_CriaPeca' undefined; assuming extern returning int
+..\Fontes\testepeca.c(94) : warning C4047: 'function' : 'PECA_tpPeca' differs in levels of indirection from 'PECA_tpPeca [15]'
+..\Fontes\testepeca.c(94) : warning C4024: 'PECA_DestroiPeca' : different types for formal and actual parameter 1
+..\Fontes\testepeca.c(94) : warning C4020: 'PECA_DestroiPeca' : too many actual parameters
+..\Fontes\testepeca.c(114) : warning C4013: 'PECA_ObtemInfo' undefined; assuming extern returning int

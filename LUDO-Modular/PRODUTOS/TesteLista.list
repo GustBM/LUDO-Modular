@@ -4,7 +4,7 @@ GERADOR DE SCRIPT DE DIRETIVAS PARA MAKE
 Composição do construto: ..\COMPOSICAO\TesteLista.comp
 
    Nome do Construto:           TesteLista
-   Diretório base:              C:\Users\c1720334\Documents\GitHub\LUDO-Modular\LUDO-Modular\PRODUTOS
+   Diretório base:              C:\Users\Eduardo\Documents\GitHub\LUDO-Modular\LUDO-Modular\PRODUTOS
 
    Arquivo composição:          ..\COMPOSICAO\TesteLista.comp
    Arquivo plataforma:          ..\COMPOSICAO\Gmake.parm
