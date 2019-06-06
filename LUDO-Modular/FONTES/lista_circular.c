@@ -195,7 +195,7 @@ tpElemListaCircular* CriarElemento( LISC_tppListaC pLista , void *	pValor ){
 *  Função: LISC  &Obter referência para o valor contido no elemento
 *  ****/
 
-   void * LISC_ObterValor( LISC_tppListaC pLista )
+ LISC_tpCondRet  LISC_ObterValor( LISC_tppListaC pLista, void ** val )
    {
 
       //#ifdef _DEBUG
@@ -204,10 +204,11 @@ tpElemListaCircular* CriarElemento( LISC_tppListaC pLista , void *	pValor ){
 
       if ( pLista->pElemCorr == NULL )
       {
-        return NULL ;
+        return 	LISC_CondRetListaVazia;
       } /* if */
 
-      return pLista->pElemCorr->pValor;
+      *val = pLista->pElemCorr->pValor ;
+      return LISC_CondRetOK ;
 
    } /* Fim função: LISC  &Obter referência para o valor contido no elemento */
 
@@ -216,7 +217,7 @@ tpElemListaCircular* CriarElemento( LISC_tppListaC pLista , void *	pValor ){
 *  Função: LISC  &Procurar elemento na lista circular contendo valor dado
 *  ****/
 
-   LISC_tpCondRet LIS_ProcurarValor( LISC_tppListaC pLista , void * pValor )
+   LISC_tpCondRet LISC_ProcurarValor( LISC_tppListaC pLista , void * pValor )
    {
 
       tpElemListaCircular * pElem ;

@@ -1,0 +1,12 @@
+testelistacircular.c
+..\Fontes\testelistacircular.c(278) : warning C4047: 'function' : 'void **' differs in levels of indirection from 'unsigned char [100]'
+..\Fontes\testelistacircular.c(278) : warning C4022: 'LISC_ObterValor' : pointer mismatch for actual parameter 2
+lista_circular.c
+Microsoft (R) Incremental Linker Version 10.00.40219.01
+Copyright (C) Microsoft Corporation.  All rights reserved.
+
+/OUT:..\produtos\TesteCircular.exe 
+/INCREMENTAL:NO 
+/MACHINE:IX86 
+testelistacircular.obj lista_circular.obj 
+../objetos/ArcaboucoTeste.lib 

@@ -69,7 +69,8 @@ LISC_tppListaC   vtListas[ DIM_VT_LISTA ] ;
 
       int inxLista  = -1 ,
           numLidos   = -1 ,
-          CondRetEsp = -1 ;
+          CondRetEsp = -1 ,
+          CondRetObtido = -1;
 
       //TST_tpCondRet CondRet;
 
@@ -258,31 +259,31 @@ LISC_tppListaC   vtListas[ DIM_VT_LISTA ] ;
          else if ( strcmp( ComandoTeste , OBTER_VALORC_CMD ) == 0 )
          {
 
-            numLidos = LER_LerParametros( "ii" ,
-                       &inxLista , &ValEsp ) ;
+            numLidos = LER_LerParametros( "isi" ,
+                       &inxLista ,StringDado , &ValEsp ) ;
 
-            if ( ( numLidos != 2 )
+            if ( ( numLidos != 3 )
               || ( ! ValidarInxLista( inxLista , NAO_VAZIO )) )
             {
                return TST_CondRetParm ;
             } /* if */
 
-            pDado = ( char * ) LISC_ObterValor( vtListas[ inxLista ] ) ;
-
-            if ( ValEsp != 0 )
-            {
-               return TST_CompararPonteiroNulo( 0 , pDado ,
-                         "Valor naum deveria existir." ) ;
-            } /* if */
-
+            pDado = ( char * )malloc(strlen(StringDado) + 1) ;
+            
             if ( pDado == NULL )
             {
-               return TST_CompararPonteiroNulo( 1 , pDado ,
-                         "Dado tipo um deveria existir." ) ;
+               return TST_CondRetMemoria ;
             } /* if */
+            
+            CondRetObtido = LISC_ObterValor( vtListas[ inxLista ], StringDado );
 
-            return TST_CompararString( StringDado , pDado ,
-                         "Valor do elemento errado." ) ;
+            if ( CondRetObtido != LISC_CondRetOK )
+            {
+               free( pDado ) ;
+            } /* if */
+			
+            return TST_CompararInt( ValEsp , CondRetObtido ,
+                     "Condicao de retorno errada ao Obter Valor." ) ;
 
          } /* fim ativa: Testar obter valor do elemento corrente */
 
@@ -299,23 +300,21 @@ LISC_tppListaC   vtListas[ DIM_VT_LISTA ] ;
                return TST_CondRetParm ;
             } /* if */
 
-            pDado = ( char * ) LISC_ObterValor( vtListas[ inxLista ] ) ;
+            pDado = ( char * ) malloc( strlen( StringDado ) + 1 ) ;
+                if ( pDado == NULL )
+                {
+                  return TST_CondRetMemoria ;
+                } /* if */
+			
+			CondRetObtido = LISC_ProcurarValor( vtListas[ inxLista ], StringDado ) ;
 
-            if ( ValEsp == 0 )
-            {
-               return TST_CompararPonteiroNulo( 0 , pDado ,
-                         "Valor naum deveria existir." ) ;
-            } /* if */
-
-            if ( pDado == NULL )
-            {
-               return TST_CompararPonteiroNulo( 1 , pDado ,
-                         "Dado tipo um deveria existir." ) ;
-            } /* if */
-
-            return TST_CompararString( StringDado , pDado ,
-                         "Valor do elemento errado." ) ;
-
+                if ( CondRetObtido != LISC_CondRetOK )
+                {
+                   free( pDado ) ;
+                } /* if */
+    			
+                return TST_CompararInt( ValEsp , CondRetObtido ,
+                         "Condicao de retorno errada ao Buscar Elemento." ) ;
          } /* fim ativa: Testar procura valor */
          
          	/* Testar avanca lista */

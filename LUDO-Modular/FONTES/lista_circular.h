@@ -206,8 +206,8 @@ LISC_tppListaC LISC_CriarLista(
 *     pLista    - ponteiro para a lista na qual deve excluir.
 *
 *  $FV Valor retornado
-*     LISC_CondRetOK
-*     LISC_CondRetListaVazia
+*     LISC_CondRetOK - elemento eliminado com sucesso
+*     LISC_CondRetListaVazia - lista vazia 
 *
 ***********************************************************************/
 
@@ -225,13 +225,13 @@ LISC_tppListaC LISC_CriarLista(
 *     pLista - ponteiro para a lista de onde se quer o valor
 *
 *  $FV Valor retornado
-*     não NULL - se o elemento corrente existe
-*     NULL     - se a lista estiver vazia
-*                Pode retornar NULL se o valor inserido no elemento for NULL.
+*     LISC_CondRetOK - se o elemento corrente existe
+*     LISC_CondRetListaVazia    - se a lista estiver vazia
+*           
 *
 ***********************************************************************/
 
-   void * LISC_ObterValor( LISC_tppListaC pLista ) ;
+    LISC_tpCondRet LISC_ObterValor( LISC_tppListaC pLista, void ** val );
 
 
    /***********************************************************************

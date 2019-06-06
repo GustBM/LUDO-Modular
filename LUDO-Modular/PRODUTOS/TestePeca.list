@@ -4,7 +4,7 @@ GERADOR DE SCRIPT DE DIRETIVAS PARA MAKE
 Composição do construto: ..\COMPOSICAO\TestePeca.comp
 
    Nome do Construto:           TestePeca
-   Diretório base:              C:\Users\gusta\Desktop\LUDO_Modular\LUDO-Modular\LUDO-Modular\PRODUTOS
+   Diretório base:              C:\Users\Eduardo\Documents\GitHub\LUDO-Modular\LUDO-Modular\PRODUTOS
 
    Arquivo composição:          ..\COMPOSICAO\TestePeca.comp
    Arquivo plataforma:          ..\COMPOSICAO\Gmake.parm
