@@ -1,5 +1,5 @@
 /***************************************************************************
-*  $MCI Módulo de implementação: TestePeca
+*  $MCI Mï¿½dulo de implementaï¿½ï¿½o: TestePeca
 *
 *  Arquivo gerado:              TestePeca.c
 *  Letras identificadoras:      TPECA
@@ -23,12 +23,12 @@
 
 /***********************************************************************
 *
-*  $FC Função: TDADO &Testar dado
+*  $FC Funï¿½ï¿½o: TDADO &Testar dado
 *
-*  $ED Descrição da função
+*  $ED Descriï¿½ï¿½o da funï¿½ï¿½o
 *     Cria um dado ponto
 *
-*     Comandos disponíveis:
+*     Comandos disponï¿½veis:
 *
 *     =criarpeca                         iPeca Cor CondRetEsp
 *     =destruirpeca                      iPeca CondRetEsp
@@ -73,7 +73,7 @@ TST_tpCondRet TST_EfetuarComando( char * ComandoTeste )
 			return TST_CondRetParm;
 		}
 
-		CondRetObtido = PECA_CriaPeca ( vtPecas, iPeca, cor ) ;
+		CondRetObtido = PECA_CriaPeca ( vtPecas[iPeca], iPeca, cor ) ;
 
 		return TST_CompararInt ( CondRetEsp, CondRetObtido, "Retorno errado") ;
 
@@ -91,7 +91,7 @@ TST_tpCondRet TST_EfetuarComando( char * ComandoTeste )
 			return TST_CondRetParm ;
 		}
 
-		CondRetObtido = PECA_DestroiPeca ( vtPecas, iPeca ) ;
+		CondRetObtido = PECA_DestroiPeca ( vtPecas[iPeca] ) ;
 		p = NULL ;
 
 		return TST_CompararInt (CondRetEsp, CondRetObtido, "Retorno errado") ;
@@ -142,4 +142,4 @@ TST_tpCondRet TST_EfetuarComando( char * ComandoTeste )
 			
 }
 
-/********** Fim do módulo de implementação: TPECA **********/
+/********** Fim do mï¿½dulo de implementaï¿½ï¿½o: TPECA **********/

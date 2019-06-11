@@ -1,5 +1,5 @@
 /***************************************************************************
-*  $MCI Módulo de implementação: Modulo peca
+*  $MCI Mï¿½dulo de implementaï¿½ï¿½o: Modulo peca
 *
 *  Arquivo gerado:              peca.c
 *  Letras identificadoras:      PECA
@@ -20,15 +20,15 @@ typedef struct Peca {
 	    /* Cor definida entre 0 e 3 */
 
 	int final;
-	    /* Se a peça está na reta final do jogo: Final = 1, caso contrário: Final = 0 */
+	    /* Se a peï¿½a estï¿½ na reta final do jogo: Final = 1, caso contrï¿½rio: Final = 0 */
 
 	char status ;
-        /* Se a peça está dentro do jogo, status = 'D', caso esteja fora de jogo, status = 'F' */
+        /* Se a peï¿½a estï¿½ dentro do jogo, status = 'D', caso esteja fora de jogo, status = 'F' */
 
 } PECA;
 
 
-/*****  Código das funções exportadas pelo módulo  *****/
+/*****  Cï¿½digo das funï¿½ï¿½es exportadas pelo mï¿½dulo  *****/
 
 
 PECA_CondRet PECA_CriaPeca ( PECA** peca, int i, int cor ) 
@@ -71,7 +71,7 @@ PECA_CondRet PECA_DestroiPeca ( PECA *peca )
 
 PECA_CondRet PECA_ObtemCor ( PECA * peca , int* cor )
 {
-	if(peca==NULL)
+	if(peca == NULL)
 	{
 		return PECA_CondRetNaoExiste;
 	}
@@ -84,7 +84,7 @@ PECA_CondRet PECA_ObtemCor ( PECA * peca , int* cor )
 
 PECA_CondRet PECA_ObtemFim ( PECA* peca , int* final )
 {
-	if(peca==NULL)
+	if(peca == NULL)
 	{
 		return PECA_CondRetNaoExiste;
 	}
@@ -97,7 +97,7 @@ PECA_CondRet PECA_ObtemFim ( PECA* peca , int* final )
 
 PECA_CondRet PECA_ObtemStatus ( PECA* peca , char* status)
 {
-	if(peca==NULL)
+	if(peca == NULL)
 	{
 		return PECA_CondRetNaoExiste;
 	}
@@ -108,10 +108,26 @@ PECA_CondRet PECA_ObtemStatus ( PECA* peca , char* status)
 
 } 
 
+PECA_CondRet PECA_ObtemInfo( PECA* peca, int* cor, int* final, char* status )
+{
+	if(peca == NULL)
+	{
+		return PECA_CondRetNaoExiste;
+	}
+
+	PECA_ObtemCor ( peca , &cor );
+	PECA_ObtemFim ( peca , &final );
+	PECA_ObtemStatus ( peca , &status);
+
+	return PECA_CondRetOK;
+
+}
+
+
 PECA_CondRet PECA_AtualizaPeca ( PECA* peca , int final, char status ) 
 {
 
-	if(peca==NULL)
+	if(peca == NULL)
 	{
 		return PECA_CondRetNaoExiste;
 	}

@@ -3,7 +3,7 @@
 
 /***************************************************************************
 *
-*  $MCD Módulo de definição: Modulo peca
+*  $MCD Mï¿½dulo de definiï¿½ï¿½o: Modulo peca
 *
 *  Arquivo gerado:              peca.h
 *  Letras identificadoras:      PECA
@@ -13,87 +13,87 @@
 *  Autores: Luiz Fellipe Augusto, Eduardo Motta e Gustavo Barros
 *
 *
-*  $ED Descrição do módulo
-*     Cria uma Peça a partir de um dado índice no vetor.
-*     Destroi uma Peça a partir de um dado índice no vetor.
-*     Obtem informações sobre a Peça a partir de um dado indice no vetor.
-*     Atualiza status e final de uma Peça a partir de um dado indice no vetor.
+*  $ED Descriï¿½ï¿½o do mï¿½dulo
+*     Cria uma Peï¿½a a partir de um dado ï¿½ndice no vetor.
+*     Destroi uma Peï¿½a a partir de um dado ï¿½ndice no vetor.
+*     Obtem informaï¿½ï¿½es sobre a Peï¿½a a partir de um dado indice no vetor.
+*     Atualiza status e final de uma Peï¿½a a partir de um dado indice no vetor.
 *
-*     OBS IMPORTANTE: O vetor de pecas é dividido de acordo com as cores de cada peca,
-					a cor vermelha ocupa os 4 primeiros espaços do vetor, a cor azul
-					os próximos 4 espaços e assim em diante com as cores verde e amarelo.
+*     OBS IMPORTANTE: O vetor de pecas ï¿½ dividido de acordo com as cores de cada peca,
+					a cor vermelha ocupa os 4 primeiros espaï¿½os do vetor, a cor azul
+					os prï¿½ximos 4 espaï¿½os e assim em diante com as cores verde e amarelo.
 *
 **************************************************************************/
 
-/*****************INFORMAÇÃO DA COR*********************
+/*****************INFORMAï¿½ï¿½O DA COR*********************
 *
-*  A COR DE CADA PEÇA É CLASSIFICADA COMO:
+*  A COR DE CADA PEï¿½A ï¿½ CLASSIFICADA COMO:
 *
 *       0 - VERMELHO
 *       1 - AZUL
 *       2 - VERDE
 *       3 - AMARELO
 
-/***** Declarações exportadas pelo módulo *****/
+/***** Declaraï¿½ï¿½es exportadas pelo mï¿½dulo *****/
 
-/* Tipo referência para uma peça */
+/* Tipo referï¿½ncia para uma peï¿½a */
 
 typedef struct Peca * PECA_tpPeca; 
 /***********************************************************************
 *
-*  $TC Tipo de dados: PECA condições de retorno
+*  $TC Tipo de dados: PECA condiï¿½ï¿½es de retorno
 *
 *
-*  $ED Descrição do tipo
-*     Condições de retorno das funções da peça
+*  $ED Descriï¿½ï¿½o do tipo
+*     Condiï¿½ï¿½es de retorno das funï¿½ï¿½es da peï¿½a
 *
 ***********************************************************************/
 typedef enum {
 
 	PECA_CondRetOK ,
-		/* Condição de retorno correto */
+		/* Condiï¿½ï¿½o de retorno correto */
 
 	PECA_CondRetFaltaMemoria , 
-		/* Condição de retorno por Falta de memória na alocação */
+		/* Condiï¿½ï¿½o de retorno por Falta de memï¿½ria na alocaï¿½ï¿½o */
 
 	PECA_CondRetCorInvalida ,
-		/*Condição de retorno devido a Cor inválida */
+		/*Condiï¿½ï¿½o de retorno devido a Cor invï¿½lida */
 
 	PECA_CondRetFimErrado ,
-		/* Condição de retorno devido a Fim Errado */						
+		/* Condiï¿½ï¿½o de retorno devido a Fim Errado */						
 
 	PECA_CondRetExiste ,
-		/* Condição de retorno que indica que Peca existe */
+		/* Condiï¿½ï¿½o de retorno que indica que Peca existe */
 
 	PECA_CondRetNaoExiste,
-		/* Condição de retorno que indica que Peca nao existe */
+		/* Condiï¿½ï¿½o de retorno que indica que Peca nao existe */
 
 	PECA_CondRetStatusErrado
-		/* Condição de retorno que indica Status Errado */
+		/* Condiï¿½ï¿½o de retorno que indica Status Errado */
 
 } PECA_CondRet;
 
 /***********************************************************************
 *
-*  $FC Função: PECA &Criar PECA
+*  $FC Funï¿½ï¿½o: PECA &Criar PECA
 *
-*  $ED Descrição da função
-*     Cria uma peça, dado um indice, no vetor.
+*  $ED Descriï¿½ï¿½o da funï¿½ï¿½o
+*     Cria uma peï¿½a, dado um indice, no vetor.
 *
 *  $EP Parametros
-*  * peca - ponteiro para peça a ser criada
-*    i    - indice da peça no vetor
-* 	 cor  - cor da peça
+*  * peca - ponteiro para peï¿½a a ser criada
+*    i    - indice da peï¿½a no vetor
+* 	 cor  - cor da peï¿½a
 *
 ***********************************************************************/
 /* Assertivas de Entrada PECA_CriaPeca
-*  Existir mémoria suficiente para criacao da peça
-*  Só pode criar uma peça que não exista até o momento de criação (peca[i] = NULL)
+*  Existir mï¿½moria suficiente para criacao da peï¿½a
+*  Sï¿½ pode criar uma peï¿½a que nï¿½o exista atï¿½ o momento de criaï¿½ï¿½o (peca[i] = NULL)
 *  A cor dada (int) tem que ser entre 0 e 3
 *  Para todo peca[i], peca = NULL.
 */
 
-PECA_CondRet PECA_CriaPeca ( PECA_tpeca peca, int i, int cor ) ;
+PECA_CondRet PECA_CriaPeca ( PECA_tpPeca peca, int i, int cor ) ;
 
 /* Assertivas de Saida PECA_CriaPeca
 *  A memoria referente a estrutura da peca tem que ser alocada
@@ -103,10 +103,10 @@ PECA_CondRet PECA_CriaPeca ( PECA_tpeca peca, int i, int cor ) ;
 */
 /***********************************************************************
 *
-*  $FC função: PECA &Destruir peça
+*  $FC funï¿½ï¿½o: PECA &Destruir peï¿½a
 *
-*  $ED Descrição da função
-*     Destroi uma peça dado um indice, dentro do vetor.
+*  $ED Descriï¿½ï¿½o da funï¿½ï¿½o
+*     Destroi uma peï¿½a dado um indice, dentro do vetor.
 *
 *  $EP Parametros
 *   *peca  -  peca a ser destruida.
@@ -114,7 +114,7 @@ PECA_CondRet PECA_CriaPeca ( PECA_tpeca peca, int i, int cor ) ;
 
 ***********************************************************************/
 /* Assertivas de Entrada PECA_DestroiPeca
-*  Existir peça ja criada (para toda peca , peca != NULL)*/
+*  Existir peï¿½a ja criada (para toda peca , peca != NULL)*/
 
 PECA_CondRet PECA_DestroiPeca ( PECA_tpPeca peca ) ;
  
@@ -124,13 +124,13 @@ PECA_CondRet PECA_DestroiPeca ( PECA_tpPeca peca ) ;
 *  A funcao retorna um PECA_CondRet */
 /***********************************************************************
 *
-*  $FC Função: PECA  &Obtem cor
+*  $FC Funï¿½ï¿½o: PECA  &Obtem cor
 *
-*  $ED Descrição da função
-*    informa a cor de uma peça dada no vetor.
+*  $ED Descriï¿½ï¿½o da funï¿½ï¿½o
+*    informa a cor de uma peï¿½a dada no vetor.
 *
 *  $EP Parametros
-*   peca - peça que procura saber a cor
+*   peca - peï¿½a que procura saber a cor
 *  * cor - ponteiro passado para receber a cor
 *
 ***********************************************************************/
@@ -141,18 +141,18 @@ PECA_CondRet PECA_DestroiPeca ( PECA_tpPeca peca ) ;
 PECA_CondRet PECA_ObtemCor ( PECA_tpPeca peca , int * cor ) ;
 
 /*  Assertiva de Saida PECA_ObtemCor
-*   Deverá ser retornado uma cor válida (inteiro entre 0 e 3)
+*   Deverï¿½ ser retornado uma cor vï¿½lida (inteiro entre 0 e 3)
 *   A funcao retorna um PECA_CondRet */
 
 /***********************************************************************
 *
-*  $FC Função: PECA  &Obtem fim
+*  $FC Funï¿½ï¿½o: PECA  &Obtem fim
 *
-*  $ED Descrição da função
-*     Dada uma peça no vetor, informa se está na casa final.
+*  $ED Descriï¿½ï¿½o da funï¿½ï¿½o
+*     Dada uma peï¿½a no vetor, informa se estï¿½ na casa final.
 *
 *  $EP Parametros
-*   peca - peça que procura saber o final
+*   peca - peï¿½a que procura saber o final
 *  * final - ponteiro passado para receber o final
 *
 ***********************************************************************/
@@ -163,18 +163,18 @@ PECA_CondRet PECA_ObtemCor ( PECA_tpPeca peca , int * cor ) ;
 PECA_CondRet PECA_ObtemFinal ( PECA_tpPeca peca , int * final ) ;
 
 /*  Assertiva de Saida PECA_ObtemFinal
-*   Deverá ser retornado um final válido (inteiro 1 ou 0)
+*   Deverï¿½ ser retornado um final vï¿½lido (inteiro 1 ou 0)
 *   A funcao retorna um PECA_CondRet */
 
 /***********************************************************************
 *
-*  $FC Função: PECA  &Obtem status
+*  $FC Funï¿½ï¿½o: PECA  &Obtem status
 *
-*  $ED Descrição da função
+*  $ED Descriï¿½ï¿½o da funï¿½ï¿½o
 *     Informa o status de uma peca no vetor dado.
 *
 *  $EP Parametros
-*   peca - peça que procura saber o status
+*   peca - peï¿½a que procura saber o status
 *  * status - ponteiro passado que recebe o status
 *
 ***********************************************************************/
@@ -185,34 +185,37 @@ PECA_CondRet PECA_ObtemFinal ( PECA_tpPeca peca , int * final ) ;
 PECA_CondRet PECA_ObtemStatus ( PECA_tpPeca peca , char * status ) ;
 
 /*  Assertiva de Saida PECA_ObtemStatus
-*   Deverá ser retornado um status válido (caracter 'D' ou 'F')
+*   Deverï¿½ ser retornado um status vï¿½lido (caracter 'D' ou 'F')
 *   A funcao retorna um PECA_CondRet */
 
 /***********************************************************************
 *
-*  $FC Função: PECA  &Atualiza peça
+*  $FC Funï¿½ï¿½o: PECA  &Atualiza peï¿½a
 *
-*  $ED Descrição da função
-*     Dado uma peça, atualiza o status e a condição final da peça.
+*  $ED Descriï¿½ï¿½o da funï¿½ï¿½o
+*     Dado uma peï¿½a, atualiza o status e a condiï¿½ï¿½o final da peï¿½a.
 *
 *  $EP Parametros
-*   peca - peça que procura saber a cor
-*   final - atualizar se a peça está no estágio final
-*   status - atualizar se a peça está em jogo
+*   peca - peï¿½a que procura saber a cor
+*   final - atualizar se a peï¿½a estï¿½ no estï¿½gio final
+*   status - atualizar se a peï¿½a estï¿½ em jogo
 *
 ***********************************************************************/
 
 /* Assertivas de Entrada PECA_AtualizaPeca
 *  Deve existir um status valido na peca
 *  Deve existir um valor final valido na peca
-*  A peça deve existi antes de chamar a função. */
+*  A peï¿½a deve existi antes de chamar a funï¿½ï¿½o. */
 
 PECA_CondRet PECA_AtualizaPeca ( PECA_tpPeca peca , int final, char status ) ;
 
 /*  Assertiva de Saida PECA_AtualizaPeca
-*   Deverá ser atualizado um status válido (caracter 'D' ou 'F')
-*   Deverá ser atualizado um final válido (inteiro 1 ou 0)
+*   Deverï¿½ ser atualizado um status vï¿½lido (caracter 'D' ou 'F')
+*   Deverï¿½ ser atualizado um final vï¿½lido (inteiro 1 ou 0)
 *   A funcao retorna um PECA_CondRet  */
 
-/********** Fim do módulo de definição: PECA **********/
+/********** Fim do mï¿½dulo de definiï¿½ï¿½o: PECA **********/
+
+PECA_CondRet PECA_ObtemInfo( PECA* peca, int* cor, int* final, char* status ) ;
+
  #endif

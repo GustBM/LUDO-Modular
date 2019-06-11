@@ -4,7 +4,7 @@ GERADOR DE SCRIPT DE DIRETIVAS PARA MAKE
 Composição do construto: ..\COMPOSICAO\TestePeca.comp
 
    Nome do Construto:           TestePeca
-   Diretório base:              C:\Users\c1720334\Documents\GitHub\LUDO-Modular\LUDO-Modular\PRODUTOS
+   Diretório base:              C:\Users\e1711256\Documents\Github\LUDO-Modular\LUDO-Modular\PRODUTOS
 
    Arquivo composição:          ..\COMPOSICAO\TestePeca.comp
    Arquivo plataforma:          ..\COMPOSICAO\Gmake.parm
@@ -39,18 +39,18 @@ Estatísticas do construto
       testepeca.c
 
    Estatísticas do arquivo: peca.c
-      Total linhas:             136
-      Linhas de código:          83
+      Total linhas:             152
+      Linhas de código:          94
       Linhas de comentário:      15
-      Linhas em branco:          38
+      Linhas em branco:          43
    Arquivos de inclusão de que necessita
       peca.h
 
    Estatísticas do arquivo: peca.h
-      Total linhas:             218
-      Linhas de código:          19
+      Total linhas:             221
+      Linhas de código:          20
       Linhas de comentário:     166
-      Linhas em branco:          33
+      Linhas em branco:          35
    Arquivos em que é incluído
       peca.c
       testepeca.c
@@ -85,10 +85,10 @@ Totais por tipo de arquivo
          Arquivos deste tipo:          0
 
   Tipo: h        Path: ..\Fontes
-         Total linhas do tipo:      1589
-         Linhas de código:           132
+         Total linhas do tipo:      1592
+         Linhas de código:           133
          Linhas de comentário:      1275
-         Linhas em branco:           182
+         Linhas em branco:           184
          Arquivos deste tipo:          4
 
   Tipo: obj      Path: ..\Objetos
@@ -113,17 +113,17 @@ Totais por tipo de arquivo
          Arquivos deste tipo:          0
 
   Tipo: c        Path: ..\Fontes
-         Total linhas do tipo:       281
-         Linhas de código:           152
+         Total linhas do tipo:       297
+         Linhas de código:           163
          Linhas de comentário:        52
-         Linhas em branco:            77
+         Linhas em branco:            82
          Arquivos deste tipo:          2
 
 Totais para todo o construto TestePeca
 
-   Total linhas:              1870
-   Linhas de código:           284
+   Total linhas:              1889
+   Linhas de código:           296
    Linhas de comentário:      1327
-   Linhas em branco:           259
+   Linhas em branco:           266
    Arquivos processados:         6
 

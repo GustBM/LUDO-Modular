@@ -1,0 +1,7 @@
+testepeca.c
+c:\users\e1711256\documents\github\ludo-modular\ludo-modular\fontes\peca.h(219) : error C2143: syntax error : missing ')' before '*'
+c:\users\e1711256\documents\github\ludo-modular\ludo-modular\fontes\peca.h(219) : error C2143: syntax error : missing '{' before '*'
+c:\users\e1711256\documents\github\ludo-modular\ludo-modular\fontes\peca.h(219) : warning C4431: missing type specifier - int assumed. Note: C no longer supports default-int
+c:\users\e1711256\documents\github\ludo-modular\ludo-modular\fontes\peca.h(219) : error C2059: syntax error : 'type'
+c:\users\e1711256\documents\github\ludo-modular\ludo-modular\fontes\peca.h(219) : error C2059: syntax error : ')'
+..\Fontes\testepeca.c(114) : warning C4013: 'PECA_ObtemInfo' undefined; assuming extern returning int
