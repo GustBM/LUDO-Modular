@@ -207,7 +207,7 @@ tpElemListaCircular* CriarElemento( LISC_tppListaC pLista , void *	pValor ){
         return 	LISC_CondRetListaVazia;
       } /* if */
 
-      val = pLista->pElemCorr->pValor ;
+      strcpy((char*)val,pLista->pElemCorr->pValor);
       return LISC_CondRetOK ;
 
    } /* Fim fun��o: LISC  &Obter refer�ncia para o valor contido no elemento */

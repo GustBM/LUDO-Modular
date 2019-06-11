@@ -274,12 +274,20 @@ LISC_tppListaC   vtListas[ DIM_VT_LISTA ] ;
             } /* if */
             
             CondRetObtido = LISC_ObterValor( vtListas[ inxLista ], pDado );
-
+           
+            if( CondRetObtido != LISC_CondRetListaVazia ){
+                if( strcmp(pDado,StringDado) != 0){
+                  return TST_CompararString( StringDado ,
+                                     pDado   ,
+                                     "valor retornado errado ao Obter Valor.");
+                  }/*if */
+            }/*if */
+           
             if ( CondRetObtido != LISC_CondRetOK )
             {
                free( pDado ) ;
             } /* if */
-			
+            
             return TST_CompararInt( ValEsp , CondRetObtido ,
                      "Condicao de retorno errada ao Obter Valor." ) ;
 

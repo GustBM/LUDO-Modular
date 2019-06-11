@@ -45,11 +45,11 @@
 =excluirelem     lista0    OK
 
 == Excluir elemento do inicio
-=obtervalorelem  lista0   str0   pNaoNULL
-=excluirelem     lista0             OK
+=obtervalorelem  lista0   str0   OK
+=excluirelem     lista0    OK
 
 == Excluir elemento final, inico 
-=obtervalorelem  lista0   str1   pNaoNULL
+=obtervalorelem  lista0   str1   OK
 =excluirelem     lista0    OK
 
 == Ver se a lista ficou vazia

@@ -4,7 +4,7 @@ GERADOR DE SCRIPT DE DIRETIVAS PARA MAKE
 Composição do construto: ..\COMPOSICAO\TesteCircular.comp
 
    Nome do Construto:           TesteCircular
-   Diretório base:              C:\Users\Eduardo\Documents\GitHub\LUDO-Modular\LUDO-Modular\PRODUTOS
+   Diretório base:              C:\Users\c1720334\Documents\GitHub\LUDO-Modular\LUDO-Modular\PRODUTOS
 
    Arquivo composição:          ..\COMPOSICAO\TesteCircular.comp
    Arquivo plataforma:          ..\COMPOSICAO\Gmake.parm
@@ -56,10 +56,10 @@ Estatísticas do construto
       testelistacircular.c
 
    Estatísticas do arquivo: testelistacircular.c
-      Total linhas:             413
-      Linhas de código:         244
-      Linhas de comentário:      61
-      Linhas em branco:         121
+      Total linhas:             420
+      Linhas de código:         251
+      Linhas de comentário:      60
+      Linhas em branco:         122
    Arquivos de inclusão de que necessita
       generico.h
       lerparm.h
@@ -113,17 +113,17 @@ Totais por tipo de arquivo
          Arquivos deste tipo:          0
 
   Tipo: c        Path: ..\Fontes
-         Total linhas do tipo:       837
-         Linhas de código:           445
-         Linhas de comentário:       168
-         Linhas em branco:           242
+         Total linhas do tipo:       844
+         Linhas de código:           452
+         Linhas de comentário:       167
+         Linhas em branco:           243
          Arquivos deste tipo:          2
 
 Totais para todo o construto TesteCircular
 
-   Total linhas:              2502
-   Linhas de código:           584
-   Linhas de comentário:      1505
-   Linhas em branco:           431
+   Total linhas:              2509
+   Linhas de código:           591
+   Linhas de comentário:      1504
+   Linhas em branco:           432
    Arquivos processados:         6
 
