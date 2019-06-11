@@ -1,5 +1,5 @@
 /***************************************************************************
-*  $MCI Módulo de implementação: LISC  Lista duplamente encadeada
+*  $MCI Mï¿½dulo de implementaï¿½ï¿½o: LISC  Lista duplamente encadeada
 *
 *  Arquivo gerado:              Lista_circular.c
 *  Letras identificadoras:      LISC
@@ -37,7 +37,7 @@ typedef struct tagElemLista {
    } tpElemListaCircular;
 /***********************************************************************
 *
-*  $TC Tipo de dados: LISC Descritor da cabeça de lista circular
+*  $TC Tipo de dados: LISC Descritor da cabeï¿½a de lista circular
 *
 *
 ***********************************************************************/
@@ -47,20 +47,20 @@ typedef struct LISC_tagLista {
                /* Ponteiro para o elemento corrente da lista */
 
          int numElem ;
-               /* Número de elementos da lista */
+               /* Nï¿½mero de elementos da lista */
 
          void ( * ExcluirValor ) ( void * pValor ) ;
-               /* Ponteiro para a função de destruição do valor contido em um elemento */
+               /* Ponteiro para a funï¿½ï¿½o de destruiï¿½ï¿½o do valor contido em um elemento */
 
    } LIS_tpListaC;
 
 
 
- /*****  Código das funções exportadas pelo módulo  *****/
+ /*****  Cï¿½digo das funï¿½ï¿½es exportadas pelo mï¿½dulo  *****/
 
  /***********************************************************************
 *
-*  $FC Função: LISC  -Limpar a cabeça da lista circular
+*  $FC Funï¿½ï¿½o: LISC  -Limpar a cabeï¿½a da lista circular
 *
 ***********************************************************************/
 
@@ -69,15 +69,15 @@ void LimparCabeca( LISC_tppListaC pLista )
       pLista->pElemCorr = NULL ;
       pLista->numElem   = 0 ;
 
-   } /* Fim função: LISC  -Limpar a cabeça da lista circular */
+   } /* Fim funï¿½ï¿½o: LISC  -Limpar a cabeï¿½a da lista circular */
 
 /***********************************************************************
 *
-*  $FC Função: LISC  -Liberar elemento da lista circular
+*  $FC Funï¿½ï¿½o: LISC  -Liberar elemento da lista circular
 *
-*  $ED Descrição da função
-*     Elimina os espaços apontados pelo valor do elemento e o
-*     próprio elemento.
+*  $ED Descriï¿½ï¿½o da funï¿½ï¿½o
+*     Elimina os espaï¿½os apontados pelo valor do elemento e o
+*     prï¿½prio elemento.
 *
 ***********************************************************************/
 
@@ -93,11 +93,11 @@ void LiberarElemento( LISC_tppListaC  pLista , tpElemListaCircular  * pElem   )
 
       pLista->numElem-- ;
 
-   } /* Fim função: LISC  -Liberar elemento da lista circular */
+   } /* Fim funï¿½ï¿½o: LISC  -Liberar elemento da lista circular */
 
 /***************************************************************************
 *
-*  Função: LISC  &Esvaziar lista circular
+*  Funï¿½ï¿½o: LISC  &Esvaziar lista circular
 *  ****/
 
 void LISC_EsvaziarLista( LISC_tppListaC pLista )
@@ -120,12 +120,12 @@ void LISC_EsvaziarLista( LISC_tppListaC pLista )
 
       LimparCabeca( pLista ) ;
 
-   } /* Fim função: LISC  &Esvaziar lista circular */
+   } /* Fim funï¿½ï¿½o: LISC  &Esvaziar lista circular */
 
 
 /***************************************************************************
 *
-*  Função: LISC  &Criar lista circular
+*  Funï¿½ï¿½o: LISC  &Criar lista circular
 *  ****/
 
 LISC_tppListaC LISC_CriarLista(void( * ExcluirValor ) ( void * pDado )){
@@ -144,11 +144,11 @@ LISC_tppListaC LISC_CriarLista(void( * ExcluirValor ) ( void * pDado )){
 
       return pLista ;
 
-   } /* Fim função: LISC  &Criar lista circular*/
+   } /* Fim funï¿½ï¿½o: LISC  &Criar lista circular*/
 
 /***************************************************************************
 *
-*  Função: LISC  &Destruir lista circular
+*  Funï¿½ï¿½o: LISC  &Destruir lista circular
 *  ****/
 
 void LISC_DestruirLista( LISC_tppListaC pLista )
@@ -162,11 +162,11 @@ void LISC_DestruirLista( LISC_tppListaC pLista )
 
       free( pLista ) ;
 
-   } /* Fim função: LISC  &Destruir lista circular */
+   } /* Fim funï¿½ï¿½o: LISC  &Destruir lista circular */
 
 /***********************************************************************
 *
-*  $FC Função: LISC  -Criar o elemento
+*  $FC Funï¿½ï¿½o: LISC  -Criar o elemento
 *
 ***********************************************************************/
 
@@ -188,14 +188,14 @@ tpElemListaCircular* CriarElemento( LISC_tppListaC pLista , void *	pValor ){
 
       return pElem ;
 
-} /* Fim função: LISC  -Criar o elemento */
+} /* Fim funï¿½ï¿½o: LISC  -Criar o elemento */
 
 /***************************************************************************
 *
-*  Função: LISC  &Obter referência para o valor contido no elemento
+*  Funï¿½ï¿½o: LISC  &Obter referï¿½ncia para o valor contido no elemento
 *  ****/
 
- LISC_tpCondRet  LISC_ObterValor( LISC_tppListaC pLista, void ** val )
+ LISC_tpCondRet  LISC_ObterValor( LISC_tppListaC pLista, void * val )
    {
 
       //#ifdef _DEBUG
@@ -207,14 +207,14 @@ tpElemListaCircular* CriarElemento( LISC_tppListaC pLista , void *	pValor ){
         return 	LISC_CondRetListaVazia;
       } /* if */
 
-      *val = pLista->pElemCorr->pValor ;
+      val = pLista->pElemCorr->pValor ;
       return LISC_CondRetOK ;
 
-   } /* Fim função: LISC  &Obter referência para o valor contido no elemento */
+   } /* Fim funï¿½ï¿½o: LISC  &Obter referï¿½ncia para o valor contido no elemento */
 
 /***************************************************************************
 *
-*  Função: LISC  &Procurar elemento na lista circular contendo valor dado
+*  Funï¿½ï¿½o: LISC  &Procurar elemento na lista circular contendo valor dado
 *  ****/
 
    LISC_tpCondRet LISC_ProcurarValor( LISC_tppListaC pLista , void * pValor )
@@ -245,11 +245,11 @@ tpElemListaCircular* CriarElemento( LISC_tppListaC pLista , void *	pValor ){
 
       return LISC_CondRetNaoAchou ;
 
-   } /* Fim função: LIS  &Procurar elemento contendo valor */
+   } /* Fim funï¿½ï¿½o: LIS  &Procurar elemento contendo valor */
 
    /***************************************************************************
 *
-*  Função: LISC  &Inserir elemento antes
+*  Funï¿½ï¿½o: LISC  &Inserir elemento antes
 *  ****/
 
    LISC_tpCondRet LISC_InserirElementoAntes( LISC_tppListaC pLista ,void * pValor){
@@ -289,11 +289,11 @@ tpElemListaCircular* CriarElemento( LISC_tppListaC pLista , void *	pValor ){
 
          return LISC_CondRetOK ;
 
-   } /* Fim função: LISC  &Inserir elemento antes */
+   } /* Fim funï¿½ï¿½o: LISC  &Inserir elemento antes */
    
    /***************************************************************************
 *
-*  Função: LISC  &Inserir elemento após
+*  Funï¿½ï¿½o: LISC  &Inserir elemento apï¿½s
 *  ****/
 
    LISC_tpCondRet LISC_InserirElementoApos( LISC_tppListaC pLista ,
@@ -307,7 +307,7 @@ tpElemListaCircular* CriarElemento( LISC_tppListaC pLista , void *	pValor ){
          assert( pLista != NULL ) ;
      // #endif
 
-      /* Criar elemento a inerir após */
+      /* Criar elemento a inerir apï¿½s */
 
          pElem = CriarElemento( pLista , pValor ) ;
          if ( pElem == NULL )
@@ -315,7 +315,7 @@ tpElemListaCircular* CriarElemento( LISC_tppListaC pLista , void *	pValor ){
             return LISC_CondRetFaltouMemoria ;
          } /* if */
 
-      /* Encadear o elemento após o elemento */
+      /* Encadear o elemento apï¿½s o elemento */
 
          if ( pLista->pElemCorr == NULL )
          {
@@ -338,11 +338,11 @@ tpElemListaCircular* CriarElemento( LISC_tppListaC pLista , void *	pValor ){
                   
          return LISC_CondRetOK;
 
-   } /* Fim função: LISC  &Inserir elemento após */
+   } /* Fim funï¿½ï¿½o: LISC  &Inserir elemento apï¿½s */
    
    /***************************************************************************
 *
-*  Função: LISC  &Excluir elemento
+*  Funï¿½ï¿½o: LISC  &Excluir elemento
 *  ****/
 
    LISC_tpCondRet LISC_ExcluirElemento( LISC_tppListaC pLista )
@@ -361,7 +361,7 @@ tpElemListaCircular* CriarElemento( LISC_tppListaC pLista , void *	pValor ){
 
       pElem = pLista->pElemCorr ;
 
-      /* Desencadeia à esquerda */
+      /* Desencadeia ï¿½ esquerda */
 
          if ( pElem->pAnt != NULL )
          {
@@ -369,7 +369,7 @@ tpElemListaCircular* CriarElemento( LISC_tppListaC pLista , void *	pValor ){
             pLista->pElemCorr    = pElem->pAnt ;
          } 
 
-      /* Desencadeia à direita */
+      /* Desencadeia ï¿½ direita */
 
          if ( pElem->pProx != NULL )
          {
@@ -380,7 +380,7 @@ tpElemListaCircular* CriarElemento( LISC_tppListaC pLista , void *	pValor ){
 
       return LISC_CondRetOK ;
 
-   } /* Fim função: LISC  &Excluir elemento */
+   } /* Fim funï¿½ï¿½o: LISC  &Excluir elemento */
    
    /***************************************************************************
  *

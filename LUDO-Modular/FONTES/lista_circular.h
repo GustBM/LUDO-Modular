@@ -3,7 +3,7 @@
 
 /***************************************************************************
 *
-*  $MCD Módulo de definição: LISC  Lista duplamente encadeada circular
+*  $MCD Mï¿½dulo de definiï¿½ï¿½o: LISC  Lista duplamente encadeada circular
 *
 *  Arquivo gerado:              lista_circular.h
 *  Letras identificadoras:      LISC
@@ -13,53 +13,53 @@
 *  Gestor:  LES/DI/PUC-Rio
 *  Autores: Eduardo Motta
 *
-*  $HA Histórico de evolução:
-*     Versão  Autor    Data     Observações
-*     1       avs   01/mai/2019 início desenvolvimento
+*  $HA Histï¿½rico de evoluï¿½ï¿½o:
+*     Versï¿½o  Autor    Data     Observaï¿½ï¿½es
+*     1       avs   01/mai/2019 inï¿½cio desenvolvimento
 *
-*  $ED Descrição do módulo
-*     Implementa listas genéricas duplamente encadeadas circulares.
-*     Podem existir n listas em operação simultaneamente.
-*     As listas possuem uma cabeça encapsulando o seu estado.
+*  $ED Descriï¿½ï¿½o do mï¿½dulo
+*     Implementa listas genï¿½ricas duplamente encadeadas circulares.
+*     Podem existir n listas em operaï¿½ï¿½o simultaneamente.
+*     As listas possuem uma cabeï¿½a encapsulando o seu estado.
 *
-*     Cada lista é homogênea quanto ao tipo dos dados que armazena.
-*     Cada elemento da lista referencia o valor que contém.
+*     Cada lista ï¿½ homogï¿½nea quanto ao tipo dos dados que armazena.
+*     Cada elemento da lista referencia o valor que contï¿½m.
 *
-*     Os ponteiros para os dados são copiados para elementos da lista.
-*        Não é copiado o valor apontado por estes ponteiros.
+*     Os ponteiros para os dados sï¿½o copiados para elementos da lista.
+*        Nï¿½o ï¿½ copiado o valor apontado por estes ponteiros.
 *
-*     O controle da destruição do valor de um elemento a ser excluído
-*        é realizado por uma função fornecida pelo usuário.
+*     O controle da destruiï¿½ï¿½o do valor de um elemento a ser excluï¿½do
+*        ï¿½ realizado por uma funï¿½ï¿½o fornecida pelo usuï¿½rio.
 *
-*     Cada lista referencia uma função que determina como devem ser
+*     Cada lista referencia uma funï¿½ï¿½o que determina como devem ser
 *        desalocados os dados nela contidos.
 *
-*     A função de liberação dos valores contidos nos elementos deve
-*        assegurar a liberação de todos os espaços referênciados pelo
+*     A funï¿½ï¿½o de liberaï¿½ï¿½o dos valores contidos nos elementos deve
+*        assegurar a liberaï¿½ï¿½o de todos os espaï¿½os referï¿½nciados pelo
 *        valor contido em um elemento.
-*        Esta função é chamada antes de se desalocar um elemento
+*        Esta funï¿½ï¿½o ï¿½ chamada antes de se desalocar um elemento
 *        de uma lista.
-*        Caso não seja necessário desalocar o valor referenciado pelo
-*        elemento, o ponteiro para a função de liberação poderá ser NULL .
-*        Caso o elemento da lista seja a única âncora do valor referenciado,
-*        esta função deve promover a destruição (free) desse valor e
+*        Caso nï¿½o seja necessï¿½rio desalocar o valor referenciado pelo
+*        elemento, o ponteiro para a funï¿½ï¿½o de liberaï¿½ï¿½o poderï¿½ ser NULL .
+*        Caso o elemento da lista seja a ï¿½nica ï¿½ncora do valor referenciado,
+*        esta funï¿½ï¿½o deve promover a destruiï¿½ï¿½o (free) desse valor e
 *        de todos os dados nele ancorados.
 *
 ***************************************************************************/
 
-/***** Declarações exportadas pelo módulo *****/
-/* Tipo referência para uma lista */
+/***** Declaraï¿½ï¿½es exportadas pelo mï¿½dulo *****/
+/* Tipo referï¿½ncia para uma lista */
 
 
 
 
 /***********************************************************************
 *
-*  $TC Tipo de dados: LISC Condições de retorno
+*  $TC Tipo de dados: LISC Condiï¿½ï¿½es de retorno
 *
 *
-*  $ED Descrição do tipo
-*     Condições de retorno das funções da lista circular
+*  $ED Descriï¿½ï¿½o do tipo
+*     Condiï¿½ï¿½es de retorno das funï¿½ï¿½es da lista circular
 *
 ***********************************************************************/
 typedef enum {
@@ -68,13 +68,13 @@ typedef enum {
 	/* Concluiu corretamente */
 
 	LISC_CondRetListaVazia,
-	/* A lista não contém elementos */
+	/* A lista nï¿½o contï¿½m elementos */
 
 	LISC_CondRetNaoAchou,
-	/* Não encontrou o valor procurado */
+	/* Nï¿½o encontrou o valor procurado */
 
 	LISC_CondRetFaltouMemoria
-	/* Faltou memória ao tentar criar um elemento de lista */
+	/* Faltou memï¿½ria ao tentar criar um elemento de lista */
 
 } LISC_tpCondRet;
 
@@ -83,27 +83,27 @@ typedef struct LISC_tagLista* LISC_tppListaC;
 
 /***********************************************************************
 *
-*  $FC Função: LISC  &Criar lista circular
+*  $FC Funï¿½ï¿½o: LISC  &Criar lista circular
 *
-*  $ED Descrição da função
-*     Cria uma lista genérica circular.
-*     Os possíveis tipos são desconhecidos a priori.
-*     A tipagem é implicita.
-*     Não existe identificador de tipo associado à lista.
+*  $ED Descriï¿½ï¿½o da funï¿½ï¿½o
+*     Cria uma lista genï¿½rica circular.
+*     Os possï¿½veis tipos sï¿½o desconhecidos a priori.
+*     A tipagem ï¿½ implicita.
+*     Nï¿½o existe identificador de tipo associado ï¿½ lista.
 *
-*  $EP Parâmetros
-*     ExcluirValor  - ponteiro para a função que processa a
-*                     exclusão do valor referenciado pelo elemento
-*                     a ser excluído.
-*                     Ver descrição do módulo.
+*  $EP Parï¿½metros
+*     ExcluirValor  - ponteiro para a funï¿½ï¿½o que processa a
+*                     exclusï¿½o do valor referenciado pelo elemento
+*                     a ser excluï¿½do.
+*                     Ver descriï¿½ï¿½o do mï¿½dulo.
 *
 *  $FV Valor retornado
 *     Se executou corretamente retorna o ponteiro para a lista.
-*     Este ponteiro será utilizado pelas funções que manipulem esta lista.
+*     Este ponteiro serï¿½ utilizado pelas funï¿½ï¿½es que manipulem esta lista.
 *
-*     Se ocorreu algum erro, por exemplo falta de memória ou dados errados,
-*     a função retornará NULL.
-*     Não será dada mais informação quanto ao problema ocorrido.
+*     Se ocorreu algum erro, por exemplo falta de memï¿½ria ou dados errados,
+*     a funï¿½ï¿½o retornarï¿½ NULL.
+*     Nï¿½o serï¿½ dada mais informaï¿½ï¿½o quanto ao problema ocorrido.
 *
 ***********************************************************************/
 
@@ -112,14 +112,14 @@ LISC_tppListaC LISC_CriarLista(
 
 /***********************************************************************
 *
-*  $FC Função: LISC  &Destruir lista circular
+*  $FC Funï¿½ï¿½o: LISC  &Destruir lista circular
 *
-*  $ED Descrição da função
-*     Destrói a lista circular fornecida.
-*     O parâmetro ponteiro para a lista circular não é modificado.
-*     Se ocorrer algum erro durante a destruição, a lista resultará
+*  $ED Descriï¿½ï¿½o da funï¿½ï¿½o
+*     Destrï¿½i a lista circular fornecida.
+*     O parï¿½metro ponteiro para a lista circular nï¿½o ï¿½ modificado.
+*     Se ocorrer algum erro durante a destruiï¿½ï¿½o, a lista resultarï¿½
 *     estruturalmente incorreta.
-*     OBS. não existe previsão para possíveis falhas de execução.
+*     OBS. nï¿½o existe previsï¿½o para possï¿½veis falhas de execuï¿½ï¿½o.
 *
 *  $FV Valor retornado
 *     LISC_CondRetOK    - destruiu sem problemas
@@ -130,12 +130,12 @@ LISC_tppListaC LISC_CriarLista(
 
 /***********************************************************************
 *
-*  $FC Função: LISC  &Esvaziar lista 
+*  $FC Funï¿½ï¿½o: LISC  &Esvaziar lista 
 *
-*  $ED Descrição da função
+*  $ED Descriï¿½ï¿½o da funï¿½ï¿½o
 *     Elimina todos os elementos, sem contudo eliminar a lista
 *
-*  $EP Parâmetros
+*  $EP Parï¿½metros
 *     pLista - ponteiro para a lista a ser esvaziada
 *
 ***********************************************************************/
@@ -144,13 +144,13 @@ LISC_tppListaC LISC_CriarLista(
 
    /***********************************************************************
 *
-*  $FC Função: LISC  &Inserir elemento antes
+*  $FC Funï¿½ï¿½o: LISC  &Inserir elemento antes
 *
-*  $ED Descrição da função
+*  $ED Descriï¿½ï¿½o da funï¿½ï¿½o
 *     Insere novo elemento antes do elemento corrente.
 *     Caso a lista esteja vazia, insere o primeiro elemento da lista.
 *
-*  $EP Parâmetros
+*  $EP Parï¿½metros
 *     pLista - ponteiro para a lista onde deve ser inserido o elemento
 *     pValor - ponteiro para o valor do novo elemento
 *              Pode ser NULL
@@ -167,14 +167,14 @@ LISC_tppListaC LISC_CriarLista(
 
 /***********************************************************************
 *
-*  $FC Função: LISC &Inserir elemento após
+*  $FC Funï¿½ï¿½o: LISC &Inserir elemento apï¿½s
 *
-*  $ED Descrição da função
-*     Insere novo elemento após o elemento corrente.
+*  $ED Descriï¿½ï¿½o da funï¿½ï¿½o
+*     Insere novo elemento apï¿½s o elemento corrente.
 *     Caso a lista esteja vazia, insere o primeiro elemento da lista.
 *
-*  $EP Parâmetros
-*     Parâmetros
+*  $EP Parï¿½metros
+*     Parï¿½metros
 *        pLista - ponteiro para a lista onde deve ser inserido o elemento
 *        pValor - ponteiro para o valor do novo elemento
 *                 Pode ser NULL
@@ -194,15 +194,15 @@ LISC_tppListaC LISC_CriarLista(
 
 /***********************************************************************
 *
-*  $FC Função: LISC  &Excluir elemento
+*  $FC Funï¿½ï¿½o: LISC  &Excluir elemento
 *
-*  $ED Descrição da função
+*  $ED Descriï¿½ï¿½o da funï¿½ï¿½o
 *     Exclui o elemento corrente da lista dada.
-*     Se existir o elemento aa esquerda do corrente será o novo corrente.
-*     Se não existir e existir o elemento à direita, este se tornará corrente.
-*     Se este também não existir a lista tornou-se vazia.
+*     Se existir o elemento aa esquerda do corrente serï¿½ o novo corrente.
+*     Se nï¿½o existir e existir o elemento ï¿½ direita, este se tornarï¿½ corrente.
+*     Se este tambï¿½m nï¿½o existir a lista tornou-se vazia.
 *
-*  $EP Parâmetros
+*  $EP Parï¿½metros
 *     pLista    - ponteiro para a lista na qual deve excluir.
 *
 *  $FV Valor retornado
@@ -216,12 +216,12 @@ LISC_tppListaC LISC_CriarLista(
 
    /***********************************************************************
 *
-*  $FC Função: LISC  &Obter referência para o valor contido no elemento
+*  $FC Funï¿½ï¿½o: LISC  &Obter referï¿½ncia para o valor contido no elemento
 *
-*  $ED Descrição da função
-*     Obtem a referência para o valor contido no elemento corrente da lista
+*  $ED Descriï¿½ï¿½o da funï¿½ï¿½o
+*     Obtem a referï¿½ncia para o valor contido no elemento corrente da lista
 *
-*  $EP Parâmetros
+*  $EP Parï¿½metros
 *     pLista - ponteiro para a lista de onde se quer o valor
 *
 *  $FV Valor retornado
@@ -231,29 +231,29 @@ LISC_tppListaC LISC_CriarLista(
 *
 ***********************************************************************/
 
-    LISC_tpCondRet LISC_ObterValor( LISC_tppListaC pLista, void ** val );
+    LISC_tpCondRet LISC_ObterValor( LISC_tppListaC pLista, void * val );
 
 
    /***********************************************************************
 *
-*  $FC Função: LISC  &Procurar elemento contendo valor
+*  $FC Funï¿½ï¿½o: LISC  &Procurar elemento contendo valor
 *
-*  $ED Descrição da função
+*  $ED Descriï¿½ï¿½o da funï¿½ï¿½o
 *     Procura o elemento que referencia o valor dado.
-*     A função compara ponteiro e não conteúdo apontado.
+*     A funï¿½ï¿½o compara ponteiro e nï¿½o conteï¿½do apontado.
 *
-*  $EP Parâmetros
+*  $EP Parï¿½metros
 *     pLista  - ponteiro para a lista onde procura
 *     pValor  - ponteiro para o valor procurado
 *               Pode ser NULL
 *
 *  $FV Valor retornado
 *     LISC_CondRetOK  - se encontrou.
-*                      O elemento corrente é o primeiro elemento do
+*                      O elemento corrente ï¿½ o primeiro elemento do
 *                      elemento corrente inclusive para o fim da lista
-*                      e que contém o ponteiro procurado
+*                      e que contï¿½m o ponteiro procurado
 *
-*     LISC_CondRetNaoEncontrou - se o ponteiro não foi encontrado
+*     LISC_CondRetNaoEncontrou - se o ponteiro nï¿½o foi encontrado
 *                      O elemento corrente continua o mesmo
 *     LISC_CondRetListaVazia   - se a lista estiver vazia
 *
@@ -264,7 +264,7 @@ LISC_tppListaC LISC_CriarLista(
 
 /***********************************************************************
  *
- *  $FC Função: LISC  &Avancar elemento
+ *  $FC Funï¿½ï¿½o: LISC  &Avancar elemento
  *
  *  $ED Descricao da funcao
  *    Avanca o elemento corrente 'num' elementos na lista.
@@ -289,6 +289,6 @@ LISC_tpCondRet LISC_AvancarElementoCorrente(LISC_tppListaC pLista ,
 
 
 
-   /********** Fim do módulo de definição: LISC  Lista circular duplamente encadeada **********/
+   /********** Fim do mï¿½dulo de definiï¿½ï¿½o: LISC  Lista circular duplamente encadeada **********/
   #else
 #endif

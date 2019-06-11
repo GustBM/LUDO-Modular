@@ -31,35 +31,34 @@ static const char AVANCAR_ELEMC_CMD		   [ ] = "=avancarelem"    ;
 
 LISC_tppListaC   vtListas[ DIM_VT_LISTA ] ;
 
-/***** Protótipos das funções encapuladas no módulo *****/
+/***** Protï¿½tipos das funï¿½ï¿½es encapuladas no mï¿½dulo *****/
 
    static void DestruirValor( void * pValor ) ;
 
    static int ValidarInxLista( int inxLista , int Modo ) ;
 
-/*****  Código das funções exportadas pelo módulo  *****/
+/*****  Cï¿½digo das funï¿½ï¿½es exportadas pelo mï¿½dulo  *****/
 
 
 /***********************************************************************
 *
-*  $FC Função: TLIS &Testar lista
+*  $FC Funï¿½ï¿½o: TLIS &Testar lista
 *
-*  $ED Descrição da função
-*     Podem ser criadas até 10 listas, identificadas pelos índices 0 a 10
+*  $ED Descriï¿½ï¿½o da funï¿½ï¿½o
+*     Podem ser criadas atï¿½ 10 listas, identificadas pelos ï¿½ndices 0 a 10
 *
-*     Comandos disponíveis:
+*     Comandos disponï¿½veis:
 *
 *     =resetteste
-*           - anula o vetor de listas. Provoca vazamento de memória
+*           - anula o vetor de listas. Provoca vazamento de memï¿½ria
 *     =criarlista                   inxLista
 *     =destruirlista                inxLista
 *     =esvaziarlista                inxLista
 *     =inselemantes                 inxLista  string  CondRetEsp
 *     =inselemapos                  inxLista  string  CondRetEsp
-*     =obtervalorelem               inxLista  CondretPonteiro
+*     =obtervalorelem               inxLista  string  CondRetEsp
 *     =excluirelem                  inxLista  CondRetEsp
-*     =irinicio                     inxLista
-*     =irfinal                      inxLista
+*     =procuravalorelem             inxLista  string  CondRetEsp
 *     =avancarelem                  inxLista  numElem CondRetEsp
 *
 ***********************************************************************/
@@ -115,8 +114,7 @@ LISC_tppListaC   vtListas[ DIM_VT_LISTA ] ;
                return TST_CondRetParm ;
             } /* if */
 
-            vtListas[ inxLista ] =
-                 LISC_CriarLista( DestruirValor ) ;
+            vtListas[ inxLista ] = LISC_CriarLista( DestruirValor ) ;
 
             return TST_CompararPonteiroNulo( 1 , vtListas[ inxLista ] ,
                "Erro em ponteiro de nova lista."  ) ;
@@ -250,7 +248,7 @@ LISC_tppListaC   vtListas[ DIM_VT_LISTA ] ;
 
             return TST_CompararInt( CondRetEsp ,
                       LISC_ExcluirElemento( vtListas[ inxLista ] ) ,
-                     "Condição de retorno errada ao excluir."   ) ;
+                     "Condiï¿½ï¿½o de retorno errada ao excluir."   ) ;
 
          } /* fim ativa: Testar excluir simbolo */
 
@@ -272,10 +270,10 @@ LISC_tppListaC   vtListas[ DIM_VT_LISTA ] ;
             
             if ( pDado == NULL )
             {
-               return TST_CondRetMemoria ;
+               return TST_CondRetMemoria;
             } /* if */
             
-            CondRetObtido = LISC_ObterValor( vtListas[ inxLista ], StringDado );
+            CondRetObtido = LISC_ObterValor( vtListas[ inxLista ], pDado );
 
             if ( CondRetObtido != LISC_CondRetOK )
             {
@@ -306,12 +304,18 @@ LISC_tppListaC   vtListas[ DIM_VT_LISTA ] ;
                   return TST_CondRetMemoria ;
                 } /* if */
 			
-			CondRetObtido = LISC_ProcurarValor( vtListas[ inxLista ], StringDado ) ;
+			CondRetObtido = LISC_ProcurarValor( vtListas[ inxLista ], pDado ) ;
 
                 if ( CondRetObtido != LISC_CondRetOK )
                 {
                    free( pDado ) ;
                 } /* if */
+
+               if ( strcmp(pDado,StringDado) != 0)
+               {
+                     return TST_CompararString( StringDado , pDado   ,
+                        "String retornada errada ao Obter Valor.") ;
+            } /* if */
     			
                 return TST_CompararInt( ValEsp , CondRetObtido ,
                          "Condicao de retorno errada ao Buscar Elemento." ) ;
@@ -352,15 +356,15 @@ LISC_tppListaC   vtListas[ DIM_VT_LISTA ] ;
 
       return TST_CondRetNaoConhec ;
 
-   } /* Fim função: TLIS &Testar lista */
+   } /* Fim funï¿½ï¿½o: TLIS &Testar lista */
 
 
-/*****  Código das funções encapsuladas no módulo  *****/
+/*****  Cï¿½digo das funï¿½ï¿½es encapsuladas no mï¿½dulo  *****/
 
 
 /***********************************************************************
 *
-*  $FC Função: TLIS -Destruir valor
+*  $FC Funï¿½ï¿½o: TLIS -Destruir valor
 *
 ***********************************************************************/
 
@@ -369,12 +373,12 @@ LISC_tppListaC   vtListas[ DIM_VT_LISTA ] ;
 
       free( pValor ) ;
 
-   } /* Fim função: TLIS -Destruir valor */
+   } /* Fim funï¿½ï¿½o: TLIS -Destruir valor */
 
 
 /***********************************************************************
 *
-*  $FC Função: TLIS -Validar indice de lista
+*  $FC Funï¿½ï¿½o: TLIS -Validar indice de lista
 *
 ***********************************************************************/
 
@@ -403,6 +407,6 @@ LISC_tppListaC   vtListas[ DIM_VT_LISTA ] ;
          
       return TRUE ;
 
-   } /* Fim função: TLISC -Validar indice de lista circular*/
+   } /* Fim funï¿½ï¿½o: TLISC -Validar indice de lista circular*/
 
-/********** Fim do módulo de implementação: TLISC Teste lista circular de símbolos **********/
+/********** Fim do mï¿½dulo de implementaï¿½ï¿½o: TLISC Teste lista circular de sï¿½mbolos **********/
