@@ -53,7 +53,7 @@
 
 == Destruir a lista 0
 =obtervalorelem  lista0   str0   OK
-==destruirlista   lista0
+=destruirlista   lista0
 
 == Criar uma lista com dois elementos
 =criarlista      lista1 

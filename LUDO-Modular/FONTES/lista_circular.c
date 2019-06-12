@@ -101,7 +101,7 @@ void LiberarElemento( LISC_tppListaC  pLista , tpElemListaCircular  * pElem   )
 *  Fun��o: LISC  &Esvaziar lista circular
 *  ****/
 
-void LISC_EsvaziarLista( LISC_tppListaC pLista )
+LISC_tpCondRet LISC_EsvaziarLista( LISC_tppListaC pLista )
    {
 
       tpElemListaCircular * pElem ;
@@ -111,8 +111,12 @@ void LISC_EsvaziarLista( LISC_tppListaC pLista )
          assert( pLista != NULL ) ;
      // #endif
 
+      if( pLista->pElemCorr == NULL )
+         return LISC_CondRetListaVazia;
+
       pElem = pLista->pElemCorr;
-      while ( pElem != NULL )
+     
+      do
       {
          printf("Pelem = %s  ", pElem -> pValor );
          pProx = pElem->pProx ;
@@ -121,10 +125,14 @@ void LISC_EsvaziarLista( LISC_tppListaC pLista )
          printf("Pelem pos = %s  \n", pElem -> pValor );
 
          pElem = pProx ;
-      } /* while */
+      }  while ( pElem != pLista->pElemCorr );/* while */
 
+      printf("Pelem = %s  ", pElem -> pValor );
+      LiberarElemento(pLista , pElem) ;
+      printf("Pelem pos = %s  \n", pElem -> pValor );
       LimparCabeca( pLista ) ;
 
+   return LISC_CondRetOK;
    } /* Fim fun��o: LISC  &Esvaziar lista circular */
 
 
@@ -158,12 +166,12 @@ LISC_tppListaC LISC_CriarLista(void( * ExcluirValor ) ( void * pDado )){
 
 void LISC_DestruirLista( LISC_tppListaC pLista )
    {
-
+      int cond;
       //#ifdef _DEBUG
          assert( pLista != NULL ) ;
       //#endif
 
-      LISC_EsvaziarLista( pLista ) ;
+      cond = LISC_EsvaziarLista( pLista ) ;
 
       free( pLista ) ;
 

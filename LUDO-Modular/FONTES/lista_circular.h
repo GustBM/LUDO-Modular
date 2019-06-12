@@ -140,7 +140,7 @@ LISC_tppListaC LISC_CriarLista(
 *
 ***********************************************************************/
 
-   void LISC_EsvaziarLista( LISC_tppListaC pLista ) ;
+LISC_tpCondRet LISC_EsvaziarLista( LISC_tppListaC pLista ) ;
 
    /***********************************************************************
 *

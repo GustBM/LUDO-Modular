@@ -39,10 +39,10 @@ Estatísticas do construto
       testelistacircular.c
 
    Estatísticas do arquivo: lista_circular.c
-      Total linhas:             440
-      Linhas de código:         213
+      Total linhas:             448
+      Linhas de código:         220
       Linhas de comentário:     107
-      Linhas em branco:         125
+      Linhas em branco:         126
    Arquivos de inclusão de que necessita
       lista_circular.h
 
@@ -113,17 +113,17 @@ Totais por tipo de arquivo
          Arquivos deste tipo:          0
 
   Tipo: c        Path: ..\Fontes
-         Total linhas do tipo:       862
-         Linhas de código:           466
+         Total linhas do tipo:       870
+         Linhas de código:           473
          Linhas de comentário:       168
-         Linhas em branco:           247
+         Linhas em branco:           248
          Arquivos deste tipo:          2
 
 Totais para todo o construto TesteCircular
 
-   Total linhas:              2527
-   Linhas de código:           605
+   Total linhas:              2535
+   Linhas de código:           612
    Linhas de comentário:      1505
-   Linhas em branco:           436
+   Linhas em branco:           437
    Arquivos processados:         6
 
