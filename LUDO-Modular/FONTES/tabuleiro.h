@@ -3,7 +3,7 @@
 
 /***************************************************************************
 *
-*  $MCD Módulo de definição: TAB  Módulo do tabuleiro para LUDO
+*  $MCD Mï¿½dulo de definiï¿½ï¿½o: TAB  Mï¿½dulo do tabuleiro para LUDO
 *
 *  Arquivo gerado:              tabuleiro.h
 *  Letras identificadoras:      TAB
@@ -13,14 +13,14 @@
 *  Gestor:  LES/DI/PUC-Rio
 *  Autores: GBM - Gustavo Barros Marchesan
 *
-*  $HA Histórico de evolução:
-*     Versão  Autor    Data     Observações
-*     1       GBM   07/mai/2019 início desenvolvimento
-*	  2		  GBM	12/mai/2019 Junção dos módulos tabuleiro e peca
-*	  3		  GBM	12/mai/2019 Remoção da peca como parte do tabuleiro
+*  $HA Histï¿½rico de evoluï¿½ï¿½o:
+*     Versï¿½o  Autor    Data     Observaï¿½ï¿½es
+*     1       GBM   07/mai/2019 inï¿½cio desenvolvimento
+*	  2		  GBM	12/mai/2019 Junï¿½ï¿½o dos mï¿½dulos tabuleiro e peca
+*	  3		  GBM	12/mai/2019 Remoï¿½ï¿½o da peca como parte do tabuleiro
 *
-*  $ED Descrição do módulo
-*     Módulo para criação e manipulação do tabuleiro e pecas para o jogo LUDO
+*  $ED Descriï¿½ï¿½o do mï¿½dulo
+*     Mï¿½dulo para criaï¿½ï¿½o e manipulaï¿½ï¿½o do tabuleiro e pecas para o jogo LUDO
 *
 ***************************************************************************/
 
@@ -34,7 +34,7 @@
 #include "lista_circular.h"
 #include "lista.h"
 
-/***** Declarações exportadas pelo módulo *****/
+/***** Declaraï¿½ï¿½es exportadas pelo mï¿½dulo *****/
 
 typedef struct TAB_tagTabuleiro * TAB_tppTabuleiro;
 
@@ -42,42 +42,42 @@ typedef struct TAB_tagCasaInfo * TAB_tppCasaInfo;
 
 /***********************************************************************
 *
-*  $TC Tipo de dados: GT Códigos de retorno de funções
+*  $TC Tipo de dados: GT Cï¿½digos de retorno de funï¿½ï¿½es
 *
 *
 ***********************************************************************/
 
    typedef enum {
 
-         CondRetOK ,
-               /* Função executou correto */
+         TAB_CondRetOK ,
+               /* Funï¿½ï¿½o executou correto */
 
-         CondRetErro ,
+         TAB_CondRetErro ,
                /* Erro de leitura de arquivo */
 
-         CondRetMem
-               /* Erro de espaço na memória */
+         TAB_CondRetMem
+               /* Erro de espaï¿½o na memï¿½ria */
 
-   } tpCondRet ;
+   } TAB_CondRet ;
 
 /***********************************************************************
 *
-*  $FC Função: TAB  &Criar Tabuleiro
+*  $FC Funï¿½ï¿½o: TAB  &Criar Tabuleiro
 *
-*  $ED Descrição da função
+*  $ED Descriï¿½ï¿½o da funï¿½ï¿½o
 *     Cria um tabuleiro para o LUDO, composto por uma lista circular
-*	  composta por 56 posições e 4 listas comuns composta por 5 casas cada
-*	  A função não precisa de parâmetros para fazer as listas porque ela já
-*	  será uma lista de casas.
+*	  composta por 56 posiï¿½ï¿½es e 4 listas comuns composta por 5 casas cada
+*	  A funï¿½ï¿½o nï¿½o precisa de parï¿½metros para fazer as listas porque ela jï¿½
+*	  serï¿½ uma lista de casas.
 *
 *  $FV Valor retornado
 *     Se executou corretamente retorna o ponteiro para a tabela.
-*     Este ponteiro será utilizado pelas funções que manipulem a tabela.
+*     Este ponteiro serï¿½ utilizado pelas funï¿½ï¿½es que manipulem a tabela.
 *
-*     Se ocorreu algum erro, por exemplo falta de memória ou dados errados,
-*     a função retornará NULL.
-*	  Caso haja um erro na criação da tabela inicial a função retornará NULL
-*     Não será dada mais informação quanto ao problema ocorrido.
+*     Se ocorreu algum erro, por exemplo falta de memï¿½ria ou dados errados,
+*     a funï¿½ï¿½o retornarï¿½ NULL.
+*	  Caso haja um erro na criaï¿½ï¿½o da tabela inicial a funï¿½ï¿½o retornarï¿½ NULL
+*     Nï¿½o serï¿½ dada mais informaï¿½ï¿½o quanto ao problema ocorrido.
 *
 ***********************************************************************/
 
@@ -85,58 +85,58 @@ TAB_tppTabuleiro TAB_CriaTabuleiro ();
 
 /***********************************************************************
 *
-*  $FC Função: TAB  &Destruir Tabuleiro
+*  $FC Funï¿½ï¿½o: TAB  &Destruir Tabuleiro
 *
-*  $ED Descrição da função
+*  $ED Descriï¿½ï¿½o da funï¿½ï¿½o
 *     Elemina o conteudo da de todas as listas do tabuleiro e depois 
 *	  destroi ele
 *
-*  $EP Parâmetros
+*  $EP Parï¿½metros
 *     pTab - ponteiro para a o tabuleiro a ser destruido
 *
 ***********************************************************************/
 
-tpCondRet TAB_DestruirTabuleiro( TAB_tppTabuleiro pTab);
+TAB_CondRet TAB_DestruirTabuleiro( TAB_tppTabuleiro pTab);
 
 /***********************************************************************
 *
-*  $FC Função: TAB  &Limpa Casa
+*  $FC Funï¿½ï¿½o: TAB  &Limpa Casa
 *
-*  $ED Descrição da função
+*  $ED Descriï¿½ï¿½o da funï¿½ï¿½o
 *     Elemina o conteudo de uma das casas
 *
-*  $EP Parâmetros
+*  $EP Parï¿½metros
 *     pTab - ponteiro para a casa do tabuleiro a ser limpa
 *
 *  $FV Valor retornado
 *	  Caso ocorre sem problemas; CondRetOK
-*	  Caso contrário; CondRetErro
+*	  Caso contrï¿½rio; CondRetErro
 *
 ***********************************************************************/
 
-tpCondRet TAB_LimpaCasa (TAB_tpCasaInfo* casa);
+TAB_CondRet TAB_LimpaCasa (TAB_tppCasaInfo casa);
 
 /***********************************************************************
 *
-*  $FC Função: TAB  &Cria Casa
+*  $FC Funï¿½ï¿½o: TAB  &Cria Casa
 *
-*  $ED Descrição da função
-*     Cria uma casa no tabuleiro com o conteudo dado como parâmetro
+*  $ED Descriï¿½ï¿½o da funï¿½ï¿½o
+*     Cria uma casa no tabuleiro com o conteudo dado como parï¿½metro
 *
-*  $EP Parâmetros
-*     conteudo - conteudo que irá para a casa, tipo PECA
+*  $EP Parï¿½metros
+*     conteudo - conteudo que irï¿½ para a casa, tipo PECA
 *
 *  $FV Valor retornado
 *	  Tetorna um ponteiro para a casa criada
 *
 ***********************************************************************/
 
-TAB_tppCasaInfo CriaCasa ( PECA * conteudo );
+TAB_tppCasaInfo CriaCasa ( PECA_tpPeca conteudo );
 
 #undef TABULEIRO_EXT
 
 
-/*********** Fim do módulo de definição: TAB Modulo Tabuleiro **********/
+/*********** Fim do mï¿½dulo de definiï¿½ï¿½o: TAB Modulo Tabuleiro **********/
 
 
 #else

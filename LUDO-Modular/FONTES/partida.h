@@ -121,7 +121,7 @@ PAR_CondRet PAR_InicializaJogo ( PAR_tppPartida * pJogo , int num , int *cor ) ;
  *
  *  Fim Assertivas de Entrada PAR_RealizaJogada */
 
-void PAR_RealizaJogada ( PAR_Ludo *pJogo , int cor ) ;
+int PAR_RealizaJogada ( PAR_Ludo *pJogo , int cor ) ;
 
 
 /***********************************************************************
@@ -135,7 +135,8 @@ void PAR_RealizaJogada ( PAR_Ludo *pJogo , int cor ) ;
  *   vencedores  - Vetor que guarda os jogadores que já venceram, em nenhuma ordem particular.
  *
  *  $FV Valor retornado
- *    0 - Caso a lista de vencedores não esteja vazia
+ *	  1 - Caso haja vencedores suficientes para acabar a partida, i.e. 3
+ *    0 - Caso haja vencedores, mas ainda 
  *   -1 - Caso a lista de vencedores esteja vazia
  ***********************************************************************/
 

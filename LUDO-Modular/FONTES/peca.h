@@ -216,6 +216,6 @@ PECA_CondRet PECA_AtualizaPeca ( PECA_tpPeca peca , int final, char status ) ;
 
 /********** Fim do m�dulo de defini��o: PECA **********/
 
-PECA_CondRet PECA_ObtemInfo( PECA* peca, int* cor, int* final, char* status ) ;
+PECA_CondRet PECA_ObtemInfo( PECA_tpPeca peca, int* cor, int* final, char* status ) ;
 
  #endif

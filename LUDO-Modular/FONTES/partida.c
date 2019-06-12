@@ -10,17 +10,18 @@
 *
 *  $HA Histórico de evolução:
 *     Versão |  Autores   |      Data     |    Observações
-*       1    |    GB      |   11/06/2019  | início desenvolvimento	
+*       1    |    GB      |   11/06/2019  | Início desenvolvimento
+*       2    |    GB      |   12/06/2019  |      Ajustes
 ***************************************************************************/
 
 #include <stdlib.h>
 #include <stdio.h>
 #include <string.h>
 
-#include "TABULEIRO.h"
+#include "tabuleiro.h"
 
 #define PAR_OWN
-#include "JOGO.h"
+#include "partida.h"
 #undef PAR_OWN
 
 /***********************************************************************
@@ -31,10 +32,10 @@
 
 typedef struct PAR_tagPartida
 {
-	TAB_tpTabuleiro pTabuleiro ;
+	TAB_tppTabuleiro pTabuleiro ;
 	/* Ponteiro para Tabuleiro */
 	
-	PECA pecas[16] ;
+	PECA_tpPeca pecas[16] ;
 	/* Vetor de Peças */
 	
 	int num_jogadores ;
@@ -44,7 +45,7 @@ typedef struct PAR_tagPartida
 
 /***** Protótipo das funções encapsuladas no módulo *****/
 
-static void LimpaCabeca ( JOGO_Ludo *pJogo ) ;
+static void LimpaCabeca ( PAR_Ludo *pJogo ) ;
 
 static void LancaDado ( int * pValor ) ;
 
@@ -59,11 +60,11 @@ static void LancaDado ( int * pValor ) ;
 
 PAR_CondRet PAR_InicializaJogo ( PAR_tppPartida * pJogo , int num , int *cor ) 
 {
-	int i ;
+	int i, k;
 
-	TAB_tpLudo pTabuleiro   ;
-	TAB_CondRet retorno_tab ;
-	PEC_CondRet retorno_pec ;
+	TAB_tppTabuleiro pTabuleiro    ;
+	TAB_CondRet retorno_tab  ;
+	PECA_CondRet retorno_pec ;
 	
 	if ( num < 2 || num > 4 )
 	{
@@ -100,9 +101,9 @@ PAR_CondRet PAR_InicializaJogo ( PAR_tppPartida * pJogo , int num , int *cor )
 			retorno_pec = PEC_CriaPeca ( (*pJogo)->pecas , k , cor[i]) ;
 			switch ( retorno_pec ) 
 			{
-				case PEC_CondRetFaltaMemoria :
+				case PECA_CondRetFaltaMemoria :
 					return PAR_CondRetFaltouMemoria ;
-				case PEC_CondRetJaExiste :
+				case PECA_CondRetExiste :
 					return PAR_CondRetCorJaEscolhida ;
 				default :
 					printf ( "Erro inesperado \n" ) ;
@@ -181,14 +182,14 @@ static void LancaDado ( int * pValor )
 int PAR_VerificaVencedor( PAR_Ludo *pJogo, int * vencedores ) {
 	char * status;
 	int cor, j = 0;
-	int jogadores = [0, 0, 0, 0];
-	vencedores = [];
+	int jogadores[4] = {0, 0, 0, 0};
+	int vencedoresTemp[4] = {0, 0, 0, 0};
 	for (int i = 0; i < 16; i++)
 	{
 		PECA_ObtemStatus(*pJogo->pecas, status) ;
 		if (strcmp(status, 'F'))
 		{
-			PECA_ObtemCor(*pJogo->pecas[i], &cor);
+			PECA_ObtemCor(pJogo->pecas[i], &cor);
 			jogadores[cor]++;
 		}
 	}
@@ -196,14 +197,18 @@ int PAR_VerificaVencedor( PAR_Ludo *pJogo, int * vencedores ) {
 	for (int i = 0; i < 3; i++)
 	{
 		if(jogadores[i] == 4) {
-			vencedores[j] = i;
+			vencedoresTemp[j] = i;
 			j++;
 		}
 	}
 
+	vencedores = vencedoresTemp;
+
 	if (sizeof(vencedores) == 0)
 	{
 		return -1;
+	} else if (sizeof(vencedores)/sizeof(vencedores[0]) == 3 ){
+		return 1;
 	} else {
 		return 0;
 	}

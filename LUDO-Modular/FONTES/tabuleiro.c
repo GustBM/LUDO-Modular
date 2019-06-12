@@ -1,5 +1,5 @@
 /***************************************************************************
-*  $MCI Módulo de implementação: TAB  Módulo do tabuleiro para LUDO
+*  $MCI Mï¿½dulo de implementaï¿½ï¿½o: TAB  Mï¿½dulo do tabuleiro para LUDO
 *
 *  Arquivo gerado:              tabuleiro.c
 *  Letras identificadoras:      TAB
@@ -36,7 +36,7 @@
    typedef struct TAB_tagTabuleiro {
 
          LISC_tppListaC casasNormais ;
-               /* Ponteiro para a lista circular que irá representar as casas normais do tabuleiro */
+               /* Ponteiro para a lista circular que irï¿½ representar as casas normais do tabuleiro */
 
          LIS_tppLista casasFim1 ;
                /* Ponteiro para a lista das casas finais */
@@ -63,24 +63,24 @@
 
 typedef struct TAB_tagCasaInfo {
  
-    PECA * conteudo ;
+    PECA_tpPeca conteudo ;
         /* Ponteiro para o conteudo da casa */
 
 } TAB_tpCasaInfo;
 typedef void ( *pFunc ) ( void * ) ; typedef void **ppVoid ;
 
-/***** Protótipo das funções encapsuladas no módulo *****/
+/***** Protï¿½tipo das funï¿½ï¿½es encapsuladas no mï¿½dulo *****/
  
-static TAB_tppCasaInfo CriaCasa ( PECA * conteudo ) ;
+static TAB_tppCasaInfo CriaCasa ( PECA_tpPeca * conteudo ) ;
 
-static tpCondRet TAB_LimpaCasa (TAB_tpCasaInfo* casa);
+static TAB_CondRet TAB_LimpaCasa (TAB_tpCasaInfo* casa);
  
 static void TAB_LiberarCasa ( TAB_tpCasaInfo *pCasa ) ;
 
 
 /***********************************************************************
 *
-*  $FC Função: TAB  -Cria o Tabuleiro
+*  $FC Funï¿½ï¿½o: TAB  -Cria o Tabuleiro
 *
 ***********************************************************************/
 
@@ -146,11 +146,11 @@ TAB_tppTabuleiro TAB_CriaTabuleiro () {
 
 /***********************************************************************
 *
-*  $FC Função: TAB  -Destuir o Tabuleiro
+*  $FC Funï¿½ï¿½o: TAB  -Destuir o Tabuleiro
 *
 ***********************************************************************/
 
-tpCondRet TAB_DestruirTabuleiro( TAB_tppTabuleiro pTab )
+TAB_CondRet TAB_DestruirTabuleiro( TAB_tppTabuleiro pTab )
 {
 
     #ifdef _DEBUG
@@ -169,18 +169,18 @@ tpCondRet TAB_DestruirTabuleiro( TAB_tppTabuleiro pTab )
 	LIS_DestruirLista( pTab->casasFim4 ) ;
 
     free( pTab ) ;
-	if ( pTab == NULL ) return CondRetOK;
-	else return CondRetErro;
+	if ( pTab == NULL ) return TAB_CondRetOK;
+	else return TAB_CondRetErro;
 }
 
 
 /***********************************************************************
 *
-*  $FC Função: TAB  -Cria Casa
+*  $FC Funï¿½ï¿½o: TAB  -Cria Casa
 *
 ***********************************************************************/
 
-static TAB_tppCasaInfo CriaCasa ( PECA * conteudo )
+static TAB_tppCasaInfo CriaCasa ( PECA_tpPeca conteudo )
 {
     TAB_tpCasaInfo *casa ;
      
@@ -195,11 +195,11 @@ static TAB_tppCasaInfo CriaCasa ( PECA * conteudo )
 
 /***********************************************************************
 *
-*  $FC Função: TAB  -Limpa Casa
+*  $FC Funï¿½ï¿½o: TAB  -Limpa Casa
 *
 ***********************************************************************/
 
-tpCondRet TAB_LimpaCasa (TAB_tpCasaInfo* casa) {
+TAB_CondRet TAB_LimpaCasa (TAB_tppCasaInfo casa) {
 
 	if ( casa->conteudo != NULL )
     {
@@ -209,7 +209,7 @@ tpCondRet TAB_LimpaCasa (TAB_tpCasaInfo* casa) {
     casa = NULL ;
 
 	if ( casa == NULL ) 
-		return CondRetOK;
+		return TAB_CondRetOK;
 	else 
-		return CondRetErro;
+		return TAB_CondRetErro;
 }
