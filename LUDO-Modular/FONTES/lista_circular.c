@@ -111,12 +111,16 @@ LISC_tpCondRet LISC_EsvaziarLista( LISC_tppListaC pLista )
          assert( pLista != NULL ) ;
      // #endif
 
-      if( pLista->pElemCorr == NULL )
+      if( pLista->pElemCorr == NULL){
+         assert(pLista ->numElem == 0);
          return LISC_CondRetListaVazia;
+      }
 
-      pElem = pLista->pElemCorr;
-     
-      do
+      
+      if(pLista ->numElem > 1){
+         pElem = pLista->pElemCorr->pProx;
+
+         do
       {
          printf("Pelem = %s  ", pElem -> pValor );
          pProx = pElem->pProx ;
@@ -127,10 +131,16 @@ LISC_tpCondRet LISC_EsvaziarLista( LISC_tppListaC pLista )
          pElem = pProx ;
       }  while ( pElem != pLista->pElemCorr );/* while */
 
+      }
+      else{
+         pElem = pLista->pElemCorr;
+      }
+      
+
       printf("Pelem = %s  ", pElem -> pValor );
-      LiberarElemento(pLista , pElem) ;
+      LiberarElemento(pLista , pElem);
       printf("Pelem pos = %s  \n", pElem -> pValor );
-      LimparCabeca( pLista ) ;
+      LimparCabeca( pLista );
 
    return LISC_CondRetOK;
    } /* Fim fun��o: LISC  &Esvaziar lista circular */

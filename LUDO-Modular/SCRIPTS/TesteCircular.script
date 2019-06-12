@@ -62,7 +62,7 @@
 
 == Esvaziar a lista e ver se ficou vazia
 =esvaziarlista   lista1
-=obtervalorelem  lista1   "???"     pNULL
+=obtervalorelem  lista1   "???"     ListaVazia
 
 == Destruir a lista
 =destruirlista   lista1

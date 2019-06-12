@@ -46,7 +46,7 @@ typedef struct PAR_tagPartida
 
 static void LimpaCabeca ( JOGO_Ludo *pJogo ) ;
 
-static void PAR_LancaDado ( int * pValor ) ;
+static void LancaDado ( int * pValor ) ;
 
 
 /*****  Código das funções exportadas pelo módulo  *****/
@@ -159,7 +159,7 @@ int PAR_RealizaJogada ( PAR_Ludo *pJogo , int cor )
  ***********************************************************************/
 
 
-static void PAR_LancaDado ( int * pValor )
+static void LancaDado ( int * pValor )
 {
     int ValorAleatorio ;
   
