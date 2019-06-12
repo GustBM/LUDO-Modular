@@ -231,7 +231,7 @@ LISC_tppListaC LISC_CriarLista(
 *
 ***********************************************************************/
 
-    LISC_tpCondRet LISC_ObterValor( LISC_tppListaC pLista, void * val );
+    LISC_tpCondRet LISC_ObterValor( LISC_tppListaC pLista, void ** val );
 
 
    /***********************************************************************

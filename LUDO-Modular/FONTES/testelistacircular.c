@@ -273,7 +273,7 @@ LISC_tppListaC   vtListas[ DIM_VT_LISTA ] ;
                return TST_CondRetMemoria;
             } /* if */
             
-            CondRetObtido = LISC_ObterValor( vtListas[ inxLista ], pDado );
+            CondRetObtido = LISC_ObterValor( vtListas[ inxLista ], &pDado );
            
             if( CondRetObtido != LISC_CondRetListaVazia ){
                 if( strcmp(pDado,StringDado) != 0){
@@ -318,12 +318,14 @@ LISC_tppListaC   vtListas[ DIM_VT_LISTA ] ;
                 {
                    free( pDado ) ;
                 } /* if */
-
-               if ( strcmp(pDado,StringDado) != 0)
-               {
+               else{
+                  if ( strcmp(pDado,StringDado) != 0)
+                  {
                      return TST_CompararString( StringDado , pDado   ,
                         "String retornada errada ao Obter Valor.") ;
-            } /* if */
+                  } /* if */
+               } /* else */
+               
     			
                 return TST_CompararInt( ValEsp , CondRetObtido ,
                          "Condicao de retorno errada ao Buscar Elemento." ) ;

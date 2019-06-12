@@ -86,12 +86,13 @@ void LiberarElemento( LISC_tppListaC  pLista , tpElemListaCircular  * pElem   )
 
       if ( ( pLista->ExcluirValor != NULL ) && ( pElem->pValor != NULL ))
       {
+         printf("eliminando %s", pElem->pValor);
          pLista->ExcluirValor( pElem->pValor ) ;
       } /* if */
 
-      free(pElem) ;
+      free(pElem);
 
-      pLista->numElem-- ;
+      pLista->numElem--;
 
    } /* Fim fun��o: LISC  -Liberar elemento da lista circular */
 
@@ -113,8 +114,12 @@ void LISC_EsvaziarLista( LISC_tppListaC pLista )
       pElem = pLista->pElemCorr;
       while ( pElem != NULL )
       {
+         printf("Pelem = %s  ", pElem -> pValor );
          pProx = pElem->pProx ;
          LiberarElemento(pLista , pElem) ;
+
+         printf("Pelem pos = %s  \n", pElem -> pValor );
+
          pElem = pProx ;
       } /* while */
 
@@ -184,7 +189,7 @@ tpElemListaCircular* CriarElemento( LISC_tppListaC pLista , void *	pValor ){
       pElem->pAnt   = NULL;
       pElem->pProx  = NULL;
 
-      pLista->numElem ++;
+      (pLista->numElem) += 1;
 
       return pElem ;
 
@@ -195,7 +200,7 @@ tpElemListaCircular* CriarElemento( LISC_tppListaC pLista , void *	pValor ){
 *  Fun��o: LISC  &Obter refer�ncia para o valor contido no elemento
 *  ****/
 
- LISC_tpCondRet  LISC_ObterValor( LISC_tppListaC pLista, void * val )
+ LISC_tpCondRet  LISC_ObterValor( LISC_tppListaC pLista, void ** val )
    {
 
       //#ifdef _DEBUG
@@ -207,7 +212,7 @@ tpElemListaCircular* CriarElemento( LISC_tppListaC pLista , void *	pValor ){
         return 	LISC_CondRetListaVazia;
       } /* if */
 
-      strcpy((char*)val,pLista->pElemCorr->pValor);
+      *val = pLista->pElemCorr->pValor;
       return LISC_CondRetOK ;
 
    } /* Fim fun��o: LISC  &Obter refer�ncia para o valor contido no elemento */
@@ -283,6 +288,11 @@ tpElemListaCircular* CriarElemento( LISC_tppListaC pLista , void *	pValor ){
 
             pElem->pProx = pLista->pElemCorr ;
             pLista->pElemCorr->pAnt = pElem ;
+
+            if(pLista->pElemCorr->pProx == NULL){
+               pElem->pAnt = pLista->pElemCorr ;
+               pLista->pElemCorr->pProx = pElem ;
+            }
          } /* if */
 
          pLista->pElemCorr = pElem ;
@@ -332,6 +342,11 @@ tpElemListaCircular* CriarElemento( LISC_tppListaC pLista , void *	pValor ){
             pElem->pAnt = pLista->pElemCorr ;
             pLista->pElemCorr->pProx = pElem ;
 
+            if(pLista->pElemCorr->pAnt == NULL){
+               pElem->pProx = pLista->pElemCorr ;
+                pLista->pElemCorr->pAnt = pElem ;
+            }
+
          } /* if */
                   
          pLista->pElemCorr = pElem ;
@@ -374,6 +389,7 @@ tpElemListaCircular* CriarElemento( LISC_tppListaC pLista , void *	pValor ){
          if ( pElem->pProx != NULL )
          {
             pElem->pProx->pAnt = pElem->pAnt ;
+            pLista->pElemCorr    = pElem->pProx;
          }
 
       LiberarElemento( pLista , pElem ) ;
@@ -387,7 +403,7 @@ tpElemListaCircular* CriarElemento( LISC_tppListaC pLista , void *	pValor ){
  *  Funcao: LISC  &Avancar Elemento Corrente
  *  ****/
 
-LISC_tpCondRet LISC_AvancarElementoCorrente ( LISC_tppListaC pLista , int num ){
+LISC_tpCondRet LISC_AvancarElementoCorrente( LISC_tppListaC pLista , int num ){
     tpElemListaCircular *pElem;
     
     if( pLista->pElemCorr == NULL )

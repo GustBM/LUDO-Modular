@@ -45,18 +45,15 @@
 =excluirelem     lista0    OK
 
 == Excluir elemento do inicio
-=obtervalorelem  lista0   str0   OK
-=excluirelem     lista0    OK
-
-== Excluir elemento final, inico 
 =obtervalorelem  lista0   str1   OK
 =excluirelem     lista0    OK
 
 == Ver se a lista ficou vazia
-=procuravalorelem  lista0   "???"     pNULL
+=procuravalorelem  lista0   "???"   NaoAchou
 
-== Destruir a lista
-=destruirlista   lista0
+== Destruir a lista 0
+=obtervalorelem  lista0   str0   OK
+==destruirlista   lista0
 
 == Criar uma lista com dois elementos
 =criarlista      lista1 
