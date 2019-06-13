@@ -1,0 +1,105 @@
+// Script:    TesteCircular.script
+// Autor:     Luiz Fellipe Augusto, Eduardo Motta, Gustavo Barros
+// Data:      09/Mai/2019
+// Prop�sito: Testar superficialmente o m�dulo lista circular
+//
+
+== Inicializar valores
+=declararparm   lista0  int 0
+=declararparm   lista1  int 1
+=declararparm   lista2  int 2
+
+=declararparm   str0    string  "abcdefg"
+=declararparm   str1    string  "qwerty"
+=declararparm   str2    string  "xxx"
+=declararparm   str3    string  "xpto"
+
+=declararparm   OK             int  0
+=declararparm   ListaVazia     int  1
+=declararparm   NaoAchou       int  2
+=declararparm   FaltouMemoria  int  3
+
+=declararparm   pNULL          int  0
+=declararparm   pNaoNULL       int  1
+
+== Criar a lista 0
+=criarlista      lista0 
+
+== Verificar ObterValor relativo a lista vazia
+=obtervalorelem  lista0   str2 ListaVazia
+
+== Inserir elemento em lista vazia
+=inselemantes    lista0   str0   OK
+=obtervalorelem  lista0   str0   OK 
+
+== Inserir elemento apos primeiro
+=inselemapos     lista0   str1   OK
+=obtervalorelem  lista0   str1   OK
+
+== Inserir elemento antes do ultimo
+=inselemantes    lista0   str2   OK
+=obtervalorelem  lista0   str2   OK
+
+== Excluir elemento do meio
+=obtervalorelem  lista0   str2   OK
+=excluirelem     lista0    OK
+
+== Excluir elemento do inicio
+=obtervalorelem  lista0   str1   OK
+=excluirelem     lista0    OK
+
+== Ver se a lista ficou vazia
+=procuravalorelem  lista0   "???"   NaoAchou
+
+== Destruir a lista 0
+=obtervalorelem  lista0   str0   OK
+=destruirlista   lista0
+
+== Criar dois elementos para lista 1
+=criarlista      lista1 
+=inselemapos     lista1   str0   OK
+=inselemapos     lista1   str1   OK
+
+== Esvaziar a lista 1 e ver se ficou vazia
+=esvaziarlista   lista1
+=obtervalorelem  lista1   "???"     ListaVazia
+
+== Destruir a lista 1
+=destruirlista   lista1
+
+== Criar uma lista 2 com quatro elementos
+=criarlista      lista2 
+=inselemapos     lista2   str0   OK
+=inselemapos     lista2   str1   OK
+=inselemapos     lista2   str2   OK
+=inselemapos     lista2   str3   OK
+
+== dar a volta na lista 2
+=obtervalorelem  lista2   str3   OK
+=avancarelem     lista2   -1     OK
+=obtervalorelem  lista2   str2   OK
+=avancarelem     lista2   -1     OK
+=obtervalorelem  lista2   str1   OK
+=avancarelem     lista2   -1     OK
+=obtervalorelem  lista2   str0   OK
+
+== dar a volta na lista 2 ao contrario
+=obtervalorelem  lista2   str0   OK
+=avancarelem     lista2   1      OK
+=obtervalorelem  lista2   str1   OK
+=avancarelem     lista2   1      OK
+=obtervalorelem  lista2   str2   OK
+=avancarelem     lista2   1      OK
+=obtervalorelem  lista2   str3   OK
+
+== procura elementos na lista
+=procuravalorelem   lista2   str0   OK
+=procuravalorelem   lista2   str1   OK
+=procuravalorelem   lista2   str2   OK
+=procuravalorelem   lista2   str3   OK
+
+
+== Destruir a lista 2
+=destruirlista   lista2
+
+// fim

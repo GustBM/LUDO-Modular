@@ -86,7 +86,7 @@ void LiberarElemento( LISC_tppListaC  pLista , tpElemListaCircular  * pElem   )
 
       if ( ( pLista->ExcluirValor != NULL ) && ( pElem->pValor != NULL ))
       {
-         printf("eliminando %s", pElem->pValor);
+         
          pLista->ExcluirValor( pElem->pValor ) ;
       } /* if */
 
@@ -122,11 +122,9 @@ LISC_tpCondRet LISC_EsvaziarLista( LISC_tppListaC pLista )
 
          do
       {
-         printf("Pelem = %s  ", pElem -> pValor );
+         
          pProx = pElem->pProx ;
          LiberarElemento(pLista , pElem) ;
-
-         printf("Pelem pos = %s  \n", pElem -> pValor );
 
          pElem = pProx ;
       }  while ( pElem != pLista->pElemCorr );/* while */
@@ -137,9 +135,9 @@ LISC_tpCondRet LISC_EsvaziarLista( LISC_tppListaC pLista )
       }
       
 
-      printf("Pelem = %s  ", pElem -> pValor );
+      
       LiberarElemento(pLista , pElem);
-      printf("Pelem pos = %s  \n", pElem -> pValor );
+      
       LimparCabeca( pLista );
 
    return LISC_CondRetOK;
@@ -252,16 +250,18 @@ tpElemListaCircular* CriarElemento( LISC_tppListaC pLista , void *	pValor ){
          assert( pLista  != NULL ) ;
      // #endif
 
-      if ( pLista->pElemCorr == NULL )
+      if ( pLista->pElemCorr == NULL)
       {
+         assert(pLista ->numElem == 0);
          return LISC_CondRetListaVazia ;
       } /* if */
 
       for (i=0,pElem  = pLista->pElemCorr ;i < n; pElem  = pElem->pProx, i++)
       {
+         printf("corrente: %s   ",pElem->pValor );
          if ( pElem->pValor == pValor )
          {
-            pLista->pElemCorr = pElem ;
+            pLista->pElemCorr = pElem;
             return LISC_CondRetOK ;
          } /* if */
       } /* for */
