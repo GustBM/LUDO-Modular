@@ -19,7 +19,8 @@
 #include    "GENERICO.H"
 #include    "LERPARM.H"
 
-#define MAX_PECAS 15 //USADO PARA VETOR DE PECAS
+#define N_TIMES 4
+#define MAX_PECAS 4 //USADO PARA VETOR DE PECAS
 
 /***********************************************************************
 *
@@ -48,7 +49,7 @@ static const char ATUALIZAR_PECA_CMD      [ ] = "=atualizapeca"  ;
 *
 ***********************************************************************/
 
-PECA_tpPeca vtPecas[MAX_PECAS];
+PECA_tpPeca vtPecas[N_TIMES][MAX_PECAS];
 
 /***********************************************************************/
 
@@ -73,7 +74,7 @@ TST_tpCondRet TST_EfetuarComando( char * ComandoTeste )
 			return TST_CondRetParm;
 		}
 
-		CondRetObtido = PECA_CriaPeca ( vtPecas[iPeca], iPeca, cor ) ;
+		CondRetObtido = PECA_CriaPeca ( vtPecas[N_TIMES], iPeca, cor ) ;
 
 		return TST_CompararInt ( CondRetEsp, CondRetObtido, "Retorno errado") ;
 

@@ -55,53 +55,51 @@
 =obtervalorelem  lista0   str0   OK
 =destruirlista   lista0
 
-== Criar uma lista com dois elementos
+== Criar dois elementos para lista 1
 =criarlista      lista1 
 =inselemapos     lista1   str0   OK
 =inselemapos     lista1   str1   OK
 
-== Esvaziar a lista e ver se ficou vazia
+== Esvaziar a lista 1 e ver se ficou vazia
 =esvaziarlista   lista1
 =obtervalorelem  lista1   "???"     ListaVazia
 
-== Destruir a lista
+== Destruir a lista 1
 =destruirlista   lista1
 
-== Criar uma lista com quatro elementos
+== Criar uma lista 2 com quatro elementos
 =criarlista      lista2 
 =inselemapos     lista2   str0   OK
 =inselemapos     lista2   str1   OK
 =inselemapos     lista2   str2   OK
 =inselemapos     lista2   str3   OK
 
-== Verificar a lista de tr�s para diante
-=obtervalorelem  lista2   str3   pNaoNULL
+== dar a volta na lista 2
+=obtervalorelem  lista2   str3   OK
 =avancarelem     lista2   -1     OK
-=obtervalorelem  lista2   str2   pNaoNULL
+=obtervalorelem  lista2   str2   OK
 =avancarelem     lista2   -1     OK
-=obtervalorelem  lista2   str1   pNaoNULL
+=obtervalorelem  lista2   str1   OK
 =avancarelem     lista2   -1     OK
-=obtervalorelem  lista2   str0   pNaoNULL
+=obtervalorelem  lista2   str0   OK
 
-== Verificar a lista de frente para tr�s
-=obtervalorelem  lista2   str0   pNaoNULL
+== dar a volta na lista 2 ao contrario
+=obtervalorelem  lista2   str0   OK
 =avancarelem     lista2   1      OK
-=obtervalorelem  lista2   str1   pNaoNULL
+=obtervalorelem  lista2   str1   OK
 =avancarelem     lista2   1      OK
-=obtervalorelem  lista2   str2   pNaoNULL
+=obtervalorelem  lista2   str2   OK
 =avancarelem     lista2   1      OK
-=obtervalorelem  lista2   str3   pNaoNULL
-=avancarelem     lista2   1      FimLista
+=obtervalorelem  lista2   str3   OK
 
-== Verificar a lista andando demais de tr�s para diante
-=avancarelem     lista2   -10     FimLista
-=obtervalorelem  lista2   str0   pNaoNULL
+== procura elementos na lista
+=procuravalorelem   lista2   str0   OK
+=procuravalorelem   lista2   str1   OK
+=procuravalorelem   lista2   str2   OK
+=procuravalorelem   lista2   str3   OK
 
-== Verificar a lista andando demais de frente para tr�s
-=avancarelem     lista2   10     FimLista
-=obtervalorelem  lista2   str3   pNaoNULL
 
-== Destruir a lista
+== Destruir a lista 2
 =destruirlista   lista2
 
 // fim

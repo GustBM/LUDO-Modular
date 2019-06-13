@@ -4,7 +4,7 @@ GERADOR DE SCRIPT DE DIRETIVAS PARA MAKE
 Composição do construto: ..\COMPOSICAO\TestePeca.comp
 
    Nome do Construto:           TestePeca
-   Diretório base:              C:\Users\gusta\Desktop\LUDO_Modular\LUDO-Modular\LUDO-Modular\PRODUTOS
+   Diretório base:              C:\Users\e1711256\Documents\GitHub\LUDO-Modular\LUDO-Modular\PRODUTOS
 
    Arquivo composição:          ..\COMPOSICAO\TestePeca.comp
    Arquivo plataforma:          ..\COMPOSICAO\Gmake.parm
@@ -56,8 +56,8 @@ Estatísticas do construto
       testepeca.c
 
    Estatísticas do arquivo: testepeca.c
-      Total linhas:             145
-      Linhas de código:          69
+      Total linhas:             146
+      Linhas de código:          70
       Linhas de comentário:      37
       Linhas em branco:          39
    Arquivos de inclusão de que necessita
@@ -113,16 +113,16 @@ Totais por tipo de arquivo
          Arquivos deste tipo:          0
 
   Tipo: c        Path: ..\Fontes
-         Total linhas do tipo:       297
-         Linhas de código:           163
+         Total linhas do tipo:       298
+         Linhas de código:           164
          Linhas de comentário:        52
          Linhas em branco:            82
          Arquivos deste tipo:          2
 
 Totais para todo o construto TestePeca
 
-   Total linhas:              1889
-   Linhas de código:           296
+   Total linhas:              1890
+   Linhas de código:           297
    Linhas de comentário:      1327
    Linhas em branco:           266
    Arquivos processados:         6

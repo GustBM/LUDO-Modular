@@ -93,7 +93,7 @@ typedef enum {
 *  Para todo peca[i], peca = NULL.
 */
 
-PECA_CondRet PECA_CriaPeca ( PECA_tpPeca peca, int i, int cor ) ;
+PECA_CondRet PECA_CriaPeca ( PECA_tpPeca* peca, int i, int cor ) ;
 
 /* Assertivas de Saida PECA_CriaPeca
 *  A memoria referente a estrutura da peca tem que ser alocada

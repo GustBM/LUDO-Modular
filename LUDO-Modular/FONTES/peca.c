@@ -115,9 +115,9 @@ PECA_CondRet PECA_ObtemInfo( PECA* peca, int* cor, int* final, char* status )
 		return PECA_CondRetNaoExiste;
 	}
 
-	PECA_ObtemCor ( peca , &cor );
-	PECA_ObtemFim ( peca , &final );
-	PECA_ObtemStatus ( peca , &status);
+	PECA_ObtemCor ( peca , cor );
+	PECA_ObtemFim ( peca , final );
+	PECA_ObtemStatus ( peca , status);
 
 	return PECA_CondRetOK;
 
