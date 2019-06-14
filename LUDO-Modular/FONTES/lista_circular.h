@@ -112,7 +112,7 @@ typedef struct LISC_tagLista* LISC_tppListaC;
 ***********************************************************************/
 
 LISC_tppListaC LISC_CriarLista(void( * ExcluirValor ) ( void * pDado ),
-void(*CompararValor) (void * pValor1, void * pValor2));
+int(*CompararValor) (void * pValor1, void * pValor2));
 
 /***********************************************************************
 *

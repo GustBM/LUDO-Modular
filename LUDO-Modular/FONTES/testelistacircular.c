@@ -313,6 +313,8 @@ LISC_tppListaC   vtListas[ DIM_VT_LISTA ] ;
                 {
                   return TST_CondRetMemoria ;
                 } /* if */
+
+            strcpy(pDado,StringDado);
 			
 			CondRetObtido = LISC_ProcurarValor( vtListas[ inxLista ], pDado ) ;
 

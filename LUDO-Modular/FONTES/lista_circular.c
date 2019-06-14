@@ -51,7 +51,7 @@ typedef struct LISC_tagLista {
 
          void ( * ExcluirValor ) ( void * pValor ) ;
                /* Ponteiro para a funcao de destruicao do valor contido em um elemento */
-         void(*CompararValor) (void * pValor1, void * pValor2);
+         int(*CompararValor) (void * pValor1, void * pValor2);
                /* Ponteiro para a funcao de comparacao dos valores contidos em dois elementos */
 
    } LIS_tpListaC;
@@ -152,7 +152,7 @@ LISC_tpCondRet LISC_EsvaziarLista( LISC_tppListaC pLista )
 *  ****/
 
 LISC_tppListaC LISC_CriarLista(void( * ExcluirValor ) ( void * pDado ),
-void(*CompararValor) (void * pValor1, void * pValor2)){
+int(*CompararValor) (void * pValor1, void * pValor2)){
 
       LIS_tpListaC * pLista = NULL ;
 
@@ -250,7 +250,7 @@ tpElemListaCircular* CriarElemento( LISC_tppListaC pLista , void *	pValor ){
 
 	  int n = pLista->numElem;
 	  int i;
-
+      int comp;
      // #ifdef _DEBUG
          assert( pLista  != NULL ) ;
      // #endif
@@ -260,12 +260,14 @@ tpElemListaCircular* CriarElemento( LISC_tppListaC pLista , void *	pValor ){
          assert(pLista ->numElem == 0);
          return LISC_CondRetListaVazia ;
       } /* if */
-
+      
       for (i=0,pElem  = pLista->pElemCorr ;i < n; pElem  = pElem->pProx, i++)
       {
          printf("corrente: %s   ",pElem->pValor );
+         comp = (pLista->CompararValor(pElem->pValor,pValor));
+         printf("comp = %d\t", comp);
          if(((pLista->CompararValor) != NULL) && ((pElem->pValor) != NULL) && (pValor != NULL)){
-            if ((pLista->CompararValor(pElem->pValor,pValor)) == 0)
+            if (comp == 0)
             {
                pLista->pElemCorr = pElem;
                return LISC_CondRetOK ;
