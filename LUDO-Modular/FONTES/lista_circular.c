@@ -264,8 +264,8 @@ tpElemListaCircular* CriarElemento( LISC_tppListaC pLista , void *	pValor ){
       for (i=0,pElem  = pLista->pElemCorr ;i < n; pElem  = pElem->pProx, i++)
       {
          printf("corrente: %s   ",pElem->pValor );
-         if((pLista->CompararValor != NULL) && (pElem->pValor != NULL) && (pValor ! NULL)){
-            if (pLista->CompararValor(pElem->pValor,pValor) == 0);
+         if(((pLista->CompararValor) != NULL) && ((pElem->pValor) != NULL) && (pValor != NULL)){
+            if ((pLista->CompararValor(pElem->pValor,pValor)) == 0)
             {
                pLista->pElemCorr = pElem;
                return LISC_CondRetOK ;
