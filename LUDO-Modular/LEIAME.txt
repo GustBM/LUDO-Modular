@@ -1,5 +1,5 @@
 ==============================================================
-TRABALHO 2 - JOGO DE LUDO - LEIA-ME.TXT -  Arcabouço de Teste
+TRABALHO 2 - JOGO DE LUDO - LEIA-ME.TXT -  Arcabouï¿½o de Teste
 ==============================================================
 
 Alunos:
@@ -13,39 +13,24 @@ Este .txt explica o conteudo a ser testado e implementado no arcabouco.
 
 Passo a passo: 
 
-1)
+- Abra o CMD e entre na pasta BATCHES.
 
-Para a compilação do arcabouço:
--Entre na pasta BATCHES.
-- abra o CMD e realize os seguntes comandos:
-	
-	- LimpaTudo.bat
-	
-	- GeraTudo.bat
+- execute vsvars32.bat
 
-	-vsvars32.bat
+1) Para execucao individual dos modulos
 
-	- CompilaTudo
+- execute algum dos bacthes:
 
-	- TestaTudo (em progresso...)
-	
+	Acircular -> para testar o modulo lista circular
 
-2)
+	Apeca -> para testar o modulo peca
 
-Para a execução de cada um dos testes, basta seguir a ordem:
--Abrir o CMD e realizar os comandos:
+	Atabuleiro -> para testar o modulo tabuleiro
 
-	-cd ..\<localDoMódulo>
+2) Para a execucao de TODOS os modulos
 
-	-LimpaTudo.bat
+- execute Tudo.bat
 
-	-vsvars32.bat
-
-	-GeraMake <Nome Do Modulo Teste>
-
-	-Compila <Nome Do arquivo MAKE Teste>
-
-	-<Nome Do Executável Gerado>.exe /steste<lista/listacircular/peca/tabuleiro>
 
 	    
 ===========================================================================

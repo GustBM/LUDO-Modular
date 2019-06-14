@@ -3,7 +3,7 @@ REM Recompila tabuleiro
 cls
 
 Call LimpaTudo.bat
-Call GeraTudo.bat
+gmake  /B..\PRODUTOS\ /c..\COMPOSICAO\TesteTabuleiro /P..\COMPOSICAO\Gmake.parm
 Call Compila TesteTabuleiro
 Call Testa TesteTabuleiro TesteTabuleiro
 

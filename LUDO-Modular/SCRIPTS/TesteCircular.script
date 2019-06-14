@@ -45,12 +45,13 @@
 =obtervalorelem  lista0   str1   OK
 =excluirelem     lista0    OK
 
-== Ver se a lista ficou vazia
+== Procura elemento inexistente em lista0
 =procuravalorelem  lista0   "???"   NaoAchou
 
 == Destruir a lista 0
 =obtervalorelem  lista0   str0   OK
 =destruirlista   lista0
+
 
 == Criar dois elementos para lista 1
 =criarlista      lista1 

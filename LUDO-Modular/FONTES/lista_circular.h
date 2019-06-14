@@ -3,7 +3,7 @@
 
 /***************************************************************************
 *
-*  $MCD M�dulo de defini��o: LISC  Lista duplamente encadeada circular
+*  $MCD Modulo de definicao: LISC  Lista duplamente encadeada circular
 *
 *  Arquivo gerado:              lista_circular.h
 *  Letras identificadoras:      LISC
@@ -13,28 +13,30 @@
 *  Gestor:  LES/DI/PUC-Rio
 *  Autores: Eduardo Motta
 *
-*  $HA Hist�rico de evolu��o:
-*     Vers�o  Autor    Data     Observa��es
-*     1       avs   01/mai/2019 in�cio desenvolvimento
+*  $HA Historico de evolucao:
+*     Versao  Autor    Data     Observacoes
+*     1       avs   01/mai/2019 inicio desenvolvimento
 *
-*  $ED Descri��o do m�dulo
-*     Implementa listas gen�ricas duplamente encadeadas circulares.
-*     Podem existir n listas em opera��o simultaneamente.
-*     As listas possuem uma cabe�a encapsulando o seu estado.
+*  $ED Descricao do modulo
+*     Implementa listas genericas duplamente encadeadas circulares.
+*     Podem existir n listas em operacao simultaneamente.
+*     As listas possuem uma cabeca encapsulando o seu estado.
 *
-*     Cada lista � homog�nea quanto ao tipo dos dados que armazena.
-*     Cada elemento da lista referencia o valor que cont�m.
+*     Cada lista e homogenea quanto ao tipo dos dados que armazena.
+*     Cada elemento da lista referencia o valor que contem.
 *
-*     Os ponteiros para os dados s�o copiados para elementos da lista.
-*        N�o � copiado o valor apontado por estes ponteiros.
+*     Os ponteiros para os dados sao copiados para elementos da lista.
+*        Nao e copiado o valor apontado por estes ponteiros.
 *
-*     O controle da destrui��o do valor de um elemento a ser exclu�do
-*        � realizado por uma fun��o fornecida pelo usu�rio.
+*     O controle da destruicao do valor de um elemento a ser excluido
+*        e realizado por uma funcao fornecida pelo usuario.
 *
-*     Cada lista referencia uma fun��o que determina como devem ser
+*    
+*
+*     Cada lista referencia uma funcao que determina como devem ser
 *        desalocados os dados nela contidos.
 *
-*     A fun��o de libera��o dos valores contidos nos elementos deve
+*     A funcao de liberacao dos valores contidos nos elementos deve
 *        assegurar a libera��o de todos os espa�os refer�nciados pelo
 *        valor contido em um elemento.
 *        Esta fun��o � chamada antes de se desalocar um elemento
@@ -44,6 +46,10 @@
 *        Caso o elemento da lista seja a �nica �ncora do valor referenciado,
 *        esta fun��o deve promover a destrui��o (free) desse valor e
 *        de todos os dados nele ancorados.
+*
+*     Tambem deve ser fornecido pelo usuario uma funcao que compara dois
+*        elementos da lista que retorna um inteiro 0 caso ambos sejam iguais 
+*        e qualquer outro valor caso contrario.
 *
 ***************************************************************************/
 

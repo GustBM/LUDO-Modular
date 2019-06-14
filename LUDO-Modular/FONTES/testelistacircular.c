@@ -306,32 +306,10 @@ LISC_tppListaC   vtListas[ DIM_VT_LISTA ] ;
               || ( ! ValidarInxLista( inxLista , NAO_VAZIO )) )
             {
                return TST_CondRetParm ;
-            } /* if */
+            } /* if */			
+			CondRetObtido = LISC_ProcurarValor( vtListas[ inxLista ], StringDado ) ;
 
-            pDado = ( char * ) malloc( strlen( StringDado ) + 1 ) ;
-                if ( pDado == NULL )
-                {
-                  return TST_CondRetMemoria ;
-                } /* if */
-
-            strcpy(pDado,StringDado);
-			
-			CondRetObtido = LISC_ProcurarValor( vtListas[ inxLista ], pDado ) ;
-
-                if ( CondRetObtido != LISC_CondRetOK )
-                {
-                   free( pDado ) ;
-                } /* if */
-               else{
-                  if ( strcmp(pDado,StringDado) != 0)
-                  {
-                     return TST_CompararString( StringDado , pDado   ,
-                        "String retornada errada ao Obter Valor.") ;
-                  } /* if */
-               } /* else */
-               
-    			
-                return TST_CompararInt( ValEsp , CondRetObtido ,
+         return TST_CompararInt( ValEsp , CondRetObtido ,
                          "Condicao de retorno errada ao Buscar Elemento." ) ;
          } /* fim ativa: Testar procura valor */
          
