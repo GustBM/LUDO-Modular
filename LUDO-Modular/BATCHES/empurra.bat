@@ -7,6 +7,7 @@ pushd  .
 
 if ""=="%1" goto erro
 
+git pull
 call LimpaTudo.bat
 git add --all
 git commit -m "%1"
