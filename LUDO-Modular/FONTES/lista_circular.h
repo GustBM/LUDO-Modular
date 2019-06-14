@@ -83,43 +83,47 @@ typedef struct LISC_tagLista* LISC_tppListaC;
 
 /***********************************************************************
 *
-*  $FC Fun��o: LISC  &Criar lista circular
+*  $FC Funcao: LISC  &Criar lista circular
 *
-*  $ED Descri��o da fun��o
-*     Cria uma lista gen�rica circular.
-*     Os poss�veis tipos s�o desconhecidos a priori.
-*     A tipagem � implicita.
-*     N�o existe identificador de tipo associado � lista.
+*  $ED Descricao da funcao
+*     Cria uma lista generica circular.
+*     Os possiveis tipos sao desconhecidos a priori.
+*     A tipagem eh implicita.
+*     Nao existe identificador de tipo associado a lista.
 *
-*  $EP Par�metros
-*     ExcluirValor  - ponteiro para a fun��o que processa a
-*                     exclus�o do valor referenciado pelo elemento
-*                     a ser exclu�do.
-*                     Ver descri��o do m�dulo.
+*  $EP Parametros
+*     ExcluirValor  - Ponteiro para a funcao que processa a
+*                     exclusao do valor referenciado pelo elemento
+*                     a ser excluido.
+*                     Ver descricao do modulo.
+*
+*     CompararValor - Ponteiro para a funcao que processa a
+*                     comparacao de valores referenciados pelo elemento
+*                     Ver descricao do modulo.
 *
 *  $FV Valor retornado
 *     Se executou corretamente retorna o ponteiro para a lista.
-*     Este ponteiro ser� utilizado pelas fun��es que manipulem esta lista.
+*     Este ponteiro sera utilizado pelas funcoes que manipulem esta lista.
 *
-*     Se ocorreu algum erro, por exemplo falta de mem�ria ou dados errados,
-*     a fun��o retornar� NULL.
-*     N�o ser� dada mais informa��o quanto ao problema ocorrido.
+*     Se ocorreu algum erro, por exemplo falta de memoria ou dados errados,
+*     a funcao retornara NULL.
+*     Nao sera dada mais informacao quanto ao problema ocorrido.
 *
 ***********************************************************************/
 
-LISC_tppListaC LISC_CriarLista(
-	void(*ExcluirValor) (void * pDado));
+LISC_tppListaC LISC_CriarLista(void( * ExcluirValor ) ( void * pDado ),
+void(*CompararValor) (void * pValor1, void * pValor2));
 
 /***********************************************************************
 *
-*  $FC Fun��o: LISC  &Destruir lista circular
+*  $FC Funcao: LISC  &Destruir lista circular
 *
-*  $ED Descri��o da fun��o
-*     Destr�i a lista circular fornecida.
-*     O par�metro ponteiro para a lista circular n�o � modificado.
-*     Se ocorrer algum erro durante a destrui��o, a lista resultar�
+*  $ED Descricao da funcao
+*     Destroi a lista circular fornecida.
+*     O parametro ponteiro para a lista circular nao eh modificado.
+*     Se ocorrer algum erro durante a destruicao, a lista resultara
 *     estruturalmente incorreta.
-*     OBS. n�o existe previs�o para poss�veis falhas de execu��o.
+*     OBS. nao existe previsao para possiveis falhas de execucao.
 *
 *  $FV Valor retornado
 *     LISC_CondRetOK    - destruiu sem problemas
@@ -130,12 +134,12 @@ LISC_tppListaC LISC_CriarLista(
 
 /***********************************************************************
 *
-*  $FC Fun��o: LISC  &Esvaziar lista 
+*  $FC Funcao: LISC  &Esvaziar lista 
 *
-*  $ED Descri��o da fun��o
+*  $ED Descricao da funcao
 *     Elimina todos os elementos, sem contudo eliminar a lista
 *
-*  $EP Par�metros
+*  $EP Parametros
 *     pLista - ponteiro para a lista a ser esvaziada
 *
 ***********************************************************************/
@@ -144,13 +148,13 @@ LISC_tpCondRet LISC_EsvaziarLista( LISC_tppListaC pLista ) ;
 
    /***********************************************************************
 *
-*  $FC Fun��o: LISC  &Inserir elemento antes
+*  $FC Funcao: LISC  &Inserir elemento antes
 *
-*  $ED Descri��o da fun��o
+*  $ED Descricao da funcao
 *     Insere novo elemento antes do elemento corrente.
 *     Caso a lista esteja vazia, insere o primeiro elemento da lista.
 *
-*  $EP Par�metros
+*  $EP Parametros
 *     pLista - ponteiro para a lista onde deve ser inserido o elemento
 *     pValor - ponteiro para o valor do novo elemento
 *              Pode ser NULL
@@ -158,6 +162,7 @@ LISC_tpCondRet LISC_EsvaziarLista( LISC_tppListaC pLista ) ;
 *  $FV Valor retornado
 *     LISC_CondRetOK
 *     LISC_CondRetFaltouMemoria
+*     LISC_CondRetListaVazia
 *
 ***********************************************************************/
 
@@ -167,14 +172,14 @@ LISC_tpCondRet LISC_EsvaziarLista( LISC_tppListaC pLista ) ;
 
 /***********************************************************************
 *
-*  $FC Fun��o: LISC &Inserir elemento ap�s
+*  $FC Funcao: LISC &Inserir elemento apos
 *
-*  $ED Descri��o da fun��o
-*     Insere novo elemento ap�s o elemento corrente.
+*  $ED Descricao da funcao
+*     Insere novo elemento apos o elemento corrente.
 *     Caso a lista esteja vazia, insere o primeiro elemento da lista.
 *
-*  $EP Par�metros
-*     Par�metros
+*  $EP Parametros
+*     Parametros
 *        pLista - ponteiro para a lista onde deve ser inserido o elemento
 *        pValor - ponteiro para o valor do novo elemento
 *                 Pode ser NULL
@@ -194,15 +199,15 @@ LISC_tpCondRet LISC_EsvaziarLista( LISC_tppListaC pLista ) ;
 
 /***********************************************************************
 *
-*  $FC Fun��o: LISC  &Excluir elemento
+*  $FC Funcao: LISC  &Excluir elemento
 *
-*  $ED Descri��o da fun��o
+*  $ED Descricao da funcao
 *     Exclui o elemento corrente da lista dada.
-*     Se existir o elemento aa esquerda do corrente ser� o novo corrente.
-*     Se n�o existir e existir o elemento � direita, este se tornar� corrente.
-*     Se este tamb�m n�o existir a lista tornou-se vazia.
+*     Se existir o elemento aa esquerda do corrente sera o novo corrente.
+*     Se nao existir e existir o elemento a direita, este se tornara corrente.
+*     Se este tambem nao existir a lista tornou-se vazia.
 *
-*  $EP Par�metros
+*  $EP Parametros
 *     pLista    - ponteiro para a lista na qual deve excluir.
 *
 *  $FV Valor retornado
@@ -216,12 +221,12 @@ LISC_tpCondRet LISC_EsvaziarLista( LISC_tppListaC pLista ) ;
 
    /***********************************************************************
 *
-*  $FC Fun��o: LISC  &Obter refer�ncia para o valor contido no elemento
+*  $FC Funcao: LISC  &Obter referencia para o valor contido no elemento
 *
-*  $ED Descri��o da fun��o
-*     Obtem a refer�ncia para o valor contido no elemento corrente da lista
+*  $ED Descricao da funcao
+*     Obtem a referencia para o valor contido no elemento corrente da lista
 *
-*  $EP Par�metros
+*  $EP Parametros
 *     pLista - ponteiro para a lista de onde se quer o valor
 *
 *  $FV Valor retornado
@@ -236,26 +241,25 @@ LISC_tpCondRet LISC_EsvaziarLista( LISC_tppListaC pLista ) ;
 
    /***********************************************************************
 *
-*  $FC Fun��o: LISC  &Procurar elemento contendo valor
+*  $FC Funcao: LISC  &Procurar elemento contendo valor
 *
-*  $ED Descri��o da fun��o
+*  $ED Descricao da funcao
 *     Procura o elemento que referencia o valor dado.
-*     A fun��o compara ponteiro e n�o conte�do apontado.
+*     a comparacao ocorre utilizando a funcao 'ComparaValor' fornecida
 *
-*  $EP Par�metros
+*  $EP Parametros
 *     pLista  - ponteiro para a lista onde procura
 *     pValor  - ponteiro para o valor procurado
 *               Pode ser NULL
 *
 *  $FV Valor retornado
-*     LISC_CondRetOK  - se encontrou.
-*                      O elemento corrente � o primeiro elemento do
-*                      elemento corrente inclusive para o fim da lista
-*                      e que cont�m o ponteiro procurado
+*     LISC_CondRetOK           - Se encontrou.
+*                      a primeira instancia do elemento encontrada
+*                      se torna o elemento corrente 
 *
-*     LISC_CondRetNaoEncontrou - se o ponteiro n�o foi encontrado
+*     LISC_CondRetNaoEncontrou - Se o ponteiro nao foi encontrado
 *                      O elemento corrente continua o mesmo
-*     LISC_CondRetListaVazia   - se a lista estiver vazia
+*     LISC_CondRetListaVazia   - Se a lista estiver vazia
 *
 ***********************************************************************/
 
@@ -264,7 +268,7 @@ LISC_tpCondRet LISC_EsvaziarLista( LISC_tppListaC pLista ) ;
 
 /***********************************************************************
  *
- *  $FC Fun��o: LISC  &Avancar elemento
+ *  $FC Funcao: LISC  &Avancar elemento
  *
  *  $ED Descricao da funcao
  *    Avanca o elemento corrente 'num' elementos na lista.
@@ -289,6 +293,6 @@ LISC_tpCondRet LISC_AvancarElementoCorrente(LISC_tppListaC pLista ,
 
 
 
-   /********** Fim do m�dulo de defini��o: LISC  Lista circular duplamente encadeada **********/
+   /********** Fim do midulo de definicao: LISC  Lista circular duplamente encadeada **********/
   #else
 #endif

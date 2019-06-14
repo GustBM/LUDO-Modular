@@ -1,7 +1,0 @@
-/OUT:..\produtos\TestePeca.exe
-/INCREMENTAL:NO
-/MACHINE:IX86
-testepeca.obj  peca.obj  
-../objetos/ArcaboucoTeste.lib
-../objetos/peca.obj
-

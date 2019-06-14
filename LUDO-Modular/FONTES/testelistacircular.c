@@ -31,26 +31,28 @@ static const char AVANCAR_ELEMC_CMD		   [ ] = "=avancarelem"    ;
 
 LISC_tppListaC   vtListas[ DIM_VT_LISTA ] ;
 
-/***** Prot�tipos das fun��es encapuladas no m�dulo *****/
+/***** Prototipos das funcoes encapuladas no modulo *****/
 
    static void DestruirValor( void * pValor ) ;
 
+   static int CompararValor( void * pValor1 , void * pValor2);
+
    static int ValidarInxLista( int inxLista , int Modo ) ;
 
-/*****  C�digo das fun��es exportadas pelo m�dulo  *****/
+/*****  Codigo das funcoes exportadas pelo modulo  *****/
 
 
 /***********************************************************************
 *
-*  $FC Fun��o: TLIS &Testar lista
+*  $FC Funcao: TLISC &Testar lista circular
 *
-*  $ED Descri��o da fun��o
-*     Podem ser criadas at� 10 listas, identificadas pelos �ndices 0 a 10
+*  $ED Descricao da funcao
+*     Podem ser criadas ate 10 listas circulares, identificadas pelos indices 0 a 10
 *
-*     Comandos dispon�veis:
+*     Comandos disponiveis:
 *
 *     =resetteste
-*           - anula o vetor de listas. Provoca vazamento de mem�ria
+*           - anula o vetor de listas. Provoca vazamento de memoria
 *     =criarlista                   inxLista
 *     =destruirlista                inxLista
 *     =esvaziarlista                inxLista
@@ -114,7 +116,7 @@ LISC_tppListaC   vtListas[ DIM_VT_LISTA ] ;
                return TST_CondRetParm ;
             } /* if */
 
-            vtListas[ inxLista ] = LISC_CriarLista( DestruirValor ) ;
+            vtListas[ inxLista ] = LISC_CriarLista( DestruirValor, CompararValor ) ;
 
             return TST_CompararPonteiroNulo( 1 , vtListas[ inxLista ] ,
                "Erro em ponteiro de nova lista."  ) ;
@@ -384,6 +386,19 @@ LISC_tppListaC   vtListas[ DIM_VT_LISTA ] ;
       free( pValor ) ;
 
    } /* Fim fun��o: TLIS -Destruir valor */
+
+/***********************************************************************
+*
+*  $FC Fun��o: TLIS -comparar valor
+*
+***********************************************************************/
+
+   int CompararValor( void * pValor1 , void * pValor2)
+   {
+
+     return strcmp( pValor1 , pValor2);
+
+   } /* Fim fun��o: TLIS -Comparar valor */
 
 
 /***********************************************************************
