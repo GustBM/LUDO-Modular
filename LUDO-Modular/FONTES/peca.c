@@ -32,24 +32,6 @@ typedef struct Peca {
 
 
 /*****  C�digo das fun��es exportadas pelo m�dulo  *****/
-PECA_CondRet PECA_CriaVetPeca ( PECA** peca ){
-
-	int i;
-
-	peca = ( PECA ** ) malloc ( sizeof ( PECA *) * MAX_PECAS) ;
-
-	if ( peca == NULL ) 
-	{
-		return PECA_CondRetFaltaMemoria ;
-	}
-
-	for(i=0;i<MAX_PECAS;i++){
-		peca[i] = NULL;
-	}
-
-	return PECA_CondRetOK ;
-
-}
 
 
 
@@ -66,7 +48,7 @@ PECA_CondRet PECA_CriaPeca ( PECA** peca, int i, int cor )
 	{
 		return PECA_CondRetIdxInvalido ;
 	}
-	//erro aqui
+
 	if(peca[i] != NULL)
 	{
 		return PECA_CondRetExiste;

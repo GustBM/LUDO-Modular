@@ -6,10 +6,6 @@
 
 
 == Inicializar valores
-=declararparm   vet0  int 0
-=declararparm   vet1  int 1
-=declararparm   vet2  int 2
-
 
 =declararparm   red     int 0
 =declararparm   blue    int 1
@@ -33,40 +29,37 @@
 =declararparm   IdxInvalido     int  7
 
 
-==criar vetor de peca corretamente
-=criarvetpeca   vet0    OK
-
 == Criar pecas vermelhas corretamente
-=criarpeca      vet0   0   red   OK
-=criarpeca      vet0   1   red   OK
-=criarpeca      vet0   2   red   OK
-=criarpeca      vet0   3   red   OK
+=criarpeca      0   red   OK
+=criarpeca      1   red   OK
+=criarpeca      2   red   OK
+=criarpeca      3   red   OK
 
 ==Criar peca azul com erro
-=criarpeca      vet0   0   blue  JaExiste
+=criarpeca      0   blue  JaExiste
 
 ==Destruir peca vermelha
-=destruirpeca   vet0   0   OK
+=destruirpeca   0   OK
 
 ==Obter informacoes sem erro
-=obterstatus    vet0   1   OK
+=obterstatus    1   OK
 
 ==Obter informacoes com erro
-=obterstatus    vet0   0   NaoExiste
+=obterstatus    0   NaoExiste
 
 ==Atualiza peca sem erro
-=atualizapeca   vet0   1   ini   status0   OK
+=atualizapeca   1   ini   status0   OK
 
 
 
 ==Atualiza peca com erro
-=atualizapeca   vet0   0   ini   status0   NaoExiste
+=atualizapeca    0   ini   status0   NaoExiste
 
 
 ==Destruir peca corretamente
-=destruirpeca   vet0   1   OK
-=destruirpeca   vet0   2   OK
-=destruirpeca   vet0   3   OK
+=destruirpeca   1   OK
+=destruirpeca   2   OK
+=destruirpeca   3   OK
 
 //                                       
 // fim       
