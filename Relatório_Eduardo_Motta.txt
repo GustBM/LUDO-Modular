@@ -73,8 +73,8 @@ Este relat�rio expecificara as tarefas e produtos desenvolvidos por Eduardo Mo
 (2  horas)
 
 => 15/06/2019
-*melhorias no modulo teste peca
-(4  horas)
+*peca completo
+(5  horas)
 
 
 Os dias com data n�o especificada foram continua��es dos trabalhos dos dias anteriores (Entre 1 e 3 horas de trabalho di�rio).

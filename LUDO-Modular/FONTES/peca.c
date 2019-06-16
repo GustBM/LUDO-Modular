@@ -37,17 +37,10 @@ typedef struct Peca {
 
 PECA_CondRet PECA_CriaPeca ( PECA** peca, int i, int cor ) 
 {
-	
 
-	if ( (cor < 0) || (cor > 3) )
-	{
-		return PECA_CondRetCorInvalida ;
-	}
-	
-	if ( (i < 0) || (i > 15) )
-	{
-		return PECA_CondRetIdxInvalido ;
-	}
+	assert((cor >= 0) && (cor <= 3));
+
+	assert((i >= 0) && (i <= 15)); 
 
 	if(peca[i] != NULL)
 	{
@@ -140,25 +133,17 @@ PECA_CondRet PECA_ObtemInfo( PECA* peca, int* cor, int* final, char* status )
 PECA_CondRet PECA_AtualizaPeca ( PECA* peca , int final, char status ) 
 {
 
+	assert(final == 0 || final == 1);
+
+	assert(status == 'D' || status == 'F');
+
 	if(peca == NULL)
 	{
 		return PECA_CondRetNaoExiste;
 	}
-
-	if ( final < 0 || final > 1 )
-	{
-		return PECA_CondRetFimErrado ;
-	}
-
-	if ( status == 'D' || status == 'F' )
-	{
-		peca->final = final ;
-		peca->status = status ;
-	}
-	else
-	{
-		return PECA_CondRetStatusErrado ;
-	}
+	
+	peca->final = final ;
+	peca->status = status ;
 
 	return PECA_CondRetOK ;
 

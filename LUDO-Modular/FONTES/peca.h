@@ -14,26 +14,37 @@
 *
 *
 *  $ED Descri��o do m�dulo
-*     Cria uma Pe�a a partir de um dado �ndice no vetor.
-*     Destroi uma Pe�a a partir de um dado �ndice no vetor.
-*     Obtem informa��es sobre a Pe�a a partir de um dado indice no vetor.
-*     Atualiza status e final de uma Pe�a a partir de um dado indice no vetor.
+*     Cria uma Pe�a a partir de um vetor de ponteiros para peca.
+*     Destroi uma Pe�a a partir de um dado ponteiro para peca.
+*     Obtem informa��es sobre a Pe�a a partir de um dado ponteiro para peca.
+*     Atualiza status e final de uma Pe�a a partir de um dado ponteiro para peca.
 *
-*     OBS IMPORTANTE: O vetor de pecas � dividido de acordo com as cores de cada peca,
-*					a cor vermelha ocupa os 4 primeiros espa�os do vetor, a cor azul
-*					os pr�ximos 4 espa�os e assim em diante com as cores verde e amarelo em sequencia.
+*    
 *
 **************************************************************************/
 
-/*****************INFORMACAO DA COR*********************
+/*****************INFORMACAO DA PECA*********************
 *
-*  A COR DE CADA PE�A � CLASSIFICADA COMO:
+*  	A COR DE CADA PE�A � CLASSIFICADA COMO:
 *
 *       0 - VERMELHO
 *       1 - AZUL
 *       2 - VERDE
 *       3 - AMARELO
-
+*
+*	O STATUS DA PECA EH IDENTIFICADO COMO
+*
+*		'D' - Dentro to tabuleiro
+*
+*		'F' - Fora do tabuleiro
+*
+*	INDICACAO SE A PECA CHEGOU NA ULTIMA CASA
+*	
+*		0 - Nao
+*		
+*		1 - Sim
+*
+*
 /***** Declara��es exportadas pelo m�dulo *****/
 
 /* Tipo refer�ncia para uma pe�a */
@@ -54,13 +65,7 @@ typedef enum {
 		/* Condi��o de retorno correto */
 
 	PECA_CondRetFaltaMemoria , 
-		/* Condi��o de retorno por Falta de mem�ria na aloca��o */
-
-	PECA_CondRetCorInvalida ,
-		/*Condi��o de retorno devido a Cor inv�lida */
-
-	PECA_CondRetFimErrado ,
-		/* Condi��o de retorno devido a Fim Errado */						
+		/* Condi��o de retorno por Falta de mem�ria na aloca��o */					
 
 	PECA_CondRetExiste ,
 		/* Condi��o de retorno que indica que Peca existe */
@@ -68,31 +73,7 @@ typedef enum {
 	PECA_CondRetNaoExiste,
 		/* Condi��o de retorno que indica que Peca nao existe */
 
-	PECA_CondRetStatusErrado,
-		/* Condi��o de retorno que indica Status Errado */
-	PECA_CondRetIdxInvalido
-		/*Condi��o de retorno devido a indice inv�lida */
-
 } PECA_CondRet;
-
-/***********************************************************************
-*
-*  $FC Fun��o: PECA &Criar VetPECA
-*
-*  $ED Descri��o da fun��o
-*     Cria o vetor de pecas que ira alocar todas as pecas da partida
-*
-*
-***********************************************************************/
-/* Assertivas de Entrada PECA_CriaPeca
-*  Existir m�moria suficiente para criacao da pe�a
-*  S� pode criar uma pe�a que n�o exista at� o momento de cria��o (peca[i] = NULL)
-*  A cor dada (int) tem que ser entre 0 e 3
-*  O indice dado (int) tem que ser entre 0 e 3
-*  Para todo peca[i], peca = NULL.
-*/
-
-PECA_CondRet PECA_CriaVetPeca ( PECA_tpPeca* peca );
 
 /***********************************************************************
 *

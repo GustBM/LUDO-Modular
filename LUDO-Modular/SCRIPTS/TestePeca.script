@@ -1,7 +1,7 @@
 // Script:    TestePeca.script
 // Autor:     Luiz Fellipe Augusto, Eduardo Motta, Gustavo Barros
 // Data:      09/Mai/2019
-// Prop�sito: Testar o m�dulo peca.
+// Proposito: Testar o modulo peca.
 //
 
 
@@ -17,16 +17,12 @@
 
 =declararparm   status0 char 'D'
 =declararparm   status1 char 'F'
-=declararparm   status2 char 'J'
 
 =declararparm   OK              int  0
 =declararparm   FaltouMemoria   int  1
-=declararparm   CorInvalida     int  2
-=declararparm   FinalErrado     int  3
-=declararparm   JaExiste        int  4
-=declararparm   NaoExiste       int  5
-=declararparm   StatusErrado    int  6
-=declararparm   IdxInvalido     int  7
+=declararparm   JaExiste        int  2
+=declararparm   NaoExiste       int  3
+
 
 
 == Criar pecas vermelhas corretamente
@@ -40,6 +36,9 @@
 
 ==Destruir peca vermelha
 =destruirpeca   0   OK
+
+==Destruir peca com erro
+=destruirpeca   0   NaoExiste
 
 ==Obter informacoes sem erro
 =obterstatus    1   OK
