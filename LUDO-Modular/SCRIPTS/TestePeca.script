@@ -1,25 +1,23 @@
 // Script:    TestePeca.script
 // Autor:     Luiz Fellipe Augusto, Eduardo Motta, Gustavo Barros
 // Data:      09/Mai/2019
-// Propósito: Testar o módulo peca.
+// Propï¿½sito: Testar o mï¿½dulo peca.
 //
 
 
 == Inicializar valores
-=declararparm   ip0  int 0
-=declararparm   ip1  int 15
-=declararparm   ip3  int 3
-=declararparm   ip2  int 2
+=declararparm   vet0  int 0
+=declararparm   vet1  int 1
+=declararparm   vet2  int 2
 
-=declararparm   corp0  int 0
-=declararparm   corp1  int 3
-=declararparm   corp2  int 5
-=declararparm   corp3  int -1
 
-=declararparm   fim0 int -1
-=declararparm   fim1 int 0
-=declararparm   fim2 int 1
-=declararparm   fim3 int 2
+=declararparm   red     int 0
+=declararparm   blue    int 1
+=declararparm   green   int 2
+=declararparm   yellow  int 3
+
+=declararparm   ini int 0
+=declararparm   fim int 1
 
 =declararparm   status0 char 'D'
 =declararparm   status1 char 'F'
@@ -27,40 +25,45 @@
 
 =declararparm   OK              int  0
 =declararparm   FaltouMemoria   int  1
-=declararparm   StatusErrado    int  2
+=declararparm   CorInvalida     int  2
 =declararparm   FinalErrado     int  3
-=declararparm   CorInvalida     int  4
-=declararparm   JaExiste        int  5
-=declararparm   NaoExiste       int  6
+=declararparm   JaExiste        int  4
+=declararparm   NaoExiste       int  5
+=declararparm   StatusErrado    int  6
+=declararparm   IdxInvalido     int  7
 
-== Criar peca corretamente
-=criarpeca      ip0  corp0 OK
-=criarpeca      ip1  corp1 OK
 
-==Criar peca com erro
-=criarpeca      ip3  corp2 CorInvalida
-=criarpeca      ip3  corp2 JaExiste
+==criar vetor de peca corretamente
+=criarvetpeca   vet0    OK
 
-==Destruir peca com erro
-=destruirpeca   ip2  NaoExiste
+== Criar pecas vermelhas corretamente
+=criarpeca      vet0   0   red   OK
+=criarpeca      vet0   1   red   OK
+=criarpeca      vet0   2   red   OK
+=criarpeca      vet0   3   red   OK
 
-==Obter informação sem erro
-=obterstatus    ip0  OK
-=obterstatus    ip1  OK
+==Criar peca azul com erro
+=criarpeca      vet0   0   blue  JaExiste
 
-==Obter informação com erro
-=obterstatus    ip2  NaoExiste
+==Destruir peca vermelha
+=destruirpeca   vet0   0   OK
 
-==Atualiza peça sem erro
-=atualizapeca   ip0 fim1 status0 OK
-=atualizapeca   ip1 fim2 status0 OK
+==Obter informacoes sem erro
+=obterstatus    vet0   1   OK
 
-==Atualiza peça com erro
-=atualizapeca   ip0 fim0 status0 FinalErrado
-=atualizapeca   ip0 fim3 status0 FinalErrado
-=atualizapeca   ip0 fim1 status2 StatusErrado
-=atualizapeca   ip0 fim2 status2 StatusErrado
-=atualizapeca   ip2 fim1 status1 NaoExiste
+==Obter informacoes com erro
+=obterstatus    vet0   0   NaoExiste
+
+==Atualiza peca sem erro
+=atualizapeca   vet0   1   ini   status0   OK
+
+
+
+==Atualiza peca com erro
+=atualizapeca   vet0   0   ini   status0   NaoExiste
+=atualizapeca   vet0   2   ini   status0   OK
+=atualizapeca   vet0   3   ini   status0   NaoExiste
+
 
 ==Destruir peca corretamente
 =destruirpeca   ip0  OK

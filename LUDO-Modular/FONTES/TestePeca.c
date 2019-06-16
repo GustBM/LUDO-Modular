@@ -19,8 +19,10 @@
 #include    "GENERICO.H"
 #include    "LERPARM.H"
 
-#define N_TIMES 4
-#define MAX_PECAS 4 //USADO PARA VETOR DE PECAS
+#define MAX_PECAS 16 
+
+
+#define DIM_VT_PECAS  8
 
 /***********************************************************************
 *
@@ -38,6 +40,7 @@
 *
 ***********************************************************************/
 
+static const char CRIAR_VET_PECA_CMD      [ ] = "=criarvetpeca"  ;
 static const char CRIAR_PECA_CMD          [ ] = "=criarpeca"     ;
 static const char DESTRUIR_PECA_CMD       [ ] = "=destruirpeca"  ;
 static const char OBTER_STATUS_CMD        [ ] = "=obterstatus"   ;
@@ -49,7 +52,7 @@ static const char ATUALIZAR_PECA_CMD      [ ] = "=atualizapeca"  ;
 *
 ***********************************************************************/
 
-PECA_tpPeca vtPecas[N_TIMES][MAX_PECAS];
+PECA_tpPeca* mtxPecas[DIM_VT_PECAS];
 
 /***********************************************************************/
 
@@ -61,20 +64,38 @@ TST_tpCondRet TST_EfetuarComando( char * ComandoTeste )
 	int CondRetEsp    = -1 ;
 	int CondRetObtido = -1 ;
 	int final         = -1 ;
+	int indx		  = -1 ;
 	char status            ;
 	PECA_tpPeca *p          ;
 
-	/* Testar Criar */
+	/* Testar CriarVetPeca */
 
-	if( strcmp( ComandoTeste , CRIAR_PECA_CMD ) == 0 )
+	if( strcmp( ComandoTeste , CRIAR_VET_PECA_CMD  ) == 0 )
 	{
-		numLidos = LER_LerParametros( "iii", &iPeca, &cor ,&CondRetEsp);
-		if( numLidos != 3 )
+		numLidos = LER_LerParametros( "ii", &iPeca,&CondRetEsp);
+		if( numLidos != 2 )
 		{
 			return TST_CondRetParm;
 		}
 
-		CondRetObtido = PECA_CriaPeca ( vtPecas[N_TIMES], iPeca, cor ) ;
+		CondRetObtido = PECA_CriaVetPeca ( mtxPecas[iPeca]) ;
+
+		return TST_CompararInt ( CondRetEsp, CondRetObtido, "Retorno errado") ;
+
+
+	}
+
+	/* Testar CriarPeca */
+
+	if( strcmp( ComandoTeste , CRIAR_PECA_CMD ) == 0 )
+	{
+		numLidos = LER_LerParametros( "iiii", &iPeca,&indx, &cor ,&CondRetEsp);
+		if( numLidos != 4 )
+		{
+			return TST_CondRetParm;
+		}
+
+		CondRetObtido = PECA_CriaPeca ( mtxPecas[iPeca],indx , cor ) ;
 
 		return TST_CompararInt ( CondRetEsp, CondRetObtido, "Retorno errado") ;
 
@@ -85,15 +106,14 @@ TST_tpCondRet TST_EfetuarComando( char * ComandoTeste )
 	
 	else if ( strcmp( ComandoTeste , DESTRUIR_PECA_CMD ) == 0 )
 	{
-		numLidos = LER_LerParametros( "ii", &iPeca, &CondRetEsp ) ;
+		numLidos = LER_LerParametros( "iii", &iPeca, &index ,&CondRetEsp ) ;
 
-		if ( numLidos != 2 )
+		if ( numLidos != 3 )
 		{
 			return TST_CondRetParm ;
 		}
 
-		CondRetObtido = PECA_DestroiPeca ( vtPecas[N_TIMES][iPeca] ) ;
-		p = NULL ;
+		CondRetObtido = PECA_DestroiPeca ( mtxPecas[iPeca][index] ) ;
 
 		return TST_CompararInt (CondRetEsp, CondRetObtido, "Retorno errado") ;
 
@@ -104,15 +124,15 @@ TST_tpCondRet TST_EfetuarComando( char * ComandoTeste )
          else if ( strcmp( ComandoTeste , OBTER_STATUS_CMD ) == 0 )
          {
 
-            numLidos = LER_LerParametros( "ii", &iPeca, &CondRetEsp ) ;
+            numLidos = LER_LerParametros( "iii", &iPeca, &index ,&CondRetEsp ) ;
 
-            if (  numLidos != 2 )
-            {
-               return TST_CondRetParm ;
-            }
+			if ( numLidos != 3 )
+			{
+				return TST_CondRetParm ;
+			}
 
 
-            CondRetObtido = PECA_ObtemInfo( vtPecas[N_TIMES][iPeca], &cor, &final, &status ) ;
+            CondRetObtido = PECA_ObtemInfo( mtxPecas[iPeca][index], &cor, &final, &status ) ;
 			
             return TST_CompararInt( CondRetEsp , CondRetObtido ,
                      "Condicao de retorno errada ao obter status." ) ;
@@ -124,15 +144,15 @@ TST_tpCondRet TST_EfetuarComando( char * ComandoTeste )
          else if ( strcmp( ComandoTeste , ATUALIZAR_PECA_CMD ) == 0 )
          {
 
-            numLidos = LER_LerParametros( "iici", &iPeca, &final, &status, &CondRetEsp ) ;
+            numLidos = LER_LerParametros( "iiici", &iPeca, &index ,&final, &status, &CondRetEsp ) ;
 
-            if (  numLidos != 4 )
+            if (  numLidos != 5 )
             {
                return TST_CondRetParm ;
             }
 
 
-            CondRetObtido = PECA_AtualizaPeca( vtPecas[N_TIMES][iPeca], final, status ) ;
+            CondRetObtido = PECA_AtualizaPeca( mtxPecas[iPeca][index], final, status ) ;
 			
             return TST_CompararInt( CondRetEsp , CondRetObtido ,
                      "Condicao de retorno errada ao Atualiza Peca." ) ;

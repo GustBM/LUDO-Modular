@@ -20,12 +20,12 @@
 *     Atualiza status e final de uma Pe�a a partir de um dado indice no vetor.
 *
 *     OBS IMPORTANTE: O vetor de pecas � dividido de acordo com as cores de cada peca,
-					a cor vermelha ocupa os 4 primeiros espa�os do vetor, a cor azul
-					os pr�ximos 4 espa�os e assim em diante com as cores verde e amarelo.
+*					a cor vermelha ocupa os 4 primeiros espa�os do vetor, a cor azul
+*					os pr�ximos 4 espa�os e assim em diante com as cores verde e amarelo em sequencia.
 *
 **************************************************************************/
 
-/*****************INFORMA��O DA COR*********************
+/*****************INFORMACAO DA COR*********************
 *
 *  A COR DE CADA PE�A � CLASSIFICADA COMO:
 *
@@ -68,29 +68,47 @@ typedef enum {
 	PECA_CondRetNaoExiste,
 		/* Condi��o de retorno que indica que Peca nao existe */
 
-	PECA_CondRetStatusErrado
+	PECA_CondRetStatusErrado,
 		/* Condi��o de retorno que indica Status Errado */
+	PECA_CondRetIdxInvalido
+		/*Condi��o de retorno devido a indice inv�lida */
 
 } PECA_CondRet;
 
 /***********************************************************************
 *
-*  $FC Fun��o: PECA &Criar PECA
+*  $FC Fun��o: PECA &Criar VetPECA
 *
 *  $ED Descri��o da fun��o
-*     Cria uma pe�a, dado um indice, no vetor.
+*     Cria o vetor de pecas que ira alocar todas as pecas da partida
 *
-*  $EP Parametros
-*  * peca - ponteiro para pe�a a ser criada
-*    i    - indice da pe�a no vetor
-* 	 cor  - cor da pe�a
 *
 ***********************************************************************/
 /* Assertivas de Entrada PECA_CriaPeca
 *  Existir m�moria suficiente para criacao da pe�a
 *  S� pode criar uma pe�a que n�o exista at� o momento de cria��o (peca[i] = NULL)
 *  A cor dada (int) tem que ser entre 0 e 3
+*  O indice dado (int) tem que ser entre 0 e 3
 *  Para todo peca[i], peca = NULL.
+*/
+
+PECA_CondRet PECA_CriaVetPeca ( PECA_tpPeca* peca )
+
+/***********************************************************************
+*
+*  $FC Fun��o: PECA &Criar PECA
+*
+*  $ED Descri��o da fun��o
+*     Cria uma pe�a, dado um indice, no vetor de pecas.
+*
+*  $EP Parametros
+*  * peca - ponteiro para pe�a a ser criada
+*    i    - indice da pe�a no vetor de pecas
+* 	 cor  - cor da pe�a
+*
+***********************************************************************/
+/* Assertivas de Entrada PECA_CriaPeca
+*  Existir m�moria suficiente para criacao do vetor de pe�as
 */
 
 PECA_CondRet PECA_CriaPeca ( PECA_tpPeca* peca, int i, int cor ) ;

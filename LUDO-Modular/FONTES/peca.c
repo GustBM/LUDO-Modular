@@ -14,6 +14,8 @@
 #include <stdlib.h>
 #include "peca.h"
 
+#define MAX_PECAS 16
+
 typedef struct Peca {
 
 	int cor ;
@@ -29,16 +31,42 @@ typedef struct Peca {
 
 
 /*****  C�digo das fun��es exportadas pelo m�dulo  *****/
+PECA_CondRet PECA_CriaVetPeca ( PECA** peca ){
+
+	int i;
+
+	peca = ( PECA ** ) malloc ( sizeof ( PECA *) * MAX_PECAS) ;
+
+	if ( peca == NULL ) 
+	{
+		return PECA_CondRetFaltaMemoria ;
+	}
+
+	for(i=0;i<MAX_PECAS;i++){
+		peca[i] = NULL;
+	}
+
+	return PECA_CondRetOK ;
+
+}
+
 
 
 PECA_CondRet PECA_CriaPeca ( PECA** peca, int i, int cor ) 
 {
+	assert(peca != NULL);
+
 	if ( (cor < 0) || (cor > 3) )
 	{
 		return PECA_CondRetCorInvalida ;
 	}
 
-	if(peca[i]!=NULL)
+	if ( (i < 0) || (i > 15) )
+	{
+		return PECA_CondRetIdxInvalido ;
+	}
+
+	if(peca[i] != NULL)
 	{
 		return PECA_CondRetExiste;
 	}
@@ -65,6 +93,8 @@ PECA_CondRet PECA_DestroiPeca ( PECA *peca )
 	
 	free( peca );
 
+	peca = NULL;
+
 	return PECA_CondRetOK ;
 
 } 
@@ -76,7 +106,7 @@ PECA_CondRet PECA_ObtemCor ( PECA * peca , int* cor )
 		return PECA_CondRetNaoExiste;
 	}
 
-	*cor = peca->cor    ;
+	*cor = peca->cor;
 
 	return PECA_CondRetOK ;
 
