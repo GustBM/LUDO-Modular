@@ -13,3 +13,4 @@
     LISC_ExcluirElemento
     LISC_ObterValor
     LISC_ProcurarValor
+    LISC_AvancarElementoCorrente

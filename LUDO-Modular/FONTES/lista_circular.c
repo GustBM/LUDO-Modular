@@ -13,8 +13,8 @@
 #include   <assert.h>
 
 #include "lista_circular.h"
-#include   "Conta.h"
-#include   "cespdin.h"
+#include "Conta.h"
+#include "cespdin.h"
 
 
 
@@ -108,12 +108,13 @@ void LiberarElemento( LISC_tppListaC  pLista , tpElemListaCircular  * pElem   )
 LISC_tpCondRet LISC_EsvaziarLista( LISC_tppListaC pLista )
    {
 
-      CNT_CONTAR( "LISC_EsvaziarLista" ) ;
-
       tpElemListaCircular * pElem ;
       tpElemListaCircular * pProx ;
 
+      
+
      // #ifdef _DEBUG
+         CNT_CONTAR( "LISC_EsvaziarLista" ) ;
          assert( pLista != NULL ) ;
      // #endif
 
@@ -158,9 +159,9 @@ LISC_tpCondRet LISC_EsvaziarLista( LISC_tppListaC pLista )
 LISC_tppListaC LISC_CriarLista(void( * ExcluirValor ) ( void * pDado ),
 int(*CompararValor) (void * pValor1, void * pValor2)){
 
-      CNT_CONTAR( "LISC_CriarLista" ) ;
-
       LIS_tpListaC * pLista = NULL ;
+
+      CNT_CONTAR( "LISC_CriarLista" ) ;
 
       pLista = ( LIS_tpListaC * ) malloc( sizeof( LIS_tpListaC )) ;
       if ( pLista == NULL )
@@ -187,8 +188,9 @@ void LISC_DestruirLista( LISC_tppListaC pLista )
    {
       int cond;
 
-       CNT_CONTAR( "LISC_DestruirLista" ) ;
+      
       //#ifdef _DEBUG
+         CNT_CONTAR( "LISC_DestruirLista" ) ;
          assert( pLista != NULL ) ;
       //#endif
 
@@ -232,9 +234,8 @@ tpElemListaCircular* CriarElemento( LISC_tppListaC pLista , void *	pValor ){
  LISC_tpCondRet  LISC_ObterValor( LISC_tppListaC pLista, void ** val )
    {
 
-      CNT_CONTAR( "LISC_ObterValor" ) ;
-
       //#ifdef _DEBUG
+         CNT_CONTAR( "LISC_ObterValor" ) ;
          assert( pLista != NULL ) ;
       //#endif
 
@@ -258,12 +259,11 @@ tpElemListaCircular* CriarElemento( LISC_tppListaC pLista , void *	pValor ){
 
       tpElemListaCircular * pElem ;
 
-      CNT_CONTAR( "LISC_ProcurarValor" ) ;
-
 	  int n = pLista->numElem;
 	  int i;
-      int comp;
+     int comp;
      // #ifdef _DEBUG
+         CNT_CONTAR( "LISC_ProcurarValor" ) ;
          assert( pLista  != NULL ) ;
      // #endif
 
@@ -300,9 +300,10 @@ tpElemListaCircular* CriarElemento( LISC_tppListaC pLista , void *	pValor ){
 
       tpElemListaCircular * pElem ;
 
-      CNT_CONTAR( "LISC_InserirElementoAntes" ) ;
+      
 
      // #ifdef _DEBUG
+         CNT_CONTAR( "LISC_InserirElementoAntes" ) ;
          assert( pLista != NULL ) ;
      // #endif
 
@@ -354,9 +355,10 @@ tpElemListaCircular* CriarElemento( LISC_tppListaC pLista , void *	pValor ){
 
       tpElemListaCircular * pElem ;
 
-       CNT_CONTAR( "LISC_InserirElementoApos" ) ;
+       
 
      // #ifdef _DEBUG
+         CNT_CONTAR( "LISC_InserirElementoApos" ) ;
          assert( pLista != NULL ) ;
      // #endif
 
@@ -409,6 +411,7 @@ tpElemListaCircular* CriarElemento( LISC_tppListaC pLista , void *	pValor ){
       tpElemListaCircular * pElem ;
 
      // #ifdef _DEBUG
+         CNT_CONTAR( "LISC_ExcluirElemento" ) ;
          assert( pLista  != NULL ) ;
      // #endif
 
@@ -448,6 +451,8 @@ tpElemListaCircular* CriarElemento( LISC_tppListaC pLista , void *	pValor ){
 
 LISC_tpCondRet LISC_AvancarElementoCorrente( LISC_tppListaC pLista , int num ){
     tpElemListaCircular *pElem;
+
+    CNT_CONTAR( "LISC_AvancarElementoCorrente" ) ;
     
     if( pLista->pElemCorr == NULL )
     {

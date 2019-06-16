@@ -1,7 +1,7 @@
-// Script:    TesteCircular.script
+// Script:    TesteContador.script
 // Autor:     Luiz Fellipe Augusto, Eduardo Motta, Gustavo Barros
 // Data:      15/Jun/2019
-// Prop�sito: Testar superficialmente o m�dulo lista circular
+// Proposito: Testar superficialmente o modulo lista circular com contadores
 //
 
 == Inicializar valores
@@ -29,6 +29,11 @@
 
 == Verificar ObterValor relativo a lista vazia
 =obtervalorelem  lista0   str2 ListaVazia
+
+== Verificar contadores, 1 deles ja contou
+=verificarcontagens    7
+=contagemcontador   "LISC_Obter_Valor"  1
+=contagemcontador   "LISC_Criar_Lista"  1
 
 == Inserir elemento em lista vazia
 =inselemantes    lista0   str0   OK
@@ -104,5 +109,13 @@
 
 == Destruir a lista 2
 =destruirlista   lista2
+
+
+== Terminar controlar contadores
+=pararcontagem
+=verificarcontagens    0
+
+== Terminar contagem
+=terminarcontadores
 
 // fim

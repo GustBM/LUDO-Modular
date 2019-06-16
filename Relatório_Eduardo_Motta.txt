@@ -1,4 +1,4 @@
-- RELATORIO DE TRABALHO 2 -
+﻿- RELATORIO DE TRABALHO 2 -
 
 Nome: Eduardo Motta
 Mat.:1720334
@@ -66,6 +66,10 @@ Este relat�rio expecificara as tarefas e produtos desenvolvidos por Eduardo Mo
 
 => 14/06/2019
 * conclusao de lista circular (sem conta implementado)
+(2  horas)
+
+=> 15/06/2019
+*inicio de implementar conta em lista ciruclar
 (2  horas)
 
 
