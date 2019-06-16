@@ -92,6 +92,8 @@ TST_tpCondRet TST_EfetuarComando( char * ComandoTeste )
 
 		CondRetObtido = PECA_DestroiPeca ( mtxPecas[iPeca] ) ;
 
+		mtxPecas[iPeca] = NULL;
+
 		return TST_CompararInt (CondRetEsp, CondRetObtido, "Retorno errado") ;
 
 	}

@@ -76,8 +76,7 @@ PECA_CondRet PECA_DestroiPeca ( PECA *peca )
 		return PECA_CondRetNaoExiste ;
 	
 	free( peca );
-
-	peca = NULL;
+	
 
 	return PECA_CondRetOK ;
 
