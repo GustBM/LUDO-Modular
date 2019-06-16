@@ -64,9 +64,9 @@ TST_tpCondRet TST_EfetuarComando( char * ComandoTeste )
 	int CondRetEsp    = -1 ;
 	int CondRetObtido = -1 ;
 	int final         = -1 ;
-	int indx		  = -1 ;
+	int index		  = -1 ;
 	char status            ;
-	PECA_tpPeca *p          ;
+
 
 	/* Testar CriarVetPeca */
 
@@ -89,13 +89,13 @@ TST_tpCondRet TST_EfetuarComando( char * ComandoTeste )
 
 	if( strcmp( ComandoTeste , CRIAR_PECA_CMD ) == 0 )
 	{
-		numLidos = LER_LerParametros( "iiii", &iPeca,&indx, &cor ,&CondRetEsp);
+		numLidos = LER_LerParametros( "iiii", &iPeca,&index, &cor ,&CondRetEsp);
 		if( numLidos != 4 )
 		{
 			return TST_CondRetParm;
 		}
 
-		CondRetObtido = PECA_CriaPeca ( mtxPecas[iPeca],indx , cor ) ;
+		CondRetObtido = PECA_CriaPeca ( mtxPecas[iPeca],index , cor ) ;
 
 		return TST_CompararInt ( CondRetEsp, CondRetObtido, "Retorno errado") ;
 

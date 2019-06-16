@@ -61,13 +61,12 @@
 
 ==Atualiza peca com erro
 =atualizapeca   vet0   0   ini   status0   NaoExiste
-=atualizapeca   vet0   2   ini   status0   OK
-=atualizapeca   vet0   3   ini   status0   NaoExiste
 
 
 ==Destruir peca corretamente
-=destruirpeca   ip0  OK
-=destruirpeca   ip1  OK
+=destruirpeca   vet0   1   OK
+=destruirpeca   vet0   2   OK
+=destruirpeca   vet0   3   OK
 
 //                                       
 // fim       

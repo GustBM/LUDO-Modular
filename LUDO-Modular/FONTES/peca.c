@@ -12,6 +12,7 @@
 
 #include <stdio.h>
 #include <stdlib.h>
+#include <assert.h>
 #include "peca.h"
 
 #define MAX_PECAS 16
@@ -54,22 +55,23 @@ PECA_CondRet PECA_CriaVetPeca ( PECA** peca ){
 
 PECA_CondRet PECA_CriaPeca ( PECA** peca, int i, int cor ) 
 {
-	assert(peca != NULL);
+	
 
 	if ( (cor < 0) || (cor > 3) )
 	{
 		return PECA_CondRetCorInvalida ;
 	}
-
+	
 	if ( (i < 0) || (i > 15) )
 	{
 		return PECA_CondRetIdxInvalido ;
 	}
-
+	//erro aqui
 	if(peca[i] != NULL)
 	{
 		return PECA_CondRetExiste;
 	}
+	
 
 	peca[i] = ( PECA * ) malloc ( sizeof ( PECA ) ) ;
 

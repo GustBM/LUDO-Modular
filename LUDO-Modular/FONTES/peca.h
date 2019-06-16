@@ -92,7 +92,7 @@ typedef enum {
 *  Para todo peca[i], peca = NULL.
 */
 
-PECA_CondRet PECA_CriaVetPeca ( PECA_tpPeca* peca )
+PECA_CondRet PECA_CriaVetPeca ( PECA_tpPeca* peca );
 
 /***********************************************************************
 *

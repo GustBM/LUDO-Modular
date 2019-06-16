@@ -9,6 +9,7 @@ c           =  ..\Fontes
 h           =  ..\Fontes
 def         =  ..\Fontes
 
+
 [Modulos]
 TestePeca
 Peca
@@ -20,6 +21,5 @@ Peca
 
 [BuildFim]
 ../objetos/ArcaboucoTeste.lib
-../objetos/peca.obj
 
 [Fim]
