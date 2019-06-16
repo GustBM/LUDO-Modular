@@ -1,0 +1,15 @@
+////////////////////////////////////////////////
+//
+// Exemplo de arquivo de declaracao de contadores
+// Conta modulo Lista Circular marcado
+//
+///////////////////////////////////////////////
+    
+    LISC_CriarLista
+    LISC_DestruirLista
+    LISC_EsvaziarLista
+    LISC_InserirElementoAntes
+    LISC_InserirElementoApos
+    LISC_ExcluirElemento
+    LISC_ObterValor
+    LISC_ProcurarValor

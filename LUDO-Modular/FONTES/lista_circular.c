@@ -13,6 +13,8 @@
 #include   <assert.h>
 
 #include "lista_circular.h"
+#include   "Conta.h"
+#include   "cespdin.h"
 
 
 
@@ -106,6 +108,8 @@ void LiberarElemento( LISC_tppListaC  pLista , tpElemListaCircular  * pElem   )
 LISC_tpCondRet LISC_EsvaziarLista( LISC_tppListaC pLista )
    {
 
+      CNT_CONTAR( "LISC_EsvaziarLista" ) ;
+
       tpElemListaCircular * pElem ;
       tpElemListaCircular * pProx ;
 
@@ -154,6 +158,8 @@ LISC_tpCondRet LISC_EsvaziarLista( LISC_tppListaC pLista )
 LISC_tppListaC LISC_CriarLista(void( * ExcluirValor ) ( void * pDado ),
 int(*CompararValor) (void * pValor1, void * pValor2)){
 
+      CNT_CONTAR( "LISC_CriarLista" ) ;
+
       LIS_tpListaC * pLista = NULL ;
 
       pLista = ( LIS_tpListaC * ) malloc( sizeof( LIS_tpListaC )) ;
@@ -180,6 +186,8 @@ int(*CompararValor) (void * pValor1, void * pValor2)){
 void LISC_DestruirLista( LISC_tppListaC pLista )
    {
       int cond;
+
+       CNT_CONTAR( "LISC_DestruirLista" ) ;
       //#ifdef _DEBUG
          assert( pLista != NULL ) ;
       //#endif
@@ -224,6 +232,8 @@ tpElemListaCircular* CriarElemento( LISC_tppListaC pLista , void *	pValor ){
  LISC_tpCondRet  LISC_ObterValor( LISC_tppListaC pLista, void ** val )
    {
 
+      CNT_CONTAR( "LISC_ObterValor" ) ;
+
       //#ifdef _DEBUG
          assert( pLista != NULL ) ;
       //#endif
@@ -247,6 +257,8 @@ tpElemListaCircular* CriarElemento( LISC_tppListaC pLista , void *	pValor ){
    {
 
       tpElemListaCircular * pElem ;
+
+      CNT_CONTAR( "LISC_ProcurarValor" ) ;
 
 	  int n = pLista->numElem;
 	  int i;
@@ -287,6 +299,8 @@ tpElemListaCircular* CriarElemento( LISC_tppListaC pLista , void *	pValor ){
    LISC_tpCondRet LISC_InserirElementoAntes( LISC_tppListaC pLista ,void * pValor){
 
       tpElemListaCircular * pElem ;
+
+      CNT_CONTAR( "LISC_InserirElementoAntes" ) ;
 
      // #ifdef _DEBUG
          assert( pLista != NULL ) ;
@@ -339,6 +353,8 @@ tpElemListaCircular* CriarElemento( LISC_tppListaC pLista , void *	pValor ){
    {
 
       tpElemListaCircular * pElem ;
+
+       CNT_CONTAR( "LISC_InserirElementoApos" ) ;
 
      // #ifdef _DEBUG
          assert( pLista != NULL ) ;

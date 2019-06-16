@@ -4,66 +4,69 @@ Nome: Eduardo Motta
 Mat.:1720334
 eduardomotta5238@gmail.com
 
-- Especificações - 
-Este relatório expecificara as tarefas e produtos desenvolvidos por Eduardo Motta
+- Especificaï¿½ï¿½es - 
+Este relatï¿½rio expecificara as tarefas e produtos desenvolvidos por Eduardo Motta
 
 => 24/04/2019
-* Organizações inicial e divisão de tarefas
+* Organizaï¿½ï¿½es inicial e divisï¿½o de tarefas
 (1 hora)
 
 => 26/04/2019
-* Estudo do arcabouço
-* Estudo do módulo lista
+* Estudo do arcabouï¿½o
+* Estudo do mï¿½dulo lista
 (1 hora)
 
 => 01/05/2019
-* Criação do Módulo ListaCircular
+* Criaï¿½ï¿½o do Mï¿½dulo ListaCircular
 (3 horas)
 
 => 03/05/2019
-*Atendimento a monitoria para tirar dúvidas sobre os módulos.
+*Atendimento a monitoria para tirar dï¿½vidas sobre os mï¿½dulos.
 
 => 08/05/2019
-* Estudo do arcabouço
-* Começo dos testes
+* Estudo do arcabouï¿½o
+* Comeï¿½o dos testes
 (3 horas)
 
 => 10/05/2019
-* Atendimento a monitoria para tirar dúvidas sobre arcabouço.
+* Atendimento a monitoria para tirar dï¿½vidas sobre arcabouï¿½o.
 
 => 11/05/2019 
 * Uniao de todos os modulos feitos pelos integrantes em um git
-* Revisão dos componentes essenciais para o módulo
-* Testes do código
+* Revisï¿½o dos componentes essenciais para o mï¿½dulo
+* Testes do cï¿½digo
 (4 horas)
 => 13/05/2019
-*tentativa de criar .bats e .comps que contribuam para realização dos testes em conjunto
+*tentativa de criar .bats e .comps que contribuam para realizaï¿½ï¿½o dos testes em conjunto
 
 => 12/05/2019 
-* União do módulo tabuleiro com as versões mais atualizadas da lista circular e da peça
-* Revisão do código
+* Uniï¿½o do mï¿½dulo tabuleiro com as versï¿½es mais atualizadas da lista circular e da peï¿½a
+* Revisï¿½o do cï¿½digo
 * Testes do tabuleiro
-* Verificações gerais do trabalho
-* Correção de erros encontrados
+* Verificaï¿½ï¿½es gerais do trabalho
+* Correï¿½ï¿½o de erros encontrados
 (6 horas)
 
 => 13/05/2019
-* Ultima verificação antes da entrega
-* Versão final do tabuleiro
+* Ultima verificaï¿½ï¿½o antes da entrega
+* Versï¿½o final do tabuleiro
 * Consulta final com o monitor
 (4 horas)
 
 => 31/05/2019
-* Atualização de arquivos bat e comp
+* Atualizaï¿½ï¿½o de arquivos bat e comp
 (3 horas)
 
 => 10/06/2019
 * trabalhando em lista circular
-
+(3 horas)
 => 12/06/2019
 * trabalhando em lista circular
+(3 horas)
 
 => 14/06/2019
 * conclusao de lista circular (sem conta implementado)
+(2  horas)
 
-Os dias com data não especificada foram continuações dos trabalhos dos dias anteriores (Entre 1 e 3 horas de trabalho diário).
+
+Os dias com data nï¿½o especificada foram continuaï¿½ï¿½es dos trabalhos dos dias anteriores (Entre 1 e 3 horas de trabalho diï¿½rio).
