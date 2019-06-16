@@ -92,7 +92,7 @@ TST_tpCondRet TST_EfetuarComando( char * ComandoTeste )
 			return TST_CondRetParm ;
 		}
 
-		CondRetObtido = PECA_DestroiPeca ( vtPecas[iPeca] ) ;
+		CondRetObtido = PECA_DestroiPeca ( vtPecas[N_TIMES][iPeca] ) ;
 		p = NULL ;
 
 		return TST_CompararInt (CondRetEsp, CondRetObtido, "Retorno errado") ;
@@ -112,7 +112,7 @@ TST_tpCondRet TST_EfetuarComando( char * ComandoTeste )
             }
 
 
-            CondRetObtido = PECA_ObtemInfo( vtPecas[iPeca], &cor, &final, &status ) ;
+            CondRetObtido = PECA_ObtemInfo( vtPecas[N_TIMES][iPeca], &cor, &final, &status ) ;
 			
             return TST_CompararInt( CondRetEsp , CondRetObtido ,
                      "Condicao de retorno errada ao obter status." ) ;
@@ -132,7 +132,7 @@ TST_tpCondRet TST_EfetuarComando( char * ComandoTeste )
             }
 
 
-            CondRetObtido = PECA_AtualizaPeca( vtPecas[iPeca], final, status ) ;
+            CondRetObtido = PECA_AtualizaPeca( vtPecas[N_TIMES][iPeca], final, status ) ;
 			
             return TST_CompararInt( CondRetEsp , CondRetObtido ,
                      "Condicao de retorno errada ao Atualiza Peca." ) ;
