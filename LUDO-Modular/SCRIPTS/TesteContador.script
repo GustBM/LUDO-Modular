@@ -30,10 +30,10 @@
 == Verificar ObterValor relativo a lista vazia
 =obtervalorelem  lista0   str2 ListaVazia
 
-== Verificar contadores, 1 deles ja contou
+== Verificar contadores, 2 deles ja contaram
 =verificarcontagens    7
-=contagemcontador   "LISC_Obter_Valor"  1
-=contagemcontador   "LISC_Criar_Lista"  1
+=contagemcontador   "LISC_ObterValor"  1
+=contagemcontador   "LISC_CriarLista"  1
 
 == Inserir elemento em lista vazia
 =inselemantes    lista0   str0   OK

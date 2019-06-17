@@ -7,18 +7,18 @@
 #include    "LERPARM.h"
 
 #include    "lista_circular.h"
+#include    "CESPDIN.H"
 
-
-static const char RESET_LISTAC_CMD         [ ] = "=resetteste"     ;
-static const char CRIAR_LISTAC_CMD         [ ] = "=criarlista"     ;
-static const char DESTRUIR_LISTAC_CMD      [ ] = "=destruirlista"  ;
-static const char ESVAZIAR_LISTAC_CMD      [ ] = "=esvaziarlista"  ;
-static const char INS_ELEM_ANTESC_CMD      [ ] = "=inselemantes"   ;
-static const char INS_ELEM_APOSC_CMD       [ ] = "=inselemapos"    ;
-static const char OBTER_VALORC_CMD         [ ] = "=obtervalorelem" ;
-static const char PROCURA_VALORC_CMD	   [ ] = "=procuravalorelem";	
-static const char EXC_ELEMC_CMD            [ ] = "=excluirelem"    ;
-static const char AVANCAR_ELEMC_CMD		   [ ] = "=avancarelem"    ;
+static const char RESET_LISTAC_CMD         [ ] = "=resetteste"      ;
+static const char CRIAR_LISTAC_CMD         [ ] = "=criarlista"      ;
+static const char DESTRUIR_LISTAC_CMD      [ ] = "=destruirlista"   ;
+static const char ESVAZIAR_LISTAC_CMD      [ ] = "=esvaziarlista"   ;
+static const char INS_ELEM_ANTESC_CMD      [ ] = "=inselemantes"    ;
+static const char INS_ELEM_APOSC_CMD       [ ] = "=inselemapos"     ;
+static const char OBTER_VALORC_CMD         [ ] = "=obtervalorelem"  ;
+static const char PROCURA_VALORC_CMD	    [ ] = "=procuravalorelem";	
+static const char EXC_ELEMC_CMD            [ ] = "=excluirelem"     ;
+static const char AVANCAR_ELEMC_CMD		    [ ] = "=avancarelem"     ;
 
 #define TRUE  1
 #define FALSE 0
