@@ -67,13 +67,16 @@ typedef struct TAB_tagCasaInfo {
         /* Ponteiro para o conteudo da casa */
 
 } TAB_tpCasaInfo;
+
 typedef void ( *pFunc ) ( void * ) ; typedef void **ppVoid ;
 
 /***** Prot�tipo das fun��es encapsuladas no m�dulo *****/
  
-static TAB_tppCasaInfo CriaCasa ( PECA_tpPeca * conteudo ) ;
+static TAB_tppCasaInfo CriaCasa ( PECA_tpPeca conteudo ) ;
 
 static TAB_CondRet TAB_LimpaCasa (TAB_tpCasaInfo* casa);
+
+static int TAB_ComparaCasa(TAB_tpCasaInfo* casa1 ,TAB_tpCasaInfo* casa2);	
  
 static void TAB_LiberarCasa ( TAB_tpCasaInfo *pCasa ) ;
 
@@ -86,17 +89,23 @@ static void TAB_LiberarCasa ( TAB_tpCasaInfo *pCasa ) ;
 
 TAB_tppTabuleiro TAB_CriaTabuleiro () {
 	int i, k;
+
 	TAB_tppTabuleiro pTab;
+
 	LISC_tppListaC pListaC;
+
 	LIS_tppLista pLista1, pLista2, pLista3, pLista4;
+
 	TAB_tpCasaInfo *casa ;
+
 	LISC_tpCondRet listcFlag;
+
 	LIS_tpCondRet listFlag;
 
-	pTab = ( TAB_tpTabuleiro * ) malloc( sizeof( TAB_tpTabuleiro));
+	pTab = ( TAB_tpTabuleiro * ) malloc( sizeof(TAB_tpTabuleiro));
 	if ( pTab == NULL ) return NULL;
 
-	pListaC = LISC_CriarLista ( ( pFunc ) TAB_LimpaCasa );
+	pListaC = LISC_CriarLista ( TAB_LimpaCasa , TAB_ComparaCasa );
 	if ( pListaC = NULL ) return NULL;
 
 	pLista1 = LIS_CriarLista( ( pFunc ) TAB_LimpaCasa );
@@ -118,19 +127,19 @@ TAB_tppTabuleiro TAB_CriaTabuleiro () {
     }
 
 	for( i = 0 ; i < TOT_CASAS_RETA_FINAL ; i++ ){
-		listFlag = LIS_InserirElementoApos( pLista1 , ( pFunc ) TAB_LimpaCasa ) ;
+		listFlag = LIS_InserirElementoApos( pLista1 , CriaCasa(NULL)  );
 		if ( listFlag != LIS_CondRetOK ) return NULL;
     }
 	for( i = 0 ; i < TOT_CASAS_RETA_FINAL ; i++ ){
-		listFlag = LIS_InserirElementoApos( pLista2 , ( pFunc ) TAB_LimpaCasa ) ;
+		listFlag = LIS_InserirElementoApos( pLista2 , CriaCasa(NULL)  );
 		if ( listFlag != LIS_CondRetOK ) return NULL;
     }
 	for( i = 0 ; i < TOT_CASAS_RETA_FINAL ; i++ ){
-		 listFlag = LIS_InserirElementoApos( pLista3 , ( pFunc ) TAB_LimpaCasa ) ;
+		 listFlag = LIS_InserirElementoApos( pLista3 , CriaCasa(NULL) );
 		 if ( listFlag != LIS_CondRetOK ) return NULL;
     }
 	for( i = 0 ; i < TOT_CASAS_RETA_FINAL ; i++ ){
-		 listFlag = LIS_InserirElementoApos( pLista4 , ( pFunc ) TAB_LimpaCasa ) ;
+		 listFlag = LIS_InserirElementoApos( pLista4 , CriaCasa(NULL) );
 		 if ( listFlag != LIS_CondRetOK ) return NULL;
     }
  
@@ -157,7 +166,6 @@ TAB_CondRet TAB_DestruirTabuleiro( TAB_tppTabuleiro pTab )
         assert( pTab != NULL ) ;
     #endif
 		
-	LISC_EsvaziarLista( pTab->casasNormais ) ;
 	LISC_DestruirLista( pTab->casasNormais ) ;
 	LIS_EsvaziarLista( pTab->casasFim1 ) ;
 	LIS_DestruirLista( pTab->casasFim1 ) ;
@@ -205,11 +213,20 @@ TAB_CondRet TAB_LimpaCasa (TAB_tppCasaInfo casa) {
     {
         destroi_peca ( casa->conteudo ) ;
     }
-     
-    casa = NULL ;
+    
+	free(casa);
+	
+	return TAB_CondRetOK;
+}
+/***********************************************************************
+*
+*  $FC Fun��o: TAB  -Compara Casas
+*
+***********************************************************************/
 
-	if ( casa == NULL ) 
-		return TAB_CondRetOK;
-	else 
-		return TAB_CondRetErro;
+
+static int TAB_ComparaCasa(TAB_tpCasaInfo* casa1 ,TAB_tpCasaInfo* casa2){
+
+	//funcao compara conteudo;  
+
 }

@@ -15,9 +15,9 @@
 *
 *  $HA Hist�rico de evolu��o:
 *     Vers�o  Autor    Data     Observa��es
-*     1       GBM   07/mai/2019 in�cio desenvolvimento
-*	  2		  GBM	12/mai/2019 Jun��o dos m�dulos tabuleiro e peca
-*	  3		  GBM	12/mai/2019 Remo��o da peca como parte do tabuleiro
+*       1       GBM     07/mai/2019 in�cio desenvolvimento
+*	  2	    GBM	12/mai/2019 Jun��o dos m�dulos tabuleiro e peca
+*	  3       GBM	12/mai/2019 Remo��o da peca como parte do tabuleiro
 *
 *  $ED Descri��o do m�dulo
 *     M�dulo para cria��o e manipula��o do tabuleiro e pecas para o jogo LUDO

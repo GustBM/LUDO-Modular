@@ -8,14 +8,13 @@
 #include    "LerParm.h"
 
 #include    "Lista.h"
-#include	"lista_circular.h"
+#include	   "lista_circular.h"
+#include	   "tabuleiro.h"
 
-#include	"tabuleiro.h"
-
-static const char RESET_TAB_CMD         [ ] = "=resetteste"     ;
-static const char CRIAR_TABULEIRO [] = "=criartabuleiro";
-static const char DESTRUIR_TABULEIRO [] = "=destruirtabuleiro";
-static const char LIMPA_CASA [] = "=limpacasa";
+static const char RESET_TAB_CMD         [ ] = "=resetteste"       ;
+static const char CRIAR_TABULEIRO       [ ] = "=criartabuleiro"   ;
+static const char DESTRUIR_TABULEIRO    [ ] = "=destruirtabuleiro";
+static const char LIMPA_CASA            [ ] = "=limpacasa"        ;
 
 #define TRUE  1
 #define FALSE 0
@@ -29,26 +28,24 @@ static const char LIMPA_CASA [] = "=limpacasa";
 TAB_tppTabuleiro  vttabuleiros[DIM_VT_TAB];
 
 
-/***** Protótipos das funções encapuladas no módulo *****/
-
-   static void DestruirValor( void * pValor ) ;
+/***** Protï¿½tipos das funï¿½ï¿½es encapuladas no mï¿½dulo *****/
 
    static int ValidarInxLista( int inxLista , int Modo ) ;
 
-/*****  Código das funções exportadas pelo módulo  *****/
+/*****  Cï¿½digo das funï¿½ï¿½es exportadas pelo mï¿½dulo  *****/
 
 
 /***********************************************************************
 *
-*  $FC Função: TTAB &Testar lista
+*  $FC Funï¿½ï¿½o: TTAB &Testar lista
 *
-*  $ED Descrição da função
-*     Podem ser criadas até 10 listas, identificadas pelos índices 0 a 10
+*  $ED Descriï¿½ï¿½o da funï¿½ï¿½o
+*     Podem ser criadas atï¿½ 10 listas, identificadas pelos ï¿½ndices 0 a 10
 *
-*     Comandos disponíveis:
+*     Comandos disponï¿½veis:
 *
 *     =resetteste
-*           - anula o vetor de listas. Provoca vazamento de memória
+*           - anula o vetor de listas. Provoca vazamento de memï¿½ria
 *     =criartabuleiro               inxLista
 *     =destruirtabuleiro            inxLista
 *     =limpacasa                    inxLista
@@ -103,7 +100,7 @@ TAB_tppTabuleiro  vttabuleiros[DIM_VT_TAB];
                return TST_CondRetParm ;
             } /* if */
 
-             vttabuleiros[ inxLista ] =  TAB_CriaTabuleiro(  ) ;
+             vttabuleiros[ inxLista ] =  TAB_CriaTabuleiro() ;
 
             return TST_CompararPonteiroNulo( 1 , vttabuleiros[ inxLista ] ,
                "Erro em ponteiro de nova lista."  ) ;
@@ -134,29 +131,14 @@ TAB_tppTabuleiro  vttabuleiros[DIM_VT_TAB];
 
       return TST_CondRetNaoConhec ;
 
-   } /* Fim função: TTAB&Testar Tabuleiro */
+   } /* Fim funï¿½ï¿½o: TAB&Testar Tabuleiro */
 
 
-/*****  Código das funções encapsuladas no módulo  *****/
-
-
-/***********************************************************************
-*
-*  $FC Função: TLIS -Destruir valor
-*
-***********************************************************************/
-
-   void DestruirValor( void * pValor )
-   {
-
-      free( pValor ) ;
-
-   } /* Fim função: TLIS -Destruir valor */
-
+/*****  Cï¿½digo das funï¿½ï¿½es encapsuladas no mï¿½dulo  *****/
 
 /***********************************************************************
 *
-*  $FC Função: TLIS -Validar indice de lista
+*  $FC Funï¿½ï¿½o: TLIS -Validar indice de lista
 *
 ***********************************************************************/
 
@@ -185,6 +167,6 @@ TAB_tppTabuleiro  vttabuleiros[DIM_VT_TAB];
          
       return TRUE ;
 
-   } /* Fim função: TLIS -Validar indice de lista */
+   } /* Fim funï¿½ï¿½o: TLIS -Validar indice de lista */
 
-/********** Fim do módulo de implementação: TLIS Teste lista de símbolos **********/
+/********** Fim do mï¿½dulo de implementaï¿½ï¿½o: TLIS Teste lista de sï¿½mbolos **********/
