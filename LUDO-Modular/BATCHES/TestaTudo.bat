@@ -5,6 +5,9 @@ cls
 ..\produtos\testeCircular	/s..\scripts\testeCircular    	/l..\produtos\testeCircular   	 /a..\scripts\estatisticas
 if errorlevel 4 goto sai
 
+..\produtos\testeCircular	/s..\scripts\testeContador    	/l..\produtos\testeCircular   	 /a..\scripts\estatisticas
+if errorlevel 4 goto sai
+
 ..\produtos\testePeca  		/s..\scripts\testePeca          /l..\produtos\testePeca      	/a..\scripts\estatisticas
 if errorlevel 4 goto sai
 

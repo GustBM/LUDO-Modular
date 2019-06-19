@@ -8,6 +8,7 @@ goto sai
 
 cls
 
+Call vsvars32.bat
 Call LimpaTudo
 Call GeraTudo
 Call CompilaTudo

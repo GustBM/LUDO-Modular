@@ -23,6 +23,8 @@ Passo a passo:
 
 	Acircular -> para testar o modulo lista circular
 
+	Acontador -> para testar o modulo lista circular com teste de contadores
+
 	Apeca -> para testar o modulo peca
 
 	Atabuleiro -> para testar o modulo tabuleiro

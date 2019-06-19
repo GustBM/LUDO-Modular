@@ -31,7 +31,6 @@
 =obtervalorelem  lista0   str2 ListaVazia
 
 == Verificar contadores, 2 deles ja contaram
-=verificarcontagens    7
 =contagemcontador   "LISC_ObterValor"  1
 =contagemcontador   "LISC_CriarLista"  1
 

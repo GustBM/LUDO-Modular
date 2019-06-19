@@ -5,12 +5,62 @@
 //
 ///////////////////////////////////////////////
     
+	LISC_EsvaziarLista
+	LISC_EsvaziarLista_ListaVazia
+	LISC_EsvaziarLista_ListaNaoVazia
+    LISC_EsvaziarLista_+1Elem
+	LISC_EsvaziarLista_while_Libera+1Elem
+	LISC_EsvaziarLista_fim_while_Libera+1Elem
+    LISC_EsvaziarLista_1Elem
+	LISC_EsvaziarLista_LiberaUltimo
     LISC_CriarLista
+    LISC_CriarLista_FaltouMemoria
+	LISC_CriarLista_NaoFaltouMemoria
     LISC_DestruirLista
-    LISC_EsvaziarLista
+	LISC_ObterValor
+    LISC_ObterValor_ListaVazia
+	LISC_ObterValor_OK
+	LISC_ProcurarValor
+    LISC_ProcurarValor_ListaVazia
+	LISC_ProcurarValor_ListaNaoVazia
+	LISC_ProcurarValor_for_Ini
+	LISC_ProcurarValor_for_FuncoesValidas
+	LISC_ProcurarValor_for_ValoresIguais
+	LISC_ProcurarValor_for_ValoresDiferentes
+	LISC_ProcurarValor_for_FuncoesInvalidas
+    LISC_ProcurarValor_NaoAchou
     LISC_InserirElementoAntes
+	LISC_InserirElementoAntes_FaltouMemoria
+	LISC_InserirElementoAntes_NaoFaltouMemoria
+	LISC_InserirElementoAntes_InsereListaVazia
+	LISC_InserirElementoAntes_InsereListaOcupada
+	LISC_InserirElementoAntes_AnteriorNaoNulo
+	LISC_InserirElementoAntes_Anterior
+	LISC_InserirElementoAntes_ProximoNulo
+	LISC_InserirElementoAntes_OK
     LISC_InserirElementoApos
+	LISC_InserirElementoApos_FaltouMemoria
+	LISC_InserirElementoApos_NaoFaltouMemoria
+	LISC_InserirElementoApos_InsereListaVazia
+	LISC_InserirElementoApos_InsereListaOcupada
+	LISC_InserirElementoApos_ProximoNaoNulo
+	LISC_InserirElementoApos_Proximo
+	LISC_InserirElementoApos_AnteriorNulo
+	LISC_InserirElementoApos_OK
     LISC_ExcluirElemento
-    LISC_ObterValor
-    LISC_ProcurarValor
+	LISC_ExcluirElemento_ListaVazia
+	LISC_ExcluirElemento_DesencadeiaEsq
+	LISC_ExcluirElemento_AnteriorNaoNulo
+    LISC_ExcluirElemento_DesencadeiaDir
+	LISC_ExcluirElemento_ProximoNaoNulo
+	LISC_ExcluirElemento_LiberarElemento
     LISC_AvancarElementoCorrente
+	LISC_AvancarElementoCorrente_ListaVazia
+	LISC_AvancarElementoCorrente_ListaNaoVazia
+	LISC_AvancarElementoCorrente_num>0
+	LISC_AvancarElementoCorrente_while_num>0
+	LISC_AvancarElementoCorrente_num0+
+	LISC_AvancarElementoCorrente_num<0
+	LISC_AvancarElementoCorrente_while_num<0
+	LISC_AvancarElementoCorrente_num0-
+	LISC_AvancarElementoCorrente_OK
