@@ -326,22 +326,10 @@ LISC_tppListaC   vtListas[ DIM_VT_LISTA ] ;
                return TST_CondRetParm ;
             } /* if */
 
-            pDado = ( char * ) LISC_AvancarElementoCorrente( vtListas[ inxLista ] , numElem ) ;
+            CondRetObtido = LISC_AvancarElementoCorrente( vtListas[ inxLista ] , numElem ) ;
 
-            if ( ValEsp == 0 )
-            {
-               return TST_CompararPonteiroNulo( 0 , pDado ,
-                         "Valor naum deveria existir." ) ;
-            } /* if */
-
-            if ( pDado == NULL )
-            {
-               return TST_CompararPonteiroNulo( 1 , pDado ,
-                         "Dado tipo um deveria existir." ) ;
-            } /* if */
-
-            return TST_CompararString( StringDado , pDado ,
-                         "Valor do elemento errado." ) ;
+            return TST_CompararInt( ValEsp , CondRetObtido ,
+                         "Condicao de retorno errada ao Avancar elemento corrente." ) ;
 
          } /* fim ativa: Testar avanca lista */
 

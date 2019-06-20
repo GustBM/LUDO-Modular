@@ -496,8 +496,8 @@ LISC_tpCondRet LISC_AvancarElementoCorrente( LISC_tppListaC pLista , int num ){
     
     if( pLista->pElemCorr == NULL )
     {
-       CNT_CONTAR( "LISC_AvancarElementoCorrente_ListaVazia" ) ;
-        return LISC_CondRetListaVazia ;
+      CNT_CONTAR( "LISC_AvancarElementoCorrente_ListaVazia" ) ;
+      return LISC_CondRetListaVazia ;
     }
      CNT_CONTAR( "LISC_AvancarElementoCorrente_ListaNaoVazia" ) ;
     

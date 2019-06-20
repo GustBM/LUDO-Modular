@@ -8,6 +8,7 @@
 =declararparm   lista0  int 0
 =declararparm   lista1  int 1
 =declararparm   lista2  int 2
+=declararparm   lista3  int 3
 
 =declararparm   str0    string  "abcdefg"
 =declararparm   str1    string  "qwerty"
@@ -27,8 +28,14 @@
 == Criar a lista 0
 =criarlista      lista0 
 
-== Verificar ObterValor relativo a lista vazia
+== Verificar ObterValor em lista vazia
 =obtervalorelem  lista0   str2 ListaVazia
+
+== Verificar ExcluirElem em lista vazia
+=excluirelem    lista0  ListaVazia
+
+== Verificar ProcuraValor em lista vazia
+=procuravalorelem   lista0   str0   ListaVazia
 
 == Verificar contadores, 2 deles ja contaram
 =contagemcontador   "LISC_ObterValor"  1
@@ -38,11 +45,11 @@
 =inselemantes    lista0   str0   OK
 =obtervalorelem  lista0   str0   OK 
 
-== Inserir elemento apos primeiro
+== Inserir elemento apos o primeiro
 =inselemapos     lista0   str1   OK
 =obtervalorelem  lista0   str1   OK
 
-== Inserir elemento antes do ultimo
+== Inserir elemento antes do segundo
 =inselemantes    lista0   str2   OK
 =obtervalorelem  lista0   str2   OK
 
@@ -50,15 +57,34 @@
 =obtervalorelem  lista0   str2   OK
 =excluirelem     lista0    OK
 
-== Excluir elemento do inicio
+==esvazia lista
+=esvaziarlista   lista0
+
+== Inserir elemento em lista vazia
+=inselemantes    lista0   str0   OK
+=obtervalorelem  lista0   str0   OK 
+
+== Inserir elemento antes do primeiro
+=inselemantes    lista0   str1   OK
 =obtervalorelem  lista0   str1   OK
+
+== Inserir elemento apos o segundo
+=inselemapos     lista0   str2   OK
+=obtervalorelem  lista0   str2   OK
+
+== Excluir elemento do inicio
+=obtervalorelem  lista0   str2   OK
 =excluirelem     lista0    OK
 
 == Procura elemento inexistente em lista0
 =procuravalorelem  lista0   "???"   NaoAchou
 
-== Destruir a lista 0
+==excluir penultimo elemnto da lista 0
 =obtervalorelem  lista0   str0   OK
+=excluirelem     lista0    OK
+
+==esvaziar lista 0 com apenas 1 elemento
+=obtervalorelem  lista0   str1   OK
 =destruirlista   lista0
 
 
@@ -70,6 +96,9 @@
 == Esvaziar a lista 1 e ver se ficou vazia
 =esvaziarlista   lista1
 =obtervalorelem  lista1   "???"     ListaVazia
+=avancarelem     lista1   -1        ListaVazia
+
+=contagemcontador   "LISC_AvancarElementoCorrente_ListaVazia"  1
 
 == Destruir a lista 1
 =destruirlista   lista1
@@ -112,7 +141,7 @@
 
 == Terminar controlar contadores
 =pararcontagem
-=verificarcontagens    0
+=verificarcontagens    3
 
 == Terminar contagem
 =terminarcontadores

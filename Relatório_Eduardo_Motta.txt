@@ -76,5 +76,9 @@ Este relat�rio expecificara as tarefas e produtos desenvolvidos por Eduardo Mo
 *peca completo
 (5  horas)
 
+=> 19/06/2019
+*criação dos contadores de lista circular
+(2 horas)
+
 
 Os dias com data n�o especificada foram continua��es dos trabalhos dos dias anteriores (Entre 1 e 3 horas de trabalho di�rio).
