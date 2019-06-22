@@ -70,6 +70,7 @@ typedef struct LISC_tagLista {
 
 void LimparCabeca( LISC_tppListaC pLista )
    {
+      CNT_CONTAR( "LISC_LimparCabeca" ) ;
       pLista->pElemCorr = NULL ;
       pLista->numElem   = 0 ;
 
@@ -87,12 +88,14 @@ void LimparCabeca( LISC_tppListaC pLista )
 
 void LiberarElemento( LISC_tppListaC  pLista , tpElemListaCircular  * pElem   )
    {
+      CNT_CONTAR( "LISC_LiberarElemento" ) ;
 
       if ( ( pLista->ExcluirValor != NULL ) && ( pElem->pValor != NULL ))
       {
-         
+         CNT_CONTAR( "LISC_LiberarElemento_FuncoesCorretas" ) ;
          pLista->ExcluirValor( pElem->pValor ) ;
       } /* if */
+      CNT_CONTAR( "LISC_LiberarElemento_LiberarElemento" ) ;
 
       free(pElem);
 
@@ -216,11 +219,16 @@ tpElemListaCircular* CriarElemento( LISC_tppListaC pLista , void *	pValor ){
 
       tpElemListaCircular * pElem;
 
+      CNT_CONTAR( "LISC_CriarElemento" ) ;
+
       pElem = ( tpElemListaCircular * ) malloc( sizeof( tpElemListaCircular )) ;
       if ( pElem == NULL )
       {
+         CNT_CONTAR( "LISC_CriarElemento_FaltouMemoria" ) ;
          return NULL ;
       } /* if */
+
+      CNT_CONTAR( "LISC_CriarElemento_NaoFaltouMemoria" ) ;
 
       pElem->pValor = pValor;
       pElem->pAnt   = NULL;

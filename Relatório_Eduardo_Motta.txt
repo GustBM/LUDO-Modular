@@ -80,5 +80,9 @@ Este relat�rio expecificara as tarefas e produtos desenvolvidos por Eduardo Mo
 *criação dos contadores de lista circular
 (2 horas)
 
+=> 22/06/2019
+*avanco na implementacao dos contadores de lista circular
+(1 hora)
+
 
 Os dias com data n�o especificada foram continua��es dos trabalhos dos dias anteriores (Entre 1 e 3 horas de trabalho di�rio).

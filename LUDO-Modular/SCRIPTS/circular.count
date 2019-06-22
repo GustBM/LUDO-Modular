@@ -5,6 +5,10 @@
 //
 ///////////////////////////////////////////////
     
+	LISC_LimparCabeca
+	LISC_LiberarElemento
+	LISC_LiberarElemento_FuncoesCorretas
+	LISC_LiberarElemento_LiberarElemento
 	LISC_EsvaziarLista
 	LISC_EsvaziarLista_ListaVazia
 	LISC_EsvaziarLista_ListaNaoVazia
@@ -17,6 +21,9 @@
     LISC_CriarLista_FaltouMemoria
 	LISC_CriarLista_NaoFaltouMemoria
     LISC_DestruirLista
+	LISC_CriarElemento
+	LISC_CriarElemento_FaltouMemoria
+	LISC_CriarElemento_NaoFaltouMemoria
 	LISC_ObterValor
     LISC_ObterValor_ListaVazia
 	LISC_ObterValor_OK
