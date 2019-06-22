@@ -1,5 +1,5 @@
 # Composicao do programa de teste de umtabuleiro generico
-# Este exemplo utiliza o arcabouço completo 
+# Este exemplo utiliza o arcabouï¿½o completo 
 
 [Diretorios]
 
@@ -11,10 +11,12 @@ c           =  ..\Fontes
 h           =  ..\Fontes
 def         =  ..\Fontes
 
-
 [Modulos]
 TESTE_TABULEIRO
 tabuleiro
+peca
+LISTA
+lista_circular
 
 [BuildInicio]
 /OUT:..\produtos\TesteTabuleiro.exe
@@ -23,8 +25,5 @@ tabuleiro
 
 [BuildFim]
 ../objetos/ArcaboucoTeste.lib
-../objetos/Lista.obj
-../objetos/lista_circular.obj
-../objetos/peca.obj
 
 [Fim]

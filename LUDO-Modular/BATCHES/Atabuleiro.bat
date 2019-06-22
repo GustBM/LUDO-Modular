@@ -4,7 +4,7 @@ cls
 
 Call vsvars32.bat
 Call LimpaTudo.bat
-gmake  /B..\PRODUTOS\ /c..\COMPOSICAO\TesteTabuleiro /P..\COMPOSICAO\Gmake.parm
+Call Geratudo.bat
 Call Compila TesteTabuleiro
 Call Testa TesteTabuleiro TesteTabuleiro
 

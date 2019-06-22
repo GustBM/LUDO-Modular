@@ -204,7 +204,7 @@ void LISC_DestruirLista( LISC_tppListaC pLista )
       //#endif
 
       cond = LISC_EsvaziarLista( pLista ) ;
-
+       
       free( pLista ) ;
 
    } /* Fim funcao: LISC  &Destruir lista circular */

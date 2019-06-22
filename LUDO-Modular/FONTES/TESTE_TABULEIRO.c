@@ -14,7 +14,6 @@
 static const char RESET_TAB_CMD         [ ] = "=resetteste"       ;
 static const char CRIAR_TABULEIRO       [ ] = "=criartabuleiro"   ;
 static const char DESTRUIR_TABULEIRO    [ ] = "=destruirtabuleiro";
-static const char LIMPA_CASA            [ ] = "=limpacasa"        ;
 
 #define TRUE  1
 #define FALSE 0
@@ -48,7 +47,6 @@ TAB_tppTabuleiro  vttabuleiros[DIM_VT_TAB];
 *           - anula o vetor de listas. Provoca vazamento de mem�ria
 *     =criartabuleiro               inxLista
 *     =destruirtabuleiro            inxLista
-*     =limpacasa                    inxLista
 *     
 *
 ***********************************************************************/
@@ -57,25 +55,15 @@ TAB_tppTabuleiro  vttabuleiros[DIM_VT_TAB];
    {
 
       int inxLista  = -1 ,
-          numLidos   = -1 ,
-          CondRetEsp = -1  ;
-
-      TST_tpCondRet CondRet ;
-
-      char   StringDado[  DIM_VALOR ] ;
-      char * pDado ;
-
-      int ValEsp = -1 ;
-
+          numLidos   = -1,
+          CondRetEsp = -1,
+          CondRet_Tab = -1 ;
+      
       int i ;
-
-      int numElem = -1 ;
-
-      StringDado[ 0 ] = 0 ;
 
       /* Efetuar reset de teste de tabuleiro */
 
-         if ( strcmp( ComandoTeste ,RESET_TAB_CMD  ) == 0 )
+         if ( strcmp( ComandoTeste , RESET_TAB_CMD  ) == 0 )
          {
 
             for( i = 0 ; i <  DIM_VT_TAB ; i++ )
@@ -100,7 +88,7 @@ TAB_tppTabuleiro  vttabuleiros[DIM_VT_TAB];
                return TST_CondRetParm ;
             } /* if */
 
-             vttabuleiros[ inxLista ] =  TAB_CriaTabuleiro() ;
+            vttabuleiros[ inxLista ] =  TAB_CriaTabuleiro() ;
 
             return TST_CompararPonteiroNulo( 1 , vttabuleiros[ inxLista ] ,
                "Erro em ponteiro de nova lista."  ) ;
@@ -113,19 +101,20 @@ TAB_tppTabuleiro  vttabuleiros[DIM_VT_TAB];
          else if ( strcmp( ComandoTeste , DESTRUIR_TABULEIRO ) == 0 )
          {
 
-            numLidos = LER_LerParametros( "i" ,
-                               &inxLista ) ;
+            numLidos = LER_LerParametros( "ii" ,
+                               &inxLista, &CondRetEsp ) ;
 
-            if ( ( numLidos != 1 )
+            if ( ( numLidos != 2 )
               || ( ! ValidarInxLista( inxLista , NAO_VAZIO )))
             {
                return TST_CondRetParm ;
             } /* if */
 
-            TAB_DestruirTabuleiro( vttabuleiros[ inxLista ] ) ;
-           vttabuleiros[ inxLista ] = NULL ;
+            CondRet_Tab = TAB_DestruirTabuleiro( vttabuleiros[ inxLista ] ) ;
+            vttabuleiros[ inxLista ] = NULL ;
 
-            return TST_CondRetOK ;
+            return TST_CompararInt( CondRetEsp , CondRet_Tab ,
+                     "Condicao de retorno errada ao destruir tabuleiro." ) ;
 
          } /* fim ativa: Testar Destruir lista */
 

@@ -21,9 +21,12 @@
 #undef TABULEIRO_OWN
 
 
-#define TOT_CASAS_TAB 55
+#define TOT_CASAS_TAB 52
+#define INTERVALO_CASAS_INI 13
 
-#define TOT_CASAS_RETA_FINAL 8
+#define TOT_CASAS_RETA_FINAL 6
+
+#define TIMES 4
 
 
 /***********************************************************************
@@ -37,18 +40,8 @@
 
          LISC_tppListaC casasNormais ;
                /* Ponteiro para a lista circular que ir� representar as casas normais do tabuleiro */
-
-         LIS_tppLista casasFim1 ;
-               /* Ponteiro para a lista das casas finais */
-
-		 LIS_tppLista casasFim2 ;
-               /* Ponteiro para a lista das casas finais */
-
-		 LIS_tppLista casasFim3 ;
-               /* Ponteiro para a lista das casas finais */
-
-		 LIS_tppLista casasFim4 ;
-               /* Ponteiro para a lista das casas finais */
+		 LIS_tppLista casasFinais[4];
+		 		/* Ponteiro para vetor de lista das casas finais */	
 
    } TAB_tpTabuleiro ;
 
@@ -66,13 +59,16 @@ typedef struct TAB_tagCasaInfo {
     PECA_tpPeca conteudo ;
         /* Ponteiro para o conteudo da casa */
 
+	LIS_tppLista desvio;
+		/* ponteiro para lista de casas finais */
+
 } TAB_tpCasaInfo;
 
 typedef void ( *pFunc ) ( void * ) ; typedef void **ppVoid ;
 
 /***** Prot�tipo das fun��es encapsuladas no m�dulo *****/
  
-static TAB_tppCasaInfo CriaCasa ( PECA_tpPeca conteudo ) ;
+static TAB_tppCasaInfo CriaCasa ( PECA_tpPeca conteudo , LIS_tppLista desvio) ;
 
 static TAB_CondRet TAB_LimpaCasa (TAB_tpCasaInfo* casa);
 
@@ -88,13 +84,13 @@ static void TAB_LiberarCasa ( TAB_tpCasaInfo *pCasa ) ;
 ***********************************************************************/
 
 TAB_tppTabuleiro TAB_CriaTabuleiro () {
-	int i, k;
+	int i, k, cor;
 
 	TAB_tppTabuleiro pTab;
 
 	LISC_tppListaC pListaC;
 
-	LIS_tppLista pLista1, pLista2, pLista3, pLista4;
+	LIS_tppLista pLista[TIMES];
 
 	TAB_tpCasaInfo *casa ;
 
@@ -106,50 +102,45 @@ TAB_tppTabuleiro TAB_CriaTabuleiro () {
 	if ( pTab == NULL ) return NULL;
 
 	pListaC = LISC_CriarLista ( TAB_LimpaCasa , TAB_ComparaCasa );
-	if ( pListaC = NULL ) return NULL;
+	if ( pListaC == NULL ) return NULL;
 
-	pLista1 = LIS_CriarLista( ( pFunc ) TAB_LimpaCasa );
-	if ( pLista1 = NULL ) return NULL;
-	pLista2 = LIS_CriarLista( ( pFunc ) TAB_LimpaCasa );
-	if ( pLista2 = NULL ) return NULL;
-	pLista3 = LIS_CriarLista( ( pFunc ) TAB_LimpaCasa );
-	if ( pLista3 = NULL ) return NULL;
-	pLista4 = LIS_CriarLista( ( pFunc ) TAB_LimpaCasa );
-	if ( pLista4 = NULL ) return NULL;
+	for(cor = 0;cor < TIMES;cor++){
+		pLista[cor] = LIS_CriarLista( ( pFunc ) TAB_LimpaCasa );
+		if ( pLista[cor] == NULL ) 
+			return NULL;
+	}
 
+	cor = 0;
 	for( k = 0; k < TOT_CASAS_TAB ; k++ ){
 		
-		casa = CriaCasa ( NULL ) ;
+		if(k % INTERVALO_CASAS_INI == 0){
+				casa = CriaCasa ( NULL , pLista[cor]) ;
+				cor++;
+		}
+		else{
+			casa = CriaCasa ( NULL , NULL) ;
+		}
+		
         if ( casa == NULL ) return NULL ;
 
         listcFlag = LISC_InserirElementoAntes( pListaC , casa ) ;
 		if ( listcFlag != LIS_CondRetOK ) return NULL;
     }
 
-	for( i = 0 ; i < TOT_CASAS_RETA_FINAL ; i++ ){
-		listFlag = LIS_InserirElementoApos( pLista1 , CriaCasa(NULL)  );
-		if ( listFlag != LIS_CondRetOK ) return NULL;
-    }
-	for( i = 0 ; i < TOT_CASAS_RETA_FINAL ; i++ ){
-		listFlag = LIS_InserirElementoApos( pLista2 , CriaCasa(NULL)  );
-		if ( listFlag != LIS_CondRetOK ) return NULL;
-    }
-	for( i = 0 ; i < TOT_CASAS_RETA_FINAL ; i++ ){
-		 listFlag = LIS_InserirElementoApos( pLista3 , CriaCasa(NULL) );
+	for(cor=0;cor<TIMES;cor++){
+		for( i = 0 ; i < TOT_CASAS_RETA_FINAL ; i++ ){
+		 listFlag = LIS_InserirElementoApos( pLista[cor] , CriaCasa(NULL,NULL) );
 		 if ( listFlag != LIS_CondRetOK ) return NULL;
-    }
-	for( i = 0 ; i < TOT_CASAS_RETA_FINAL ; i++ ){
-		 listFlag = LIS_InserirElementoApos( pLista4 , CriaCasa(NULL) );
-		 if ( listFlag != LIS_CondRetOK ) return NULL;
-    }
+    	}
+	}
  
     pTab->casasNormais = pListaC ;
-	pTab->casasFim1 = pLista1;
-	pTab->casasFim2 = pLista2;
-	pTab->casasFim3 = pLista3;
-	pTab->casasFim4 = pLista4;
- 
-    return pTab ;
+
+	for(cor = 0;cor < TIMES;cor++){
+		pTab-> casasFinais[cor] = pLista[cor];
+	}
+
+    return pTab;
 
 }
 
@@ -161,24 +152,23 @@ TAB_tppTabuleiro TAB_CriaTabuleiro () {
 
 TAB_CondRet TAB_DestruirTabuleiro( TAB_tppTabuleiro pTab )
 {
+	int cor;
 
     #ifdef _DEBUG
         assert( pTab != NULL ) ;
     #endif
-		
+	
+	for(cor=0;cor<TIMES;cor++){
+		LIS_DestruirLista( pTab->casasFinais[cor] ) ;
+	}
+
 	LISC_DestruirLista( pTab->casasNormais ) ;
-	LIS_EsvaziarLista( pTab->casasFim1 ) ;
-	LIS_DestruirLista( pTab->casasFim1 ) ;
-	LIS_EsvaziarLista( pTab->casasFim2 ) ;
-	LIS_DestruirLista( pTab->casasFim2 ) ;
-	LIS_EsvaziarLista( pTab->casasFim3 ) ;
-	LIS_DestruirLista( pTab->casasFim3 ) ;
-	LIS_EsvaziarLista( pTab->casasFim4 ) ;
-	LIS_DestruirLista( pTab->casasFim4 ) ;
+
 
     free( pTab ) ;
-	if ( pTab == NULL ) return TAB_CondRetOK;
-	else return TAB_CondRetErro;
+	
+	return TAB_CondRetOK;
+
 }
 
 
@@ -188,15 +178,21 @@ TAB_CondRet TAB_DestruirTabuleiro( TAB_tppTabuleiro pTab )
 *
 ***********************************************************************/
 
-static TAB_tppCasaInfo CriaCasa ( PECA_tpPeca conteudo )
+static TAB_tppCasaInfo CriaCasa ( PECA_tpPeca conteudo, LIS_tppLista desvio )
 {
     TAB_tpCasaInfo *casa ;
+
+	assert(conteudo == NULL);
      
     casa  = (TAB_tpCasaInfo *) malloc ( sizeof ( TAB_tpCasaInfo ) ) ;
      
     if( casa == NULL ) return NULL ;
 
-	casa->conteudo = conteudo;
+	casa -> conteudo = conteudo;
+	
+	casa -> desvio = desvio;
+
+	assert(casa -> conteudo == NULL);
  
     return casa ;
 } 
@@ -207,12 +203,18 @@ static TAB_tppCasaInfo CriaCasa ( PECA_tpPeca conteudo )
 *
 ***********************************************************************/
 
-TAB_CondRet TAB_LimpaCasa (TAB_tppCasaInfo casa) {
+TAB_CondRet TAB_LimpaCasa (TAB_tppCasaInfo casa) 
+{
 
 	if ( casa->conteudo != NULL )
     {
-        destroi_peca ( casa->conteudo ) ;
+        PECA_DestroiPeca( casa->conteudo ) ;
     }
+
+	if( casa -> desvio != NULL)
+	{
+		LIS_DestruirLista( casa -> desvio ) ; 
+	}
     
 	free(casa);
 	
@@ -227,6 +229,8 @@ TAB_CondRet TAB_LimpaCasa (TAB_tppCasaInfo casa) {
 
 static int TAB_ComparaCasa(TAB_tpCasaInfo* casa1 ,TAB_tpCasaInfo* casa2){
 
-	//funcao compara conteudo;  
-
+	if(casa1 == casa2){
+		return 0;
+	}  
+	return -1;
 }
