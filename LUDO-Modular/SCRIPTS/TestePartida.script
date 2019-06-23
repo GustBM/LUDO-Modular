@@ -1,0 +1,43 @@
+// Script:    TestePartida.script
+// Autor:     Luiz Fellipe Augusto, Eduardo Motta, Gustavo Barros
+// Data:      23/Junho/2019
+// Proposito: Testar o modulo partida.
+//
+
+== Inicializar valores
+
+=declararparm   part0           int  0
+
+=declararparm   cor0            int  0
+
+=declararparm   venc0           int  0
+
+=declararparm   OK              int  0
+=declararparm   FaltouMemoria   int  1
+=declararparm   NumJogadoresInv int  2
+=declararparm   CorJaEsc        int  3
+=declararparm   CorInvalida     int  4
+
+
+== Criar partida sem erros
+=criarpartida       part0   4   cor0    OK
+
+== Criar partida com numero de jogadores inválidos
+=criarpartida       part0   0   cor0    NumJogadoresInv
+
+== Criar partida com cor inválida
+=criarpartida       part0   4   -1    CorInvalida
+
+== Realiza Jogada
+=realizajogada      part0   cor0    OK
+
+== Realiza Jogada com cor inválida 
+=realizajogada      part0   -1      CorInvalida
+
+== Verifica vencedor com vencedor
+=verificavencedor   part0   venc0   1
+
+== Verifica vencedor sem vencedor
+=verificavencedor   part0   0   0
+
+// fim

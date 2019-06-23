@@ -22,7 +22,7 @@ static const char DESTRUIR_TABULEIRO    [ ] = "=destruirtabuleiro";
 #define NAO_VAZIO 1
 
 #define DIM_VT_TAB   10
-#define DIM_VALOR     100
+#define DIM_VALOR    100
 
 TAB_tppTabuleiro  vttabuleiros[DIM_VT_TAB];
 

@@ -26,6 +26,7 @@
 
 
 #define NUM_PECA 4
+#define MAX_PECAS 16 
 
 /***********************************************************************
  *
@@ -38,7 +39,7 @@ typedef struct PAR_tagPartida
 	TAB_tppTabuleiro pTabuleiro ;
 	/* Ponteiro para Tabuleiro */
 	
-	PECA_tpPeca pecas[16] ;
+	PECA_tpPeca pecas[MAX_PECAS] ;
 	/* Vetor de Peças */
 	
 	int num_jogadores ;
@@ -140,14 +141,26 @@ static void PAR_LimpaCabeca ( PAR_Ludo *pJogo )
  *
  ***********************************************************************/
 
-int PAR_RealizaJogada ( PAR_Ludo *pJogo , int cor ) 
+PAR_CondRet PAR_RealizaJogada ( PAR_Ludo *pJogo , int cor ) 
 {
 	int dado ;
-	PAR_LancaDado ( &dado ) ;
+	if (cor < 0 || cor > 4)
+	{
+		return PAR_CondRetCorInvalida;
+	}
+	
+	LancaDado ( &dado ) ;
 
+	// WIP
 
+	// for ( int i = 0; i < MAX_PECAS; i++)
+	// {
+	// 	if (pJogo->pecas[i] == cor) {
 
-	return dado;
+	// 	}
+	// }
+	
+	return PAR_CondRetOK;
 }   /* Fim função: PAR  &Realiza Jogada */
 
 
@@ -184,7 +197,7 @@ int PAR_VerificaVencedor( PAR_Ludo *pJogo, int * vencedores ) {
 	int vencedoresTemp[4] = {0, 0, 0, 0};
 	for (int i = 0; i < 16; i++)
 	{
-		PECA_ObtemFinal (*pJogo->pecas[i], &final ) 
+		PECA_ObtemFinal (pJogo->pecas[i], &final );
 		if (final == 1)
 		{
 			PECA_ObtemCor(pJogo->pecas[i], &cor);
