@@ -24,6 +24,9 @@
 #include "partida.h"
 #undef PAR_OWN
 
+
+#define NUM_PECA 4
+
 /***********************************************************************
  *
  *  $TC Tipo de dados: PAR Partida de Ludo
@@ -88,15 +91,10 @@ PAR_CondRet PAR_InicializaJogo ( PAR_tppPartida * pJogo , int num , int *cor )
 	LimpaCabeca ( *pJogo ) ;
 
 	pTabuleiro = TAB_CriaTabuleiro() ;
-	
-	if ( retorno_tab != TAB_CondRetOK )
-	{
-		return PAR_CondRetFaltouMemoria ;
-	}
 
 	for ( i = 0 ; i < num ; i++ ) 
 	{
-		for ( k = 4*cor[i] ; k < k + 4 ; k++ ) 
+		for ( k = NUM_PECA * cor[i] ; k < k + NUM_PECA ; k++ ) 
 		{
 			retorno_pec = PEC_CriaPeca ( (*pJogo)->pecas , k , cor[i]) ;
 			switch ( retorno_pec ) 
@@ -180,14 +178,14 @@ static void LancaDado ( int * pValor )
  ***********************************************************************/
 
 int PAR_VerificaVencedor( PAR_Ludo *pJogo, int * vencedores ) {
-	char * status;
-	int cor, j = 0;
+	int final;
+	int cor, terminaram = 0;
 	int jogadores[4] = {0, 0, 0, 0};
 	int vencedoresTemp[4] = {0, 0, 0, 0};
 	for (int i = 0; i < 16; i++)
 	{
-		PECA_ObtemStatus(*pJogo->pecas, status) ;
-		if (strcmp(status, 'F'))
+		PECA_ObtemFinal (*pJogo->pecas[i], &final ) 
+		if (final == 1)
 		{
 			PECA_ObtemCor(pJogo->pecas[i], &cor);
 			jogadores[cor]++;
@@ -197,17 +195,17 @@ int PAR_VerificaVencedor( PAR_Ludo *pJogo, int * vencedores ) {
 	for (int i = 0; i < 3; i++)
 	{
 		if(jogadores[i] == 4) {
-			vencedoresTemp[j] = i;
-			j++;
+			vencedoresTemp[terminaram] = i;
+			terminaram++;
 		}
 	}
 
 	vencedores = vencedoresTemp;
 
-	if (sizeof(vencedores) == 0)
+	if (terminaram == 0)
 	{
 		return -1;
-	} else if (sizeof(vencedores)/sizeof(vencedores[0]) == 3 ){
+	} else if (terminaram == (pJogo ->num_jogadores) - 1){
 		return 1;
 	} else {
 		return 0;

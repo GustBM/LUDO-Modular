@@ -83,8 +83,8 @@ typedef enum {
 *     Cria uma pe�a, dado um indice, no vetor de pecas.
 *
 *  $EP Parametros
-*  * peca - ponteiro para pe�a a ser criada
-*    i    - indice da pe�a no vetor de pecas
+*  * peca - vetor de ponteiros para peca a ser inserida a nova peca
+*    i    - indice da peca no vetor de pecas
 * 	 cor  - cor da pe�a
 *
 ***********************************************************************/

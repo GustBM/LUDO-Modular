@@ -73,7 +73,8 @@ typedef enum {
  *  $EP Parâmetros
  *     pJogo     - ponteiro para jogo.
  *      num      - numero referente a quantidade de jogadores.
- *      cor      - cor da peça referente ao jogador.
+ *      cor      - vetor de inteiros com cada cor atrelada a cada jogador em ordem.
+ * 				   EX: J1 - vermelho, J2 - Verde, J3 - Amarelo, J4 - Azul -> [0,2,3,1]	
  *
  *  $FV Valor retornado
  *     PAR_CondRetOK - Caso a inicialização foi correta.  
@@ -135,8 +136,8 @@ int PAR_RealizaJogada ( PAR_Ludo *pJogo , int cor ) ;
  *   vencedores  - Vetor que guarda os jogadores que já venceram, em nenhuma ordem particular.
  *
  *  $FV Valor retornado
- *	  1 - Caso haja vencedores suficientes para acabar a partida, i.e. 3
- *    0 - Caso haja vencedores, mas ainda 
+ *	  1 - Caso haja vencedores suficientes para acabar a partida, 1 a menos que o numero de jogadores
+ *    0 - Caso haja vencedores, mas ainda ha 2 ou mais jogadores que ainda não cruzaram todas as suas peças
  *   -1 - Caso a lista de vencedores esteja vazia
  ***********************************************************************/
 

@@ -88,7 +88,7 @@ TAB_tppTabuleiro TAB_CriaTabuleiro ();
 *  $FC Fun��o: TAB  &Destruir Tabuleiro
 *
 *  $ED Descri��o da fun��o
-*     Elemina o conteudo da de todas as listas do tabuleiro e depois 
+*     Elimina o conteudo da de todas as listas do tabuleiro e depois 
 *	  destroi ele
 *
 *  $EP Par�metros
@@ -98,6 +98,22 @@ TAB_tppTabuleiro TAB_CriaTabuleiro ();
 
 TAB_CondRet TAB_DestruirTabuleiro( TAB_tppTabuleiro pTab);
 
+/***********************************************************************
+*
+*  $FC Fun��o: TAB  &Imprime Tabuleiro
+*
+*  $ED Descri��o da fun��o
+*     recebe um vetor de ponteiros de peca e o tabuleiro que estas pecas 
+*        estao inseridas e imprime na tela as informações do jogo
+*
+*  $EP Par�metros
+*     pTab  - ponteiro para a o tabuleiro a ser usado
+*     pecas - vetor de ponteiro de pecas a ser usado
+*     num_jogadores - numero de jogadores no campo
+*
+***********************************************************************/
+
+void TAB_imprime(PECA_tpPeca* pecas, TAB_tppTabuleiro ptab, int num_jogadores );
 
 #undef TABULEIRO_EXT
 

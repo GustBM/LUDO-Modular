@@ -66,15 +66,15 @@ Este relat�rio expecificara as tarefas e produtos desenvolvidos por Eduardo Mo
 
 => 14/06/2019
 * conclusao de lista circular (sem conta implementado)
-(2  horas)
+(2 horas)
 
 => 15/06/2019
 *inicio de implementar conta em lista ciruclar
-(2  horas)
+(2 horas)
 
 => 15/06/2019
 *peca completo
-(5  horas)
+(5 horas)
 
 => 19/06/2019
 *criação dos contadores de lista circular
@@ -82,7 +82,10 @@ Este relat�rio expecificara as tarefas e produtos desenvolvidos por Eduardo Mo
 
 => 22/06/2019
 *avanco na implementacao dos contadores de lista circular
-(1 hora)
+*termino do modulo tabuleiro
+*comeco do modulo partida
+*comeco da interface
+(5 horas)
 
 
 Os dias com data n�o especificada foram continua��es dos trabalhos dos dias anteriores (Entre 1 e 3 horas de trabalho di�rio).
