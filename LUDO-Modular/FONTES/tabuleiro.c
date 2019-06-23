@@ -254,15 +254,137 @@ static int TAB_ComparaCasa(TAB_tpCasaInfo* casa1 ,TAB_tpCasaInfo* casa2){
 	return -1;
 }
 
+void PrintaPeca(PECA_tpPeca* pecas,int ind){
+
+	char status;
+
+	if(ind >= 0 && ind < 16)
+	{
+		PECA_ObtemStatus (pecas[ind] , &status ) ;
+
+		if(status == 'F')
+		{
+			if(ind >= 0 && ind < 4)
+			{
+				printf("R");
+			}
+			else if(ind >= 5 && ind < 8)
+			{
+				printf("B");
+			}
+			else if(ind >= 9 && ind < 12)
+			{
+				printf("G");
+			}
+			else
+			{
+				printf("Y");
+			}
+		}
+		else{
+			printf(" ");
+		}
+
+		
+	}
+	else{
+		printf("Z");
+	}
+
+}
+
+void PrintaCasaFim(LIS_tppLista pLista){
+
+	int i;
+
+	int cor = -1;
+
+	char letra[] = {'R','B','G','Y'};
+
+	int presentes = 0;
+
+	TAB_tpCasaInfo* imprime = LIS_ObterValor( pLista );
+
+	
+
+	for(i=0;i<PECAS;i++)
+	{
+		if(imprime -> conteudo[i] != NULL)
+		{
+			PECA_ObtemCor ( imprime -> conteudo[i], &cor ) ;
+			presentes++;
+		}
+	}
+
+	if(presentes == 0 && cor == -1)
+		printf("   ");
+	else{
+		
+
+		if(presentes == 1)
+		{
+			printf(" %c ",letra[cor]);
+		}
+		else{
+			printf("%cx%d",letra[cor], presentes);
+		}
+	} 
+
+
+}
+
+void PrintaCasa(LISC_tppListaC pLista)
+{
+
+	int i;
+
+	int cor = -1;
+
+	char letra[] = {'R','B','G','Y'};
+
+	int presentes = 0;
+
+	TAB_tpCasaInfo* imprime;
+	LISC_ObterValor( pLista, &imprime );
+
+	for(i=0;i<PECAS;i++)
+	{
+		if(imprime -> conteudo[i] != NULL)
+		{
+			PECA_ObtemCor ( imprime -> conteudo[i], &cor ) ;
+			presentes++;
+		}
+	}
+
+	if(presentes == 0 && cor == -1)
+	{
+		printf("   ");
+	}	
+	else
+	{
+		if(presentes == 1)
+		{
+			printf(" %c ",letra[cor]);
+		}
+		else
+		{
+			printf("%cx%d",letra[cor], presentes);
+		}
+	} 
+
+
+}
+
+
 /***********************************************************************
 *
 *  $FC Fun��o: TAB  -imprime TAB
 *
 ***********************************************************************/
 
-void TAB_imprime(PECA_tpPeca* pecas, TAB_tppTabuleiro ptab, int num_jogadores){
+void TAB_imprime(PECA_tpPeca* pecas, TAB_tppTabuleiro ptab){
 
-	int linha, coluna;
+	int linha, coluna, regresso = 7;
 
 	char tabuleiro[31][62] ={
 							    "    __________          v---v---v---v         __________     " ,
@@ -278,7 +400,7 @@ void TAB_imprime(PECA_tpPeca* pecas, TAB_tppTabuleiro ptab, int num_jogadores){
                                 "     ||                 |---+---+---|                        " ,
                                 "     vv                 |   |   |   |                        " ,
                                 ">---.---.---.---.---.---+---+---+---+---.---.---.---.---.---<" ,
-                                "|   |   |   |   |   |   | X |   | X |   | B |   |   |   |   |" ,
+                                "|   |   |   |   |   |RX2| X |   | X |   | B |   |   |   |   |" ,
                                 "|---+vvv+---+---+---+---+---+---+---+---+---+---+---+---+---|" ,
                                 "|   |   |   |   |   |   |   | X | B |   |   |   |   |   |   |" ,
                                 "|---+---+---+---+---+---+---+---+---+---+---+---+---+^^^+---|" ,
@@ -301,9 +423,11 @@ void TAB_imprime(PECA_tpPeca* pecas, TAB_tppTabuleiro ptab, int num_jogadores){
 	LISC_ProcurarValor( ptab ->casasNormais , ptab->casaIni ) ;//tornar casa inicial vermelha como elemento inicial
 	LISC_AvancarElementoCorrente( ptab ->casasNormais , 10 ); //ir para topo do tabuleiro
 
-	for(linha=0;linha<TIMES;i++){
-		IrInicioLista( ptab ->casasFinais[linha] ) ; //voltar para casa inicial
-	}
+	
+	IrInicioLista( ptab ->casasFinais[0] ) ; //voltar para casa inicial
+	IrInicioLista( ptab ->casasFinais[1] ) ;
+	IrFinalLista( ptab ->casasFinais[2] ) ;
+	IrFinalLista( ptab ->casasFinais[3] ) ;
 
 	for(linha=0;linha < 31;linha++){
 		for(coluna=0;coluna < 61;coluna++){
@@ -318,11 +442,13 @@ void TAB_imprime(PECA_tpPeca* pecas, TAB_tppTabuleiro ptab, int num_jogadores){
 						LISC_AvancarElementoCorrente( ptab ->casasNormais , 1);
 					else
 						LISC_AvancarElementoCorrente( ptab ->casasNormais , linha + 1);
+					coluna+=2;
 				}
 				else if(coluna == 33)
 				{
 					PrintaCasa( ptab -> casasNormais);
 					LISC_AvancarElementoCorrente( ptab ->casasNormais , (linha + 2) * -1 );
+					coluna+=2;
 				}
 				else if(coluna == 29)
 				{
@@ -335,14 +461,191 @@ void TAB_imprime(PECA_tpPeca* pecas, TAB_tppTabuleiro ptab, int num_jogadores){
 						PrintaCasaFim(ptab ->casasFinais[1]);
 						LIS_AvancarElementoCorrente( ptab ->casasFinais[1] , 1) ;
 					} 
-
+					coluna+=2;
 				}
 
-			coluna+=2;
+				else if(coluna == 6)
+				{
+					if(linha == 2)
+						PrintaPeca(pecas,0);
+					if(linha == 4)
+						PrintaPeca(pecas,2);
+					coluna+=2;
+				}
+				else if(coluna == 11)
+				{
+					if(linha == 2)
+						PrintaPeca(pecas,1);
+					if(linha == 4)
+						PrintaPeca(pecas,3);
+					coluna+=2;
+				}
+				else if(coluna == 48)
+				{
+					if(linha == 2)
+						PrintaPeca(pecas,4);
+					if(linha == 4)
+						PrintaPeca(pecas,6);
+					coluna+=2;
+				}
+				else if(coluna == 52)
+				{
+					if(linha == 2)
+						PrintaPeca(pecas,5);
+					if(linha == 4)
+						PrintaPeca(pecas,7);
+					coluna+=2;
+				}
+
+
+			
+			}
+			if(linha > 12 && linha < 18 && linha % 2 == 1) //casas da area vermelha ou verde
+			{ 
+				if(linha == 13)
+				{
+					if(coluna % 4 == 1 && coluna > 0 && coluna < 26)
+					{
+						PrintaCasa( ptab -> casasNormais);
+						LISC_AvancarElementoCorrente( ptab ->casasNormais , 1);		
+					}
+					if(coluna == 29)
+					{
+						PrintaCasaFim(ptab ->casasFinais[1]);
+					}
+					if(coluna % 4 == 1 && coluna > 36 && coluna < 61)
+					{
+						PrintaCasa( ptab -> casasNormais);
+						LISC_AvancarElementoCorrente( ptab ->casasNormais , 1);		
+					}
+					if(coluna == 26)
+					{
+						LISC_AvancarElementoCorrente( ptab ->casasNormais , 13);
+					}
+					if(coluna == 61)
+					{
+						LISC_AvancarElementoCorrente( ptab ->casasNormais , -26);
+					}
+				coluna+=2;
+						
+				}
+				if(linha == 15)
+				{
+					if(coluna == 1)
+					{
+						PrintaCasa( ptab -> casasNormais);
+						LISC_AvancarElementoCorrente( ptab ->casasNormais , 27);
+					}
+					if(coluna > 4  && coluna < 26 && coluna % 4 == 1 )
+					{
+						PrintaCasaFim(ptab ->casasFinais[0]);
+						LIS_AvancarElementoCorrente( ptab ->casasFinais[0] , 1);
+					}
+					if(coluna > 36  && coluna < 57 && coluna % 4 == 1 )
+					{
+						PrintaCasaFim(ptab ->casasFinais[2]);
+						LIS_AvancarElementoCorrente( ptab ->casasFinais[2] , -1);
+					}
+					if(coluna == 57)
+					{
+						PrintaCasa( ptab -> casasNormais);
+						LISC_AvancarElementoCorrente( ptab ->casasNormais , 25);
+					}
+				coluna+=2;
+				}
+				if(linha == 17)
+				{
+					if(coluna % 4 == 1 && coluna > 0 && coluna < 26)
+					{
+						PrintaCasa( ptab -> casasNormais);
+						LISC_AvancarElementoCorrente( ptab ->casasNormais , -1);		
+					}
+					if(coluna == 29)
+					{
+						PrintaCasaFim(ptab ->casasFinais[3]);
+					}
+					if(coluna % 4 == 1 && coluna > 36 && coluna < 61)
+					{
+						PrintaCasa( ptab -> casasNormais);
+						LISC_AvancarElementoCorrente( ptab ->casasNormais , -1);		
+					}
+					if(coluna == 26)
+					{
+						LISC_AvancarElementoCorrente( ptab ->casasNormais , -13);
+					}
+					if(coluna == 61)
+					{
+						LISC_AvancarElementoCorrente( ptab ->casasNormais , 17);
+					}
+				coluna+=2;
+				}
+			}
+			if(linha > 18 && linha < 30 && linha % 2 == 1) //casas da area amarela
+			{ 
+			
+				if(coluna == 25)
+				{
+					PrintaCasa( ptab -> casasNormais);
+					LISC_AvancarElementoCorrente( ptab ->casasNormais , (linha - regresso) * -1);
+					coluna+=2;
+				}
+				else if(coluna == 29)
+				{
+					if(linha == 29)
+					{
+						PrintaCasa( ptab -> casasNormais);
+					}
+					else
+					{
+						PrintaCasaFim(ptab ->casasFinais[1]);
+						LIS_AvancarElementoCorrente( ptab ->casasFinais[1] , 1) ;
+					} 
+					coluna+=2;
+				}
+				else if(coluna == 33)
+				{
+					PrintaCasa( ptab -> casasNormais);
+					LISC_AvancarElementoCorrente( ptab ->casasNormais , (linha - regresso - 1));
+					regresso += 4;
+					coluna+=2;
+				}
+				else if(coluna == 6)
+				{
+					if(linha == 26)
+						PrintaPeca(pecas,8);
+					if(linha == 28)
+						PrintaPeca(pecas,10);
+					coluna+=2;
+				}
+				else if(coluna == 11)
+				{
+					if(linha == 26)
+						PrintaPeca(pecas,9);
+					if(linha == 28)
+						PrintaPeca(pecas,11);
+					coluna+=2;
+				}
+				else if(coluna == 48)
+				{
+					if(linha == 26)
+						PrintaPeca(pecas,12);
+					if(linha == 28)
+						PrintaPeca(pecas,13);
+					coluna+=2;
+				}
+				else if(coluna == 52)
+				{
+					if(linha == 26)
+						PrintaPeca(pecas,11);
+					if(linha == 28)
+						PrintaPeca(pecas,14);
+					coluna+=2;
+				}
+
 			}
 			else
 			{
-				printf("%c", tabuleiro[i][j]);
+				printf("%c", tabuleiro[linha][coluna]);
 			}
 
 			
