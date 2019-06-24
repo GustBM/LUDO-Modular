@@ -587,6 +587,7 @@ void TAB_imprime(PECA_tpPeca* pecas, TAB_tppTabuleiro ptab){
 				{
 					PrintaCasa( ptab -> casasNormais);
 					LISC_AvancarElementoCorrente( ptab ->casasNormais , (linha - regresso) * -1);
+					regresso += 4;
 					coluna+=2;
 				}
 				else if(coluna == 29)
@@ -601,6 +602,7 @@ void TAB_imprime(PECA_tpPeca* pecas, TAB_tppTabuleiro ptab){
 						LIS_AvancarElementoCorrente( ptab ->casasFinais[1] , 1) ;
 					} 
 					coluna+=2;
+					regresso = 7;
 				}
 				else if(coluna == 33)
 				{
