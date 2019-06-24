@@ -87,5 +87,9 @@ Este relat�rio expecificara as tarefas e produtos desenvolvidos por Eduardo Mo
 *comeco da interface
 (5 horas)
 
+=> 23/06/2019
+*interface versao 1 completa
+(5 horas)
+
 
 Os dias com data n�o especificada foram continua��es dos trabalhos dos dias anteriores (Entre 1 e 3 horas de trabalho di�rio).

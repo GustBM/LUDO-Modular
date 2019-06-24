@@ -1,9 +1,9 @@
-# Composicao do programa de teste de um tabuleiro generico
+# Composicao do programa de teste de uma partida generica
 # Este exemplo utiliza o arcabou�o completo 
 
 [Diretorios]
 
-Nome        =  TesteTabuleiro
+Nome        =  TestePartida
 PathDefault =  ..\Fontes
 err         =  ..\Produtos
 obj         =  ..\Objetos
@@ -12,14 +12,15 @@ h           =  ..\Fontes
 def         =  ..\Fontes
 
 [Modulos]
-TESTE_TABULEIRO
+partida
+TestePartida
 tabuleiro
 peca
 LISTA
 lista_circular
 
 [BuildInicio]
-/OUT:..\produtos\TesteTabuleiro.exe
+/OUT:..\produtos\TestePartida.exe
 /INCREMENTAL:NO
 /MACHINE:IX86
 
