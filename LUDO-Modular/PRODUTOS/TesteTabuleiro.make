@@ -1,7 +1,7 @@
 ##################################################
 ###
-### Diretivas de MAKE para o construto: TestePartida
-### Gerado a partir de: ..\COMPOSICAO\TestePartida.comp
+### Diretivas de MAKE para o construto: TesteTabuleiro
+### Gerado a partir de: ..\COMPOSICAO\TesteTabuleiro.comp
 ###
 ### ----- Arquivo gerado, NÃO EDITE!!! -----
 ###
@@ -9,7 +9,7 @@
 
 ### Nomes globais
 
-NOME            = TestePartida
+NOME            = TesteTabuleiro
 
 
 ### Nomes de paths
@@ -49,9 +49,8 @@ INCLUDE = $(INCLUDE);$(PDEFAULT)
 ### Regras de geração
 
 all : limpa \
-   $(Fobj)\partida.obj   $(Fobj)\teste_tabuleiro.obj   $(Fobj)\testepartida.obj \
-   $(Fobj)\tabuleiro.obj   $(Fobj)\peca.obj   $(Fobj)\lista.obj \
-   $(Fobj)\lista_circular.obj \
+   $(Fobj)\teste_tabuleiro.obj   $(Fobj)\tabuleiro.obj   $(Fobj)\peca.obj \
+   $(Fobj)\lista.obj   $(Fobj)\lista_circular.obj \
    Construto
 
 ### Limpar arquivos
@@ -62,20 +61,9 @@ limpa :
 
 ### Dependências de módulos objeto a compilar
 
-$(Fobj)\partida.obj :  {$(Pc)}\partida.c \
-    {$(Ph)}lista.h              {$(Ph)}lista_circular.h     {$(Ph)}partida.h            \
-    {$(Ph)}peca.h               {$(Ph)}tabuleiro.h         
-   cl $(O) $(OPT) /Fo$(Fobj)\ $(Fc)\$(@B).c >> $(Ferr)\$(NOME).err
-
 $(Fobj)\teste_tabuleiro.obj :  {$(Pc)}\teste_tabuleiro.c \
     {$(Ph)}generico.h           {$(Ph)}lerparm.h            {$(Ph)}lista.h              \
     {$(Ph)}tst_espc.h          
-   cl $(O) $(OPT) /Fo$(Fobj)\ $(Fc)\$(@B).c >> $(Ferr)\$(NOME).err
-
-$(Fobj)\testepartida.obj :  {$(Pc)}\testepartida.c \
-    {$(Ph)}generico.h           {$(Ph)}lerparm.h            {$(Ph)}lista.h              \
-    {$(Ph)}lista_circular.h     {$(Ph)}partida.h            {$(Ph)}peca.h               \
-    {$(Ph)}tabuleiro.h          {$(Ph)}tst_espc.h          
    cl $(O) $(OPT) /Fo$(Fobj)\ $(Fc)\$(@B).c >> $(Ferr)\$(NOME).err
 
 $(Fobj)\tabuleiro.obj :  {$(Pc)}\tabuleiro.c \
@@ -99,15 +87,14 @@ $(Fobj)\lista_circular.obj :  {$(Pc)}\lista_circular.c \
 ### Terminação
 
 Construto : \
-   $(Fobj)\partida.obj   $(Fobj)\teste_tabuleiro.obj   $(Fobj)\testepartida.obj \
-   $(Fobj)\tabuleiro.obj   $(Fobj)\peca.obj   $(Fobj)\lista.obj \
-   $(Fobj)\lista_circular.obj
+   $(Fobj)\teste_tabuleiro.obj   $(Fobj)\tabuleiro.obj   $(Fobj)\peca.obj \
+   $(Fobj)\lista.obj   $(Fobj)\lista_circular.obj
     cd $(Fobj)
     LINK $(L) @$(NOME).build >> $(Ferr)\$(NOME).err
 
 ##################################################
 ###
-### Fim de diretivas MAKE para o construto: TestePartida
+### Fim de diretivas MAKE para o construto: TesteTabuleiro
 ###
 ##################################################
 

@@ -142,7 +142,7 @@ static void LimpaCabeca ( PAR_Ludo *pJogo )
 
 PAR_CondRet PAR_RealizaJogada ( PAR_Ludo *pJogo , int cor ) 
 {
-	int dado ;
+	int dado, i;
 	if (cor < 0 || cor > 4)
 	{
 		return PAR_CondRetCorInvalida;
@@ -150,14 +150,12 @@ PAR_CondRet PAR_RealizaJogada ( PAR_Ludo *pJogo , int cor )
 	
 	LancaDado ( &dado ) ;
 
-	// WIP
-
-	// for ( int i = 0; i < MAX_PECAS; i++)
-	// {
-	// 	if (pJogo->pecas[i] == cor) {
-
-	// 	}
-	// }
+	for (i = 0; i < MAX_PECAS; i++)
+	{
+		if (pJogo->pecas[cor]) {
+			// WIP
+		}
+	}
 	
 	return PAR_CondRetOK;
 }   /* Fim função: PAR  &Realiza Jogada */
@@ -174,7 +172,7 @@ static void LancaDado ( int * pValor )
 {
     int ValorAleatorio ;
   
-    srand ( time ( NULL ) ) ;
+    // srand ( time ( NULL ) ) ;
     ValorAleatorio = ( rand() % 6 ) + 1 ;
       
     * pValor = ValorAleatorio ;

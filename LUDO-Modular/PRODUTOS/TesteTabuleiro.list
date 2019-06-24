@@ -1,23 +1,21 @@
 GERADOR DE SCRIPT DE DIRETIVAS PARA MAKE
    LES / Informática / PUC-Rio    Versão 6.00 (c) 2005
 
-Composição do construto: ..\COMPOSICAO\TestePartida.comp
+Composição do construto: ..\COMPOSICAO\TesteTabuleiro.comp
 
-   Nome do Construto:           TestePartida
+   Nome do Construto:           TesteTabuleiro
    Diretório base:              C:\Users\gusta\Desktop\LUDO_Modular\LUDO-Modular\LUDO-Modular\PRODUTOS
 
-   Arquivo composição:          ..\COMPOSICAO\TestePartida.comp
+   Arquivo composição:          ..\COMPOSICAO\TesteTabuleiro.comp
    Arquivo plataforma:          ..\COMPOSICAO\Gmake.parm
 
-   Arquivo diretivas MAKE:      TestePartida.make
-   Arquivo diretivas LINK:      TestePartida.build
-   Arquivo listagem:            TestePartida.list
+   Arquivo diretivas MAKE:      TesteTabuleiro.make
+   Arquivo diretivas LINK:      TesteTabuleiro.build
+   Arquivo listagem:            TesteTabuleiro.list
 
-Módulos do construto: ..\COMPOSICAO\TestePartida.comp
+Módulos do construto: ..\COMPOSICAO\TesteTabuleiro.comp
 
-   partida.c
    teste_tabuleiro.c
-   testepartida.c
    tabuleiro.c
    peca.c
    lista.c
@@ -50,7 +48,6 @@ Estatísticas do construto
       tst_espc.h
    Arquivos em que é incluído
       teste_tabuleiro.c
-      testepartida.c
 
    Estatísticas do arquivo: lerparm.h
       Total linhas:             463
@@ -59,7 +56,6 @@ Estatísticas do construto
       Linhas em branco:          65
    Arquivos em que é incluído
       teste_tabuleiro.c
-      testepartida.c
 
    Estatísticas do arquivo: lista.c
       Total linhas:             559
@@ -76,12 +72,9 @@ Estatísticas do construto
       Linhas em branco:          49
    Arquivos em que é incluído
       lista.c
-      partida.c
-      partida.h
       tabuleiro.c
       tabuleiro.h
       teste_tabuleiro.c
-      testepartida.c
 
    Estatísticas do arquivo: lista_circular.c
       Total linhas:             546
@@ -100,37 +93,8 @@ Estatísticas do construto
       Linhas em branco:          40
    Arquivos em que é incluído
       lista_circular.c
-      partida.c
-      partida.h
       tabuleiro.c
       tabuleiro.h
-      testepartida.c
-
-   Estatísticas do arquivo: partida.c
-      Total linhas:             224
-      Linhas de código:         120
-      Linhas de comentário:      55
-      Linhas em branco:          52
-   Arquivos de inclusão de que necessita
-      lista.h
-      lista_circular.h
-      partida.h
-      peca.h
-      tabuleiro.h
-
-   Estatísticas do arquivo: partida.h
-      Total linhas:             167
-      Linhas de código:          23
-      Linhas de comentário:     111
-      Linhas em branco:          33
-   Arquivos de inclusão de que necessita
-      lista.h
-      lista_circular.h
-      peca.h
-      tabuleiro.h
-   Arquivos em que é incluído
-      partida.c
-      testepartida.c
 
    Estatísticas do arquivo: peca.c
       Total linhas:             150
@@ -146,12 +110,9 @@ Estatísticas do construto
       Linhas de comentário:     171
       Linhas em branco:          32
    Arquivos em que é incluído
-      partida.c
-      partida.h
       peca.c
       tabuleiro.c
       tabuleiro.h
-      testepartida.c
 
    Estatísticas do arquivo: tabuleiro.c
       Total linhas:             662
@@ -174,10 +135,7 @@ Estatísticas do construto
       lista_circular.h
       peca.h
    Arquivos em que é incluído
-      partida.c
-      partida.h
       tabuleiro.c
-      testepartida.c
 
    Estatísticas do arquivo: teste_tabuleiro.c
       Total linhas:             161
@@ -190,21 +148,6 @@ Estatísticas do construto
       lista.h
       tst_espc.h
 
-   Estatísticas do arquivo: testepartida.c
-      Total linhas:             101
-      Linhas de código:          57
-      Linhas de comentário:      15
-      Linhas em branco:          29
-   Arquivos de inclusão de que necessita
-      generico.h
-      lerparm.h
-      lista.h
-      lista_circular.h
-      partida.h
-      peca.h
-      tabuleiro.h
-      tst_espc.h
-
    Estatísticas do arquivo: tst_espc.h
       Total linhas:             320
       Linhas de código:          23
@@ -213,7 +156,6 @@ Estatísticas do construto
    Arquivos em que é incluído
       generico.h
       teste_tabuleiro.c
-      testepartida.c
 
 Totais por tipo de arquivo
 
@@ -225,11 +167,11 @@ Totais por tipo de arquivo
          Arquivos deste tipo:          0
 
   Tipo: h        Path: ..\Fontes
-         Total linhas do tipo:      3668
-         Linhas de código:           332
-         Linhas de comentário:      2837
-         Linhas em branco:           499
-         Arquivos deste tipo:         10
+         Total linhas do tipo:      3501
+         Linhas de código:           309
+         Linhas de comentário:      2726
+         Linhas em branco:           466
+         Arquivos deste tipo:          9
 
   Tipo: obj      Path: ..\Objetos
          Total linhas do tipo:         0
@@ -253,17 +195,17 @@ Totais por tipo de arquivo
          Arquivos deste tipo:          0
 
   Tipo: c        Path: ..\Fontes
-         Total linhas do tipo:      2403
-         Linhas de código:          1385
-         Linhas de comentário:       424
-         Linhas em branco:           634
-         Arquivos deste tipo:          7
+         Total linhas do tipo:      2078
+         Linhas de código:          1208
+         Linhas de comentário:       354
+         Linhas em branco:           553
+         Arquivos deste tipo:          5
 
-Totais para todo o construto TestePartida
+Totais para todo o construto TesteTabuleiro
 
-   Total linhas:              6071
-   Linhas de código:          1717
-   Linhas de comentário:      3261
-   Linhas em branco:          1133
-   Arquivos processados:        17
+   Total linhas:              5579
+   Linhas de código:          1517
+   Linhas de comentário:      3080
+   Linhas em branco:          1019
+   Arquivos processados:        14
 
