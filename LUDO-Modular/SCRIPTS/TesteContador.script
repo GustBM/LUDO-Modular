@@ -57,7 +57,7 @@
 =obtervalorelem  lista0   str2   OK
 =excluirelem     lista0    OK
 
-==esvazia lista
+== Esvazia lista
 =esvaziarlista   lista0
 
 == Inserir elemento em lista vazia
@@ -79,11 +79,11 @@
 == Procura elemento inexistente em lista0
 =procuravalorelem  lista0   "???"   NaoAchou
 
-==excluir penultimo elemnto da lista 0
+== Excluir penultimo elemnto da lista 0
 =obtervalorelem  lista0   str0   OK
 =excluirelem     lista0    OK
 
-==esvaziar lista 0 com apenas 1 elemento
+== Esvaziar lista 0 com apenas 1 elemento
 =obtervalorelem  lista0   str1   OK
 =destruirlista   lista0
 
@@ -110,7 +110,7 @@
 =inselemapos     lista2   str2   OK
 =inselemapos     lista2   str3   OK
 
-== dar a volta na lista 2
+== Dar a volta na lista 2
 =obtervalorelem  lista2   str3   OK
 =avancarelem     lista2   -1     OK
 =obtervalorelem  lista2   str2   OK
@@ -119,7 +119,7 @@
 =avancarelem     lista2   -1     OK
 =obtervalorelem  lista2   str0   OK
 
-== dar a volta na lista 2 ao contrario
+== Dar a volta na lista 2 ao contrario
 =obtervalorelem  lista2   str0   OK
 =avancarelem     lista2   1      OK
 =obtervalorelem  lista2   str1   OK
@@ -128,7 +128,7 @@
 =avancarelem     lista2   1      OK
 =obtervalorelem  lista2   str3   OK
 
-== procura elementos na lista
+== Procura elementos na lista
 =procuravalorelem   lista2   str0   OK
 =procuravalorelem   lista2   str1   OK
 =procuravalorelem   lista2   str2   OK
@@ -141,7 +141,7 @@
 
 == Terminar controlar contadores
 =pararcontagem
-=verificarcontagens    4
+=verificarcontagens    0
 
 == Terminar contagem
 =terminarcontadores

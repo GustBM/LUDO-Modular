@@ -18,11 +18,11 @@
     LISC_EsvaziarLista_1Elem
 	LISC_EsvaziarLista_LiberaUltimo
     LISC_CriarLista
-    LISC_CriarLista_FaltouMemoria
+    LISC_CriarLista_FaltouMemoria \= -2
 	LISC_CriarLista_NaoFaltouMemoria
     LISC_DestruirLista
 	LISC_CriarElemento
-	LISC_CriarElemento_FaltouMemoria
+	LISC_CriarElemento_FaltouMemoria \= -2
 	LISC_CriarElemento_NaoFaltouMemoria
 	LISC_ObterValor
     LISC_ObterValor_ListaVazia
@@ -37,7 +37,7 @@
 	LISC_ProcurarValor_for_FuncoesInvalidas
     LISC_ProcurarValor_NaoAchou
     LISC_InserirElementoAntes
-	LISC_InserirElementoAntes_FaltouMemoria
+	LISC_InserirElementoAntes_FaltouMemoria \= -2
 	LISC_InserirElementoAntes_NaoFaltouMemoria
 	LISC_InserirElementoAntes_InsereListaVazia
 	LISC_InserirElementoAntes_InsereListaOcupada
@@ -46,7 +46,7 @@
 	LISC_InserirElementoAntes_ProximoNulo
 	LISC_InserirElementoAntes_OK
     LISC_InserirElementoApos
-	LISC_InserirElementoApos_FaltouMemoria
+	LISC_InserirElementoApos_FaltouMemoria \= -2
 	LISC_InserirElementoApos_NaoFaltouMemoria
 	LISC_InserirElementoApos_InsereListaVazia
 	LISC_InserirElementoApos_InsereListaOcupada
