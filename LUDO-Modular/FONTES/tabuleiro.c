@@ -254,6 +254,12 @@ static int TAB_ComparaCasa(TAB_tpCasaInfo* casa1 ,TAB_tpCasaInfo* casa2){
 	return -1;
 }
 
+/***********************************************************************
+*
+*  $FC Fun��o: TAB  -imprime Peca
+*
+***********************************************************************/
+
 void PrintaPeca(PECA_tpPeca* pecas,int ind){
 
 	char status;
@@ -292,6 +298,12 @@ void PrintaPeca(PECA_tpPeca* pecas,int ind){
 	}
 
 }
+
+/***********************************************************************
+*
+*  $FC Fun��o: TAB  -imprime casas finais
+*
+***********************************************************************/
 
 void PrintaCasaFim(LIS_tppLista pLista){
 
@@ -332,6 +344,12 @@ void PrintaCasaFim(LIS_tppLista pLista){
 
 
 }
+
+/***********************************************************************
+*
+*  $FC Fun��o: TAB  -imprime casas normais
+*
+***********************************************************************/
 
 void PrintaCasa(LISC_tppListaC pLista)
 {

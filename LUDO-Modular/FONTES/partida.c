@@ -63,7 +63,7 @@ static void LancaDado ( int * pValor ) ;
  *
  ***********************************************************************/
 
-PAR_CondRet PAR_InicializaJogo ( PAR_tppPartida * pJogo , int num , int *cor ) 
+PAR_CondRet PAR_InicializaJogo ( PAR_tppPartida pJogo , int num , int *cor ) 
 {
 	int i, k;
 
@@ -83,13 +83,13 @@ PAR_CondRet PAR_InicializaJogo ( PAR_tppPartida * pJogo , int num , int *cor )
 		}
 	}
 
-	* pJogo = ( PAR_Ludo * ) malloc ( sizeof ( PAR_Ludo ) ) ;
+	pJogo = ( PAR_Ludo * ) malloc ( sizeof ( PAR_Ludo ) ) ;
 	if ( pJogo == NULL )
 	{
 		return PAR_CondRetFaltouMemoria ;
 	}
 	
-	LimpaCabeca ( *pJogo ) ;
+	LimpaCabeca ( pJogo ) ;
 
 	pTabuleiro = TAB_CriaTabuleiro() ;
 
@@ -97,7 +97,7 @@ PAR_CondRet PAR_InicializaJogo ( PAR_tppPartida * pJogo , int num , int *cor )
 	{
 		for ( k = NUM_PECA * cor[i] ; k < k + NUM_PECA ; k++ ) 
 		{
-			retorno_pec = PECA_CriaPeca ( (*pJogo)->pecas , k , cor[i]) ;
+			retorno_pec = PECA_CriaPeca ( pJogo ->pecas , k , cor[i]) ;
 			switch ( retorno_pec ) 
 			{
 				case PECA_CondRetFaltaMemoria :
@@ -110,8 +110,8 @@ PAR_CondRet PAR_InicializaJogo ( PAR_tppPartida * pJogo , int num , int *cor )
 		}
 	}
 
-	(*pJogo)->pTabuleiro    = pTabuleiro ;
-	(*pJogo)->num_jogadores = num        ;
+	pJogo ->pTabuleiro    = pTabuleiro ;
+	pJogo ->num_jogadores = num        ;
 	
 	return PAR_CondRetOK ;
 	
@@ -195,7 +195,7 @@ int PAR_VerificaVencedor( PAR_Ludo *pJogo, int * vencedores ) {
 	int vencedoresTemp[4] = {0, 0, 0, 0};
 	for (i = 0; i < 16; i++)
 	{
-		PECA_ObtemFinal (pJogo->pecas[i], &final );
+		 PECA_ObtemFim (pJogo->pecas[i], &final );
 		if (final == 1)
 		{
 			PECA_ObtemCor(pJogo->pecas[i], &cor);

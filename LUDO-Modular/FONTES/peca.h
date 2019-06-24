@@ -156,12 +156,12 @@ PECA_CondRet PECA_ObtemCor ( PECA_tpPeca peca , int * cor ) ;
 *
 ***********************************************************************/
 
-/* Assertivas de Entrada PECA_ObtemFinal
+/* Assertivas de Entrada PECA_ObtemFim
 *  Deve existir um valor final valido na peca */
 
-PECA_CondRet PECA_ObtemFinal ( PECA_tpPeca peca , int * final ) ;
+PECA_CondRet PECA_ObtemFim ( PECA_tpPeca peca , int * final ) ;
 
-/*  Assertiva de Saida PECA_ObtemFinal
+/*  Assertiva de Saida PECA_ObtemFim
 *   Dever� ser retornado um final v�lido (inteiro 1 ou 0)
 *   A funcao retorna um PECA_CondRet */
 

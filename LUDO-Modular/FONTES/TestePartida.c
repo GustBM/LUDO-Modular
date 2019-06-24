@@ -41,6 +41,7 @@ TST_tpCondRet TST_EfetuarComando( char * ComandoTeste ) {
     int numJog        = -1 ;
 	int CondRetEsp    = -1 ;
 	int CondRetObtido = -1 ;
+    int iPartida      = -1 ;
 
     int cores[DIM_COR];
     int venc[DIM_VENC];
@@ -48,13 +49,13 @@ TST_tpCondRet TST_EfetuarComando( char * ComandoTeste ) {
     /* Testar CriarPartida */
     if ( strcmp( ComandoTeste , CRIAR_PARTIDA ) == 0 )
 	{
-		numLidos = LER_LerParametros( "iii", &vttPartida, &numJog, &cores);
+		numLidos = LER_LerParametros( "iii", &iPartida, &numJog, &cores);
 		if( numLidos != 3 )
 		{
 			return TST_CondRetParm;
 		}
 
-		CondRetObtido = PAR_InicializaJogo ( vttPartida, numJog, cores ) ;
+		CondRetObtido = PAR_InicializaJogo ( vttPartida[iPartida], numJog, cores ) ;
 
 		return TST_CompararInt ( CondRetEsp, CondRetObtido, "Erro ao inicializar jogo") ;
 
@@ -64,14 +65,14 @@ TST_tpCondRet TST_EfetuarComando( char * ComandoTeste ) {
 
     else if ( strcmp( ComandoTeste , REALIZA_JOGADA ) == 0 )
 	{
-		numLidos = LER_LerParametros( "ii", &vttPartida, &cor ) ;
+		numLidos = LER_LerParametros( "ii", &iPartida, &cor ) ;
 
 		if ( numLidos != 2 )
 		{
 			return TST_CondRetParm ;
 		}
 
-		CondRetObtido = PAR_RealizaJogada ( vttPartida, cores[cor]) ;
+		CondRetObtido = PAR_RealizaJogada ( vttPartida[iPartida], cores[cor]) ;
 
 		return TST_CompararInt (CondRetEsp, CondRetObtido, "Erro a Realizar a jogada") ;
 
@@ -82,7 +83,7 @@ TST_tpCondRet TST_EfetuarComando( char * ComandoTeste ) {
     else if ( strcmp( ComandoTeste , VERIFICA_VENCEDOR ) == 0 )
     {
 
-    numLidos = LER_LerParametros( "ii", &vttPartida ,&venc ) ;
+    numLidos = LER_LerParametros( "ii", &iPartida ,&venc ) ;
 
     if ( numLidos != 2 )
     {
@@ -90,7 +91,7 @@ TST_tpCondRet TST_EfetuarComando( char * ComandoTeste ) {
     }
 
 
-    CondRetObtido = PAR_VerificaVencedor( vttPartida, venc ) ;
+    CondRetObtido = PAR_VerificaVencedor( vttPartida[iPartida] , venc ) ;
     
     return TST_CompararInt( CondRetEsp , CondRetObtido ,
                 "Condicao de retorno ao verificar vencedor." ) ;

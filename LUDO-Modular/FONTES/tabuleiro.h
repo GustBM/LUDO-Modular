@@ -104,7 +104,7 @@ TAB_CondRet TAB_DestruirTabuleiro( TAB_tppTabuleiro pTab);
 *
 *  $ED Descri��o da fun��o
 *     recebe um vetor de ponteiros de peca e o tabuleiro que estas pecas 
-*        estao inseridas e imprime na tela as informações do jogo
+*        estao interagindo e imprime na tela as informações do jogo
 *
 *  $EP Par�metros
 *     pTab  - ponteiro para a o tabuleiro a ser usado
