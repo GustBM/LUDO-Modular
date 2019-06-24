@@ -27,6 +27,8 @@ Passo a passo:
 
 	Atabuleiro -> para testar o modulo tabuleiro
 
+	Apartida -> para testar o modulo partida
+
 2) Para a execucao de TODOS os modulos
 
 - execute Tudo.bat
