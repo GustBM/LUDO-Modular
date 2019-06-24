@@ -11,6 +11,7 @@ def         =  ..\Fontes
 [Modulos]
 partida
 TESTE_TABULEIRO
+TestePartida
 tabuleiro
 peca
 LISTA
