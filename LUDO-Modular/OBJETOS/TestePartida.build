@@ -1,0 +1,7 @@
+/OUT:..\produtos\TestePartida.exe
+/INCREMENTAL:NO
+/MACHINE:IX86
+partida.obj  teste_tabuleiro.obj  tabuleiro.obj  peca.obj  lista.obj  
+lista_circular.obj  
+../objetos/ArcaboucoTeste.lib
+

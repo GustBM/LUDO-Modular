@@ -1,0 +1,27 @@
+[Diretorios]
+
+Nome        =  TestePartida
+PathDefault =  ..\Fontes
+err         =  ..\Produtos
+obj         =  ..\Objetos
+c           =  ..\Fontes
+h           =  ..\Fontes
+def         =  ..\Fontes
+
+[Modulos]
+partida
+TESTE_TABULEIRO
+tabuleiro
+peca
+LISTA
+lista_circular
+
+[BuildInicio]
+/OUT:..\produtos\TestePartida.exe
+/INCREMENTAL:NO
+/MACHINE:IX86
+
+[BuildFim]
+../objetos/ArcaboucoTeste.lib
+
+[Fim]

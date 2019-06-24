@@ -47,5 +47,25 @@ Este relatório expecificara as tarefas e produtos desenvolvidos por Gustavo Barr
 * Consulta final com o monitor
 (4 horas)
 
+=> 11/06/2019
+*Criação do Módulo Partida
+(5 horas)
+
+=> 12/06/2019
+* Ajustes nos módulos tabuleiro, peça e partida
+(5 horas)
+
+=> 14/06/2019
+* Revisão do progresso dos módulos
+(3 horas)
+
+=> 22/06/2019
+* Prototipação da interface
+(3 horas)
+
+=> 23/06/2019
+* Adiçaõ do teste, batch, comp e ajustes da partida
+* ajustes no tabuleiro
+(6 horas)
 
 Os dias com data não especificada foram continuações dos trabalhos dos dias anteriores (Entre 1 e 3 horas de trabalho diário).

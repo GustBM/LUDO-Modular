@@ -1,0 +1,13 @@
+partida.c
+..\Fontes\partida.c(70) : warning C4101: 'retorno_tab' : unreferenced local variable
+..\Fontes\partida.c(145) : warning C4028: formal parameter 1 different from declaration
+..\Fontes\partida.c(144) : warning C4100: 'pJogo' : unreferenced formal parameter
+..\Fontes\partida.c(178) : warning C4013: 'time' undefined; assuming extern returning int
+..\Fontes\partida.c(193) : warning C4028: formal parameter 1 different from declaration
+teste_tabuleiro.c
+tabuleiro.c
+..\Fontes\tabuleiro.c(304) : error C2065: 'i' : undeclared identifier
+..\Fontes\tabuleiro.c(316) : warning C4013: 'PrintaCasa' undefined; assuming extern returning int
+..\Fontes\tabuleiro.c(335) : warning C4013: 'PrintaCasaFim' undefined; assuming extern returning int
+..\Fontes\tabuleiro.c(345) : error C2065: 'i' : undeclared identifier
+..\Fontes\tabuleiro.c(345) : error C2065: 'j' : undeclared identifier
