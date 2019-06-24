@@ -8,7 +8,10 @@
 
 =declararparm   part0           int  0
 
-=declararparm   cor0            int  0
+=declararparm   red             int 0
+=declararparm   blue            int 1
+=declararparm   green           int 2
+=declararparm   yellow          int 3
 
 =declararparm   venc0           int  0
 
@@ -20,13 +23,13 @@
 
 
 == Criar partida sem erros
-=criarpartida       part0   4   cor0    OK
+=criarpartida       part0   4   red     blue    green   yellow   OK
 
 == Criar partida com numero de jogadores inválidos
-=criarpartida       part0   0   cor0    NumJogadoresInv
+=criarpartida       part0   0   red     blue    green   yellow    NumJogadoresInv
 
 == Criar partida com cor inválida
-=criarpartida       part0   4   -1    CorInvalida
+=criarpartida       part0   4   -1      blue    green   yellow    CorInvalida
 
 == Realiza Jogada
 =realizajogada      part0   cor0    OK

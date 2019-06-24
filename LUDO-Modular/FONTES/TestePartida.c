@@ -43,19 +43,27 @@ TST_tpCondRet TST_EfetuarComando( char * ComandoTeste ) {
 	int CondRetObtido = -1 ;
     int iPartida      = -1 ;
 
-    int cores[DIM_COR];
+    int * cores;
     int venc[DIM_VENC];
 
     /* Testar CriarPartida */
     if ( strcmp( ComandoTeste , CRIAR_PARTIDA ) == 0 )
 	{
-		numLidos = LER_LerParametros( "iii", &iPartida, &numJog, &cores);
+        cores = (int *) malloc(sizeof(int) * DIM_COR);
+        if(cores == NULL)
+        {
+            return TST_CondRetMemoria ;
+        }
+
+		numLidos = LER_LerParametros( "iiiiiii", &iPartida, &numJog, &cores[0], &cores[1], &cores[2], &cores[3], &CondRetEsp);
 		if( numLidos != 3 )
 		{
 			return TST_CondRetParm;
 		}
 
 		CondRetObtido = PAR_InicializaJogo ( vttPartida[iPartida], numJog, cores ) ;
+
+        free(cores);
 
 		return TST_CompararInt ( CondRetEsp, CondRetObtido, "Erro ao inicializar jogo") ;
 

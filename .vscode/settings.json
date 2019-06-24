@@ -1,5 +1,6 @@
 {
     "files.associations": {
-        "LISTA.C": "cpp"
+        "LISTA.C": "cpp",
+        "LERPARM.C": "cpp"
     }
 }
