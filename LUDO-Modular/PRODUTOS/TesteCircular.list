@@ -1,0 +1,149 @@
+GERADOR DE SCRIPT DE DIRETIVAS PARA MAKE
+   LES / Informática / PUC-Rio    Versão 6.00 (c) 2005
+
+Composição do construto: ..\COMPOSICAO\TesteCircular.comp
+
+   Nome do Construto:           TesteCircular
+   Diretório base:              C:\Users\gusta\Desktop\LUDO_Modular\LUDO-Modular\LUDO-Modular\PRODUTOS
+
+   Arquivo composição:          ..\COMPOSICAO\TesteCircular.comp
+   Arquivo plataforma:          ..\COMPOSICAO\Gmake.parm
+
+   Arquivo diretivas MAKE:      TesteCircular.make
+   Arquivo diretivas LINK:      TesteCircular.build
+   Arquivo listagem:            TesteCircular.list
+
+Módulos do construto: ..\COMPOSICAO\TesteCircular.comp
+
+   testelistacircular.c
+   lista_circular.c
+
+Estatísticas do construto
+
+   Estatísticas do arquivo: cespdin.h
+      Total linhas:             668
+      Linhas de código:          52
+      Linhas de comentário:     519
+      Linhas em branco:          97
+   Arquivos em que é incluído
+      lista_circular.c
+      testelistacircular.c
+
+   Estatísticas do arquivo: conta.h
+      Total linhas:             468
+      Linhas de código:          43
+      Linhas de comentário:     349
+      Linhas em branco:          76
+   Arquivos em que é incluído
+      lista_circular.c
+
+   Estatísticas do arquivo: generico.h
+      Total linhas:             588
+      Linhas de código:          54
+      Linhas de comentário:     470
+      Linhas em branco:          64
+   Arquivos de inclusão de que necessita
+      tst_espc.h
+   Arquivos em que é incluído
+      testelistacircular.c
+
+   Estatísticas do arquivo: lerparm.h
+      Total linhas:             463
+      Linhas de código:          36
+      Linhas de comentário:     362
+      Linhas em branco:          65
+   Arquivos em que é incluído
+      testelistacircular.c
+
+   Estatísticas do arquivo: lista_circular.c
+      Total linhas:             546
+      Linhas de código:         299
+      Linhas de comentário:     108
+      Linhas em branco:         146
+   Arquivos de inclusão de que necessita
+      cespdin.h
+      conta.h
+      lista_circular.h
+
+   Estatísticas do arquivo: lista_circular.h
+      Total linhas:             304
+      Linhas de código:          26
+      Linhas de comentário:     238
+      Linhas em branco:          40
+   Arquivos em que é incluído
+      lista_circular.c
+      testelistacircular.c
+
+   Estatísticas do arquivo: testelistacircular.c
+      Total linhas:             405
+      Linhas de código:         233
+      Linhas de comentário:      66
+      Linhas em branco:         120
+   Arquivos de inclusão de que necessita
+      cespdin.h
+      generico.h
+      lerparm.h
+      lista_circular.h
+      tst_espc.h
+
+   Estatísticas do arquivo: tst_espc.h
+      Total linhas:             320
+      Linhas de código:          23
+      Linhas de comentário:     277
+      Linhas em branco:          20
+   Arquivos em que é incluído
+      generico.h
+      testelistacircular.c
+
+Totais por tipo de arquivo
+
+  Tipo: def      Path: ..\Fontes
+         Total linhas do tipo:         0
+         Linhas de código:             0
+         Linhas de comentário:         0
+         Linhas em branco:             0
+         Arquivos deste tipo:          0
+
+  Tipo: h        Path: ..\Fontes
+         Total linhas do tipo:      2811
+         Linhas de código:           234
+         Linhas de comentário:      2215
+         Linhas em branco:           362
+         Arquivos deste tipo:          6
+
+  Tipo: obj      Path: ..\Objetos
+         Total linhas do tipo:         0
+         Linhas de código:             0
+         Linhas de comentário:         0
+         Linhas em branco:             0
+         Arquivos deste tipo:          0
+
+  Tipo: err      Path: ..\Produtos
+         Total linhas do tipo:         0
+         Linhas de código:             0
+         Linhas de comentário:         0
+         Linhas em branco:             0
+         Arquivos deste tipo:          0
+
+  Tipo: DEFAULT  Path: ..\Fontes
+         Total linhas do tipo:         0
+         Linhas de código:             0
+         Linhas de comentário:         0
+         Linhas em branco:             0
+         Arquivos deste tipo:          0
+
+  Tipo: c        Path: ..\Fontes
+         Total linhas do tipo:       951
+         Linhas de código:           532
+         Linhas de comentário:       174
+         Linhas em branco:           266
+         Arquivos deste tipo:          2
+
+Totais para todo o construto TesteCircular
+
+   Total linhas:              3762
+   Linhas de código:           766
+   Linhas de comentário:      2389
+   Linhas em branco:           628
+   Arquivos processados:         8
+

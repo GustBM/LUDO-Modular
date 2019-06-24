@@ -1,6 +1,3 @@
-# Composicao do programa de teste de uma partida generica
-# Este exemplo utiliza o arcabou�o completo 
-
 [Diretorios]
 
 Nome        =  TestePartida
@@ -13,6 +10,7 @@ def         =  ..\Fontes
 
 [Modulos]
 partida
+TESTE_TABULEIRO
 TestePartida
 tabuleiro
 peca
