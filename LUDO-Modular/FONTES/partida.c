@@ -173,7 +173,7 @@ static void LancaDado ( int * pValor )
 {
     int ValorAleatorio ;
   
-    // srand ( time ( NULL ) ) ;
+    srand ( time ( NULL ) ) ;
     ValorAleatorio = ( rand() % 6 ) + 1 ;
       
     * pValor = ValorAleatorio ;
