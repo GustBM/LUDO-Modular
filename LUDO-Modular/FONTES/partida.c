@@ -1,7 +1,7 @@
 /***************************************************************************
 *  $MCI Módulo de implementação: PAR  Módulo da partida para LUDO
 *
-*  Arquivo gerado:              partida.c.c
+*  Arquivo gerado:              partida.c
 *  Letras identificadoras:      PAR
 *
 *  Projeto: INF 1301 / Jogo de Ludo
@@ -12,6 +12,7 @@
 *     Versão |  Autores   |      Data     |    Observações
 *       1    |    GB      |   11/06/2019  | Início desenvolvimento
 *       2    |    GB      |   12/06/2019  |      Ajustes
+*       2    |    GB      |   23/06/2019  |      Ajustes    
 ***************************************************************************/
 
 #include <stdlib.h>

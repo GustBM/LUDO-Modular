@@ -1,10 +1,10 @@
-REM Recompila partida
+REM Recompila Partida
 
 cls
 
-Call vsvars32.bat
+call vsvars32
 Call LimpaTudo.bat
-Call Geratudo.bat
+gmake  /B..\PRODUTOS\ /c..\COMPOSICAO\TestePartida /P..\COMPOSICAO\Gmake.parm 
 Call Compila TestePartida
 Call Testa TestePartida TestePartida
 
