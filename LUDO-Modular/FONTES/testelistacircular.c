@@ -371,7 +371,7 @@ LISC_tppListaC   vtListas[ DIM_VT_LISTA ] ;
 
 /***********************************************************************
 *
-*  $FC Fun��o: TLIS -Validar indice de lista
+*  $FC Fun��o: TLISC -Validar indice de lista
 *
 ***********************************************************************/
 

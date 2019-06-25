@@ -41,10 +41,10 @@
 =destruirpeca   0   NaoExiste
 
 ==Obter informacoes sem erro
-=obterstatus    1   OK
+=obterinfo    1   OK
 
 ==Obter informacoes com erro
-=obterstatus    0   NaoExiste
+=obterinfo    0   NaoExiste
 
 ==Atualiza peca sem erro
 =atualizapeca   1   ini   status0   OK

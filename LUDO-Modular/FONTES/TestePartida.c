@@ -56,7 +56,7 @@ TST_tpCondRet TST_EfetuarComando( char * ComandoTeste ) {
         }
 
 		numLidos = LER_LerParametros( "iiiiiii", &iPartida, &numJog, &cores[0], &cores[1], &cores[2], &cores[3], &CondRetEsp);
-		if( numLidos != 3 )
+		if( numLidos != 7 )
 		{
 			return TST_CondRetParm;
 		}
