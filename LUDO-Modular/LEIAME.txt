@@ -21,7 +21,9 @@ Passo a passo:
 
 - execute algum dos bacthes:
 
-	Acontador -> para testar o modulo lista circular
+	Acircular -> para testar o modulo lista circular
+
+	Acontador -> para testar o modulo lista circular com contadores ativos
 
 	Apeca -> para testar o modulo peca
 

@@ -23,7 +23,8 @@
 =declararparm   JaExiste        int  2
 =declararparm   NaoExiste       int  3
 
-
+==reseta vetor de pecas
+=resetteste
 
 == Criar pecas vermelhas corretamente
 =criarpeca      0   red   OK
