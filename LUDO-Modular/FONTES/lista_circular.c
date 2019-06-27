@@ -70,7 +70,9 @@ typedef struct LISC_tagLista {
 
 void LimparCabeca( LISC_tppListaC pLista )
    {
-      CNT_CONTAR( "LISC_LimparCabeca" ) ;
+      #ifdef _DEBUG
+         CNT_CONTAR( "LISC_LimparCabeca" ) ;
+      #endif
       pLista->pElemCorr = NULL ;
       pLista->numElem   = 0 ;
 
@@ -88,14 +90,20 @@ void LimparCabeca( LISC_tppListaC pLista )
 
 void LiberarElemento( LISC_tppListaC  pLista , tpElemListaCircular  * pElem   )
    {
-      CNT_CONTAR( "LISC_LiberarElemento" ) ;
+      #ifdef _DEBUG
+         CNT_CONTAR( "LISC_LiberarElemento" ) ;
+      #endif
 
       if ( ( pLista->ExcluirValor != NULL ) && ( pElem->pValor != NULL ))
       {
-         CNT_CONTAR( "LISC_LiberarElemento_FuncoesCorretas" ) ;
+         #ifdef _DEBUG
+            CNT_CONTAR( "LISC_LiberarElemento_FuncoesCorretas" ) ;
+         #endif
          pLista->ExcluirValor( pElem->pValor ) ;
       } /* if */
-      CNT_CONTAR( "LISC_LiberarElemento_LiberarElemento" ) ;
+      #ifdef _DEBUG
+         CNT_CONTAR( "LISC_LiberarElemento_LiberarElemento" ) ;
+      #endif
 
       free(pElem);
 
@@ -116,39 +124,52 @@ LISC_tpCondRet LISC_EsvaziarLista( LISC_tppListaC pLista )
 
       
 
-     // #ifdef _DEBUG
+     #ifdef _DEBUG
          CNT_CONTAR( "LISC_EsvaziarLista" ) ;
          assert( pLista != NULL ) ;
-     // #endif
+     #endif
 
       if( pLista->pElemCorr == NULL){
-         assert(pLista ->numElem == 0);
-         CNT_CONTAR( "LISC_EsvaziarLista_ListaVazia" ) ;
+         #ifdef _DEBUG
+            assert(pLista ->numElem == 0);
+            CNT_CONTAR( "LISC_EsvaziarLista_ListaVazia" ) ;
+         #endif
          return LISC_CondRetListaVazia;
       }
-      CNT_CONTAR( "LISC_EsvaziarLista_ListaNaoVazia" ) ;
+      #ifdef _DEBUG
+         CNT_CONTAR( "LISC_EsvaziarLista_ListaNaoVazia" ) ;
+      #endif
       
       if(pLista ->numElem > 1){
-         CNT_CONTAR( "LISC_EsvaziarLista_+1Elem" ) ;
+         #ifdef _DEBUG
+            CNT_CONTAR( "LISC_EsvaziarLista_+1Elem" ) ;
+         #endif
          pElem = pLista->pElemCorr->pProx;
 
          do
       {
-         CNT_CONTAR( "LISC_EsvaziarLista_while_Libera+1Elem" ) ;
+         #ifdef _DEBUG
+            CNT_CONTAR( "LISC_EsvaziarLista_while_Libera+1Elem" ) ;
+         #endif
          pProx = pElem->pProx ;
          LiberarElemento(pLista , pElem) ;
 
          pElem = pProx ;
       }  while ( pElem != pLista->pElemCorr );/* while */
 
-      CNT_CONTAR( "LISC_EsvaziarLista_fim_while_Libera+1Elem" ) ;
+      #ifdef _DEBUG
+         CNT_CONTAR( "LISC_EsvaziarLista_fim_while_Libera+1Elem" ) ;
+      #endif
       }
       else{
-         CNT_CONTAR( "LISC_EsvaziarLista_1Elem" ) ;
+         #ifdef _DEBUG
+            CNT_CONTAR( "LISC_EsvaziarLista_1Elem" ) ;
+         #endif
          pElem = pLista->pElemCorr;
       }
-      
-      CNT_CONTAR( "LISC_EsvaziarLista_LiberaUltimo" ) ;
+      #ifdef _DEBUG
+         CNT_CONTAR( "LISC_EsvaziarLista_LiberaUltimo" ) ;
+      #endif
       
       LiberarElemento(pLista , pElem);
       
@@ -168,15 +189,21 @@ int(*CompararValor) (void * pValor1, void * pValor2)){
 
       LIS_tpListaC * pLista = NULL ;
 
-      CNT_CONTAR( "LISC_CriarLista" ) ;
+      #ifdef _DEBUG
+         CNT_CONTAR( "LISC_CriarLista" ) ;
+      #endif
 
       pLista = ( LIS_tpListaC * ) malloc( sizeof( LIS_tpListaC )) ;
       if ( pLista == NULL )
       {
-         CNT_CONTAR( "LISC_CriarLista_FaltouMemoria" ) ;
+         #ifdef _DEBUG
+            CNT_CONTAR( "LISC_CriarLista_FaltouMemoria" ) ;
+         #endif
          return NULL;
       } /* if */
-      CNT_CONTAR( "LISC_CriarLista_NaoFaltouMemoria" ) ;
+      #ifdef _DEBUG
+         CNT_CONTAR( "LISC_CriarLista_NaoFaltouMemoria" ) ;
+      #endif
 
       LimparCabeca( pLista );
 
@@ -198,10 +225,10 @@ void LISC_DestruirLista( LISC_tppListaC pLista )
       int cond;
 
       
-      //#ifdef _DEBUG
+      #ifdef _DEBUG
          CNT_CONTAR( "LISC_DestruirLista" ) ;
          assert( pLista != NULL ) ;
-      //#endif
+      #endif
 
       cond = LISC_EsvaziarLista( pLista ) ;
        
@@ -219,17 +246,22 @@ tpElemListaCircular* CriarElemento( LISC_tppListaC pLista , void *	pValor ){
 
       tpElemListaCircular * pElem;
 
-      CNT_CONTAR( "LISC_CriarElemento" ) ;
+      #ifdef _DEBUG
+         CNT_CONTAR( "LISC_CriarElemento" ) ;
+      #endif
 
       pElem = ( tpElemListaCircular * ) malloc( sizeof( tpElemListaCircular )) ;
       if ( pElem == NULL )
       {
-         CNT_CONTAR( "LISC_CriarElemento_FaltouMemoria" ) ;
+         #ifdef _DEBUG
+            CNT_CONTAR( "LISC_CriarElemento_FaltouMemoria" ) ;
+         #endif
          return NULL ;
       } /* if */
 
-      CNT_CONTAR( "LISC_CriarElemento_NaoFaltouMemoria" ) ;
-
+      #ifdef _DEBUG
+         CNT_CONTAR( "LISC_CriarElemento_NaoFaltouMemoria" ) ;
+      #endif
       pElem->pValor = pValor;
       pElem->pAnt   = NULL;
       pElem->pProx  = NULL;
@@ -248,17 +280,22 @@ tpElemListaCircular* CriarElemento( LISC_tppListaC pLista , void *	pValor ){
  LISC_tpCondRet  LISC_ObterValor( LISC_tppListaC pLista, void ** val )
    {
 
-      //#ifdef _DEBUG
+      #ifdef _DEBUG
          CNT_CONTAR( "LISC_ObterValor" ) ;
          assert( pLista != NULL ) ;
-      //#endif
+      #endif
 
       if ( pLista->pElemCorr == NULL )
       {
-        CNT_CONTAR( "LISC_ObterValor_ListaVazia" ) ; 
+         #ifdef _DEBUG 
+            CNT_CONTAR( "LISC_ObterValor_ListaVazia" ) ; 
+         #endif
         return 	LISC_CondRetListaVazia;
       } /* if */
-      CNT_CONTAR( "LISC_ObterValor_OK" ) ;
+
+      #ifdef _DEBUG
+         CNT_CONTAR( "LISC_ObterValor_OK" ) ;
+      #endif
 
       *val = pLista->pElemCorr->pValor;
       return LISC_CondRetOK ;
@@ -278,36 +315,54 @@ tpElemListaCircular* CriarElemento( LISC_tppListaC pLista , void *	pValor ){
 	  int n = pLista->numElem;
 	  int i;
      int comp;
-     // #ifdef _DEBUG
+      #ifdef _DEBUG
          CNT_CONTAR( "LISC_ProcurarValor" ) ;
          assert( pLista  != NULL ) ;
-     // #endif
+      #endif
 
       if ( pLista->pElemCorr == NULL)
       {
-         assert(pLista ->numElem == 0);
-         CNT_CONTAR( "LISC_ProcurarValor_ListaVazia" ) ;
+         #ifdef _DEBUG
+            assert(pLista ->numElem == 0);
+            CNT_CONTAR( "LISC_ProcurarValor_ListaVazia" ) ;
+         #endif
          return LISC_CondRetListaVazia ;
       } /* if */
       
-      CNT_CONTAR( "LISC_ProcurarValor_ListaNaoVazia" ) ;
+      #ifdef _DEBUG
+         CNT_CONTAR( "LISC_ProcurarValor_ListaNaoVazia" ) ;
+      #endif
       for (i=0,pElem  = pLista->pElemCorr ;i < n; pElem  = pElem->pProx, i++)
       {
-         CNT_CONTAR( "LISC_ProcurarValor_for_Ini" ) ;
+         #ifdef _DEBUG
+            CNT_CONTAR( "LISC_ProcurarValor_for_Ini" ) ;
+         #endif
          comp = (pLista->CompararValor(pElem->pValor,pValor));
          
          if(((pLista->CompararValor) != NULL) && ((pElem->pValor) != NULL) && (pValor != NULL))
          {
-            CNT_CONTAR( "LISC_ProcurarValor_for_FuncoesValidas" ) ;
+            #ifdef _DEBUG
+               CNT_CONTAR( "LISC_ProcurarValor_for_FuncoesValidas" ) ;
+            #endif
             if (comp == 0)
             {
-               CNT_CONTAR( "LISC_ProcurarValor_for_ValoresIguais" ) ;
+               #ifdef _DEBUG
+                  CNT_CONTAR( "LISC_ProcurarValor_for_ValoresIguais" ) ;
+               #endif
                pLista->pElemCorr = pElem;
                return LISC_CondRetOK ;
-            } /* if */ CNT_CONTAR( "LISC_ProcurarValor_for_ValoresDiferentes" ) ;
-         }/* if */ CNT_CONTAR( "LISC_ProcurarValor_for_FuncoesInvalidas" ) ;
+            } /* if */ 
+            #ifdef _DEBUG
+               CNT_CONTAR( "LISC_ProcurarValor_for_ValoresDiferentes" ) ;
+            #endif
+         }/* if */
+         #ifdef _DEBUG 
+            CNT_CONTAR( "LISC_ProcurarValor_for_FuncoesInvalidas" ) ;
+         #endif
       } /* for */
-      CNT_CONTAR( "LISC_ProcurarValor_NaoAchou" ) ;
+      #ifdef _DEBUG
+         CNT_CONTAR( "LISC_ProcurarValor_NaoAchou" ) ;
+      #endif
       return LISC_CondRetNaoAchou ;
 
    } /* Fim funcao: LIS  &Procurar elemento contendo valor */
@@ -323,48 +378,64 @@ tpElemListaCircular* CriarElemento( LISC_tppListaC pLista , void *	pValor ){
 
       
 
-     // #ifdef _DEBUG
+      #ifdef _DEBUG
          CNT_CONTAR( "LISC_InserirElementoAntes" ) ;
          assert( pLista != NULL ) ;
-     // #endif
+      #endif
 
       /* Criar elemento a inserir antes */
 
          pElem = CriarElemento( pLista , pValor ) ;
          if ( pElem == NULL )
          {
-            CNT_CONTAR( "LISC_InserirElementoAntes_FaltouMemoria" ) ;
+            #ifdef _DEBUG
+               CNT_CONTAR( "LISC_InserirElementoAntes_FaltouMemoria" ) ;
+            #endif
             return LISC_CondRetFaltouMemoria ;
          } /* if */
-         CNT_CONTAR( "LISC_InserirElementoAntes_NaoFaltouMemoria" ) ;
+         #ifdef _DEBUG
+            CNT_CONTAR( "LISC_InserirElementoAntes_NaoFaltouMemoria" ) ;
+         #endif
 
       /* Encadear o elemento antes do elemento corrente */
 
          if ( pLista->pElemCorr == NULL )
          {
-            CNT_CONTAR( "LISC_InserirElementoAntes_InsereListaVazia" ) ;
+            #ifdef _DEBUG
+               CNT_CONTAR( "LISC_InserirElementoAntes_InsereListaVazia" ) ;
+            #endif
             pLista->pElemCorr = pElem ;
          } else
          {
-            CNT_CONTAR( "LISC_InserirElementoAntes_InsereListaOcupada" ) ;
+            #ifdef _DEBUG
+               CNT_CONTAR( "LISC_InserirElementoAntes_InsereListaOcupada" ) ;
+            #endif
             if ( pLista->pElemCorr->pAnt != NULL )
             {
-               CNT_CONTAR( "LISC_InserirElementoAntes_AnteriorNaoNulo" ) ;
+               #ifdef _DEBUG
+                  CNT_CONTAR( "LISC_InserirElementoAntes_AnteriorNaoNulo" ) ;
+               #endif
                pElem->pAnt  = pLista->pElemCorr->pAnt ;
                pLista->pElemCorr->pAnt->pProx = pElem ;
             }
-            CNT_CONTAR( "LISC_InserirElementoAntes_Anterior" ) ;
+            #ifdef _DEBUG
+               CNT_CONTAR( "LISC_InserirElementoAntes_Anterior" ) ;
+            #endif
 
             pElem->pProx = pLista->pElemCorr ;
             pLista->pElemCorr->pAnt = pElem ;
 
             if(pLista->pElemCorr->pProx == NULL){
-               CNT_CONTAR( "LISC_InserirElementoAntes_ProximoNulo" ) ;
+               #ifdef _DEBUG
+                  CNT_CONTAR( "LISC_InserirElementoAntes_ProximoNulo" ) ;
+               #endif
                pElem->pAnt = pLista->pElemCorr ;
                pLista->pElemCorr->pProx = pElem ;
             }
          } /* if */
-         CNT_CONTAR( "LISC_InserirElementoAntes_OK" ) ;
+         #ifdef _DEBUG
+            CNT_CONTAR( "LISC_InserirElementoAntes_OK" ) ;
+         #endif
 
          pLista->pElemCorr = pElem ;
 
@@ -386,52 +457,66 @@ tpElemListaCircular* CriarElemento( LISC_tppListaC pLista , void *	pValor ){
 
        
 
-     // #ifdef _DEBUG
+      #ifdef _DEBUG
          CNT_CONTAR( "LISC_InserirElementoApos" ) ;
          assert( pLista != NULL ) ;
-     // #endif
+      #endif
 
       /* Criar elemento a inerir apos */
 
          pElem = CriarElemento( pLista , pValor ) ;
          if ( pElem == NULL )
          {
-            CNT_CONTAR( "LISC_InserirElementoApos_FaltouMemoria" ) ;
+            #ifdef _DEBUG
+               CNT_CONTAR( "LISC_InserirElementoApos_FaltouMemoria" ) ;
+            #endif
             return LISC_CondRetFaltouMemoria ;
          } /* if */
-
-         CNT_CONTAR( "LISC_InserirElementoApos_NaoFaltouMemoria" ) ;
+         #ifdef _DEBUG
+            CNT_CONTAR( "LISC_InserirElementoApos_NaoFaltouMemoria" ) ;
+         #endif
 
       /* Encadear o elemento apos o elemento */
 
          if ( pLista->pElemCorr == NULL )
          {
-            CNT_CONTAR( "LISC_InserirElementoApos_InsereListaVazia" ) ;
+            #ifdef _DEBUG
+               CNT_CONTAR( "LISC_InserirElementoApos_InsereListaVazia" ) ;
+            #endif
             pLista->pElemCorr = pElem ;
             
          } else
          {
-            CNT_CONTAR( "LISC_InserirElementoApos_InsereListaOcupada" ) ;
+            #ifdef _DEBUG
+               CNT_CONTAR( "LISC_InserirElementoApos_InsereListaOcupada" ) ;
+            #endif
             if ( pLista->pElemCorr->pProx != NULL )
             {
-               CNT_CONTAR( "LISC_InserirElementoApos_ProximoNaoNulo" ) ;
+               #ifdef _DEBUG
+                  CNT_CONTAR( "LISC_InserirElementoApos_ProximoNaoNulo" ) ;
+               #endif
                pElem->pProx  = pLista->pElemCorr->pProx ;
                pLista->pElemCorr->pProx->pAnt = pElem ;
             }
-
-            CNT_CONTAR( "LISC_InserirElementoApos_Proximo" ) ;
+            #ifdef _DEBUG
+               CNT_CONTAR( "LISC_InserirElementoApos_Proximo" ) ;
+            #endif
 
             pElem->pAnt = pLista->pElemCorr ;
             pLista->pElemCorr->pProx = pElem ;
 
             if(pLista->pElemCorr->pAnt == NULL){
-               CNT_CONTAR( "LISC_InserirElementoApos_AnteriorNulo" ) ;
+               #ifdef _DEBUG
+                  CNT_CONTAR( "LISC_InserirElementoApos_AnteriorNulo" ) ;
+               #endif
                pElem->pProx = pLista->pElemCorr ;
                 pLista->pElemCorr->pAnt = pElem ;
             }
 
          } /* if */
-         CNT_CONTAR( "LISC_InserirElementoApos_OK" ) ;
+         #ifdef _DEBUG
+            CNT_CONTAR( "LISC_InserirElementoApos_OK" ) ;
+         #endif
                   
          pLista->pElemCorr = pElem ;
                   
@@ -449,18 +534,21 @@ tpElemListaCircular* CriarElemento( LISC_tppListaC pLista , void *	pValor ){
 
       tpElemListaCircular * pElem ;
 
-     // #ifdef _DEBUG
+      #ifdef _DEBUG
          CNT_CONTAR( "LISC_ExcluirElemento" ) ;
          assert( pLista  != NULL ) ;
-     // #endif
+      #endif
 
       if ( pLista->pElemCorr == NULL )
       {
-         CNT_CONTAR( "LISC_ExcluirElemento_ListaVazia" ) ;
+         #ifdef _DEBUG
+            CNT_CONTAR( "LISC_ExcluirElemento_ListaVazia" ) ;
+         #endif
          return LISC_CondRetListaVazia ;
       } /* if */
-
-      CNT_CONTAR( "LISC_ExcluirElemento_DesencadeiaEsq" ) ;
+      #ifdef _DEBUG
+         CNT_CONTAR( "LISC_ExcluirElemento_DesencadeiaEsq" ) ;
+      #endif
 
       pElem = pLista->pElemCorr ;
 
@@ -468,23 +556,29 @@ tpElemListaCircular* CriarElemento( LISC_tppListaC pLista , void *	pValor ){
 
          if ( pElem->pAnt != NULL )
          {
-            CNT_CONTAR( "LISC_ExcluirElemento_AnteriorNaoNulo" ) ;
+            #ifdef _DEBUG
+               CNT_CONTAR( "LISC_ExcluirElemento_AnteriorNaoNulo" ) ;
+            #endif
             pElem->pAnt->pProx   = pElem->pProx ;
             pLista->pElemCorr    = pElem->pAnt ;
          }
-
-         CNT_CONTAR( "LISC_ExcluirElemento_DesencadeiaDir" ) ; 
+         #ifdef _DEBUG
+            CNT_CONTAR( "LISC_ExcluirElemento_DesencadeiaDir" ) ; 
+         #endif
 
       /* Desencadeia a direita */
 
          if ( pElem->pProx != NULL )
          {
-            CNT_CONTAR( "LISC_ExcluirElemento_ProximoNaoNulo" ) ;
+            #ifdef _DEBUG
+               CNT_CONTAR( "LISC_ExcluirElemento_ProximoNaoNulo" ) ;
+            #endif
             pElem->pProx->pAnt = pElem->pAnt ;
             pLista->pElemCorr    = pElem->pProx;
          }
-
-         CNT_CONTAR( "LISC_ExcluirElemento_LiberarElemento" ) ;
+         #ifdef _DEBUG
+            CNT_CONTAR( "LISC_ExcluirElemento_LiberarElemento" ) ;
+         #endif
 
       LiberarElemento( pLista , pElem ) ;
 
@@ -499,41 +593,60 @@ tpElemListaCircular* CriarElemento( LISC_tppListaC pLista , void *	pValor ){
 
 LISC_tpCondRet LISC_AvancarElementoCorrente( LISC_tppListaC pLista , int num ){
     tpElemListaCircular *pElem;
-
-    CNT_CONTAR( "LISC_AvancarElementoCorrente" ) ;
+   
+   #ifdef _DEBUG
+      CNT_CONTAR( "LISC_AvancarElementoCorrente" ) ;
+   #endif
     
     if( pLista->pElemCorr == NULL )
     {
-      CNT_CONTAR( "LISC_AvancarElementoCorrente_ListaVazia" ) ;
+      #ifdef _DEBUG 
+         CNT_CONTAR( "LISC_AvancarElementoCorrente_ListaVazia" ) ;
+      #endif
       return LISC_CondRetListaVazia ;
     }
-     CNT_CONTAR( "LISC_AvancarElementoCorrente_ListaNaoVazia" ) ;
+   #ifdef _DEBUG
+      CNT_CONTAR( "LISC_AvancarElementoCorrente_ListaNaoVazia" ) ;
+   #endif
     
     pElem = pLista->pElemCorr ;
     if ( num > 0 )
     {
-      CNT_CONTAR( "LISC_AvancarElementoCorrente_num>0" ) ;
+      #ifdef _DEBUG 
+         CNT_CONTAR( "LISC_AvancarElementoCorrente_num>0" ) ;
+      #endif
       while( num )
       {
-         CNT_CONTAR( "LISC_AvancarElementoCorrente_while_num>0" ) ;
+         #ifdef _DEBUG
+            CNT_CONTAR( "LISC_AvancarElementoCorrente_while_num>0" ) ;
+         #endif
          pElem = pElem-> pProx;
          num-- ;
       }
-      CNT_CONTAR( "LISC_AvancarElementoCorrente_num0+" ) ;
+      #ifdef _DEBUG
+         CNT_CONTAR( "LISC_AvancarElementoCorrente_num0+" ) ;
+      #endif
     }
     else if ( num < 0 )
     {
-      CNT_CONTAR( "LISC_AvancarElementoCorrente_num<0" ) ; 
+      #ifdef _DEBUG 
+         CNT_CONTAR( "LISC_AvancarElementoCorrente_num<0" ) ; 
+      #endif
       while( num )
       {
-         CNT_CONTAR( "LISC_AvancarElementoCorrente_while_num<0" ) ; 
+         #ifdef _DEBUG
+            CNT_CONTAR( "LISC_AvancarElementoCorrente_while_num<0" ) ; 
+         #endif
          pElem = pElem-> pAnt;
          num++ ;
       }
-      CNT_CONTAR( "LISC_AvancarElementoCorrente_num0-" ) ; 
+      #ifdef _DEBUG
+         CNT_CONTAR( "LISC_AvancarElementoCorrente_num0-" ) ; 
+      #endif
     }
-    
-   CNT_CONTAR( "LISC_AvancarElementoCorrente_OK" ) ; 
+   #ifdef _DEBUG 
+      CNT_CONTAR( "LISC_AvancarElementoCorrente_OK" ) ; 
+   #endif
 
    pLista->pElemCorr = pElem ;
    return LISC_CondRetOK ;
