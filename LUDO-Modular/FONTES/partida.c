@@ -145,7 +145,7 @@ static void LimpaCabeca ( PAR_Ludo *pJogo )
 PAR_CondRet PAR_RealizaJogada ( PAR_Ludo *pJogo , int cor ) 
 {
 	int dado, i;
-	if (cor < 0 || cor > 4)
+	if (cor < 0 || cor > 3)
 	{
 		return PAR_CondRetCorInvalida;
 	}
