@@ -1,0 +1,10 @@
+testepeca.c
+peca.c
+Microsoft (R) Incremental Linker Version 10.00.40219.01
+Copyright (C) Microsoft Corporation.  All rights reserved.
+
+/OUT:..\produtos\TestePeca.exe 
+/INCREMENTAL:NO 
+/MACHINE:IX86 
+testepeca.obj peca.obj 
+../objetos/ArcaboucoTeste.lib 

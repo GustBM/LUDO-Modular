@@ -41,20 +41,38 @@
 ==Destruir peca com erro
 =destruirpeca   0   NaoExiste
 
-==Obter informacoes sem erro
-=obterinfo    1   OK
+==Obter fim sem erro
+=obterfim    1   ini   OK
 
-==Obter informacoes com erro
-=obterinfo    0   NaoExiste
+==Obter fim com erro
+=obterfim    0   fim  NaoExiste
+
+==Obter status sem erro
+=obterstatus 1  status1 OK
+
+==Obter status com erro
+=obterstatus 0 status0 NaoExiste
+
+==Obter cor sem erro
+=obtercor 1 red OK  
+
+==Obter cor com erro
+=obtercor 0 red NaoExiste
+
+==Obter cor errada
+=obtercor 0 blue NaoExiste
+
+==Obter info sem erro
+=obterinfo 1 red ini status1 OK
+
+==Obter info com erro
+=obterinfo 0 red fim status0 NaoExiste
 
 ==Atualiza peca sem erro
 =atualizapeca   1   ini   status0   OK
 
-
-
 ==Atualiza peca com erro
 =atualizapeca    0   ini   status0   NaoExiste
-
 
 ==Destruir peca corretamente
 =destruirpeca   1   OK
