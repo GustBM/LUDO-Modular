@@ -99,7 +99,7 @@ PAR_CondRet PAR_InicializaJogo ( PAR_tppPartida pJogo , int num , int *cor )
 
 	for ( i = 0 ; i < MAX_PLAYERS ; i++ ) 
 	{
-		retorno_pec = PECA_CriaPeca ( pJogo ->pecas , i , ) ;
+		retorno_pec = PECA_CriaPeca ( pJogo ->pecas , i , cor[i]) ;
 			switch ( retorno_pec ) 
 			{
 				case PECA_CondRetFaltaMemoria :
@@ -112,11 +112,10 @@ PAR_CondRet PAR_InicializaJogo ( PAR_tppPartida pJogo , int num , int *cor )
 					printf("Erro inesperado\n");
 					exit(0);
 			}
-		}
 	}
 
-	pJogo ->pTabuleiro    = pTabuleiro ;
-	pJogo ->num_jogadores = num        ;
+	pJogo->pTabuleiro    = pTabuleiro ;
+	pJogo->num_jogadores = num        ;
 	
 	return PAR_CondRetOK ;
 	
