@@ -27,8 +27,9 @@
 #undef PAR_OWN
 
 
-#define NUM_PECA 4
+#define NUM_PECA_PLAYER 4
 #define MAX_PECAS 16 
+#define MAX_PLAYERS 4
 
 /***********************************************************************
  *
@@ -93,20 +94,23 @@ PAR_CondRet PAR_InicializaJogo ( PAR_tppPartida pJogo , int num , int *cor )
 	LimpaCabeca ( pJogo ) ;
 
 	pTabuleiro = TAB_CriaTabuleiro() ;
+	if(pTabuleiro == NULL)
+		return PAR_CondRetFaltouMemoria ;
 
-	for ( i = 0 ; i < num ; i++ ) 
+	for ( i = 0 ; i < MAX_PLAYERS ; i++ ) 
 	{
-		for ( k = NUM_PECA * cor[i] ; k < k + NUM_PECA ; k++ ) 
-		{
-			retorno_pec = PECA_CriaPeca ( pJogo ->pecas , k , cor[i]) ;
+		retorno_pec = PECA_CriaPeca ( pJogo ->pecas , i , ) ;
 			switch ( retorno_pec ) 
 			{
 				case PECA_CondRetFaltaMemoria :
 					return PAR_CondRetFaltouMemoria ;
 				case PECA_CondRetExiste :
 					return PAR_CondRetCorJaEscolhida ;
+				case PECA_CondRetOK :
+					break;
 				default :
-					printf ( "Erro inesperado \n" ) ;
+					printf("Erro inesperado\n");
+					exit(0);
 			}
 		}
 	}

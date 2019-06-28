@@ -125,7 +125,7 @@ TST_tpCondRet TST_EfetuarComando( char * ComandoTeste )
 	if( strcmp( ComandoTeste , CRIAR_PECA_CMD ) == 0 )
 	{
 		numLidos = LER_LerParametros( "iii", &iPeca, &corEsp ,&CondRetEsp);
-		if( numLidos != 3 )
+		if( numLidos != 3  || !ValidarInxPeca( iPeca, VAZIO))
 		{
 			return TST_CondRetParm;
 		}
@@ -279,7 +279,7 @@ TST_tpCondRet TST_EfetuarComando( char * ComandoTeste )
 *
 *  $FC Fun��o: TPEC -Validar indice de pecas
 *
-***********************************************************************
+************************************************************************/
 
    int ValidarInxPeca( int InxPeca , int Modo )
    {
@@ -288,24 +288,24 @@ TST_tpCondRet TST_EfetuarComando( char * ComandoTeste )
         || ( InxPeca >= MAX_PECAS ))
       { 
          return FALSE ;
-      } /* if 
+      } /* if */
          
       if ( Modo == VAZIO )
       {
          if ( VPecas[ InxPeca ] != NULL )
          {
             return FALSE ;
-         } /* if 
+         } /* if */
       } else
       {
          if ( VPecas[ InxPeca ] == NULL )
          {
             return FALSE ;
-         } /* if 
-      } /* if 
+         } /* if */
+      } /* if */
          
       return TRUE ;
 
-   } /* Fim fun��o: TPEC -Validar indice de lista circular
+   } /* Fim fun��o: TPEC -Validar indice de lista circular */
 
 /*********** Fim do m�dulo de implementa��o: TPECA **********/

@@ -676,6 +676,10 @@ void TAB_imprime(PECA_tpPeca* pecas, TAB_tppTabuleiro ptab){
 				LISC_AvancarElementoCorrente( ptab ->casasNormais , -18);	
 			}
 	}
+
+	int TAB_avanca(int col, ) {
+		
+	}
 	
 }
 
