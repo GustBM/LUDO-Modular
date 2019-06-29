@@ -20,6 +20,9 @@
 #include "tabuleiro.h"
 #undef TABULEIRO_OWN
 
+#define TRUE 1
+#define FALSE 0
+
 
 #define TOT_CASAS_TAB 52
 #define INTERVALO_CASAS_INI 13
@@ -432,7 +435,7 @@ void PrintaCasaFim(LIS_tppLista pLista){
 		}
 	}
 
-	if(presentes == NENHUM && cor == NENHUMA_COR)
+	if(presentes == NENHUM_PRESENTE && cor == NENHUMA_COR)
 		printf("   ");
 	else{
 		
@@ -478,7 +481,7 @@ void PrintaCasa(LISC_tppListaC pLista)
 		}
 	}
 
-	if(presentes == NENHUM && cor == NENHUMA_COR)
+	if(presentes == NENHUM_PRESENTE && cor == NENHUMA_COR)
 	{
 		printf("   ");
 	}	
@@ -505,6 +508,7 @@ void PrintaCasa(LISC_tppListaC pLista)
 
 int AvancaCiruclarAreaAmarela(int indx)
 {
+	//assert((indx >= 0) && (indx <= 6)); 
 
 	int deslocamento[] = {-12,-10,-8,-6,-4,-2};
 
@@ -520,6 +524,7 @@ int AvancaCiruclarAreaAmarela(int indx)
 
 int RetrocedeCiruclarAreaAmarela(int indx)
 {
+	//assert((indx >= 0) && (indx <= 6)); 
 
 	int deslocamento[] = {11,9,7,5,3,1};
 
@@ -537,6 +542,8 @@ int RetrocedeCiruclarAreaAmarela(int indx)
 void TAB_imprime(PECA_tpPeca* pecas, TAB_tppTabuleiro ptab){
 
 	int linha, coluna;
+
+	int indx_amarelo = 0;
 		
 	char tabuleiro[LINHAS_TAB][COLUNAS_TAB_NULO] ={	
 	//							 0         1         2         3         4         5         6
@@ -658,23 +665,23 @@ void TAB_imprime(PECA_tpPeca* pecas, TAB_tppTabuleiro ptab){
 					{
 						PrintaCasa( ptab -> casasNormais);
 						LISC_AvancarElementoCorrente( ptab ->casasNormais , AVANCO_UNICO);
-						coluna+=PROX_CASA		
+						coluna+=PROX_CASA;		
 					}
 					if(coluna == COLUNA_AZUL_AMARELA_2)
 					{
 						PrintaCasaFim(ptab ->casasFinais[AZUL]);
-						coluna+=PROX_CASA
+						coluna+=PROX_CASA;
 					}
 					if(COLUNA_VERDE(coluna))
 					{
 						PrintaCasa( ptab -> casasNormais);
 						LISC_AvancarElementoCorrente( ptab ->casasNormais , AVANCO_UNICO);
-						coluna+=PROX_CASA		
+						coluna+=PROX_CASA;		
 					}
 					if(coluna == COLUNA_AZUL_AMARELA_1) 
 					{
 						LISC_AvancarElementoCorrente( ptab ->casasNormais , AVANCO_AREA_VERMELHA_VERDE_1);
-						coluna+=PROX_CASA
+						coluna+=PROX_CASA;
 					}
 					if(coluna == FIM_DE_LINHA)
 					{
@@ -692,7 +699,7 @@ void TAB_imprime(PECA_tpPeca* pecas, TAB_tppTabuleiro ptab){
 					if(COLUNA_FIM_VERMELHA(coluna))
 					{
 						PrintaCasaFim(ptab ->casasFinais[VERMELHO]);
-						LIS_AvancarElementoCorrente( ptab ->casasFinais[VERMELH0] , AVANCO_UNICO);
+						LIS_AvancarElementoCorrente( ptab ->casasFinais[VERMELHO] , AVANCO_UNICO);
 					}
 					if(COLUNA_FIM_VERDE(coluna))
 					{

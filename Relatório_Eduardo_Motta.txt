@@ -109,7 +109,7 @@ Este relat�rio expecificara as tarefas e produtos desenvolvidos por Eduardo Mo
 
 => 28/06/2019
 *interface versao 2 (com macros) completa
-*problema de funcao de validacao de peca resolvido
+*problema de funcao de validacao de indice resolvido
 (5 horas)
 
 
