@@ -23,58 +23,55 @@
 =declararparm   JaExiste        int  2
 =declararparm   NaoExiste       int  3
 
-==reseta vetor de pecas
-=resetteste
-
 == Criar pecas vermelhas corretamente
 =criarpeca      0   red   OK
 =criarpeca      1   red   OK
 =criarpeca      2   red   OK
 =criarpeca      3   red   OK
 
-==Criar peca azul com erro
+== Criar peca azul com erro
 =criarpeca      0   blue  JaExiste
 
-==Destruir peca vermelha
+== Destruir peca vermelha
 =destruirpeca   0   OK
 
-==Destruir peca com erro
+== Destruir peca com erro
 =destruirpeca   0   NaoExiste
 
-==Obter fim sem erro
+== Obter fim sem erro
 =obterfim    1   ini   OK
 
-==Obter fim com erro
+== Obter fim com erro
 =obterfim    0   fim  NaoExiste
 
-==Obter status sem erro
+== Obter status sem erro
 =obterstatus 1  status1 OK
 
-==Obter status com erro
+== Obter status com erro
 =obterstatus 0 status0 NaoExiste
 
-==Obter cor sem erro
+== Obter cor sem erro
 =obtercor 1 red OK  
 
-==Obter cor com erro
+== Obter cor com erro
 =obtercor 0 red NaoExiste
 
-==Obter cor errada
+== Obter cor errada
 =obtercor 0 blue NaoExiste
 
-==Obter info sem erro
+== Obter info sem erro
 =obterinfo 1 red ini status1 OK
 
-==Obter info com erro
+== Obter info com erro
 =obterinfo 0 red fim status0 NaoExiste
 
-==Atualiza peca sem erro
+== Atualiza peca sem erro
 =atualizapeca   1   ini   status0   OK
 
-==Atualiza peca com erro
+== Atualiza peca com erro
 =atualizapeca    0   ini   status0   NaoExiste
 
-==Destruir peca corretamente
+== Destruir peca corretamente
 =destruirpeca   1   OK
 =destruirpeca   2   OK
 =destruirpeca   3   OK

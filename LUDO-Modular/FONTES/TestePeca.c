@@ -61,10 +61,6 @@ static const char ATUALIZAR_PECA_CMD      [ ] = "=atualizapeca"  ;
 
 PECA_tpPeca VPecas[MAX_PECAS];
 
-/***** Prot�tipos das fun��es encapuladas no m�dulo *****/
-
-int ValidarInxPeca( int InxPeca , int Modo );
-
 
 /*****  C�digo das fun��es exportadas pelo m�dulo  *****/
 
@@ -125,7 +121,7 @@ TST_tpCondRet TST_EfetuarComando( char * ComandoTeste )
 	if( strcmp( ComandoTeste , CRIAR_PECA_CMD ) == 0 )
 	{
 		numLidos = LER_LerParametros( "iii", &iPeca, &corEsp ,&CondRetEsp);
-		if( numLidos != 3  || !ValidarInxPeca( iPeca, VAZIO))
+		if( numLidos != 3 )
 		{
 			return TST_CondRetParm;
 		}
@@ -274,38 +270,5 @@ TST_tpCondRet TST_EfetuarComando( char * ComandoTeste )
     return TST_CondRetNaoConhec ;
 			
 }
-
-/***********************************************************************
-*
-*  $FC Fun��o: TPEC -Validar indice de pecas
-*
-************************************************************************/
-
-   int ValidarInxPeca( int InxPeca , int Modo )
-   {
-
-      if ( ( InxPeca <  0 )
-        || ( InxPeca >= MAX_PECAS ))
-      { 
-         return FALSE ;
-      } /* if */
-         
-      if ( Modo == VAZIO )
-      {
-         if ( VPecas[ InxPeca ] != NULL )
-         {
-            return FALSE ;
-         } /* if */
-      } else
-      {
-         if ( VPecas[ InxPeca ] == NULL )
-         {
-            return FALSE ;
-         } /* if */
-      } /* if */
-         
-      return TRUE ;
-
-   } /* Fim fun��o: TPEC -Validar indice de lista circular */
 
 /*********** Fim do m�dulo de implementa��o: TPECA **********/
