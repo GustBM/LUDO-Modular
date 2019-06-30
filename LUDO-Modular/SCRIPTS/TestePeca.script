@@ -14,9 +14,11 @@
 
 =declararparm   ini int 0
 =declararparm   fim int 1
+=declararparm   naofim int -1
 
 =declararparm   status0 char 'D'
 =declararparm   status1 char 'F'
+=declararparm   status2 char 'X'
 
 =declararparm   OK              int  0
 =declararparm   FaltouMemoria   int  1
@@ -67,6 +69,12 @@
 
 == Atualiza peca sem erro
 =atualizapeca   1   ini   status0   OK
+
+== Atualiza apenas campo final sem erro
+=atualizapeca   1   ini   status2   OK
+
+== Atualiza apenas campo status sem erro
+=atualizapeca   1   naofim   status1   OK
 
 == Atualiza peca com erro
 =atualizapeca    0   ini   status0   NaoExiste
