@@ -321,9 +321,15 @@ static TAB_tppCasaInfo CriaCasa ( PECA_tpPeca* conteudo, LIS_tppLista desvio )
     return casa ;
 }
 
-void TAB_AcessaCasas ( TAB_tppTabuleiro pTab , LISC_tppListaC casasNomais, TAB_tppCasaInfo casasIni, LIS_tppLista casasFinais) {
+/***********************************************************************
+*
+*  $FC Fun��o: TAB  -Acessa casas
+*
+***********************************************************************/
+
+void TAB_AcessaCasas ( TAB_tppTabuleiro pTab , LISC_tppListaC casasNomais, TAB_tppCasaInfo casaIni, LIS_tppLista* casasFinais) {
 	casasNomais = pTab->casasNormais;
-	casasIni = pTab->casaIni;
+	casaIni = pTab->casaIni;
 	casasFinais = pTab->casasFinais;
 }
 
@@ -821,6 +827,11 @@ void TAB_imprime(PECA_tpPeca* pecas, TAB_tppTabuleiro ptab){
 	}
 }
 
+/***********************************************************************
+*
+*  $FC Fun��o: TAB  -Procura Peca
+*
+***********************************************************************/
 
 int ProcuraPeca ( TAB_tppTabuleiro pTabuleiro , PECA_tpPeca pPeca )
 {

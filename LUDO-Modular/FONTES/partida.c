@@ -33,6 +33,19 @@
 #define MAX_PLAYERS 4
 #define MIN_PLAYERS 2
 
+#define VERMELHO 0
+#define AMARELO 3
+
+#define ROLA_DADO ((rand() % 6) + 1)
+
+#define NENHUM 0
+
+#define NUM_JOGADORES_MENOS1 ((pJogo ->num_jogadores) - 1)
+
+#define TERMINOU 1
+
+#define NAO_TERMINOU 1
+
 /***********************************************************************
  *
  *  $TC Tipo de dados: PAR Partida de Ludo
@@ -83,7 +96,7 @@ PAR_CondRet PAR_InicializaJogo ( PAR_tppPartida pJogo , int num , int *cor )
 
 	for ( i = 0 ; i < num ; i++ )
 	{
-		if ( cor[i] < 0 || cor[i] > 3 )
+		if ( cor[i] < VERMELHO || cor[i] > AMARELO )
 		{
 			return PAR_CondRetCorInvalida ;
 		}
@@ -137,10 +150,10 @@ static void LimpaCabeca ( PAR_Ludo *pJogo )
 	int i ;
 	pJogo->pTabuleiro = NULL ;
 
-	for ( i = 0 ; i < 16 ; i++ )
+	for ( i = 0 ; i < MAX_PECAS ; i++ )
 		pJogo->pecas[i] = NULL ;
 
-	pJogo->num_jogadores = 0 ;
+	pJogo->num_jogadores = NENHUM ;
 }
 
 /***********************************************************************
@@ -152,7 +165,7 @@ static void LimpaCabeca ( PAR_Ludo *pJogo )
 PAR_CondRet PAR_RealizaJogada ( PAR_Ludo *pJogo , int cor ) 
 {
 	int dado, i;
-	if (cor < 0 || cor > 3)
+	if (cor < VERMELHO || cor > AMARELO)
 	{
 		return PAR_CondRetCorInvalida;
 	}
@@ -182,7 +195,7 @@ static void LancaDado ( int * pValor )
     int ValorAleatorio ;
   
     srand ( time ( NULL ) ) ;
-    ValorAleatorio = ( rand() % 6 ) + 1 ;
+    ValorAleatorio = ROLA_DADO;
       
     * pValor = ValorAleatorio ;
   
@@ -195,25 +208,28 @@ static void LancaDado ( int * pValor )
  *  $FC Função: PAR  -Verifica Ganhador
  *
  ***********************************************************************/
+#define NO_FIM 1
+
 
 int PAR_VerificaVencedor( PAR_Ludo *pJogo, int * vencedores ) {
 	int final, i;
-	int cor, terminaram = 0;
-	int jogadores[4] = {0, 0, 0, 0};
-	int vencedoresTemp[4] = {0, 0, 0, 0};
-	for (i = 0; i < 16; i++)
+	int cor, terminaram = NENHUM;
+	int jogadores[MAX_PLAYERS] = {0, 0, 0, 0};
+	int vencedoresTemp[MAX_PLAYERS] = {0, 0, 0, 0};
+	for (i = 0; i < MAX_PECAS; i++)
 	{
 		 PECA_ObtemFim (pJogo->pecas[i], &final );
-		if (final == 1)
+		if (final == NO_FIM)
 		{
 			PECA_ObtemCor(pJogo->pecas[i], &cor);
 			jogadores[cor]++;
 		}
 	}
 
-	for (i = 0; i < MAX_PLAYERS - 1; i++)
+	for (i = 0; i < MAX_PLAYERS; i++)
 	{
-		if(jogadores[i] == 4) {
+		if(jogadores[i] == MAX_PLAYERS) 
+		{
 			vencedoresTemp[terminaram] = i;
 			terminaram++;
 		}
@@ -221,12 +237,15 @@ int PAR_VerificaVencedor( PAR_Ludo *pJogo, int * vencedores ) {
 
 	vencedores = vencedoresTemp;
 
-	if (terminaram == 0)
+	if (terminaram == NENHUM)
 	{
 		return -1;
-	} else if (terminaram == (pJogo ->num_jogadores) - 1){
+	} 
+	else if (terminaram == NUM_JOGADORES_MENOS1 || terminaram == MAX_PLAYERS){
 		return 1;
-	} else {
+	} 
+	else 
+	{
 		return 0;
 	}
 
@@ -240,6 +259,11 @@ int PAR_VerificaVencedor( PAR_Ludo *pJogo, int * vencedores ) {
  *
  ***********************************************************************/
 
+#define MAX_DADO 6
+#define MIN_DADO 1
+#define FORA_DO_JOGO 'F'
+#define NAO_EXISTE 0
+
 PAR_CondRet PAR_RealizaJogada ( PAR_Ludo *pJogo , int cor ) 
 {
 	int dado, i, cond, auxCor  = 0;
@@ -252,19 +276,19 @@ PAR_CondRet PAR_RealizaJogada ( PAR_Ludo *pJogo , int cor )
 
 	LISC_tppListaC casasNomais;
 	TAB_tppCasaInfo casaIni; 
-	LIS_tppLista casasFinais;
+	LIS_tppLista *casasFinais;
 
 	LIS_tppLista caminho_final ;
     LIS_tpCondRet retorno_lis ;
 
-	if (cor < 0 || cor > 3)
+	if (cor < VERMELHO || cor > AMARELO)
 	{
 		return PAR_CondRetCorInvalida;
 	}
 	
 	LancaDado ( &dado ) ;
 
-	if (dado > 6 || dado < 1) {
+	if (dado > MAX_DADO || dado < MIN_DADO) {
 		return PAR_CondRetMovInvalido;
 	}
 
@@ -278,18 +302,18 @@ PAR_CondRet PAR_RealizaJogada ( PAR_Ludo *pJogo , int cor )
 	PECA_ObtemFim( pJogo->pecas, &final);
 	PECA_ObtemStatus ( pJogo->pecas , &status ) ;
 
-	if ( status == 'F' )
+	if ( status == FORA_DO_JOGO )
     {
         return PAR_CondRetPecaFora ;
     }
 
-    if ( final == 1 )
+    if ( final == NO_FIM )
     {
         return PAR_CondRetMovInvalido ;
     }
  
     cond = ProcuraPeca ( pJogo->pTabuleiro , pJogo->pecas ) ;
-    if ( cond == 0 )
+    if ( cond == NAO_EXISTE )
     {
         return PAR_CondRetPecaNaoExiste ;
     }

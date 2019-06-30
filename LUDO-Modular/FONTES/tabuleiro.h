@@ -116,7 +116,23 @@ void TAB_imprime(PECA_tpPeca* pecas, TAB_tppTabuleiro ptab);
 
 TAB_CondRet TAB_LimpaCasa (TAB_tppCasaInfo casa) ;
 
-void TAB_AcessaCasas ( TAB_tppTabuleiro pTab , LISC_tppListaC casasNomais, TAB_tppCasaInfo casasIni, LIS_tppLista casasFinais);
+/***********************************************************************
+*
+*  $FC Fun��o: TAB  &Acessa casas 
+*
+*  $ED Descri��o da fun��o
+*     recebe um tabuleiro e ponteiros para uma lista circular, uma casa e um ponteiro para um vetor de listas
+*     atribui a cada um desses ponteiros os campos do tabuleiro.
+*
+*  $EP Par�metros
+*     pTab  - ponteiro para a o tabuleiro a ser usado
+*     casasNomais - ponteiro para casas normais do tabuleiro
+*     casasIni - ponteiro para casa inicial do tabuleiro (casa inicial da peca vermelha)
+*     casasFinais - ponteiro para ponteiros de casas finais do tabuleiro 
+*
+***********************************************************************/
+
+void TAB_AcessaCasas ( TAB_tppTabuleiro pTab , LISC_tppListaC casasNomais, TAB_tppCasaInfo casaIni, LIS_tppLista* casasFinais);
 
 #undef TABULEIRO_EXT
 

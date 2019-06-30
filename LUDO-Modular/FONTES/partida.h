@@ -154,7 +154,7 @@ PAR_CondRet PAR_InicializaJogo ( PAR_tppPartida  pJogo , int num , int *cor ) ;
  *  $FV Valor retornado
  *	  1 - Caso haja vencedores suficientes para acabar a partida, 1 a menos que o numero de jogadores
  *    0 - Caso haja vencedores, mas ainda ha 2 ou mais jogadores que ainda não cruzaram todas as suas peças
- *   -1 - Caso a lista de vencedores esteja vazia
+ *   -1 - Caso ainda nao haja vencedores
  ***********************************************************************/
 
 /* Assertivas de Entrada PAR_VerificaVencedor
