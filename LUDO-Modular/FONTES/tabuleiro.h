@@ -49,16 +49,30 @@ typedef struct TAB_tagCasaInfo * TAB_tppCasaInfo;
 
    typedef enum {
 
-         TAB_CondRetOK ,
-               /* Fun��o executou correto */
+            TAB_CondRetOK ,
+               /* Fun��o executou corretamente */
 
-         TAB_CondRetErro ,
+            TAB_CondRetErro ,
                /* Erro de leitura de arquivo */
 
-         TAB_CondRetMem
+            TAB_CondRetMem
                /* Erro de espa�o na mem�ria */
 
    } TAB_CondRet ;
+
+
+    typedef enum {
+
+            CAS_CondRetOK ,
+               /* Fun��o executou corretamente */
+
+            CAS_CondRetCasaPoluida,
+               /* Casa tem pecas de times distintos */
+               
+            CAS_CondRetBarreira
+               /* tentativa de alterar casa com barreira inimiga */
+
+   } CAS_CondRet ;
 
 /***********************************************************************
 *

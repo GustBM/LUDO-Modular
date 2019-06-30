@@ -46,6 +46,22 @@
 
 #define NAO_TERMINOU 1
 
+#define NO_FIM 1
+#define MAX_DADO 6
+#define MIN_DADO 1
+#define FORA_DO_JOGO 'F'
+#define DENTRO_DO_JOGO 'D'
+#define NAO_EXISTE 0
+
+#define FORA_DO_FIM 0
+
+#define INTERVALO_CASAS_INI 13
+
+#define MIN_PECAS_PER_PLAYER 1
+#define MAX_PECAS_PER_PLAYER 4
+
+
+
 /***********************************************************************
  *
  *  $TC Tipo de dados: PAR Partida de Ludo
@@ -158,33 +174,6 @@ static void LimpaCabeca ( PAR_Ludo *pJogo )
 
 /***********************************************************************
  *
- *  $FC Função: PAR  -Realiza Jogada
- *
- ***********************************************************************/
-
-PAR_CondRet PAR_RealizaJogada ( PAR_Ludo *pJogo , int cor ) 
-{
-	int dado, i;
-	if (cor < VERMELHO || cor > AMARELO)
-	{
-		return PAR_CondRetCorInvalida;
-	}
-	
-	LancaDado ( &dado ) ;
-
-	for (i = 0; i < MAX_PECAS; i++)
-	{
-		if (pJogo->pecas[cor]) {
-			// WIP
-		}
-	}
-	
-	return PAR_CondRetOK;
-}   /* Fim função: PAR  &Realiza Jogada */
-
-
-/***********************************************************************
- *
  *  $FC Função: PAR  -Lanca Dado
  *
  ***********************************************************************/
@@ -208,9 +197,6 @@ static void LancaDado ( int * pValor )
  *  $FC Função: PAR  -Verifica Ganhador
  *
  ***********************************************************************/
-#define NO_FIM 1
-
-
 int PAR_VerificaVencedor( PAR_Ludo *pJogo, int * vencedores ) {
 	int final, i;
 	int cor, terminaram = NENHUM;
@@ -258,17 +244,23 @@ int PAR_VerificaVencedor( PAR_Ludo *pJogo, int * vencedores ) {
  *  $FC Função: PAR  -Realiza Jogada
  *
  ***********************************************************************/
-
-#define MAX_DADO 6
-#define MIN_DADO 1
-#define FORA_DO_JOGO 'F'
-#define NAO_EXISTE 0
-
 PAR_CondRet PAR_RealizaJogada ( PAR_Ludo *pJogo , int cor ) 
 {
 	int dado, i, cond, auxCor  = 0;
 	int final;
 	char status;
+	int numerocasaMexer = 0;
+	char tipoCasaMexer;
+
+	int peca_fora;
+	int numPeca;
+	int peca_valida = 0;
+
+	CAS_CondRet CondRetCasa;
+
+	char acao;
+	int tomada_de_decisao = 0;
+	char cores[4][9] = {"VERMELHO","AZUL","VERDE","AMARELO"};
 
 	PECA_CondRet retPeca;
 	TAB_tppCasaInfo pCasa, aux;
@@ -278,6 +270,8 @@ PAR_CondRet PAR_RealizaJogada ( PAR_Ludo *pJogo , int cor )
 	TAB_tppCasaInfo casaIni; 
 	LIS_tppLista *casasFinais;
 
+	TAB_tppCasaInfo casa_atu;
+
 	LIS_tppLista caminho_final ;
     LIS_tpCondRet retorno_lis ;
 
@@ -285,81 +279,105 @@ PAR_CondRet PAR_RealizaJogada ( PAR_Ludo *pJogo , int cor )
 	{
 		return PAR_CondRetCorInvalida;
 	}
-	
-	LancaDado ( &dado ) ;
 
-	if (dado > MAX_DADO || dado < MIN_DADO) {
-		return PAR_CondRetMovInvalido;
-	}
+	while(!tomada_de_decisao)
+	{
+		printf("eh a vez do %s , aperte G para rolar o dado ou Q para encerrar o jogo: ", cores[cor]);
+		scanf("%c", &acao);
 
-	retPeca = PECA_ObtemCor(pJogo->pecas, &cor);
-	if (retPeca != PECA_CondRetOK) {
-		return PAR_CondRetPecaNaoExiste;
-	}
+		if(acao == 'Q')
+		{
+			printf("tem certeza que deseja encerrar o jogo (S/N)? ");
+			scanf("%c", &acao);
+			if(acao == 'S')
+			{
+				printf("partida encerrada\n");
+				exit(0);
+			}
+		}
+		else if(acao == 'G')
+		{
+			tomada_de_decisao = TRUE;
+		}
+		else
+		{
+			printf("comando desconhecido\n");
+		}
+	}	
 
 	TAB_AcessaCasas(pJogo->pTabuleiro, casasNomais, casaIni, casasFinais);
 
-	PECA_ObtemFim( pJogo->pecas, &final);
-	PECA_ObtemStatus ( pJogo->pecas , &status ) ;
+	LancaDado ( &dado ) ;
 
-	if ( status == FORA_DO_JOGO )
-    {
-        return PAR_CondRetPecaFora ;
-    }
+	TAB_imprime(pJogo->pecas, pJogo->pTabuleiro);
 
-    if ( final == NO_FIM )
-    {
-        return PAR_CondRetMovInvalido ;
-    }
- 
-    cond = ProcuraPeca ( pJogo->pTabuleiro , pJogo->pecas ) ;
-    if ( cond == NAO_EXISTE )
-    {
-        return PAR_CondRetPecaNaoExiste ;
-    }
-
-	pCasa = LIS_ObterValor ( casaIni );
-	aux = pCasa ;
-	pTab = pJogo->pTabuleiro;
-	if ( pCasa == pJogo->pecas ) { 
-		PECA_ObtemCor(aux, &auxCor);
-		while ( auxCor != cor && dado > 0 ) {
-    		LIS_AvancarElementoCorrente ( pCasa , 1 ) ;
-    		aux = LIS_ObterValor ( pCasa ) ;
-    		dado-- ;
-    	}
-		if ( dado != 0 ) {
-    		caminho_final = casasFinais ;
-    		LIS_IrInicioLista ( caminho_final ) ;
-    		retorno_lis = LIS_AvancarElementoCorrente ( caminho_final , dado-1 ) ;
-    		if ( retorno_lis == LIS_CondRetFimLista )
-    			return PAR_CondRetMovInvalido ;
-    		aux = LIS_ObterValor ( caminho_final ) ;
+	peca_fora = 0;
+	for(i= MAX_PECAS_PER_PLAYER * cor ;i<MAX_PECAS;i++)
+	{
+		PECA_ObtemStatus(pJogo->pecas[i],&status);
+		if ( status == FORA_DO_JOGO )
+    	{
+        	pecas_fora++;
     	}
 	}
+	if(peca_fora > NENHUM && (dado == MIN_DADO || dado == MAX_DADO))
+	{
+		printf("deseja tirar alguma peca do campo inicial: ");
+		scanf("%c", &acao);
+		if(acao == 'Y')
+		{
+			while(!peca_valida)
+			{
+				printf("escolha qual peca deseja mexer: ");
+				scanf("%d", &numPeca);
+				PECA_ObtemStatus(pJogo->pecas[NumPeca],&status);
+				if(numPeca < MIN_PECAS_PER_PLAYER || numPeca > MAX_PECAS_PER_PLAYER)
+				{
+					printf("valor invalido. deve ser entre 1 e 4.\n");
+				}
+				else if(status == DENTRO_DO_JOGO )
+				{
+					printf("peca invalida. deve ser uma peca dentro do jogo\n");
+				}
+				else
+				{
+					peca_valida = TRUE;
+					NumPeca--;
+					NumPeca = MAX_PECAS_PER_PLAYER * cor + numPeca;
+					PECA_AtualizaPeca(pJogo->pecas[NumPeca],FORA_DO_FIM,DENTRO_DO_JOGO);
+					LISC_ProcurarValor(casasNomais,casaIni);
+					auxCor = cor;
+					while(auxCor > VERMELHO){
+						LISC_AvancarElementoCorrente(casasNomais,INTERVALO_CASAS_INI);
+						auxCor--;
+					}
+					LISC_ObterValor(casasNomais, casa_atu);
+					CondRetCasa = TAB_AlteraCasa(casa_atu,pJogo->pecas[NumPeca]);
+					if(CondRetCasa == CAS_CondRetBarreira)
+					{
+						printf("ha uma barreira na saida da peca.\n");
+						if(peca_fora  == MAX_PECAS_PER_PLAYER)
+						{
+							printf("aguarde o jogador inimigo desmontar a barreira da saida\n");
+						}
+						break;
+					}
+				}
+				
+			}
+			
+		}
+	}
+	else if (peca_fora < MAX_PECAS_PER_PLAYER)
+	{
+		printf("Vc tirou %d no dado, escolha o tipo da casa em que a peca que voce quer mexer esta presente: ", dado);
+		scanf("%c", &tipoCasaMexer);
 
-	if ( caminho_final != NULL ) { 
+		printf("Agora escolha  o numero da casa em que a peca que voce quer mexer esta presente: ", tipoCasaMexer);
+		scanf("%d", &numerocasaMexer); 
+	}
 
-        retorno_lis = LIS_AvancarElementoCorrente ( caminho_final , 1 ) ;       
-        if ( retorno_lis == LIS_CondRetFimLista ) {
-            PECA_AtualizaPeca ( pJogo->pecas , 1 , 'D' ) ;
-			TAB_LimpaCasa(pCasa);
-            return PAR_CondRetOK ;
-        }
-
-    }
-
-	// if ( aux->conteudo != NULL ) {
-    
-    //     PECA_ObtemInfo ( aux->conteudo , &cor2, &final2, &status2 ) ;
-    //     if ( cor2 == cor ) 
-    //         return PAR_CondRetMovInvalido ;
-              
-    //     PEC_AtualizaPeca ( aux->conteudo , 0 , 'F' ) ;
-        
-    // }
-
-    TAB_LimpaCasa(pCasa);
+	
 	
 	return PAR_CondRetOK;
 }   /* Fim função: PAR  &Realiza Jogada */

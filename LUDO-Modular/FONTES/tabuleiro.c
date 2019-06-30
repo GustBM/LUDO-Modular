@@ -33,6 +33,8 @@
 
 #define PECAS 4
 
+#define FORA_DO_JOGO 'F'
+
 /* DEFINES PARA INTERFACE */
 
 //PRINTA PECA
@@ -343,11 +345,9 @@ TAB_CondRet TAB_LimpaCasa (TAB_tppCasaInfo casa)
 {
 	int i;
 
-	if ( casa->conteudo != NULL )
-    {
 	for(i=0;i<TIMES;i++)
         PECA_DestroiPeca( casa->conteudo[i] ) ;
-    }
+    
 
 	if( casa -> desvio != NULL)
 	{
@@ -357,6 +357,77 @@ TAB_CondRet TAB_LimpaCasa (TAB_tppCasaInfo casa)
 	free(casa);
 	
 	return TAB_CondRetOK;
+}
+
+
+/***********************************************************************
+*
+*  $FC Fun��o: TAB  -altera valores de uma casa seguindo as regras da partida
+*
+***********************************************************************/
+
+
+CAS_CondRet TAB_AlteraCasa(TAB_tpCasaInfo* casa,PECA_tpPeca peca){
+
+	int i;
+	int corCasa;
+	int corPeca;
+
+	int numInimgos = 0;
+	int indx_Inimigo = -1;
+	int numAmigos = 0;
+	
+	PEC_ObtemCor(peca,&corPeca);
+
+	for(i=0;i<PECAS;i++)
+	{
+		if(casa ->conteudo[i] != NULL)
+		{
+			PEC_ObtemCor(casa-> conteudo[i],&corCasa);
+
+			if(corCasa != corPeca){
+				numInimigos++;
+				indx_Inimigo = i;
+			}
+			else{
+				numAmigos++;
+			}
+		}
+	}
+
+	if(numAmigos > 0 && numInimigos > 0)
+	{
+		return CAS_CondRetCasaPoluida;
+	}
+
+	else if (numAmigos >= 0)
+	{
+		for(i=0;i<PECAS;i++)
+		{
+			if(casa ->conteudo[i] == NULL)
+			{
+				casa-> conteudo[i] = peca;
+			}
+		}
+		return CAS_CondRetOK;
+	}
+
+	else if (numInimigos == 1)
+	{
+		PECA_AtualizaPeca(casa ->conteudo[indx_Inimigo],FORA_DO_JOGO);
+
+		casa ->conteudo[indx_Inimigo] = NULL;
+
+		casa ->conteudo[indx_Inimigo] = peca;
+
+		return TAB_CondRetOK;
+		
+	}
+	else if (numInimigos > 1)
+	{
+		return CAS_CondRetBarreira;
+	}
+
 }
 /***********************************************************************
 *
@@ -562,35 +633,35 @@ void TAB_imprime(PECA_tpPeca* pecas, TAB_tppTabuleiro ptab){
 	//							 0         1         2         3         4         5         6
 	//                           0123456789012345678901234567890123456789012345678901234567890		
 								"    __________          v---v---v---v         __________     " ,//0	0
-                                "   |          |         |   |   |   |        |          |    " ,//1
+                                "   |          |       11| 11| 12| 13|        |          |    " ,//1
                                 "   |  R    R  |         |---+---+---|        |  B       |    " ,//2
-                                "   |          |         |Rx2|   < B | <==    |          |    " ,//3
+                                "   |          |       10| 10| 1 < 14| <==    |          |    " ,//3
                                 "   |          |         |---+---+---|        |          |    " ,//4
-                                "   |__________|         |   |   |   |        |__________|    " ,//5
+                                "   |__________|       9 | 9 | 2 | 15|        |__________|    " ,//5
                                 "                        |---+---+---|                        " ,//6
-                                "                        |   |   |   |                        " ,//7
+                                "                      8 | 8 | 3 | 16|                        " ,//7
                                 "                        |---+---+---|                        " ,//8
-                                "                        |   |   |   |                        " ,//9
+                                "                      7 | 7 | 4 | 17|                        " ,//9
                                 "     ||                 |---+---+---|                        " ,//0	1
-                                "     vv                 |   |   |   |                        " ,//1
+                                "         	             | 6 | 5 | 18|                        " ,//1
                                 ">---.---.---.---.---.---+---+---+---+---.---.---.---.---.---<" ,//2
-                                "|   |   |   |   |   |RX2| X |   | X |   | B |   |   |   |   |" ,//3
+                                "| 52| 1 | 2 | 3 | 4 | 5 | X | 6 | X | 19| 20| 21| 22| 23| 24|" ,//3
                                 "|---+vvv+---+---+---+---+---+---+---+---+---+---+---+---+---|" ,//4
-                                "|   |   |   |   |   |   |   | X | B |   |   |   |   |   |   |" ,//5
+                                "| 51| 1 | 2 | 3 | 4 | 5 | 6 | X | 6 | 5 | 4 | 3 | 2 | 1 | 25|" ,//5
                                 "|---+---+---+---+---+---+---+---+---+---+---+---+---+^^^+---|" ,//6
-                                "|   |   |   |   |   |   | X |   | X |   |   |   |   |   |   |" ,//7
+                                "| 50| 49| 48| 47| 46| 45| X | 6 | X | 31| 30| 29| 28| 27| 26|" ,//7
                                 ">---.---.---.---.---.---+---+---+---+---.---.---.---.---.---<" ,//8
-                                "                        |   |   |   |                ^^      " ,//9
+                                "                        | 44| 5 | 32|                ^^      " ,//9
                                 "                        |---+---+---|                ||      " ,//0	2
-                                "                        |   |   |   |                        " ,//1
+                                "                        | 43| 4 | 33|                        " ,//1
                                 "                        |---+---+---|                        " ,//2
-                                "                        | Y |   |   |                        " ,//3
+                                "                        | 42| 3 | 34|                        " ,//3
                                 "    __________          |---+---+---|         __________     " ,//4
-                                "   |          |         |   |   |   |        |          |    " ,//5
+                                "   |          |         | 41| 2 | 35|        |          |    " ,//5
                                 "   |  Y    Y  |         |---+---+---|        |  G    G  |    " ,//6
-                                "   |          |     ==> |   >   |   |        |          |    " ,//7
+                                "   |          |     ==> | 40> 1 | 36|        |          |    " ,//7
                                 "   |  Y       |         |---+---+---|        |  G    G  |    " ,//8
-                                "   |__________|         |   |   |   |        |__________|    " ,//9
+                                "   |__________|         | 39| 38| 37|        |__________|    " ,//9
                                 "                        ^---^---^---^                        "  //0	3
 								};
 
