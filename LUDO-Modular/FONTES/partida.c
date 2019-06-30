@@ -12,7 +12,7 @@
 *     Versão |  Autores   |      Data     |    Observações
 *       1    |    GB      |   11/06/2019  | Início desenvolvimento
 *       2    |    GB      |   12/06/2019  |      Ajustes
-*       2    |    GB      |   23/06/2019  |      Ajustes    
+*       3    |    GB      |   23/06/2019  |      Ajustes    
 ***************************************************************************/
 
 #include <stdlib.h>
@@ -21,6 +21,7 @@
 #include <time.h>
 
 #include "tabuleiro.h"
+#include "peca.h"
 
 #define PAR_OWN
 #include "partida.h"
@@ -70,7 +71,7 @@ static int ProcuraPeca ( TAB_tppTabuleiro pTabuleiro , PECA_tpPeca pPeca ) ;
 
 PAR_CondRet PAR_InicializaJogo ( PAR_tppPartida pJogo , int num , int *cor ) 
 {
-	int i, k;
+	int i;
 
 	TAB_tppTabuleiro pTabuleiro ;
 	PECA_CondRet retorno_pec 	;
@@ -231,18 +232,30 @@ int PAR_VerificaVencedor( PAR_Ludo *pJogo, int * vencedores ) {
 
 }/* Fim função: PAR  &Verifica Vencedor */
 
+
+
+/***********************************************************************
+ *
+ *  $FC Função: PAR  -Realiza Jogada
+ *
+ ***********************************************************************/
+
 PAR_CondRet PAR_RealizaJogada ( PAR_Ludo *pJogo , int cor ) 
 {
-	int dado, i, cond;
+	int dado, i, cond, auxCor  = 0;
 	int final;
 	char status;
 
 	PECA_CondRet retPeca;
-	TAB_tppCasaInfo pCasa;
+	TAB_tppCasaInfo pCasa, aux;
 	TAB_tppTabuleiro pTab;
+
 	LISC_tppListaC casasNomais;
 	TAB_tppCasaInfo casaIni; 
 	LIS_tppLista casasFinais;
+
+	LIS_tppLista caminho_final ;
+    LIS_tpCondRet retorno_lis ;
 
 	if (cor < 0 || cor > 3)
 	{
@@ -263,7 +276,7 @@ PAR_CondRet PAR_RealizaJogada ( PAR_Ludo *pJogo , int cor )
 	TAB_AcessaCasas(pJogo->pTabuleiro, casasNomais, casaIni, casasFinais);
 
 	PECA_ObtemFim( pJogo->pecas, &final);
-	PEC_ObtemStatus ( pJogo->pecas , &status ) ;
+	PECA_ObtemStatus ( pJogo->pecas , &status ) ;
 
 	if ( status == 'F' )
     {
@@ -282,15 +295,47 @@ PAR_CondRet PAR_RealizaJogada ( PAR_Ludo *pJogo , int cor )
     }
 
 	pCasa = LIS_ObterValor ( casaIni );
-	// if ( pCasa->conteudo == pPeca ) { 
+	aux = pCasa ;
+	pTab = pJogo->pTabuleiro;
+	if ( pCasa == pJogo->pecas ) { 
+		PECA_ObtemCor(aux, &auxCor);
+		while ( auxCor != cor && dado > 0 ) {
+    		LIS_AvancarElementoCorrente ( pCasa , 1 ) ;
+    		aux = LIS_ObterValor ( pCasa ) ;
+    		dado-- ;
+    	}
+		if ( dado != 0 ) {
+    		caminho_final = casasFinais ;
+    		LIS_IrInicioLista ( caminho_final ) ;
+    		retorno_lis = LIS_AvancarElementoCorrente ( caminho_final , dado-1 ) ;
+    		if ( retorno_lis == LIS_CondRetFimLista )
+    			return PAR_CondRetMovInvalido ;
+    		aux = LIS_ObterValor ( caminho_final ) ;
+    	}
+	}
 
-	// }
+	if ( caminho_final != NULL ) { 
+
+        retorno_lis = LIS_AvancarElementoCorrente ( caminho_final , 1 ) ;       
+        if ( retorno_lis == LIS_CondRetFimLista ) {
+            PECA_AtualizaPeca ( pJogo->pecas , 1 , 'D' ) ;
+			TAB_LimpaCasa(pCasa);
+            return PAR_CondRetOK ;
+        }
+
+    }
+
+	// if ( aux->conteudo != NULL ) {
+    
+    //     PECA_ObtemInfo ( aux->conteudo , &cor2, &final2, &status2 ) ;
+    //     if ( cor2 == cor ) 
+    //         return PAR_CondRetMovInvalido ;
+              
+    //     PEC_AtualizaPeca ( aux->conteudo , 0 , 'F' ) ;
+        
+    // }
+
+    TAB_LimpaCasa(pCasa);
 	
 	return PAR_CondRetOK;
 }   /* Fim função: PAR  &Realiza Jogada */
-
-static int ProcuraPeca ( TAB_tppTabuleiro pTabuleiro , PECA_tpPeca pPeca )
-{
-    // WIP
-   
-} /* Fim função: PAR  &Procura Peca */

@@ -818,3 +818,42 @@ void TAB_imprime(PECA_tpPeca* pecas, TAB_tppTabuleiro ptab){
 		printf("\n");
 	}
 }
+
+
+int ProcuraPeca ( TAB_tppTabuleiro pTabuleiro , PECA_tpPeca pPeca )
+{
+    TAB_tppCasaInfo casa, aux, aux2 ;
+    LIS_tppLista caminho_final ;
+    LIS_tpCondRet retorno_lis ;
+    int cor ;
+      
+    PEC_ObtemCor ( pPeca , &cor ) ;
+
+    casa = LIS_ObterValor ( pTabuleiro->casaIni ) ;
+    aux = casa ;
+    do {
+
+        if ( aux->conteudo == pPeca )
+            return 1 ;
+
+        else if ( aux->conteudo == cor && aux->desvio != NULL ) {
+            caminho_final = aux->desvio ;
+            LIS_IrInicioLista( caminho_final ) ;
+            do {
+
+                aux2 = LIS_ObterValor ( caminho_final ) ;
+                if ( aux2->conteudo == pPeca )
+                    return 1 ;
+                retorno_lis = LIS_AvancarElementoCorrente ( caminho_final , 1 ) ;
+
+            } while ( retorno_lis != LIS_CondRetFimLista ) ;
+        }
+
+        LIS_AvancarElementoCorrente ( pTabuleiro->casaIni , 1 ) ;
+        aux = LIS_ObterValor ( pTabuleiro->casaIni ) ;
+
+    } while ( aux != casa ) ;
+
+    return 0 ;
+   
+} /* Fim função: PAR  &Procura Peca */

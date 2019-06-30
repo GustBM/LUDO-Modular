@@ -1,0 +1,21 @@
+partida.c
+..\Fontes\partida.c(74) : warning C4101: 'k' : unreferenced local variable
+..\Fontes\partida.c(184) : warning C4244: 'function' : conversion from 'time_t' to 'unsigned int', possible loss of data
+..\Fontes\partida.c(244) : error C2084: function 'PAR_CondRet PAR_RealizaJogada(PAR_Ludo *,int)' already has a body
+        ..\Fontes\partida.c(152) : see previous definition of 'PAR_RealizaJogada'
+..\Fontes\partida.c(271) : warning C4047: 'function' : 'PECA_tpPeca' differs in levels of indirection from 'PECA_tpPeca [16]'
+..\Fontes\partida.c(271) : warning C4024: 'PECA_ObtemCor' : different types for formal and actual parameter 1
+..\Fontes\partida.c(278) : warning C4047: 'function' : 'PECA_tpPeca' differs in levels of indirection from 'PECA_tpPeca [16]'
+..\Fontes\partida.c(278) : warning C4024: 'PECA_ObtemFim' : different types for formal and actual parameter 1
+..\Fontes\partida.c(279) : warning C4047: 'function' : 'PECA_tpPeca' differs in levels of indirection from 'PECA_tpPeca [16]'
+..\Fontes\partida.c(279) : warning C4024: 'PECA_ObtemStatus' : different types for formal and actual parameter 1
+..\Fontes\partida.c(291) : warning C4047: 'function' : 'PECA_tpPeca' differs in levels of indirection from 'PECA_tpPeca [16]'
+..\Fontes\partida.c(291) : warning C4024: 'ProcuraPeca' : different types for formal and actual parameter 2
+..\Fontes\partida.c(297) : warning C4133: 'function' : incompatible types - from 'TAB_tppCasaInfo' to 'LIS_tppLista'
+..\Fontes\partida.c(300) : warning C4047: '==' : 'TAB_tppCasaInfo' differs in levels of indirection from 'PECA_tpPeca [16]'
+..\Fontes\partida.c(301) : warning C4133: 'function' : incompatible types - from 'TAB_tppCasaInfo' to 'PECA_tpPeca'
+..\Fontes\partida.c(303) : warning C4133: 'function' : incompatible types - from 'TAB_tppCasaInfo' to 'LIS_tppLista'
+..\Fontes\partida.c(304) : warning C4133: 'function' : incompatible types - from 'TAB_tppCasaInfo' to 'LIS_tppLista'
+..\Fontes\partida.c(309) : warning C4013: 'LIS_IrInicioLista' undefined; assuming extern returning int
+..\Fontes\partida.c(321) : warning C4047: 'function' : 'PECA_tpPeca' differs in levels of indirection from 'PECA_tpPeca [16]'
+..\Fontes\partida.c(321) : warning C4024: 'PECA_AtualizaPeca' : different types for formal and actual parameter 1
