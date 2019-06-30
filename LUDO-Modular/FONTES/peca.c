@@ -33,7 +33,10 @@ typedef struct Peca {
 
 /*****  C�digo das fun��es exportadas pelo m�dulo  *****/
 
-
+/***************************************************************************
+*
+*  Funcao: PEC  &Cria Peca
+*  ****/
 
 PECA_CondRet PECA_CriaPeca ( PECA** peca, int i, int cor ) 
 {
@@ -63,6 +66,11 @@ PECA_CondRet PECA_CriaPeca ( PECA** peca, int i, int cor )
 
 }
 
+/***************************************************************************
+*
+*  Funcao: PEC  &Destroi Peca
+*  ****/
+
 PECA_CondRet PECA_DestroiPeca ( PECA *peca )
 {
 	if ( peca == NULL )
@@ -74,6 +82,11 @@ PECA_CondRet PECA_DestroiPeca ( PECA *peca )
 	return PECA_CondRetOK ;
 
 } 
+
+/***************************************************************************
+*
+*  Funcao: PEC  &Obtem cor da peca
+*  ****/
 
 PECA_CondRet PECA_ObtemCor ( PECA * peca , int* cor )
 {
@@ -88,6 +101,11 @@ PECA_CondRet PECA_ObtemCor ( PECA * peca , int* cor )
 
 }
 
+/***************************************************************************
+*
+*  Funcao: PEC  &Obtem indicacao de final
+*  ****/
+
 PECA_CondRet PECA_ObtemFim ( PECA* peca , int* final )
 {
 	if(peca == NULL)
@@ -101,6 +119,11 @@ PECA_CondRet PECA_ObtemFim ( PECA* peca , int* final )
 
 } 
 
+/***************************************************************************
+*
+*  Funcao: PEC  &Obtem status da peca
+*  ****/
+
 PECA_CondRet PECA_ObtemStatus ( PECA* peca , char* status)
 {
 	if(peca == NULL)
@@ -113,6 +136,11 @@ PECA_CondRet PECA_ObtemStatus ( PECA* peca , char* status)
 	return PECA_CondRetOK ;
 
 } 
+
+/***************************************************************************
+*
+*  Funcao: PEC  &Obtem todas as informacoes de uma peca
+*  ****/
 
 PECA_CondRet PECA_ObtemInfo( PECA* peca, int* cor, int* final, char* status )
 {
@@ -129,21 +157,27 @@ PECA_CondRet PECA_ObtemInfo( PECA* peca, int* cor, int* final, char* status )
 
 }
 
+/***************************************************************************
+*
+*  Funcao: PEC  &Atualiza todas as informacoes de uma peca
+*  ****/
+
 
 PECA_CondRet PECA_AtualizaPeca ( PECA* peca , int final, char status ) 
 {
 
-	assert(final == 0 || final == 1);
+	assert(final == 0 || final == 1 || final == -1);
 
-	assert(status == 'D' || status == 'F');
+	assert(status == 'D' || status == 'F' || status == 'X');
 
 	if(peca == NULL)
 	{
 		return PECA_CondRetNaoExiste;
 	}
-	
-	peca->final = final ;
-	peca->status = status ;
+	if(final != -1)
+		peca->final = final ;
+	if(status != 'X')
+		peca->status = status ;
 
 	return PECA_CondRetOK ;
 

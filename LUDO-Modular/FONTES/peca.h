@@ -196,8 +196,8 @@ PECA_CondRet PECA_ObtemStatus ( PECA_tpPeca peca , char * status ) ;
 *
 *  $EP Parametros
 *   peca - pe�a que procura saber a cor
-*   final - atualizar se a pe�a est� no est�gio final
-*   status - atualizar se a pe�a est� em jogo
+*   final - atualizar se a pe�a est� no est�gio final (insira -1 se quiser atualizar o status apenas)
+*   status - atualizar se a pe�a est� em jogo (insira 'X' se quiser atualizar o final apenas)
 *
 ***********************************************************************/
 
