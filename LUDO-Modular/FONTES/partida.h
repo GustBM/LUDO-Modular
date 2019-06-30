@@ -58,9 +58,17 @@ typedef enum {
 	PAR_CondRetCorJaEscolhida,
 	/* Cor já foi escolhida por outro jogador */
 
-	PAR_CondRetCorInvalida
+	PAR_CondRetCorInvalida, 
 	/* Cor inválida */
-   
+
+	PAR_CondRetMovInvalido,
+	/*Valor do dado no movimento retorna valor inválido */
+
+	PAR_CondRetPecaNaoExiste,
+	/*Peca procurada não pode ser encontrada */
+
+	PAR_CondRetPecaFora
+	/*Peça está fora do jogo */
    } PAR_CondRet ;
 
 /***********************************************************************

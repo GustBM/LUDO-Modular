@@ -30,6 +30,7 @@
 #define NUM_PECA_PLAYER 4
 #define MAX_PECAS 16 
 #define MAX_PLAYERS 4
+#define MIN_PLAYERS 2
 
 /***********************************************************************
  *
@@ -56,6 +57,8 @@ static void LimpaCabeca ( PAR_Ludo *pJogo ) ;
 
 static void LancaDado ( int * pValor ) ;
 
+static int ProcuraPeca ( TAB_tppTabuleiro pTabuleiro , PECA_tpPeca pPeca ) ;
+
 
 /*****  Código das funções exportadas pelo módulo  *****/
 
@@ -72,7 +75,7 @@ PAR_CondRet PAR_InicializaJogo ( PAR_tppPartida pJogo , int num , int *cor )
 	TAB_tppTabuleiro pTabuleiro ;
 	PECA_CondRet retorno_pec 	;
 	
-	if ( num < 2 || num > 4 )
+	if ( num < MIN_PLAYERS || num > MAX_PLAYERS )
 	{
 		return PAR_CondRetNumeroDeJogadoresInvalido ;
 	}
@@ -207,7 +210,7 @@ int PAR_VerificaVencedor( PAR_Ludo *pJogo, int * vencedores ) {
 		}
 	}
 
-	for (i = 0; i < 3; i++)
+	for (i = 0; i < MAX_PLAYERS - 1; i++)
 	{
 		if(jogadores[i] == 4) {
 			vencedoresTemp[terminaram] = i;
@@ -227,3 +230,67 @@ int PAR_VerificaVencedor( PAR_Ludo *pJogo, int * vencedores ) {
 	}
 
 }/* Fim função: PAR  &Verifica Vencedor */
+
+PAR_CondRet PAR_RealizaJogada ( PAR_Ludo *pJogo , int cor ) 
+{
+	int dado, i, cond;
+	int final;
+	char status;
+
+	PECA_CondRet retPeca;
+	TAB_tppCasaInfo pCasa;
+	TAB_tppTabuleiro pTab;
+	LISC_tppListaC casasNomais;
+	TAB_tppCasaInfo casaIni; 
+	LIS_tppLista casasFinais;
+
+	if (cor < 0 || cor > 3)
+	{
+		return PAR_CondRetCorInvalida;
+	}
+	
+	LancaDado ( &dado ) ;
+
+	if (dado > 6 || dado < 1) {
+		return PAR_CondRetMovInvalido;
+	}
+
+	retPeca = PECA_ObtemCor(pJogo->pecas, &cor);
+	if (retPeca != PECA_CondRetOK) {
+		return PAR_CondRetPecaNaoExiste;
+	}
+
+	TAB_AcessaCasas(pJogo->pTabuleiro, casasNomais, casaIni, casasFinais);
+
+	PECA_ObtemFim( pJogo->pecas, &final);
+	PEC_ObtemStatus ( pJogo->pecas , &status ) ;
+
+	if ( status == 'F' )
+    {
+        return PAR_CondRetPecaFora ;
+    }
+
+    if ( final == 1 )
+    {
+        return PAR_CondRetMovInvalido ;
+    }
+ 
+    cond = ProcuraPeca ( pJogo->pTabuleiro , pJogo->pecas ) ;
+    if ( cond == 0 )
+    {
+        return PAR_CondRetPecaNaoExiste ;
+    }
+
+	pCasa = LIS_ObterValor ( casaIni );
+	// if ( pCasa->conteudo == pPeca ) { 
+
+	// }
+	
+	return PAR_CondRetOK;
+}   /* Fim função: PAR  &Realiza Jogada */
+
+static int ProcuraPeca ( TAB_tppTabuleiro pTabuleiro , PECA_tpPeca pPeca )
+{
+    // WIP
+   
+} /* Fim função: PAR  &Procura Peca */
