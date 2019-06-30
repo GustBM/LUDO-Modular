@@ -128,7 +128,6 @@ TAB_CondRet TAB_DestruirTabuleiro( TAB_tppTabuleiro pTab);
 
 void TAB_imprime(PECA_tpPeca* pecas, TAB_tppTabuleiro ptab);
 
-TAB_CondRet TAB_LimpaCasa (TAB_tppCasaInfo casa) ;
 
 /***********************************************************************
 *
@@ -147,6 +146,22 @@ TAB_CondRet TAB_LimpaCasa (TAB_tppCasaInfo casa) ;
 ***********************************************************************/
 
 void TAB_AcessaCasas ( TAB_tppTabuleiro pTab , LISC_tppListaC casasNomais, TAB_tppCasaInfo casaIni, LIS_tppLista* casasFinais);
+
+/***********************************************************************
+*
+*  $FC Fun��o: TAB  &Altera Casa 
+*
+*  $ED Descri��o da fun��o
+*     Altera valores de uma casa seguindo as regras da partida
+*
+*  $EP Par�metros
+*     CAS_CondRetCasaPoluida  - Casoa a casa já tenha peças de times distintos
+*     CAS_CondRetOK - função ocorreu sem problemas
+*     TAB_CondRetErro - Erro de leitura do arquivo
+*
+***********************************************************************/
+
+CAS_CondRet TAB_AlteraCasa ( TAB_tppCasaInfo casa, PECA_tpPeca peca ) ;
 
 #undef TABULEIRO_EXT
 

@@ -37,13 +37,13 @@ PAR_tppPartida *vttPartida;
 TST_tpCondRet TST_EfetuarComando( char * ComandoTeste ) {
 
     int numLidos      = -1 ;
-    int cor           = -1 ;
     int numJog        = -1 ;
 	int CondRetEsp    = -1 ;
 	int CondRetObtido = -1 ;
     int iPartida      = -1 ;
 
     int * cores;
+    int * ordem;
     int venc[DIM_VENC];
 
     /* Testar CriarPartida */
@@ -61,7 +61,7 @@ TST_tpCondRet TST_EfetuarComando( char * ComandoTeste ) {
 			return TST_CondRetParm;
 		}
 
-		CondRetObtido = PAR_InicializaJogo ( vttPartida[iPartida], numJog, cores ) ;
+		CondRetObtido = PAR_InicializaJogo ( vttPartida[iPartida], numJog ) ;
 
         free(cores);
 
@@ -73,14 +73,14 @@ TST_tpCondRet TST_EfetuarComando( char * ComandoTeste ) {
 
     else if ( strcmp( ComandoTeste , REALIZA_JOGADA ) == 0 )
 	{
-		numLidos = LER_LerParametros( "ii", &iPartida, &cor ) ;
+		numLidos = LER_LerParametros( "ii", &iPartida, &ordem, &venc ) ;
 
 		if ( numLidos != 2 )
 		{
 			return TST_CondRetParm ;
 		}
 
-		CondRetObtido = PAR_RealizaJogada ( vttPartida[iPartida], cores[cor]) ;
+		CondRetObtido = PAR_RealizarRodadas ( vttPartida[iPartida], ordem, venc) ;
 
 		return TST_CompararInt (CondRetEsp, CondRetObtido, "Erro a Realizar a jogada") ;
 

@@ -23,7 +23,7 @@ typedef struct Peca {
 	    /* Cor definida entre 0 e 3 */
 
 	int final;
-	    /* Se a pe�a est� na reta final do jogo: Final = 1, caso contr�rio: Final = 0 */
+	    /* Se está na última casa da reta final: Final = 1, caso contr�rio: Final = 0 */
 
 	char status ;
         /* Se a pe�a est� dentro do jogo, status = 'D', caso esteja fora de jogo, status = 'F' */

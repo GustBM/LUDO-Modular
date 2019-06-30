@@ -257,7 +257,7 @@ PAR_CondRet PAR_RealizarRodadas(PAR_tppPartida pJogo,int *ordem, int* vencedores
 {
 	int cor_atu = 0;
 	int CondRetPAR;
-	int*vencedores;
+	int*vencedores = vencedores_final;
 	CondRetPAR = PAR_VerificaVencedor( pJogo , vencedores );
 	if(vencedores == NULL)
 	{
@@ -304,8 +304,7 @@ PAR_CondRet PAR_RealizarRodadas(PAR_tppPartida pJogo,int *ordem, int* vencedores
  ***********************************************************************/
 PAR_CondRet PAR_RealizaJogada ( PAR_Ludo *pJogo , int cor ) 
 {
-	int dado, i, cond, auxCor  = 0;
-	int final;
+	int dado, i, auxCor  = 0;
 	char status;
 	int numerocasaMexer = 0;
 	char tipoCasaMexer;
@@ -320,18 +319,11 @@ PAR_CondRet PAR_RealizaJogada ( PAR_Ludo *pJogo , int cor )
 	int tomada_de_decisao = FALSE;
 	char cores[4][9] = {"VERMELHO","AZUL","VERDE","AMARELO"};
 
-	PECA_CondRet retPeca;
-	TAB_tppCasaInfo pCasa, aux;
-	TAB_tppTabuleiro pTab;
+	LISC_tppListaC casasNomais = NULL;
+	TAB_tppCasaInfo casaIni = NULL;
+	LIS_tppLista *casasFinais = NULL;
 
-	LISC_tppListaC casasNomais;
-	TAB_tppCasaInfo casaIni; 
-	LIS_tppLista *casasFinais;
-
-	TAB_tppCasaInfo casa_atu;
-
-	LIS_tppLista caminho_final ;
-    LIS_tpCondRet retorno_lis ;
+	TAB_tppCasaInfo casa_atu = NULL;
 
 	if (cor < VERMELHO || cor > AMARELO)
 	{
@@ -415,7 +407,7 @@ PAR_CondRet PAR_RealizaJogada ( PAR_Ludo *pJogo , int cor )
 								LISC_AvancarElementoCorrente(casasNomais,INTERVALO_CASAS_INI);
 								auxCor--;
 							}
-							LISC_ObterValor(casasNomais, casa_atu);
+							LISC_ObterValor(casasNomais, (void**)casa_atu);
 							CondRetCasa = TAB_AlteraCasa(casa_atu,pJogo->pecas[numPeca]);
 							if(CondRetCasa == CAS_CondRetBarreira)
 							{

@@ -34,6 +34,7 @@
 #define PECAS 4
 
 #define FORA_DO_JOGO 'F'
+#define FINAL_JOGO 1
 
 /* DEFINES PARA INTERFACE */
 
@@ -185,9 +186,9 @@ typedef void ( *pFunc ) ( void * ) ; typedef void **ppVoid ;
  
 static TAB_tppCasaInfo CriaCasa ( PECA_tpPeca* conteudo , LIS_tppLista desvio) ;
 
-static TAB_CondRet TAB_LimpaCasa (TAB_tpCasaInfo* casa);
+static TAB_CondRet TAB_LimpaCasa (TAB_tpCasaInfo* casa) ;
 
-static int TAB_ComparaCasa(TAB_tpCasaInfo* casa1 ,TAB_tpCasaInfo* casa2);	
+static int TAB_ComparaCasa(TAB_tpCasaInfo* casa1 ,TAB_tpCasaInfo* casa2) ;	
  
 static void TAB_LiberarCasa ( TAB_tpCasaInfo *pCasa ) ;
 
@@ -373,17 +374,17 @@ CAS_CondRet TAB_AlteraCasa(TAB_tpCasaInfo* casa,PECA_tpPeca peca){
 	int corCasa;
 	int corPeca;
 
-	int numInimgos = 0;
+	int numInimigos = 0;
 	int indx_Inimigo = -1;
 	int numAmigos = 0;
 	
-	PEC_ObtemCor(peca,&corPeca);
+	PECA_ObtemCor(peca,&corPeca);
 
 	for(i=0;i<PECAS;i++)
 	{
 		if(casa ->conteudo[i] != NULL)
 		{
-			PEC_ObtemCor(casa-> conteudo[i],&corCasa);
+			PECA_ObtemCor(casa-> conteudo[i],&corCasa);
 
 			if(corCasa != corPeca){
 				numInimigos++;
@@ -414,7 +415,7 @@ CAS_CondRet TAB_AlteraCasa(TAB_tpCasaInfo* casa,PECA_tpPeca peca){
 
 	else if (numInimigos == 1)
 	{
-		PECA_AtualizaPeca(casa ->conteudo[indx_Inimigo],FORA_DO_JOGO);
+		PECA_AtualizaPeca(casa ->conteudo[indx_Inimigo], FINAL_JOGO, FORA_DO_JOGO);
 
 		casa ->conteudo[indx_Inimigo] = NULL;
 
@@ -428,6 +429,7 @@ CAS_CondRet TAB_AlteraCasa(TAB_tpCasaInfo* casa,PECA_tpPeca peca){
 		return CAS_CondRetBarreira;
 	}
 
+	return TAB_CondRetErro;
 }
 /***********************************************************************
 *
@@ -909,34 +911,37 @@ int ProcuraPeca ( TAB_tppTabuleiro pTabuleiro , PECA_tpPeca pPeca )
     TAB_tppCasaInfo casa, aux, aux2 ;
     LIS_tppLista caminho_final ;
     LIS_tpCondRet retorno_lis ;
-    int cor ;
+    int cor, auxCor, i ;
       
-    PEC_ObtemCor ( pPeca , &cor ) ;
-
-    casa = LIS_ObterValor ( pTabuleiro->casaIni ) ;
+    PECA_ObtemCor ( pPeca , &cor ) ;
+    casa = (TAB_tppCasaInfo)LIS_ObterValor ( (LIS_tppLista)pTabuleiro->casaIni ) ;
     aux = casa ;
-    do {
+    for ( i = 0; i < PECAS; i++)
+	{
+		PECA_ObtemCor ( aux->conteudo[i] , &auxCor ) ;
+		do {
 
-        if ( aux->conteudo == pPeca )
+        if ( aux->conteudo[i] == pPeca )
             return 1 ;
-
-        else if ( aux->conteudo == cor && aux->desvio != NULL ) {
+        else if ( auxCor == cor && aux->desvio != NULL ) {
             caminho_final = aux->desvio ;
-            LIS_IrInicioLista( caminho_final ) ;
+            IrInicioLista( caminho_final ) ;
             do {
 
                 aux2 = LIS_ObterValor ( caminho_final ) ;
-                if ( aux2->conteudo == pPeca )
+                if ( aux2->conteudo[i] == pPeca )
                     return 1 ;
                 retorno_lis = LIS_AvancarElementoCorrente ( caminho_final , 1 ) ;
 
             } while ( retorno_lis != LIS_CondRetFimLista ) ;
         }
 
-        LIS_AvancarElementoCorrente ( pTabuleiro->casaIni , 1 ) ;
-        aux = LIS_ObterValor ( pTabuleiro->casaIni ) ;
+        LIS_AvancarElementoCorrente ( (LIS_tppLista)pTabuleiro->casaIni , 1 ) ;
+        aux = LIS_ObterValor ( (LIS_tppLista)pTabuleiro->casaIni ) ;
 
-    } while ( aux != casa ) ;
+    	} while ( aux != casa ) ;
+	}
+	
 
     return 0 ;
    
