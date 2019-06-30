@@ -545,7 +545,8 @@ void TAB_imprime(PECA_tpPeca* pecas, TAB_tppTabuleiro ptab){
 
 	int indx_amarelo = 0;
 		
-	char tabuleiro[LINHAS_TAB][COLUNAS_TAB_NULO] ={	
+	char tabuleiro[LINHAS_TAB][COLUNAS_TAB_NULO] =
+	{	
 	//							 0         1         2         3         4         5         6
 	//                           0123456789012345678901234567890123456789012345678901234567890		
 								"    __________          v---v---v---v         __________     " ,//0	0
@@ -591,9 +592,10 @@ void TAB_imprime(PECA_tpPeca* pecas, TAB_tppTabuleiro ptab){
 	IrFinalLista( ptab ->casasFinais[VERDE] ) ;
 	IrFinalLista( ptab ->casasFinais[AMARELO] ) ;
 
-	for(linha=0;linha < LINHAS_TAB;linha++){
-		for(coluna=0;coluna < COLUNAS_TAB;coluna++){
-
+	for(linha=0;linha < LINHAS_TAB;linha++)
+	{
+		for(coluna=0;coluna < COLUNAS_TAB;coluna++)
+		{
 			if(AREA_AZUL(linha)) //casas da area azul
 			{ 
 				if(coluna == COLUNA_AZUL_AMARELA_1) //casas circulares
