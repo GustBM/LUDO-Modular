@@ -67,8 +67,17 @@ typedef enum {
 	PAR_CondRetPecaNaoExiste,
 	/*Peca procurada não pode ser encontrada */
 
-	PAR_CondRetPecaFora
+	PAR_CondRetPecaFora,
 	/*Peça está fora do jogo */
+
+	PAR_CondRetNenhumVencedor,
+	/*Nenhum vencedor ainda foi declarado */
+
+	PAR_CondRetAcabou,
+	/*Foram declarados vencedores o suficiente */
+
+	PAR_CondRetAlgunsVenceram
+	/*Foram declarados alguns vencedores mas nao o suficiente para terminar o jogo */
    } PAR_CondRet ;
 
 /***********************************************************************
@@ -101,7 +110,7 @@ typedef enum {
  *
  *  Fim Assertivas de Entrada PAR_InicializaJogo */
 
-PAR_CondRet PAR_InicializaJogo ( PAR_tppPartida  pJogo , int num , int *cor ) ;
+PAR_CondRet PAR_InicializaJogo ( PAR_tppPartida pJogo , int num )  ;
 
 
 /* Assertivas de Saida PAR_InicializaJogo
@@ -115,31 +124,20 @@ PAR_CondRet PAR_InicializaJogo ( PAR_tppPartida  pJogo , int num , int *cor ) ;
  *
  *  $FC Função: PAR  &Realiza Jogada
  *  $ED Descrição da função
- *     Altera a posição das peças pela rolagem do dado
+ *     Reliza as rodadas do jogo seguindo a ordem das cores definidas pelo paramentro
  *
  *  $EP Parâmetros
  *     pJogo     - ponteiro para jogo.
- *      cor  	 - cor da peça que irá ser movida.
+ *      ordem  	 - ordem que as cores seguem na rodada.
  *
  *  $FV Valor retornado
- *	   PAR_CondRetOK - Caso a inicialização foi correta.  
+ *	   PAR_CondRetAcabou - Caso o jogo tenhja sido encerado.  
  *     PAR_CondRetFaltouMemoria - Caso tenha faltado memória.
- *     PAR_CondRetCorJaEscolhida - Caso a cor já tenha sido escolhida.
- *     PAR_CondRetCorInvalida - Caso a cor indicada seja inválida.
- *	   PAR_CondRetMovInvalido - Valor do dado inválido.
- *	   PAR_CondRetPecaNaoExiste - Peça não existente.
  *	   PAR_CondRetPecaFora - Peça selecionada está fora do jogo
  *
  ***********************************************************************/
 
-/* Assertivas de Entrada PAR_RealizaJogada
- *  O valor do dado deve retornar entre 1 a 6.
- *  A peça deve existir e ainda deve estar no jogo
- *  A peça não deve estar alem do final das casas final
- *
- *  Fim Assertivas de Entrada PAR_RealizaJogada */
-
-// PAR_CondRet PAR_RealizaJogada ( PAR_Ludo * pJogo , int cor ) ;
+PAR_CondRet PAR_RealizarRodadas(PAR_tppPartida pJogo,int *ordem, int* vencedores_final);
 
 /***********************************************************************
  *
@@ -171,6 +169,10 @@ int PAR_VerificaVencedor( PAR_tppPartida pJogo, int * vencedores ) ;
  *  A funcao retornara um valor inteiro 0 ou -1
  *
  *  Fim Assertiva de Saida PAR_VerificaVencedor */
+
+
+
+
 
 #undef PARTIDA_EXT
 

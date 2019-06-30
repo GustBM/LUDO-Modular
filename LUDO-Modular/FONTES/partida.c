@@ -27,6 +27,8 @@
 #include "partida.h"
 #undef PAR_OWN
 
+#define EVER ;;
+
 #define TRUE 1
 #define FALSE 0
 
@@ -92,6 +94,8 @@ static void LancaDado ( int * pValor ) ;
 
 static int ProcuraPeca ( TAB_tppTabuleiro pTabuleiro , PECA_tpPeca pPeca ) ;
 
+PAR_CondRet PAR_RealizaJogada ( PAR_Ludo *pJogo , int cor ) ;
+
 
 /*****  Código das funções exportadas pelo módulo  *****/
 
@@ -101,7 +105,7 @@ static int ProcuraPeca ( TAB_tppTabuleiro pTabuleiro , PECA_tpPeca pPeca ) ;
  *
  ***********************************************************************/
 
-PAR_CondRet PAR_InicializaJogo ( PAR_tppPartida pJogo , int num , int *cor ) 
+PAR_CondRet PAR_InicializaJogo ( PAR_tppPartida pJogo , int num ) 
 {
 	int i;
 
@@ -111,14 +115,6 @@ PAR_CondRet PAR_InicializaJogo ( PAR_tppPartida pJogo , int num , int *cor )
 	if ( num < MIN_PLAYERS || num > MAX_PLAYERS )
 	{
 		return PAR_CondRetNumeroDeJogadoresInvalido ;
-	}
-
-	for ( i = 0 ; i < num ; i++ )
-	{
-		if ( cor[i] < VERMELHO || cor[i] > AMARELO )
-		{
-			return PAR_CondRetCorInvalida ;
-		}
 	}
 
 	pJogo = ( PAR_Ludo * ) malloc ( sizeof ( PAR_Ludo ) ) ;
@@ -133,9 +129,9 @@ PAR_CondRet PAR_InicializaJogo ( PAR_tppPartida pJogo , int num , int *cor )
 	if(pTabuleiro == NULL)
 		return PAR_CondRetFaltouMemoria ;
 
-	for ( i = 0 ; i < MAX_PLAYERS ; i++ ) 
+	for ( i = 0 ; i < MAX_PECAS ; i++ ) 
 	{
-		retorno_pec = PECA_CriaPeca ( pJogo ->pecas , i , cor[i]) ;
+		retorno_pec = PECA_CriaPeca (pJogo ->pecas , i , i/MAX_PECAS_PER_PLAYER) ;
 			switch ( retorno_pec ) 
 			{
 				case PECA_CondRetFaltaMemoria :
@@ -200,14 +196,25 @@ static void LancaDado ( int * pValor )
  *  $FC Função: PAR  -Verifica Ganhador
  *
  ***********************************************************************/
-int PAR_VerificaVencedor( PAR_Ludo *pJogo, int * vencedores ) {
+int PAR_VerificaVencedor( PAR_Ludo *pJogo, int * vencedores) {
 	int final, i;
 	int cor, terminaram = NENHUM;
 	int jogadores[MAX_PLAYERS] = {0, 0, 0, 0};
-	int vencedoresTemp[MAX_PLAYERS] = {0, 0, 0, 0};
+
+	int * vencedoresTemp = (int*) malloc(sizeof(int) * (pJogo->num_jogadores));
+	if(vencedoresTemp == NULL)
+	{
+		return PAR_CondRetFaltouMemoria;
+	}
+
+	for (i = 0; i < (pJogo->num_jogadores); i++)
+	{
+		vencedoresTemp[i] = FALSE;
+	}
+
 	for (i = 0; i < MAX_PECAS; i++)
 	{
-		 PECA_ObtemFim (pJogo->pecas[i], &final );
+		PECA_ObtemFim (pJogo->pecas[i], &final );
 		if (final == NO_FIM)
 		{
 			PECA_ObtemCor(pJogo->pecas[i], &cor);
@@ -217,9 +224,9 @@ int PAR_VerificaVencedor( PAR_Ludo *pJogo, int * vencedores ) {
 
 	for (i = 0; i < MAX_PLAYERS; i++)
 	{
-		if(jogadores[i] == MAX_PLAYERS) 
+		if(jogadores[i] == MAX_PECAS_PER_PLAYER) 
 		{
-			vencedoresTemp[terminaram] = i;
+			vencedoresTemp[terminaram] = TRUE;
 			terminaram++;
 		}
 	}
@@ -228,17 +235,65 @@ int PAR_VerificaVencedor( PAR_Ludo *pJogo, int * vencedores ) {
 
 	if (terminaram == NENHUM)
 	{
-		return -1;
+		return PAR_CondRetNenhumVencedor;
 	} 
 	else if (terminaram == NUM_JOGADORES_MENOS1 || terminaram == MAX_PLAYERS){
-		return 1;
+		return PAR_CondRetAcabou;
 	} 
 	else 
 	{
-		return 0;
+		return PAR_CondRetAlgunsVenceram;
 	}
 
 }/* Fim função: PAR  &Verifica Vencedor */
+
+/***********************************************************************
+ *
+ *  $FC Função: PAR  -Realiza as rodadas do jogo
+ *
+ ***********************************************************************/
+
+PAR_CondRet PAR_RealizarRodadas(PAR_tppPartida pJogo,int *ordem, int* vencedores_final)
+{
+	int cor_atu = 0;
+	int CondRetPAR;
+	int*vencedores;
+	CondRetPAR = PAR_VerificaVencedor( pJogo , vencedores );
+	if(vencedores == NULL)
+	{
+		return PAR_CondRetFaltouMemoria ;
+	}
+
+	for(EVER)
+	{
+		cor_atu = cor_atu % MAX_PLAYERS;
+		if(vencedores[cor_atu] == FALSE)
+		{
+			PAR_RealizaJogada (pJogo , ordem[cor_atu]);
+			CondRetPAR = PAR_VerificaVencedor( pJogo , vencedores );
+			
+			switch ( CondRetPAR ) 
+			{
+				case PAR_CondRetFaltouMemoria :
+					return PAR_CondRetFaltouMemoria ;
+				case PAR_CondRetAcabou :
+					break;
+				case PAR_CondRetAlgunsVenceram :
+					break;
+				default :
+					printf("Erro inesperado\n");
+					exit(0);
+			}
+			cor_atu++;
+		}
+
+		if(CondRetPAR == PAR_CondRetAcabou)
+			break;
+		
+	}
+	vencedores_final = vencedores;
+	return PAR_CondRetAcabou;
+}
 
 
 
@@ -255,7 +310,7 @@ PAR_CondRet PAR_RealizaJogada ( PAR_Ludo *pJogo , int cor )
 	int numerocasaMexer = 0;
 	char tipoCasaMexer;
 
-	int peca_fora;
+	int pecas_fora;
 	int numPeca;
 	int peca_valida = 0;
 
@@ -314,7 +369,7 @@ PAR_CondRet PAR_RealizaJogada ( PAR_Ludo *pJogo , int cor )
 
 	TAB_imprime(pJogo->pecas, pJogo->pTabuleiro);
 
-	peca_fora = 0;
+	pecas_fora = 0;
 	for(i= MAX_PECAS_PER_PLAYER * cor ;i<MAX_PECAS;i++)
 	{
 		PECA_ObtemStatus(pJogo->pecas[i],&status);
@@ -327,7 +382,7 @@ PAR_CondRet PAR_RealizaJogada ( PAR_Ludo *pJogo , int cor )
 	tomada_de_decisao = FALSE;
 
 	
-		if(peca_fora > NENHUM && (dado == MIN_DADO || dado == MAX_DADO))
+		if(pecas_fora > NENHUM && (dado == MIN_DADO || dado == MAX_DADO))
 		{
 			while(!tomada_de_decisao)
 			{
@@ -339,7 +394,7 @@ PAR_CondRet PAR_RealizaJogada ( PAR_Ludo *pJogo , int cor )
 					{
 						printf("escolha qual peca deseja mexer: ");
 						scanf("%d", &numPeca);
-						PECA_ObtemStatus(pJogo->pecas[NumPeca],&status);
+						PECA_ObtemStatus(pJogo->pecas[numPeca],&status);
 						if(numPeca < MIN_PECAS_PER_PLAYER || numPeca > MAX_PECAS_PER_PLAYER)
 						{
 							printf("valor invalido. deve ser entre 1 e 4.\n");
@@ -351,9 +406,9 @@ PAR_CondRet PAR_RealizaJogada ( PAR_Ludo *pJogo , int cor )
 						else
 						{
 							peca_valida = TRUE;
-							NumPeca--;
-							NumPeca = MAX_PECAS_PER_PLAYER * cor + numPeca;
-							PECA_AtualizaPeca(pJogo->pecas[NumPeca],FORA_DO_FIM,DENTRO_DO_JOGO);
+							numPeca--;
+							numPeca = MAX_PECAS_PER_PLAYER * cor + numPeca;
+							PECA_AtualizaPeca(pJogo->pecas[numPeca],FORA_DO_FIM,DENTRO_DO_JOGO);
 							LISC_ProcurarValor(casasNomais,casaIni);
 							auxCor = cor;
 							while(auxCor > VERMELHO){
@@ -361,11 +416,11 @@ PAR_CondRet PAR_RealizaJogada ( PAR_Ludo *pJogo , int cor )
 								auxCor--;
 							}
 							LISC_ObterValor(casasNomais, casa_atu);
-							CondRetCasa = TAB_AlteraCasa(casa_atu,pJogo->pecas[NumPeca]);
+							CondRetCasa = TAB_AlteraCasa(casa_atu,pJogo->pecas[numPeca]);
 							if(CondRetCasa == CAS_CondRetBarreira)
 							{
 								printf("ha uma barreira na saida da peca.\n");
-								if(peca_fora  == MAX_PECAS_PER_PLAYER)
+								if(pecas_fora  == MAX_PECAS_PER_PLAYER)
 								{
 									printf("aguarde o jogador inimigo desmontar a barreira da saida\n");
 									acao = 'N';
@@ -391,16 +446,16 @@ PAR_CondRet PAR_RealizaJogada ( PAR_Ludo *pJogo , int cor )
 				}
 			}	
 		}
-		if (peca_fora < MAX_PECAS_PER_PLAYER)
+		if (pecas_fora < MAX_PECAS_PER_PLAYER)
 		{
 			printf("Vc tirou %d no dado, escolha o tipo da casa em que a peca que voce quer mexer esta presente: ", dado);
 			scanf("%c", &tipoCasaMexer);
 
 			printf("Agora escolha  o numero da casa em que a peca que voce quer mexer esta presente: ", tipoCasaMexer);
-			scanf("%d", &numerocasaMexer); 
-		}
+			scanf("%d", &numerocasaMexer);
 
-		//codigo para mover peca no campo
+			
+		}
 
 	
 

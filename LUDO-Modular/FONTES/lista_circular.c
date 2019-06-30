@@ -654,6 +654,3 @@ LISC_tpCondRet LISC_AvancarElementoCorrente( LISC_tppListaC pLista , int num ){
 }
 
 /* Fim Funcao: LISC  &Avancar Elemento Corrente */
-   
-   
-   
