@@ -27,6 +27,9 @@
 #include "partida.h"
 #undef PAR_OWN
 
+#define TRUE 1
+#define FALSE 0
+
 
 #define NUM_PECA_PLAYER 4
 #define MAX_PECAS 16 
@@ -259,7 +262,7 @@ PAR_CondRet PAR_RealizaJogada ( PAR_Ludo *pJogo , int cor )
 	CAS_CondRet CondRetCasa;
 
 	char acao;
-	int tomada_de_decisao = 0;
+	int tomada_de_decisao = FALSE;
 	char cores[4][9] = {"VERMELHO","AZUL","VERDE","AMARELO"};
 
 	PECA_CondRet retPeca;
@@ -320,64 +323,88 @@ PAR_CondRet PAR_RealizaJogada ( PAR_Ludo *pJogo , int cor )
         	pecas_fora++;
     	}
 	}
-	if(peca_fora > NENHUM && (dado == MIN_DADO || dado == MAX_DADO))
-	{
-		printf("deseja tirar alguma peca do campo inicial: ");
-		scanf("%c", &acao);
-		if(acao == 'Y')
+
+	tomada_de_decisao = FALSE;
+
+	
+		if(peca_fora > NENHUM && (dado == MIN_DADO || dado == MAX_DADO))
 		{
-			while(!peca_valida)
+			while(!tomada_de_decisao)
 			{
-				printf("escolha qual peca deseja mexer: ");
-				scanf("%d", &numPeca);
-				PECA_ObtemStatus(pJogo->pecas[NumPeca],&status);
-				if(numPeca < MIN_PECAS_PER_PLAYER || numPeca > MAX_PECAS_PER_PLAYER)
+				printf("deseja tirar alguma peca do campo inicial (Y/N): ");
+				scanf("%c", &acao);
+				if(acao == 'Y')
 				{
-					printf("valor invalido. deve ser entre 1 e 4.\n");
+					while(!peca_valida)
+					{
+						printf("escolha qual peca deseja mexer: ");
+						scanf("%d", &numPeca);
+						PECA_ObtemStatus(pJogo->pecas[NumPeca],&status);
+						if(numPeca < MIN_PECAS_PER_PLAYER || numPeca > MAX_PECAS_PER_PLAYER)
+						{
+							printf("valor invalido. deve ser entre 1 e 4.\n");
+						}
+						else if(status == DENTRO_DO_JOGO)
+						{
+							printf("peca invalida. deve ser uma peca dentro do jogo\n");
+						}
+						else
+						{
+							peca_valida = TRUE;
+							NumPeca--;
+							NumPeca = MAX_PECAS_PER_PLAYER * cor + numPeca;
+							PECA_AtualizaPeca(pJogo->pecas[NumPeca],FORA_DO_FIM,DENTRO_DO_JOGO);
+							LISC_ProcurarValor(casasNomais,casaIni);
+							auxCor = cor;
+							while(auxCor > VERMELHO){
+								LISC_AvancarElementoCorrente(casasNomais,INTERVALO_CASAS_INI);
+								auxCor--;
+							}
+							LISC_ObterValor(casasNomais, casa_atu);
+							CondRetCasa = TAB_AlteraCasa(casa_atu,pJogo->pecas[NumPeca]);
+							if(CondRetCasa == CAS_CondRetBarreira)
+							{
+								printf("ha uma barreira na saida da peca.\n");
+								if(peca_fora  == MAX_PECAS_PER_PLAYER)
+								{
+									printf("aguarde o jogador inimigo desmontar a barreira da saida\n");
+									acao = 'N';
+								}
+								break;
+							}
+							else
+							{
+								tomada_de_decisao = TRUE;
+							}
+						}
+						
+					}
+						
 				}
-				else if(status == DENTRO_DO_JOGO )
+				if(acao == 'N')
 				{
-					printf("peca invalida. deve ser uma peca dentro do jogo\n");
+						tomada_de_decisao = TRUE;
 				}
 				else
 				{
-					peca_valida = TRUE;
-					NumPeca--;
-					NumPeca = MAX_PECAS_PER_PLAYER * cor + numPeca;
-					PECA_AtualizaPeca(pJogo->pecas[NumPeca],FORA_DO_FIM,DENTRO_DO_JOGO);
-					LISC_ProcurarValor(casasNomais,casaIni);
-					auxCor = cor;
-					while(auxCor > VERMELHO){
-						LISC_AvancarElementoCorrente(casasNomais,INTERVALO_CASAS_INI);
-						auxCor--;
-					}
-					LISC_ObterValor(casasNomais, casa_atu);
-					CondRetCasa = TAB_AlteraCasa(casa_atu,pJogo->pecas[NumPeca]);
-					if(CondRetCasa == CAS_CondRetBarreira)
-					{
-						printf("ha uma barreira na saida da peca.\n");
-						if(peca_fora  == MAX_PECAS_PER_PLAYER)
-						{
-							printf("aguarde o jogador inimigo desmontar a barreira da saida\n");
-						}
-						break;
-					}
+						printf("comando invalido. tente novamente.\n");
 				}
-				
-			}
-			
+			}	
 		}
-	}
-	else if (peca_fora < MAX_PECAS_PER_PLAYER)
-	{
-		printf("Vc tirou %d no dado, escolha o tipo da casa em que a peca que voce quer mexer esta presente: ", dado);
-		scanf("%c", &tipoCasaMexer);
+		if (peca_fora < MAX_PECAS_PER_PLAYER)
+		{
+			printf("Vc tirou %d no dado, escolha o tipo da casa em que a peca que voce quer mexer esta presente: ", dado);
+			scanf("%c", &tipoCasaMexer);
 
-		printf("Agora escolha  o numero da casa em que a peca que voce quer mexer esta presente: ", tipoCasaMexer);
-		scanf("%d", &numerocasaMexer); 
-	}
+			printf("Agora escolha  o numero da casa em que a peca que voce quer mexer esta presente: ", tipoCasaMexer);
+			scanf("%d", &numerocasaMexer); 
+		}
+
+		//codigo para mover peca no campo
 
 	
+
+
 	
 	return PAR_CondRetOK;
 }   /* Fim função: PAR  &Realiza Jogada */
