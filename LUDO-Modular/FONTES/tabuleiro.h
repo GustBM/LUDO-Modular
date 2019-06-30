@@ -114,6 +114,8 @@ TAB_CondRet TAB_DestruirTabuleiro( TAB_tppTabuleiro pTab);
 
 void TAB_imprime(PECA_tpPeca* pecas, TAB_tppTabuleiro ptab);
 
+void TAB_AcessaCasas ( TAB_tppTabuleiro pTab , LISC_tppListaC casasNomais, TAB_tppCasaInfo casasIni, LIS_tppLista casasFinais);
+
 #undef TABULEIRO_EXT
 
 

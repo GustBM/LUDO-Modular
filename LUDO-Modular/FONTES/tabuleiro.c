@@ -319,7 +319,13 @@ static TAB_tppCasaInfo CriaCasa ( PECA_tpPeca* conteudo, LIS_tppLista desvio )
 	assert(casa -> conteudo != NULL);
  
     return casa ;
-} 
+}
+
+void TAB_AcessaCasas ( TAB_tppTabuleiro pTab , LISC_tppListaC casasNomais, TAB_tppCasaInfo casasIni, LIS_tppLista casasFinais) {
+	casasNomais = pTab->casasNormais;
+	casasIni = pTab->casaIni;
+	casasFinais = pTab->casasFinais;
+}
 
 /***********************************************************************
 *
@@ -814,5 +820,3 @@ void TAB_imprime(PECA_tpPeca* pecas, TAB_tppTabuleiro ptab){
 		printf("\n");
 	}
 }
-
-
