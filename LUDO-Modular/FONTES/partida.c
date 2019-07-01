@@ -321,7 +321,7 @@ PAR_CondRet PAR_RealizaJogada ( PAR_Ludo *pJogo , int cor )
 	int dado, i, auxCor  = 0;
 	char status;
 	int numerocasaMexer = 0;
-	char tipoCasaMexer;
+	char tipoCasaMexer = '?';
 
 	int pecas_fora;
 	int numPeca;
@@ -341,6 +341,8 @@ PAR_CondRet PAR_RealizaJogada ( PAR_Ludo *pJogo , int cor )
 	TAB_tppCasaInfo casa_final_atu = NULL;
 
 	LIS_tpCondRet LISCondRet;
+
+	PECA_tpPeca  pecaMexer = NULL;
 
 	if (cor < VERMELHO || cor > AMARELO)
 	{
@@ -468,7 +470,6 @@ PAR_CondRet PAR_RealizaJogada ( PAR_Ludo *pJogo , int cor )
 				}
 				else
 				{
-					PECA_tpPeca  pecaMexer;
 					printf("Agora escolha  o numero da casa em que a peca que voce quer mexer esta presente: ", tipoCasaMexer);
 					scanf("%d", &numerocasaMexer);
 
@@ -551,7 +552,7 @@ PAR_CondRet PAR_RealizaJogada ( PAR_Ludo *pJogo , int cor )
 				while(dado > 0)
 				{
 					LISCondRet = LIS_AvancarElementoCorrente( casasFinais[cor] , AVANCO_UNICO);
-					if(LISCondRet == CondRetFimLista)
+					if(LISCondRet == LIS_CondRetFimLista)
 					{
 						PECA_AtualizaPeca(pecaMexer,NO_FIM,DENTRO_DO_JOGO);
 						break;

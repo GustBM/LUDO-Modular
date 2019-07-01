@@ -73,8 +73,10 @@ typedef struct TAB_tagCasaInfo * TAB_tppCasaInfo;
                /* tentativa de alterar casa com barreira inimiga */
             CAS_CondRetCasaInimiga,
                /* casa com inimigo */
-            CAS_CondRetCasaVazia
+            CAS_CondRetCasaVazia,
                /* casa esta sem ninguem */
+            CAS_ErroDesconhecido,
+               /* Houve algum erro alem dos anteriores */
 
    } CAS_CondRet ;
 
@@ -193,10 +195,11 @@ CAS_CondRet TAB_ObtemCasa(TAB_tppCasaInfo casa,PECA_tpPeca peca);
 *     casasFinais  - Casoa a casa tenha peças de times distintos
 *     CAS_CondRetOK - função ocorreu sem problemas
 *     TAB_CondRetInimiga - casa inimiga
+*     CAS_ErroDesconhecido - Houve algum erro desconhecido
 *
 ***********************************************************************/
 
-int TAB_verificaDesvio(LIS_tppLista * casasFinais,TAB_tppCasaInfo* casa_atu, int cor)
+int TAB_verificaDesvio ( LIS_tppLista * casasFinais, TAB_tppCasaInfo casa_atu, int cor) ;
 
 #undef TABULEIRO_EXT
 

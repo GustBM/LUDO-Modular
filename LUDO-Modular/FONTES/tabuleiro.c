@@ -440,8 +440,8 @@ CAS_CondRet TAB_AlteraCasa(TAB_tpCasaInfo* casa,PECA_tpPeca peca){
 CAS_CondRet TAB_ObtemCasa(TAB_tpCasaInfo* casa,PECA_tpPeca peca)
 {
 	int i;
-	int corCasa;
-	int corPeca;
+	int corCasa = -1;
+	int corPeca = -1;
 
 	int numInimigos = 0;
 	int indx_amigo = -1;
@@ -483,6 +483,7 @@ CAS_CondRet TAB_ObtemCasa(TAB_tpCasaInfo* casa,PECA_tpPeca peca)
 		return CAS_CondRetOK;
 	}
 
+	return CAS_ErroDesconhecido;
 }
 /***********************************************************************
 *
