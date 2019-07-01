@@ -122,8 +122,6 @@ LISC_tpCondRet LISC_EsvaziarLista( LISC_tppListaC pLista )
       tpElemListaCircular * pElem ;
       tpElemListaCircular * pProx ;
 
-      int printint = 0;
-
       
 
      #ifdef _DEBUG
@@ -157,8 +155,7 @@ LISC_tpCondRet LISC_EsvaziarLista( LISC_tppListaC pLista )
          LiberarElemento(pLista , pElem) ;
 
          pElem = pProx ;
-         printf("liberando elem lista %d\n", printint);
-         printint++;
+      
       }  while ( pElem != pLista->pElemCorr );/* while */
 
       #ifdef _DEBUG
@@ -176,8 +173,6 @@ LISC_tpCondRet LISC_EsvaziarLista( LISC_tppListaC pLista )
       #endif
       
       LiberarElemento(pLista , pElem);
-      printf("liberando elem lista %d\n", printint);
-      printint++;
       
       LimparCabeca( pLista );
 
@@ -238,7 +233,6 @@ void LISC_DestruirLista( LISC_tppListaC pLista )
 
       cond = LISC_EsvaziarLista( pLista ) ;
 
-      printf("liberando cabecalho da lista\n"); 
       free( pLista ) ;
 
    } /* Fim funcao: LISC  &Destruir lista circular */

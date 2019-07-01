@@ -23,6 +23,7 @@
 =inicializarcontadores  ""
 =lercontadores          "..\\scripts\\circular"
 =iniciarcontagem
+=zerarcontadores
 
 == Criar a lista 0
 =criarlista      lista0 

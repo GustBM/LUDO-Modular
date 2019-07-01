@@ -22,6 +22,8 @@
 
 #include "tabuleiro.h"
 #include "peca.h"
+#include "lista_circular.h"
+#include "LISTA.H"
 
 #define PAR_OWN
 #include "partida.h"
@@ -262,11 +264,102 @@ int PAR_VerificaVencedor( PAR_Ludo *pJogo, int * vencedores) {
 	free(vencedoresTemp);
 }/* Fim função: PAR  &Verifica Vencedor */
 
+int comparetor(const void * a, const void * b)
+{
+	return (*(int*)b - *(int*)a);
+}
+
 /***********************************************************************
  *
- *  $FC Função: PAR  -Realiza as rodadas do jogo
+ *  $FC Função: PAR  -Realiza o jogo todo
  *
  ***********************************************************************/
+
+
+PAR_CondRet PAR_RealizaJogo(void)
+{
+	PAR_CondRet cond;
+
+	PAR_tppPartida pJogo;
+
+	int num;
+	int dado;
+	int i;
+
+	
+
+	char cores[4][9] = { "VERMELHO","AZUL","VERDE","AMARELO" };
+	int indx = 0;
+	int* vencedores;
+	int aux_ordem[4] = { -1,-1,-1,-1 };
+	int aux_ordem2[4] = { -1,-1,-1,-1 };
+
+	int ordem[4];
+
+	int indx_cores[4] = { 0,1,2,3 };
+
+	printf("bem-vindo ao jogo de ludo!\n");
+	#ifdef _TESTE_M
+		printf("modo de teste\n");
+	#endif
+
+	printf("informe o numero de jogadores\n");
+	scanf("%d", &num);
+	
+	cond = PAR_InicializaJogo(pJogo, num);
+
+	if (cond == PAR_CondRetFaltouMemoria)
+	{
+		printf("faltou memoria\nabortanto programa");
+		exit(0);
+	}
+
+	printf("vamos definir a ordem dos jogadores\n");
+
+	#ifdef _TESTE_M
+	while (indx < num)
+	{
+		printf("desenvolvedor: escolha a ordem da cor %s: ", cores[indx]);
+		scanf("%d", &dado);
+		aux_ordem[indx] = dado;
+	}
+	#endif
+	#ifndef _TESTE_M
+
+	while (indx < num)
+	{
+		printf("rode o dado para a ordem da cor %s: ", cores[indx]);
+		scanf("%d", &dado);
+		aux_ordem[indx] = LancaDado(&dado);
+	}
+	#endif
+
+	for (i = 0; i < num; i++)
+	{
+		aux_ordem[i] = aux_ordem2[i];
+	}
+
+	qsort(aux_ordem, MAX_PLAYERS, sizeof(int), comparetor);
+
+	for (i = 0; i < num; i++)
+	{
+		for (j = 0; i < num; i++)
+		{
+			if (aux_ordem2 == -1)
+			{
+				continue;
+			}
+			else if (aux_ordem[i] == aux_ordem2[j])
+			{
+				ordem[indx] = j;
+				aux_ordem = -1;
+				aux_ordem2 = -1;
+			}
+		}
+	}
+
+}
+
 
 PAR_CondRet PAR_RealizarRodadas(PAR_tppPartida pJogo,int *ordem, int* vencedores_final)
 {
