@@ -138,6 +138,10 @@
 =pararcontagem
 =verificarcontagens    0
 
+== Verificar memoria alocada
+=verificarmemoria
+
+
 == Terminar contagem
 =terminarcontadores
 

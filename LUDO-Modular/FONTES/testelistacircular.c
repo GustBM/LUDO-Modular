@@ -7,7 +7,7 @@
 #include    "LERPARM.h"
 
 #include    "lista_circular.h"
-#include    "CESPDIN.H"
+//#include    "CESPDIN.H"
 
 static const char RESET_LISTAC_CMD         [ ] = "=resetteste"      ;
 static const char CRIAR_LISTAC_CMD         [ ] = "=criarlista"      ;

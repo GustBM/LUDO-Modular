@@ -377,7 +377,13 @@ PAR_CondRet PAR_RealizaJogada ( PAR_Ludo *pJogo , int cor )
 
 	TAB_AcessaCasas(pJogo->pTabuleiro, casasNormais, casaIni, casasFinais);
 
-	LancaDado ( &dado ) ;
+	#ifdef _TESTE_M
+		printf("desenvolvedor: escola o valor do dado: ");
+		scanf("%d", &dado);
+	#endif
+	#ifndef _TESTE_M
+		LancaDado ( &dado ) ;
+	#endif
 
 	TAB_imprime(pJogo->pecas, pJogo->pTabuleiro);
 
