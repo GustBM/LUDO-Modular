@@ -433,6 +433,78 @@ CAS_CondRet TAB_AlteraCasa(TAB_tpCasaInfo* casa,PECA_tpPeca peca){
 }
 /***********************************************************************
 *
+*  $FC Fun��o: TAB  -obtem pecas de uma casa seguindo as regras da partida
+*
+***********************************************************************/
+
+CAS_CondRet TAB_ObtemCasa(TAB_tpCasaInfo* casa,PECA_tpPeca peca)
+{
+	int i;
+	int corCasa;
+	int corPeca;
+
+	int numInimigos = 0;
+	int indx_amigo = -1;
+	int numAmigos = 0;
+
+	for(i=0;i<PECAS;i++)
+	{
+		if(casa ->conteudo[i] != NULL)
+		{
+			PECA_ObtemCor(casa-> conteudo[i],&corCasa);
+
+			if(corCasa != corPeca){
+				numInimigos++;
+			}
+			else{
+				numAmigos++;
+				peca = casa ->conteudo[i];
+				i = indx_amigo;
+			}
+		}
+	}
+	if(indx_amigo != -1)
+		casa ->conteudo[indx_amigo] = NULL;
+	if(numAmigos == 0 && numInimigos == 0)
+	{
+		return CAS_CondRetCasaVazia;
+	}
+
+	if(numAmigos > 0 && numInimigos > 0)
+	{
+		return CAS_CondRetCasaPoluida;
+	}
+	else if(numInimigos > 0)
+	{
+		return CAS_CondRetCasaInimiga; 
+	}
+	else if (numAmigos >= 0)
+	{
+		return CAS_CondRetOK;
+	}
+
+}
+/***********************************************************************
+*
+*  $FC Fun��o: TAB  -veridica se a casa atual eh a entrada da casa final
+*
+***********************************************************************/
+
+int TAB_verificaDesvio(LIS_tppLista * casasFinais,TAB_tpCasaInfo* casa_atu, int cor)
+{
+
+	if(casa_atu ->desvio == NULL)
+	{
+		return FALSE;
+	}
+	if(casa_atu -> desvio == casasFinais[cor])
+	{
+		return TRUE;
+	}
+	return FALSE;
+}
+/***********************************************************************
+*
 *  $FC Fun��o: TAB  -Compara Casas
 *
 ***********************************************************************/
@@ -668,7 +740,7 @@ void TAB_imprime(PECA_tpPeca* pecas, TAB_tppTabuleiro ptab){
 								};
 
 	
-	LISC_ProcurarValor( ptab ->casasNormais , ptab->casaIni ) ;//tornar casa inicial vermelha como elemento inicial
+	LISC_ProcurarValor( ptab ->casasNormais , ptab->casaIni ) ;//tornar casa inicial vermelha como elemento corrente
 	LISC_AvancarElementoCorrente( ptab ->casasNormais , IDA_TOPO ); //ir para topo do tabuleiro
 
 	

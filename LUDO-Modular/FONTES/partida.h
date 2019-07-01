@@ -170,6 +170,10 @@ int PAR_VerificaVencedor( PAR_tppPartida pJogo, int * vencedores ) ;
  *
  *  Fim Assertiva de Saida PAR_VerificaVencedor */
 
+PAR_CondRet PAR_RealizarRodadas(PAR_tppPartida pJogo,int *ordem, int* vencedores_final);
+
+PAR_CondRet PAR_RealizaJogada ( PAR_tppPartida pJogo , int cor );
+
 
 
 

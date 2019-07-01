@@ -69,8 +69,12 @@ typedef struct TAB_tagCasaInfo * TAB_tppCasaInfo;
             CAS_CondRetCasaPoluida,
                /* Casa tem pecas de times distintos */
                
-            CAS_CondRetBarreira
+            CAS_CondRetBarreira,
                /* tentativa de alterar casa com barreira inimiga */
+            CAS_CondRetCasaInimiga,
+               /* casa com inimigo */
+            CAS_CondRetCasaVazia
+               /* casa esta sem ninguem */
 
    } CAS_CondRet ;
 
@@ -154,14 +158,45 @@ void TAB_AcessaCasas ( TAB_tppTabuleiro pTab , LISC_tppListaC casasNomais, TAB_t
 *  $ED Descri��o da fun��o
 *     Altera valores de uma casa seguindo as regras da partida
 *
-*  $EP Par�metros
-*     CAS_CondRetCasaPoluida  - Casoa a casa já tenha peças de times distintos
-*     CAS_CondRetOK - função ocorreu sem problemas
-*     TAB_CondRetErro - Erro de leitura do arquivo
-*
+*  $EP Retorno
+*     TRUE - a casa tem o ponteiro para a reta final da peca em questao
+*     FALSE - a casa não tem o ponteiro para a reta final da peca em questao
 ***********************************************************************/
 
 CAS_CondRet TAB_AlteraCasa ( TAB_tppCasaInfo casa, PECA_tpPeca peca ) ;
+
+/***********************************************************************
+*
+*  $FC Fun��o: TAB  &Obtem o tipo de ocupação na casa 
+*
+*  $ED Descri��o da fun��o
+*     identifica se a casa eh amiga ou nao
+*
+*  $EP Par�metros
+*     CAS_CondRetCasaPoluida  - Casoa a casa tenha peças de times distintos
+*     CAS_CondRetOK - função ocorreu sem problemas
+*     TAB_CondRetInimiga - casa inimiga
+*
+***********************************************************************/
+
+
+CAS_CondRet TAB_ObtemCasa(TAB_tppCasaInfo casa,PECA_tpPeca peca);
+
+/***********************************************************************
+*
+*  $FC Fun��o: TAB  &verifica Desvio
+*
+*  $ED Descri��o da fun��o
+*     verifica se a casa tem o ponteiro para casa final da peca em questao
+*
+*  $EP Par�metros
+*     casasFinais  - Casoa a casa tenha peças de times distintos
+*     CAS_CondRetOK - função ocorreu sem problemas
+*     TAB_CondRetInimiga - casa inimiga
+*
+***********************************************************************/
+
+int TAB_verificaDesvio(LIS_tppLista * casasFinais,TAB_tppCasaInfo* casa_atu, int cor)
 
 #undef TABULEIRO_EXT
 

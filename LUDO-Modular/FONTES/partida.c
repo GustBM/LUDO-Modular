@@ -66,6 +66,20 @@
 #define MAX_PECAS_PER_PLAYER 4
 
 
+#define CASA_NORMAL 'N'
+#define CASA_FINAL 'F'
+
+#define SIM 'Y'
+#define NAO 'N' 
+
+#define MAIOR_CASA_NORMAL 52
+#define MAIOR_CASA_FINAL 6
+#define MENOR_CASA 1
+
+#define AVANCO_UNICO 1
+#define RETROCESSO_UNICO -1
+
+
 
 /***********************************************************************
  *
@@ -293,7 +307,7 @@ PAR_CondRet PAR_RealizarRodadas(PAR_tppPartida pJogo,int *ordem, int* vencedores
 	}
 	vencedores_final = vencedores;
 	return PAR_CondRetAcabou;
-}
+}/* Fim função: PAR  &realiza rodadas */
 
 
 
@@ -319,11 +333,14 @@ PAR_CondRet PAR_RealizaJogada ( PAR_Ludo *pJogo , int cor )
 	int tomada_de_decisao = FALSE;
 	char cores[4][9] = {"VERMELHO","AZUL","VERDE","AMARELO"};
 
-	LISC_tppListaC casasNomais = NULL;
+	LISC_tppListaC casasNormais = NULL;
 	TAB_tppCasaInfo casaIni = NULL;
 	LIS_tppLista *casasFinais = NULL;
 
 	TAB_tppCasaInfo casa_atu = NULL;
+	TAB_tppCasaInfo casa_final_atu = NULL;
+
+	LIS_tpCondRet LISCondRet;
 
 	if (cor < VERMELHO || cor > AMARELO)
 	{
@@ -355,7 +372,7 @@ PAR_CondRet PAR_RealizaJogada ( PAR_Ludo *pJogo , int cor )
 		}
 	}	
 
-	TAB_AcessaCasas(pJogo->pTabuleiro, casasNomais, casaIni, casasFinais);
+	TAB_AcessaCasas(pJogo->pTabuleiro, casasNormais, casaIni, casasFinais);
 
 	LancaDado ( &dado ) ;
 
@@ -372,7 +389,6 @@ PAR_CondRet PAR_RealizaJogada ( PAR_Ludo *pJogo , int cor )
 	}
 
 	tomada_de_decisao = FALSE;
-
 	
 		if(pecas_fora > NENHUM && (dado == MIN_DADO || dado == MAX_DADO))
 		{
@@ -380,7 +396,7 @@ PAR_CondRet PAR_RealizaJogada ( PAR_Ludo *pJogo , int cor )
 			{
 				printf("deseja tirar alguma peca do campo inicial (Y/N): ");
 				scanf("%c", &acao);
-				if(acao == 'Y')
+				if(acao == SIM)
 				{
 					while(!peca_valida)
 					{
@@ -401,13 +417,13 @@ PAR_CondRet PAR_RealizaJogada ( PAR_Ludo *pJogo , int cor )
 							numPeca--;
 							numPeca = MAX_PECAS_PER_PLAYER * cor + numPeca;
 							PECA_AtualizaPeca(pJogo->pecas[numPeca],FORA_DO_FIM,DENTRO_DO_JOGO);
-							LISC_ProcurarValor(casasNomais,casaIni);
+							LISC_ProcurarValor(casasNormais,casaIni);
 							auxCor = cor;
 							while(auxCor > VERMELHO){
-								LISC_AvancarElementoCorrente(casasNomais,INTERVALO_CASAS_INI);
+								LISC_AvancarElementoCorrente(casasNormais,INTERVALO_CASAS_INI);
 								auxCor--;
 							}
-							LISC_ObterValor(casasNomais, (void**)casa_atu);
+							LISC_ObterValor(casasNormais, (void**)casa_atu);
 							CondRetCasa = TAB_AlteraCasa(casa_atu,pJogo->pecas[numPeca]);
 							if(CondRetCasa == CAS_CondRetBarreira)
 							{
@@ -415,7 +431,7 @@ PAR_CondRet PAR_RealizaJogada ( PAR_Ludo *pJogo , int cor )
 								if(pecas_fora  == MAX_PECAS_PER_PLAYER)
 								{
 									printf("aguarde o jogador inimigo desmontar a barreira da saida\n");
-									acao = 'N';
+									acao = NAO;
 								}
 								break;
 							}
@@ -428,7 +444,7 @@ PAR_CondRet PAR_RealizaJogada ( PAR_Ludo *pJogo , int cor )
 					}
 						
 				}
-				if(acao == 'N')
+				if(acao == NAO)
 				{
 						tomada_de_decisao = TRUE;
 				}
@@ -440,18 +456,116 @@ PAR_CondRet PAR_RealizaJogada ( PAR_Ludo *pJogo , int cor )
 		}
 		if (pecas_fora < MAX_PECAS_PER_PLAYER)
 		{
-			printf("Vc tirou %d no dado, escolha o tipo da casa em que a peca que voce quer mexer esta presente: ", dado);
-			scanf("%c", &tipoCasaMexer);
+			int validar_tipo = FALSE;
+			while(!validar_tipo)
+			{
+				
+				printf("Vc tirou %d no dado, escolha o tipo da casa em que a peca que voce quer mexer esta presente: (N: Normal /F: Final ) ", dado);
+				scanf("%c", &tipoCasaMexer);
+				if(tipoCasaMexer != CASA_NORMAL && tipoCasaMexer != CASA_FINAL)
+				{
+					printf("tipo inexistente. Tente Novamente.\n");
+				}
+				else
+				{
+					PECA_tpPeca  pecaMexer;
+					printf("Agora escolha  o numero da casa em que a peca que voce quer mexer esta presente: ", tipoCasaMexer);
+					scanf("%d", &numerocasaMexer);
 
-			printf("Agora escolha  o numero da casa em que a peca que voce quer mexer esta presente: ", tipoCasaMexer);
-			scanf("%d", &numerocasaMexer);
+					if(tipoCasaMexer == CASA_NORMAL && (numerocasaMexer < MENOR_CASA  || numerocasaMexer > MAIOR_CASA_NORMAL))
+					{
+						printf("casa inexistente. Tente Novamente.\n");
+					}
+					else if(tipoCasaMexer == CASA_FINAL && (numerocasaMexer < MENOR_CASA  || numerocasaMexer > MAIOR_CASA_FINAL))
+					{
+						printf("casa inexistente. Tente Novamente.\n");
+					}
+					else 
+					{
+						if(tipoCasaMexer == CASA_NORMAL )
+						{
+							LISC_ProcurarValor(casasNormais , casaIni ) ;//tornar casa inicial vermelha como elemento corrente
+							LISC_AvancarElementoCorrente( casasNormais , numerocasaMexer ); 
+							LISC_ObterValor(casasNormais,(void**)casa_atu);
 
+						}
+						else if(tipoCasaMexer == CASA_FINAL)
+						{
+							IrInicioLista(casasFinais[cor]);
+							LIS_AvancarElementoCorrente( casasFinais[cor] , numerocasaMexer) ;
+							casa_atu = (void*) LIS_ObterValor( casasFinais[cor] ) ;
+						}
+
+						CondRetCasa = TAB_ObtemCasa(casa_atu,pecaMexer);
+
+						if(CondRetCasa == CAS_CondRetCasaVazia)
+						{
+							printf("a casa nao tem ninguem. tente novamente\n");
+						}
+						else if(CondRetCasa == CAS_CondRetCasaInimiga)
+						{
+							printf("a casa eh inimiga. tente novamente\n");
+						}
+						else if (CondRetCasa == CAS_CondRetOK)
+						{
+							printf("vamos rolar o dado\n");
+							validar_tipo = TRUE;
+						}			
+					}	
+				}		
+			}
+
+			if(tipoCasaMexer == CASA_NORMAL )
+			{
+				while(dado > 0)
+				{
+					LISC_AvancarElementoCorrente( casasNormais , AVANCO_UNICO);
+					LISC_ObterValor(casasNormais,(void**)casa_atu);
+					if(TAB_verificaDesvio(casasFinais,casa_atu,cor))
+					{
+						IrInicioLista(casasFinais[cor]);
+						while(dado > 0)
+						{
+							LIS_AvancarElementoCorrente( casasFinais[cor] , AVANCO_UNICO);
+							dado--;
+						}
+					}
+					if(dado == 0)
+					{
+						break;
+					}
+					dado--; 
+				}
+				if(TAB_verificaDesvio(casasFinais,casa_atu,cor))
+				{
+					casa_final_atu = LIS_ObterValor(casasFinais[cor]);
+					CondRetCasa = TAB_AlteraCasa(casa_final_atu,pecaMexer);
+				}
+				
+				
+			}	
+
+			
+			else if(tipoCasaMexer == CASA_FINAL)
+			{
+				while(dado > 0)
+				{
+					LISCondRet = LIS_AvancarElementoCorrente( casasFinais[cor] , AVANCO_UNICO);
+					if(LISCondRet == CondRetFimLista)
+					{
+						PECA_AtualizaPeca(pecaMexer,NO_FIM,DENTRO_DO_JOGO);
+						break;
+					}
+					dado--;
+				}
+
+				casa_final_atu = LIS_ObterValor(casasFinais[cor]);
+				CondRetCasa = TAB_AlteraCasa(casa_final_atu,pecaMexer);
+
+			}
 			
 		}
 
-	
-
-
-	
+	printf("movimento encerrado\n");
 	return PAR_CondRetOK;
 }   /* Fim função: PAR  &Realiza Jogada */
