@@ -259,6 +259,7 @@ int PAR_VerificaVencedor( PAR_Ludo *pJogo, int * vencedores) {
 		return PAR_CondRetAlgunsVenceram;
 	}
 
+	free(vencedoresTemp);
 }/* Fim função: PAR  &Verifica Vencedor */
 
 /***********************************************************************

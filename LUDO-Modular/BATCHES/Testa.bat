@@ -5,11 +5,11 @@ if ""=="%1" goto erro
 if ""=="%2" goto erro
 if ""=="%3" goto console
 
-..\produtos\%1 /s..\scripts\%2 /l..\produto\%2
+..\produtos\%1 /s..\scripts\%2 /l..\produto\%2 /a..\scripts\estatisticas
 goto sai
 
 :console
-..\produtos\%1 /s..\scripts\%2 
+..\produtos\%1 /s..\scripts\%2 /a..\scripts\estatisticas
 goto sai
 
 :erro

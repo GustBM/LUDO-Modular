@@ -279,9 +279,8 @@ TAB_CondRet TAB_DestruirTabuleiro( TAB_tppTabuleiro pTab )
 {
 	int cor;
 
-    #ifdef _DEBUG
-        assert( pTab != NULL ) ;
-    #endif
+    assert( pTab != NULL ) ;
+    
 	
 	for(cor=0;cor<TIMES;cor++){
 		LIS_DestruirLista( pTab->casasFinais[cor] ) ;
