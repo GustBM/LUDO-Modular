@@ -29,8 +29,8 @@
 
 // static const char RESET_TAB_CMD         [ ] = "=resetteste"       ;
 static const char CRIAR_PARTIDA        [ ] = "=criarpartida"    ;
-static const char REALIZA_JOGADA       [ ] = "=realizajogada"   ;
-static const char VERIFICA_VENCEDOR    [ ] = "=verificavencedor";
+/* static const char REALIZA_JOGADA       [ ] = "=realizajogada"   ;
+static const char VERIFICA_VENCEDOR    [ ] = "=verificavencedor";*/
 
 PAR_tppPartida *vttPartida;
 
@@ -43,8 +43,8 @@ TST_tpCondRet TST_EfetuarComando( char * ComandoTeste ) {
     int iPartida      = -1 ;
 
     int * cores;
-    int * ordem;
-    int venc[DIM_VENC];
+    /* int * ordem;
+    int venc[DIM_VENC]; */
 
     /* Testar CriarPartida */
     if ( strcmp( ComandoTeste , CRIAR_PARTIDA ) == 0 )
@@ -69,7 +69,7 @@ TST_tpCondRet TST_EfetuarComando( char * ComandoTeste ) {
 
 	}
 
-    /*Teste Realiza Jogada */
+    /*Teste Realiza Jogada 
 
     else if ( strcmp( ComandoTeste , REALIZA_JOGADA ) == 0 )
 	{
@@ -86,7 +86,7 @@ TST_tpCondRet TST_EfetuarComando( char * ComandoTeste ) {
 
 	}
 
-    /* Testar Verifica Vencedor */
+    /* Testar Verifica Vencedor 
 
     else if ( strcmp( ComandoTeste , VERIFICA_VENCEDOR ) == 0 )
     {
@@ -104,7 +104,7 @@ TST_tpCondRet TST_EfetuarComando( char * ComandoTeste ) {
     return TST_CompararInt( CondRetEsp , CondRetObtido ,
                 "Condicao de retorno ao verificar vencedor." ) ;
 
-    }
+    } */
 
     return TST_CondRetNaoConhec ;
 }

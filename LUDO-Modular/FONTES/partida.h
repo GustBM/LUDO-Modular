@@ -110,7 +110,7 @@ typedef enum {
  *
  *  Fim Assertivas de Entrada PAR_InicializaJogo */
 
-PAR_CondRet PAR_InicializaJogo ( PAR_tppPartida pJogo , int num )  ;
+PAR_CondRet PAR_InicializaJogo ( PAR_tppPartida pJogo , int num ) ;
 
 
 /* Assertivas de Saida PAR_InicializaJogo
@@ -137,7 +137,7 @@ PAR_CondRet PAR_InicializaJogo ( PAR_tppPartida pJogo , int num )  ;
  *
  ***********************************************************************/
 
-PAR_CondRet PAR_RealizarRodadas(PAR_tppPartida pJogo,int *ordem, int* vencedores_final);
+
 
 /***********************************************************************
  *
@@ -161,7 +161,7 @@ PAR_CondRet PAR_RealizarRodadas(PAR_tppPartida pJogo,int *ordem, int* vencedores
  *
  *  Fim Assertivas de Entrada PAR_VerificaVencedor */
 
-int PAR_VerificaVencedor( PAR_tppPartida pJogo, int * vencedores ) ;
+
 
 /* Assertivas de Saida PAR_VerificaVencedor
  *  A memoria referente a estrutura tem que ser alocada.
@@ -170,9 +170,8 @@ int PAR_VerificaVencedor( PAR_tppPartida pJogo, int * vencedores ) ;
  *
  *  Fim Assertiva de Saida PAR_VerificaVencedor */
 
-PAR_CondRet PAR_RealizarRodadas(PAR_tppPartida pJogo,int *ordem, int* vencedores_final);
 
-PAR_CondRet PAR_RealizaJogada ( PAR_tppPartida pJogo , int cor );
+void PAR_RealizaJogo(void);
 
 
 

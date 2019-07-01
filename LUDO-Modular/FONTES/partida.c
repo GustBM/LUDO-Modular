@@ -112,63 +112,12 @@ static int ProcuraPeca ( TAB_tppTabuleiro pTabuleiro , PECA_tpPeca pPeca ) ;
 
 PAR_CondRet PAR_RealizaJogada ( PAR_Ludo *pJogo , int cor ) ;
 
+PAR_CondRet PAR_InicializaJogo ( PAR_tppPartida pJogo , int num ) ;
+
+PAR_CondRet PAR_RealizarRodadas(PAR_tppPartida pJogo,int *ordem,int num ,int* vencedores_final);
+
 
 /*****  Código das funções exportadas pelo módulo  *****/
-
-/***********************************************************************
- *
- *  $FC Função: PAR  -Inicializa Jogo
- *
- ***********************************************************************/
-
-PAR_CondRet PAR_InicializaJogo ( PAR_tppPartida pJogo , int num ) 
-{
-	int i;
-
-	TAB_tppTabuleiro pTabuleiro ;
-	PECA_CondRet retorno_pec 	;
-	
-	if ( num < MIN_PLAYERS || num > MAX_PLAYERS )
-	{
-		return PAR_CondRetNumeroDeJogadoresInvalido ;
-	}
-
-	pJogo = ( PAR_Ludo * ) malloc ( sizeof ( PAR_Ludo ) ) ;
-	if ( pJogo == NULL )
-	{
-		return PAR_CondRetFaltouMemoria ;
-	}
-	
-	LimpaCabeca ( pJogo ) ;
-
-	pTabuleiro = TAB_CriaTabuleiro() ;
-	if(pTabuleiro == NULL)
-		return PAR_CondRetFaltouMemoria ;
-
-	for ( i = 0 ; i < MAX_PECAS ; i++ ) 
-	{
-		retorno_pec = PECA_CriaPeca (pJogo ->pecas , i , i/MAX_PECAS_PER_PLAYER) ;
-			switch ( retorno_pec ) 
-			{
-				case PECA_CondRetFaltaMemoria :
-					return PAR_CondRetFaltouMemoria ;
-				case PECA_CondRetExiste :
-					return PAR_CondRetCorJaEscolhida ;
-				case PECA_CondRetOK :
-					break;
-				default :
-					printf("Erro inesperado\n");
-					exit(0);
-			}
-	}
-
-	pJogo->pTabuleiro    = pTabuleiro ;
-	pJogo->num_jogadores = num        ;
-	
-	return PAR_CondRetOK ;
-	
-}  /* Fim função: PAR &Inicializa Jogo */
-
 
 /***********************************************************************
  *
@@ -198,7 +147,7 @@ static void LancaDado ( int * pValor )
 {
     int ValorAleatorio ;
   
-    srand ( time ( NULL ) ) ;
+    srand ( (unsigned int)time ( NULL ) ) ;
     ValorAleatorio = ROLA_DADO;
       
     * pValor = ValorAleatorio ;
@@ -261,7 +210,6 @@ int PAR_VerificaVencedor( PAR_Ludo *pJogo, int * vencedores) {
 		return PAR_CondRetAlgunsVenceram;
 	}
 
-	free(vencedoresTemp);
 }/* Fim função: PAR  &Verifica Vencedor */
 
 int comparetor(const void * a, const void * b)
@@ -276,27 +224,27 @@ int comparetor(const void * a, const void * b)
  ***********************************************************************/
 
 
-PAR_CondRet PAR_RealizaJogo(void)
+void PAR_RealizaJogo(void)
 {
 	PAR_CondRet cond;
 
-	PAR_tppPartida pJogo;
+	PAR_tppPartida pJogo = NULL;
 
 	int num;
 	int dado;
-	int i;
+	int i, j;
 
 	
 
-	char cores[4][9] = { "VERMELHO","AZUL","VERDE","AMARELO" };
+	char cores[4][9] = { "VERMELHA","AZUL","VERDE","AMARELA" };
 	int indx = 0;
-	int* vencedores;
-	int aux_ordem[4] = { -1,-1,-1,-1 };
-	int aux_ordem2[4] = { -1,-1,-1,-1 };
+	int* vencedores = NULL;
+	int dados[4];
+	int aux;
+	
 
-	int ordem[4];
+	int *ordem_cores; 
 
-	int indx_cores[4] = { 0,1,2,3 };
 
 	printf("bem-vindo ao jogo de ludo!\n");
 	#ifdef _TESTE_M
@@ -316,52 +264,149 @@ PAR_CondRet PAR_RealizaJogo(void)
 
 	printf("vamos definir a ordem dos jogadores\n");
 
+	ordem_cores = (int*) malloc(sizeof(int) * num);
+	
+	if(ordem_cores == NULL)
+	{
+		exit(0);
+	}
+	
+	//ordem_cores[] = {0,1,2,3};
+	for(i=0;i<num;i++)
+	{
+		ordem_cores[i] = i;
+	}
+
 	#ifdef _TESTE_M
 	while (indx < num)
 	{
 		printf("desenvolvedor: escolha a ordem da cor %s: ", cores[indx]);
 		scanf("%d", &dado);
-		aux_ordem[indx] = dado;
+		dados[indx] = dado;
+		indx++;
 	}
 	#endif
 	#ifndef _TESTE_M
 
 	while (indx < num)
 	{
-		printf("rode o dado para a ordem da cor %s: ", cores[indx]);
+		printf("aperte 1 para rodar o dado para a ordem da cor %s: ", cores[indx]);
 		scanf("%d", &dado);
-		aux_ordem[indx] = LancaDado(&dado);
+		LancaDado(&dado);
+		dados[indx] = dado;
 	}
 	#endif
 
+	indx = 0;
+	
 	for (i = 0; i < num; i++)
 	{
-		aux_ordem[i] = aux_ordem2[i];
+		printf("%d ", dados[i]); 
 	}
+	
+	printf("\n");
 
-	qsort(aux_ordem, MAX_PLAYERS, sizeof(int), comparetor);
-
-	for (i = 0; i < num; i++)
+	for (i = num-1; i > 0; i--)
 	{
-		for (j = 0; i < num; i++)
+		for(j=0;j<i;j++)
 		{
-			if (aux_ordem2 == -1)
+			if(dados[j] < dados[j + 1])
 			{
-				continue;
-			}
-			else if (aux_ordem[i] == aux_ordem2[j])
-			{
-				ordem[indx] = j;
-				aux_ordem = -1;
-				aux_ordem2 = -1;
+				aux = dados[j];
+				dados[j] = dados[j+1];
+				dados[j+1] = aux;
+				
+				aux = ordem_cores[j];
+				ordem_cores[j] = ordem_cores[j+1];
+				ordem_cores[j+1] = aux;
 			}
 		}
+	
 	}
+	
+	for (i = 0; i < num; i++)
+	{
+		printf("ordem %s\t", cores[ordem_cores[i]]);
+	}
+
+	cond = PAR_RealizarRodadas(pJogo,ordem_cores, num ,vencedores);
+
+	if(cond == PAR_CondRetFaltouMemoria)
+	{
+		printf("encerrando jogo\n");
+		exit(0);
+	}
+
+	printf("Os vencedores foram\n");
+
+	for(i=0;i<num;i++)
+	{
+		if(vencedores[i] == TRUE)
+		{
+			printf("%s\n", cores[i]);
+		}
+	}
+	printf("\n");
 
 }
 
+/***********************************************************************
+ *
+ *  $FC Função: PAR  -Inicializa Jogo
+ *
+ ***********************************************************************/
 
-PAR_CondRet PAR_RealizarRodadas(PAR_tppPartida pJogo,int *ordem, int* vencedores_final)
+PAR_CondRet PAR_InicializaJogo ( PAR_tppPartida pJogo , int num ) 
+{
+	int i;
+
+	TAB_tppTabuleiro pTabuleiro ;
+	PECA_CondRet retorno_pec 	;
+	
+	if ( num < MIN_PLAYERS || num > MAX_PLAYERS )
+	{
+		return PAR_CondRetNumeroDeJogadoresInvalido ;
+	}
+
+	pJogo = ( PAR_Ludo * ) malloc ( sizeof ( PAR_Ludo ) ) ;
+	if ( pJogo == NULL )
+	{
+		return PAR_CondRetFaltouMemoria ;
+	}
+	
+	LimpaCabeca ( pJogo ) ;
+
+	pTabuleiro = TAB_CriaTabuleiro() ;
+	if(pTabuleiro == NULL)
+		return PAR_CondRetFaltouMemoria ;
+
+	for ( i = 0 ; i < MAX_PECAS ; i++ ) 
+	{
+		retorno_pec = PECA_CriaPeca (pJogo ->pecas , i , i/MAX_PECAS_PER_PLAYER) ;
+			switch ( retorno_pec ) 
+			{
+				case PECA_CondRetFaltaMemoria :
+					return PAR_CondRetFaltouMemoria ;
+				case PECA_CondRetExiste :
+					return PAR_CondRetCorJaEscolhida ;
+				case PECA_CondRetOK :
+					break;
+				default :
+					printf("Erro inesperado\n");
+					exit(0);
+			}
+	}
+
+	pJogo->pTabuleiro    = pTabuleiro ;
+	pJogo->num_jogadores = num        ;
+	
+	return PAR_CondRetOK ;
+	
+}  /* Fim função: PAR &Inicializa Jogo */
+
+
+
+PAR_CondRet PAR_RealizarRodadas(PAR_tppPartida pJogo,int *ordem,int num ,int* vencedores_final)
 {
 	int cor_atu = 0;
 	int CondRetPAR;
@@ -374,7 +419,7 @@ PAR_CondRet PAR_RealizarRodadas(PAR_tppPartida pJogo,int *ordem, int* vencedores
 
 	for(EVER)
 	{
-		cor_atu = cor_atu % MAX_PLAYERS;
+		cor_atu = cor_atu % num;
 		if(vencedores[cor_atu] == FALSE)
 		{
 			PAR_RealizaJogada (pJogo , ordem[cor_atu]);
