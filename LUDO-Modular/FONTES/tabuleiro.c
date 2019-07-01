@@ -35,6 +35,7 @@
 
 #define FORA_DO_JOGO 'F'
 #define FINAL_JOGO 1
+#define NAO_FINAL_JOGO 0
 
 /* DEFINES PARA INTERFACE */
 
@@ -415,7 +416,7 @@ CAS_CondRet TAB_AlteraCasa(TAB_tpCasaInfo* casa,PECA_tpPeca peca){
 
 	else if (numInimigos == 1)
 	{
-		PECA_AtualizaPeca(casa ->conteudo[indx_Inimigo], FINAL_JOGO, FORA_DO_JOGO);
+		PECA_AtualizaPeca(casa ->conteudo[indx_Inimigo], NAO_FINAL_JOGO, FORA_DO_JOGO);
 
 		casa ->conteudo[indx_Inimigo] = NULL;
 
