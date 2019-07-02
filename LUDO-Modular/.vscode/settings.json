@@ -4,6 +4,7 @@
         "TESTLIS.C": "cpp",
         "LERPARM.C": "cpp",
         "CONTA.C": "cpp",
-        "GENERICO.C": "cpp"
+        "GENERICO.C": "cpp",
+        "partida.h": "c"
     }
 }

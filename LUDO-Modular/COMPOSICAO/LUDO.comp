@@ -1,0 +1,30 @@
+
+[Diretorios]
+
+Nome        =  LUDO
+PathDefault =  ..\Fontes
+err         =  ..\Produtos
+obj         =  ..\Objetos
+c           =  ..\Fontes
+h           =  ..\Fontes
+def         =  ..\Fontes
+
+[Modulos]
+main
+partida
+TestePartida
+tabuleiro
+peca
+LISTA
+lista_circular
+
+[BuildInicio]
+/OUT:..\produtos\LUDO.exe
+/INCREMENTAL:NO
+/MACHINE:IX86
+
+[BuildFim]
+../objetos/ArcaboucoTeste.lib
+
+
+[Fim]
