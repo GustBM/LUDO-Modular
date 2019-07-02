@@ -1,4 +1,4 @@
-==============================================================
+﻿==============================================================
 TRABALHO 2 - JOGO DE LUDO - LEIA-ME.TXT -  Arcabou�o de Teste
 ==============================================================
 
@@ -8,6 +8,8 @@ Alunos:
 - Luiz Fellipe Augusto - 1711256
 - Gustavo Barros Marchesan - 1521500
 
+Devido ao feedback recebido após a entrega do T2, fizemos diversas mudanças em todos os módulos para que
+todos pudessem ser testados com exito.
 
 Este .txt explica o conteudo a ser testado e implementado no arcabouco. 
 
