@@ -1,0 +1,30 @@
+
+[Diretorios]
+
+Nome        =  LUDODev
+PathDefault =  ..\Fontes
+err         =  ..\Produtos
+obj         =  ..\Objetos
+c           =  ..\Fontes
+h           =  ..\Fontes
+def         =  ..\Fontes
+
+[Modulos]
+main  /D_TESTE_M
+partida /D_TESTE_M
+TestePartida
+tabuleiro
+peca
+LISTA
+lista_circular
+
+[BuildInicio]
+/OUT:..\produtos\LUDODev.exe
+/INCREMENTAL:NO
+/MACHINE:IX86
+
+[BuildFim]
+../objetos/ArcaboucoTeste.lib
+
+
+[Fim]

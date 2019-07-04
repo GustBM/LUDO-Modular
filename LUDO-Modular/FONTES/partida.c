@@ -294,6 +294,7 @@ void PAR_RealizaJogo(void)
 		scanf("%d", &dado);
 		LancaDado(&dado);
 		dados[indx] = dado;
+		indx++;
 	}
 	#endif
 
@@ -411,6 +412,8 @@ PAR_CondRet PAR_RealizarRodadas(PAR_tppPartida pJogo,int *ordem,int num ,int* ve
 	int cor_atu = 0;
 	int CondRetPAR;
 	int*vencedores = vencedores_final;
+	int rodada = 1;
+	printf("rodada em breve\n");
 	CondRetPAR = PAR_VerificaVencedor( pJogo , vencedores );
 	if(vencedores == NULL)
 	{
@@ -419,6 +422,7 @@ PAR_CondRet PAR_RealizarRodadas(PAR_tppPartida pJogo,int *ordem,int num ,int* ve
 
 	for(EVER)
 	{
+		printf("rodada %d", rodada);
 		cor_atu = cor_atu % num;
 		if(vencedores[cor_atu] == FALSE)
 		{
@@ -442,7 +446,7 @@ PAR_CondRet PAR_RealizarRodadas(PAR_tppPartida pJogo,int *ordem,int num ,int* ve
 
 		if(CondRetPAR == PAR_CondRetAcabou)
 			break;
-		
+	rodada++;	
 	}
 	vencedores_final = vencedores;
 	return PAR_CondRetAcabou;

@@ -2,7 +2,7 @@
 
 Nome: Eduardo Motta
 Mat.:1720334
-eduardomotta5238@gmail.com
+eduardomotta528@gmail.com
 
 - Especifica��es - 
 Este relat�rio expecificara as tarefas e produtos desenvolvidos por Eduardo Motta
@@ -115,6 +115,9 @@ Este relat�rio expecificara as tarefas e produtos desenvolvidos por Eduardo Mo
 => 30/06/2019
 *modulo partida
 (9 horas)
+
+=> 7/1/2019
+*avancos no modulo partida
 
 
 Os dias com data n�o especificada foram continua��es dos trabalhos dos dias anteriores (Entre 1 e 3 horas de trabalho di�rio).

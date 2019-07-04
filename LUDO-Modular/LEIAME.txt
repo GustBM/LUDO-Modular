@@ -11,13 +11,15 @@ Alunos:
 Devido ao feedback recebido após a entrega do T2, fizemos diversas mudanças em todos os módulos para que
 todos pudessem ser testados com exito.
 
+O jogo nao esta jogavel porem os testes com contadores em lista circular cobrem todas as arestas do codigo.
+
 Este .txt explica o conteudo a ser testado e implementado no arcabouco. 
 
-Passo a passo: 
+os executaveis TRAB4-i.EXE se encontram na raiz do zip com uma identificação i(jogo normal) e d(modo desenvolvedor)
 
-- Abra o CMD e entre na pasta BATCHES.
 
-- execute vsvars32.bat
+
+Metodos:
 
 1) Para execucao individual dos modulos
 
@@ -33,11 +35,12 @@ Passo a passo:
 
 	Apartida -> para testar o modulo partida
 
-2) Para a execucao de TODOS os modulos
 
-- execute Tudo.bat
+2) para execução do jogo de ludo em si use os batches
 
+	ALUDO -> para executar o ludo no modo normal
 
+	ALUDOdev -> para executar o ludo com modo de desenvolvedor (controle do dado)
 	    
 ===========================================================================
 -----------------------FIM DO ARQUIVO LEIAME.TXT---------------------------
